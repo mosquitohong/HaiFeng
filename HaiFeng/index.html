@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <div id="header">
+        <div class="logo fl">
+            <img src="images/logo.png">
+            <p>Change&middot;Style</p>
+            <p>改变&middot;方式</p>
+        </div>
+        <ul class="menu fr">
+            <li class="fl"><a href="">找工作</a> </li>
+            <li class="fl"><a href="">商家</a> </li>
+            <li class="fl"><a href="">推荐人</a> </li>
+            <li class="fl"><a href="">关于</a> </li>
+        </ul>
+    </div>
+    <div id="staticImg">
+        <div class="imgsContainer">
+            <img src="http://idowebok.u.qiniudn.com/77/iphone-green.png" alt="iphone" id="iphone-green" />
+        </div>
+    </div>
+
+    <div class="section " id="section0">
+        <img src="http://idowebok.u.qiniudn.com/77/iphone1.jpg" alt="iphone" />
+    </div>
+
+    <div class="section" id="section1">
+        <div class="wrap">
+            <div class="imgsContainer">
+                <img src="http://idowebok.u.qiniudn.com/77/iphone2.png" alt="iphone" id="iphone2" />
+                <img src="http://idowebok.u.qiniudn.com/77/iphone3.png" alt="iphone" id="iphone3" />
+                <img src="http://idowebok.u.qiniudn.com/77/iphone4.png" alt="iphone" id="iphone4" />
+            </div>
+
+            <div class="box">
+                <h2>A powerful plugin</h2> <strong>fullPage.js</strong>
+                callbacks allow you to create amazing dynamic sites with a bit of imagination. This example tries to reproduce the Apple iPhone-5c website animations as an example of what fullPage.js is capable of.
+            </div>
+        </div>
+    </div>
+
+    <div class="section moveDown" id="section2">
+        <div class="wrap">
+            <div class="imgsContainer">
+                <img src="http://idowebok.u.qiniudn.com/77/iphone-yellow.png" alt="iphone" id="iphone-yellow" />
+                <img src="http://idowebok.u.qiniudn.com/77/iphone-red.png" alt="iphone" id="iphone-red" />
+                <img src="http://idowebok.u.qiniudn.com/77/iphone-blue.png" alt="iphone" id="iphone-blue" />
+            </div>
+
+            <div class="box">
+                <h2>Amazing stuff</h2>
+                Combining <strong>fullPage.js</strong>
+                with your own CSS styles and animations, you will be able to create something remarkable.
+            </div>
+        </div>
+    </div>
+    <div class="section moveDown" id="section3">
+        <div class="wrap">
+            <div class="box">
+                <h2>Just a demo</h2>
+                This is, of course, just a demo. I didn't want to spend much time on it.
+                Don't expect it to work perfectly in all kind of screens.
+                It has been designed to work on 1180px width or over on modern browsers with CSS3.
+            </div>
+        </div>
+        <div class="imgsContainer">
+            <img src="http://idowebok.u.qiniudn.com/77/iphone-two.png" alt="iphone" id="iphone-two" />
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.fn.fullpage({
+                'verticalCentered': false,
+                'anchors': ['page1', 'page2', 'page3', 'page4'],
+                'css3': true,
+                'slidesColor': ['#F0F2F4', '#fff', '#fff', '#fff'],
+                'navigation': true,
+                'navigationPosition': 'right',
+                'navigationTooltips': ['right', 'Powerful', 'Amazing', 'Simple', 'change', 'style'],
+
+                'afterLoad': function (anchorLink, index) {
+                    if (index == 2) {
+                        $('#iphone3, #iphone2, #iphone4').addClass('active');
+                    }
+                    $('#infoMenu').toggleClass('whiteLinks', index == 4);
+
+                },
+
+                'onLeave': function (index, direction) {
+                    if (index == 3 && direction == 'down') {
+                        $('.section').eq(index - 1).removeClass('moveDown').addClass('moveUp');
+                    }
+                    else if (index == 3 && direction == 'up') {
+                        $('.section').eq(index - 1).removeClass('moveUp').addClass('moveDown');
+                    }
+
+                    $('#staticImg').toggleClass('active', (index == 2 && direction == 'down') || (index == 4 && direction == 'up'));
+                    $('#staticImg').toggleClass('moveDown', index == 3 && direction == 'down');
+                },
+
+                afterRender: function () {
+                    $('#infoMenu').appendTo('body');
+
+                    $('#githubLink, .twitter-share-button').appendTo('body');
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>
