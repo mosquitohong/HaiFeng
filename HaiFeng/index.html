@@ -1,211 +1,288 @@
 ﻿<!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <title>主页</title>
-    <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
-</head>
+<meta charset="utf-8">
+<title>主页</title>
+<link rel="stylesheet" href="style/main.css">
+<link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css"></head>
 <body>
-    <div class="wrap">
-        <div id="header">
-            <div class="logo fl">
-                <img class="fl" src="images/logo.png">
-                <p>Change&middot;Style</p>
-                <p>改变&middot;方式</p>
-            </div>
-            <ul class="menu fr">
+<div id="layerbox">
+    <div class="lb-container">
+        <div class="lb-content">
+            <ul class="tab-menu clearfix">
                 <li class="fl">
-                    <a href="">找工作</a>
+                    <a href="" class="active" data-id="register">登录</a>
                 </li>
                 <li class="fl">
-                    <a href="">商家</a>
+                    <a href="" data-id="register">注册</a>
                 </li>
-                <li class="fl">
-                    <a href="">推荐人</a>
-                </li>
-                <li class="fl">
-                    <a href="">关于</a>
+                <li>
+                    <a class="close-btn" id="closeBtn">×</a>
                 </li>
             </ul>
+            <div class="tab-content">
+                <form id="register" class="tab-form loginform">
+                    <ul class="">
+                        <li>
+                            <input type="text" placeholder="请输入手机号" id="loginPhone">
+                            <span class="icon"></span>
+                            <span class="clearvalue">×</span>
+                            <p class="errortip">该手机号未注册</p>
+                        </li>
+                        <li>
+                            <input type="password" placeholder="请输入密码" id="loginPwd">
+                            <span class="icon"></span>
+                            <span class="clearvalue">×</span>
+                            <p class="errortip">
+                                密码错误，是否
+                                <a href="">忘记密码</a>
+                            </p>
+                        </li>
+                        <li>
+                            <button type="submit" id="loginBtn">登录</button>
+                        </li>
+                    </ul>
+                </form>
+                <form id="login" class="tab-form regform">
+                    <ul class="">
+                        <li>
+                            <input type="text" placeholder="请输入手机号" id="regPhone">
+                            <button type="button" id="sendCode"></button>
+                            <p class="errortip">该手机号未注册</p>
+                        </li>
+                        <li>
+                            <input type="text" placeholder="请输入验证码" id="code">
+                            <span class="icon"></span>
+                            <span class="clearvalue">×</span>
+                            <p class="errortip">验证码错误</p>
+                        </li>
+                        <li>
+                            <input type="password" placeholder="请输入密码" id="regPwd">
+                            <span class="icon"></span>
+                            <span class="clearvalue">×</span>
+                            <p class="errortip"></p>
+                        </li>
+                        <li>
+                            <input type="password" placeholder="请再次输入密码" id="regRepPwd">
+                            <span class="icon"></span>
+                            <span class="clearvalue">×</span>
+                            <p class="errortip">两次密码不一致</p>
+                        </li>
+                        <li>
+                            <input type="password" placeholder="请输入特邀码(选填)" id="invitedCode">
+                            <span class="icon"></span>
+                            <span class="clearvalue">×</span>
+                            <p class="errortip">特邀码不存在</p>
+                        </li>
+                        <li>
+                            <button type="submit" id="regBtn">注册</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
         </div>
-        <div id="container">
-            <div class="section section1">
-                <div class="bg"></div>
-                <div class="sectbg11"></div>
-                <div class="sectfoot">
-                    <div class="ft-content">
-                        <div class="advantages">
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>视频show!</p>
-                                    <span>让所有人更看好你</span>
-                                </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <div id="header">
+        <div class="logo fl">
+            <img class="fl" src="images/logo.png">
+            <p>Change&middot;Style</p>
+            <p>改变&middot;方式</p>
+        </div>
+        <ul class="menu fr">
+            <li class="fl">
+                <a href="">找工作</a>
+            </li>
+            <li class="fl">
+                <a href="">商家</a>
+            </li>
+            <li class="fl">
+                <a href="">推荐人</a>
+            </li>
+            <li class="fl">
+                <a href="">关于</a>
+            </li>
+        </ul>
+    </div>
+    <div id="container">
+        <div class="section section1">
+            <div class="bg"></div>
+            <div class="sectbg11"></div>
+            <div class="sectfoot">
+                <div class="ft-content">
+                    <div class="advantages">
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>视频show!</p>
+                                <span>让所有人更看好你</span>
                             </div>
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>一招搞定</p>
-                                    <span>抱着手机等工作</span>
-                                </div>
+                        </div>
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>一招搞定</p>
+                                <span>抱着手机等工作</span>
                             </div>
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>精准匹配!</p>
-                                    <span>最合适才是最好的</span>
-                                </div>
+                        </div>
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>精准匹配!</p>
+                                <span>最合适才是最好的</span>
                             </div>
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>专注服务业</p>
-                                    <span>让专注变成专业</span>
-                                </div>
+                        </div>
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>专注服务业</p>
+                                <span>让专注变成专业</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section2">
+            <div class="bg"></div>
+            <div class="sectbg21"></div>
+            <div class="sectfoot">
+                <div class="ft-content">
+                    <div class="advantages">
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>抢先看</p>
+                                <span>合不合适，先睹为快</span>
+                            </div>
+                        </div>
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>拒绝傻等</p>
+                                <span>自动帅选匹配，主动出击</span>
+                            </div>
+                        </div>
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>高效招人</p>
+                                <span>高效源于简单，简单源于专注!</span>
+                            </div>
+                        </div>
+                        <div class="advantage dt4">
+                            <img src="">
+                            <div class="infor">
+                                <p>合适最重要</p>
+                                <span>海量人才，按需找人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section3">
+            <div class="bg"></div>
+            <div class="sectbg31"></div>
+            <div class="sectfoot">
+                <div class="ft-content">
+                    <div class="advantages">
+                        <div class="advantage dt2">
+                            <img src="">
+                            <div class="infor">
+                                <p>人才推荐</p>
+                                <span>推荐有奖励，越推奖越多</span>
+                            </div>
+                        </div>
+                        <div class="advantage dt2">
+                            <img src="">
+                            <div class="infor">
+                                <p>资源合作</p>
+                                <span>玩转资源，畅通无阻</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section4">
+            <div class="bg"></div>
+            <div class="sectbg41"></div>
+            <div class="sectfoot">
+                <div class="ft-content">
+                    <div class="advantages">
+                        <div class="advantage dt3">
+                            <img src="">
+                            <div class="infor">
+                                <p>成本低</p>
+                                <span>人均招聘成本不到五块</span>
+                            </div>
+                        </div>
+                        <div class="advantage dt3">
+                            <img src="">
+                            <div class="infor">
+                                <p>招聘快</p>
+                                <span>想你所想，急你所急</span>
+                            </div>
+                        </div>
+                        <div class="advantage dt3">
+                            <img src="">
+                            <div class="infor">
+                                <p>效果好</p>
+                                <span>满意让你看的见</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="section section2">
+            <div class="section section5">
                 <div class="bg"></div>
-                <div class="sectbg21"></div>
-                <div class="sectfoot">
-                    <div class="ft-content">
-                        <div class="advantages">
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>抢先看</p>
-                                    <span>合不合适，先睹为快</span>
-                                </div>
-                            </div>
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>拒绝傻等</p>
-                                    <span>自动帅选匹配，主动出击</span>
-                                </div>
-                            </div>
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>高效招人</p>
-                                    <span>高效源于简单，简单源于专注!</span>
-                                </div>
-                            </div>
-                            <div class="advantage dt4">
-                                <img src="">
-                                <div class="infor">
-                                    <p>合适最重要</p>
-                                    <span>海量人才，按需找人</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section section3">
-                <div class="bg"></div>
-                <div class="sectbg31"></div>
-                <div class="sectfoot">
-                    <div class="ft-content">
-                        <div class="advantages">
-                            <div class="advantage dt2">
-                                <img src="">
-                                <div class="infor">
-                                    <p>人才推荐</p>
-                                    <span>推荐有奖励，越推奖越多</span>
-                                </div>
-                            </div>
-                            <div class="advantage dt2">
-                                <img src="">
-                                <div class="infor">
-                                    <p>资源合作</p>
-                                    <span>玩转资源，畅通无阻</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section section4">
-                <div class="bg"></div>
-                <div class="sectbg41"></div>
+                <div class="sectbg51"></div>
                 <div class="sectfoot">
                     <div class="ft-content">
                         <div class="advantages">
                             <div class="advantage dt3">
                                 <img src="">
                                 <div class="infor">
-                                    <p>成本低</p>
-                                    <span>人均招聘成本不到五块</span>
+                                    <p>简单方便</p>
+                                    <span>定向定点，省心省力</span>
                                 </div>
                             </div>
                             <div class="advantage dt3">
                                 <img src="">
                                 <div class="infor">
-                                    <p>招聘快</p>
-                                    <span>想你所想，急你所急</span>
+                                    <p>高效便捷</p>
+                                    <span>除去繁琐，轻松求职</span>
                                 </div>
                             </div>
                             <div class="advantage dt3">
                                 <img src="">
                                 <div class="infor">
-                                    <p>效果好</p>
-                                    <span>满意让你看的见</span>
+                                    <p>工作保障</p>
+                                    <span>商家直招，真实透明</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="section section5">
+                <div class="section section6">
                     <div class="bg"></div>
-                    <div class="sectbg51"></div>
-                    <div class="sectfoot">
-                        <div class="ft-content">
-                            <div class="advantages">
-                                <div class="advantage dt3">
-                                    <img src="">
-                                    <div class="infor">
-                                        <p>简单方便</p>
-                                        <span>定向定点，省心省力</span>
-                                    </div>
-                                </div>
-                                <div class="advantage dt3">
-                                    <img src="">
-                                    <div class="infor">
-                                        <p>高效便捷</p>
-                                        <span>除去繁琐，轻松求职</span>
-                                    </div>
-                                </div>
-                                <div class="advantage dt3">
-                                    <img src="">
-                                    <div class="infor">
-                                        <p>工作保障</p>
-                                        <span>商家直招，真实透明</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section section6">
-                        <div class="bg"></div>
-                        <div class="sectbg61"></div>
-                        <div class="sectfoot"></div>
-                    </div>
+                    <div class="sectbg61"></div>
+                    <div class="sectfoot"></div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
-    <script>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
+<script>
         $(function () {
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
