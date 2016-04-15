@@ -11,13 +11,17 @@
     <div class="wrap">
         <div id="header">
             <div class="logo fl">
-                <img class="fl" src="images/logo.png">
-                <p>Change&middot;Style</p>
-                <p>改变&middot;方式</p>
+                <img class="fl" src="images/logo01.png">
+                <!-- <p>Change&middot;Style</p>
+                <p>改变&middot;方式</p> -->
             </div>
             <ul class="menu fr">
-                <li class="fl">
-                    <a href="">找工作</a>
+                <li class="fl" id="jobHunt">
+                    <a href="javascript:void(0);">找工作</a>
+                    <div class="wxcode">
+                        <img src="images/wxcode.png">
+                        <p>微信扫码找工作</p>
+                    </div>
                 </li>
                 <li class="fl">
                     <a href="javascript:void(0);" id="merchant">商家</a>
@@ -213,7 +217,7 @@
             </div>
 
             <div class="section section6">
-                <div class="bg"></div>
+                <!-- <div class="bg"></div> -->
                
                 <div class="sectbg61 clearfix">
                     <div class="reasons fl clearfix">
@@ -318,8 +322,8 @@
                     <div class="qrcode fl">
                         <p>扫一扫</p>
                         <p>关注海蜂微信公众号</p>
-                        <div class="qrcode">
-                            <img src="images/.png">
+                        <div class="qrcode-public">
+                            <img src="images/wxpublic.png">
                         </div>
                     </div>
                 </div>
@@ -423,6 +427,10 @@
             //     $.fn.fullpage.moveSectionDown();
             // }, 3000);
 
+            $("#jobHunt").click(function(){
+                $(this).toggleClass("active");
+                $(".wxcode").toggle();
+            })
             $("#merchant").click(function(){
                 $("#layerbox").show("slow");
                 $(".wrap").addClass("wrap-active")
