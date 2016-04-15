@@ -99,6 +99,17 @@ a {
 .at-infor {
     margin-top: 12px;
 }
+.godown{
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    margin-left: -15px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    /*border:1px solid red;*/
+    background: url(../images/arrow-down.png) no-repeat center center;
+}
 
     .at-infor p {
         height: 20px;
@@ -284,6 +295,7 @@ a {
 }
 
 .tab-form li .errortip {
+    display: none;
     font-size: 10px;
     position: absolute;
     top: 38px;
@@ -335,7 +347,7 @@ a {
 
 .logo {
     width: 180px;
-    margin-left: 20px;
+    margin-left: 88px;
 }
 
 .logo p {
