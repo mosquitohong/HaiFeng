@@ -1,26 +1,27 @@
 ﻿<!DOCTYPE html>
 <head>
-<meta charset="utf-8">
-<title>主页</title>
-<link rel="stylesheet" href="style/main.css">
-<link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css"></head>
+    <meta charset="utf-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
+</head>
 <body>
-<div id="layerbox">
+    <!-- <div id="layerbox">
     <div class="lb-container">
         <div class="lb-content">
             <ul class="tab-menu clearfix">
                 <li class="fl">
-                    <a href="" class="active" data-id="register">登录</a>
+                    <a href="javascrip:void(0);" class="active" data-id="loginForm">登录</a>
                 </li>
                 <li class="fl">
-                    <a href="" data-id="register">注册</a>
+                    <a href="javascrip:void(0);" data-id="registerForm">注册</a>
                 </li>
                 <li>
                     <a class="close-btn" id="closeBtn">×</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <form id="register" class="tab-form loginform">
+                <form id="loginForm" class="tab-form loginform">
                     <ul class="">
                         <li>
                             <input type="text" placeholder="请输入手机号" id="loginPhone">
@@ -42,11 +43,12 @@
                         </li>
                     </ul>
                 </form>
-                <form id="login" class="tab-form regform">
+                <form id="registerForm" class="tab-form regform">
                     <ul class="">
                         <li>
-                            <input type="text" placeholder="请输入手机号" id="regPhone">
-                            <button type="button" id="sendCode"></button>
+                            <input type="text" class="reg-phone" placeholder="请输入手机号" id="regPhone">
+                            <button type="button" class="send-code fr" id="sendCode">获取验证码</button>
+                            <span class="clearvalue">×</span>
                             <p class="errortip">该手机号未注册</p>
                         </li>
                         <li>
@@ -81,188 +83,203 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="wrap">
-    <div id="header">
-        <div class="logo fl">
-            <img class="fl" src="images/logo.png">
-            <p>Change&middot;Style</p>
-            <p>改变&middot;方式</p>
-        </div>
-        <ul class="menu fr">
-            <li class="fl">
-                <a href="">找工作</a>
-            </li>
-            <li class="fl">
-                <a href="">商家</a>
-            </li>
-            <li class="fl">
-                <a href="">推荐人</a>
-            </li>
-            <li class="fl">
-                <a href="">关于</a>
-            </li>
-        </ul>
     </div>
-    <div id="container">
-        <div class="section section1">
-            <div class="bg"></div>
-            <div class="sectbg11"></div>
-            <div class="sectfoot">
-                <div class="ft-content">
-                    <div class="advantages">
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>视频show!</p>
-                                <span>让所有人更看好你</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>一招搞定</p>
-                                <span>抱着手机等工作</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>精准匹配!</p>
-                                <span>最合适才是最好的</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>专注服务业</p>
-                                <span>让专注变成专业</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    -->
+    <div class="wrap">
+        <div id="header">
+            <div class="logo fl">
+                <img class="fl" src="images/logo.png">
+                <p>Change&middot;Style</p>
+                <p>改变&middot;方式</p>
             </div>
+            <ul class="menu fr">
+                <li class="fl">
+                    <a href="">找工作</a>
+                </li>
+                <li class="fl">
+                    <a href="">商家</a>
+                </li>
+                <li class="fl">
+                    <a href="">推荐人</a>
+                </li>
+                <li class="fl">
+                    <a href="">关于</a>
+                </li>
+            </ul>
         </div>
-
-        <div class="section section2">
-            <div class="bg"></div>
-            <div class="sectbg21"></div>
-            <div class="sectfoot">
-                <div class="ft-content">
-                    <div class="advantages">
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>抢先看</p>
-                                <span>合不合适，先睹为快</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>拒绝傻等</p>
-                                <span>自动帅选匹配，主动出击</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>高效招人</p>
-                                <span>高效源于简单，简单源于专注!</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt4">
-                            <img src="">
-                            <div class="infor">
-                                <p>合适最重要</p>
-                                <span>海量人才，按需找人</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section section3">
-            <div class="bg"></div>
-            <div class="sectbg31"></div>
-            <div class="sectfoot">
-                <div class="ft-content">
-                    <div class="advantages">
-                        <div class="advantage dt2">
-                            <img src="">
-                            <div class="infor">
-                                <p>人才推荐</p>
-                                <span>推荐有奖励，越推奖越多</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt2">
-                            <img src="">
-                            <div class="infor">
-                                <p>资源合作</p>
-                                <span>玩转资源，畅通无阻</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section section4">
-            <div class="bg"></div>
-            <div class="sectbg41"></div>
-            <div class="sectfoot">
-                <div class="ft-content">
-                    <div class="advantages">
-                        <div class="advantage dt3">
-                            <img src="">
-                            <div class="infor">
-                                <p>成本低</p>
-                                <span>人均招聘成本不到五块</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt3">
-                            <img src="">
-                            <div class="infor">
-                                <p>招聘快</p>
-                                <span>想你所想，急你所急</span>
-                            </div>
-                        </div>
-                        <div class="advantage dt3">
-                            <img src="">
-                            <div class="infor">
-                                <p>效果好</p>
-                                <span>满意让你看的见</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section section5">
+        <div id="container">
+            <div class="section section1">
                 <div class="bg"></div>
-                <div class="sectbg51"></div>
+                <div class="sectbg11"></div>
+                <a href="#page2" class="godown">
+                    <span></span>
+                </a>
+                <div class="sectfoot">
+                    <div class="ft-content">
+                        <div class="advantages">
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>视频show!</p>
+                                    <span>让所有人更看好你</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>一招搞定</p>
+                                    <span>抱着手机等工作</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>精准匹配!</p>
+                                    <span>最合适才是最好的</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>专注服务业</p>
+                                    <span>让专注变成专业</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section2">
+                <div class="bg"></div>
+                <div class="sectbg21"></div>
+                <a href="#page3" class="godown">
+                    <span></span>
+                </a>
+                <div class="sectfoot">
+                    <div class="ft-content">
+                        <div class="advantages">
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>抢先看</p>
+                                    <span>合不合适，先睹为快</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>拒绝傻等</p>
+                                    <span>自动帅选匹配，主动出击</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>高效招人</p>
+                                    <span>高效源于简单，简单源于专注!</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt4">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>合适最重要</p>
+                                    <span>海量人才，按需找人</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section3">
+                <div class="bg"></div>
+                <div class="sectbg31"></div>
+                <a href="#page4" class="godown">
+                    <span></span>
+                </a>
+                <div class="sectfoot">
+                    <div class="ft-content">
+                        <div class="advantages">
+                            <div class="advantage dt2">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>人才推荐</p>
+                                    <span>推荐有奖励，越推奖越多</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt2">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>资源合作</p>
+                                    <span>玩转资源，畅通无阻</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section4">
+                <div class="bg"></div>
+                <div class="sectbg41"></div>
+                <a href="#page5" class="godown">
+                    <span></span>
+                </a>
                 <div class="sectfoot">
                     <div class="ft-content">
                         <div class="advantages">
                             <div class="advantage dt3">
-                                <img src="">
-                                <div class="infor">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>成本低</p>
+                                    <span>人均招聘成本不到五块</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt3">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>招聘快</p>
+                                    <span>想你所想，急你所急</span>
+                                </div>
+                            </div>
+                            <div class="advantage dt3">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
+                                    <p>效果好</p>
+                                    <span>满意让你看的见</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section section5">
+                <div class="bg"></div>
+                <div class="sectbg51"></div>
+                <a href="#page6" class="godown">
+                    <span></span>
+                </a>
+                <div class="sectfoot">
+                    <div class="ft-content">
+                        <div class="advantages">
+                            <div class="advantage dt3">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
                                     <p>简单方便</p>
                                     <span>定向定点，省心省力</span>
                                 </div>
                             </div>
                             <div class="advantage dt3">
-                                <img src="">
-                                <div class="infor">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
                                     <p>高效便捷</p>
                                     <span>除去繁琐，轻松求职</span>
                                 </div>
                             </div>
                             <div class="advantage dt3">
-                                <img src="">
-                                <div class="infor">
+                                <img src="images/footicon01.png">
+                                <div class="at-infor">
                                     <p>工作保障</p>
                                     <span>商家直招，真实透明</span>
                                 </div>
@@ -270,19 +287,129 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="section section6">
-                    <div class="bg"></div>
-                    <div class="sectbg61"></div>
-                    <div class="sectfoot"></div>
+            <div class="section section6">
+                <div class="bg"></div>
+               
+                <div class="sectbg61 clearfix">
+                    <div class="reasons fl clearfix">
+                        <div class="reason fl">
+                            <div class="rs-head">
+                                <h4>
+                                    <img src="images/reason01.png">找工作就上海蜂
+                                </h4>
+                                <p>微信关注海蜂，好工作悄悄来</p>
+                            </div>
+                            <ul>
+                                <li class="fl">
+                                    <a href="">个性简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">视频简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">工作定制</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reason fl">
+                            <div class="rs-head">
+                                <h4>
+                                    <img src="images/reason01.png">找工作就上海蜂
+                                </h4>
+                                <p>微信关注海蜂，好工作悄悄来</p>
+                            </div>
+                            <ul>
+                                <li class="fl">
+                                    <a href="">个性简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">视频简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">工作定制</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reason fl">
+                            <div class="rs-head">
+                                <h4>
+                                    <img src="images/reason01.png">找工作就上海蜂
+                                </h4>
+                                <p>微信关注海蜂，好工作悄悄来</p>
+                            </div>
+                            <ul>
+                                <li class="fl">
+                                    <a href="">个性简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">视频简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">工作定制</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="reason fl">
+                            <div class="rs-head">
+                                <h4>
+                                    <img src="images/reason01.png">找工作就上海蜂
+                                </h4>
+                                <p>微信关注海蜂，好工作悄悄来</p>
+                            </div>
+                            <ul>
+                                <li class="fl">
+                                    <a href="">个性简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">视频简历</a>
+                                </li>
+                                <li class="fl">
+                                    <a href="">工作定制</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq fl">
+                        <div class="faq-cont clearfix">
+                            <div class="faq-list fl">
+                                <h4>Q&amp;A</h4>
+                                <p>Q:海蜂是啥？</p>
+                                <p>A:海蜂是专注于线下服务行业商家的人力服务平台</p>
+                                <p>Q:与其他网站有什么不同？</p>
+                                <p>A:唯一的不同是处处不同</p>
+                                <p class="pdlft">人家晒阅历，我来晒视频</p>
+                                <p class="pdlft">别人是去找工作，在这里是等工作找你</p>
+                                <p class="pdlft">还有很多，敬请期待......</p>
+                            </div>
+                            <div class="faq-list fl">
+                                <p>Q:为什么只有这些行业和岗位</p>
+                                <p>A:更多的岗位会陆续补充。当然，好的人才是要把</p>
+                                <p class="pdlft">握的，试着先联系吧！</p>
+                                <p>Q:还有其他什么好玩的吗？</p>
+                                <p>A:当然等你来发现喽！</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qrcode fl">
+                        <p>扫一扫</p>
+                        <p>关注海蜂微信公众号</p>
+                        <div class="qrcode">
+                            <img src="images/.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
+                    <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="js/jquery.min.js"></script>
-<script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
-<script>
+    <script src="js/jquery.min.js"></script>
+    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
+    <script>
         $(function () {
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
@@ -294,6 +421,24 @@
             // setInterval(function () {
             //     $.fn.fullpage.moveSectionDown();
             // }, 3000);
+
+
+            // 登录注册切换
+            $(".tab-menu li a").click(function () {
+                $(".tab-menu li a").removeClass("active");
+                $(this).addClass("active");
+                var curId = $(this).attr("data-id");
+                $("#" + curId).show("slow").siblings(".tab-form").hide("slow");
+            });
+
+            $("#closeBtn").click(function () {
+                $("#layerbox").hide();
+            })
+            // 清除内容
+            $(".clearvalue").click(function () {
+                $(this).prevAll("input").val("");
+            });
+
         });
     </script>
 
