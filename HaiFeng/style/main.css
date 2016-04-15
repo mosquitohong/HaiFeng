@@ -69,7 +69,7 @@ a {
 .advantage img {
     position: absolute;
     left: -40px;
-    top: 12px;
+    top: 16px;
 }
 
 .dt4 {
@@ -104,13 +104,13 @@ a {
         height: 20px;
         line-height: 20px;
         margin: 5px 0 0 10px;
-        font-size: 16px;
+        font-size: 18px;
         padding: 0;
     }
 
     .at-infor span {
         margin: 0 0 0 10px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .at-infor:before {
@@ -357,7 +357,7 @@ a {
     width: 100px;
     height: 75px;
     line-height: 75px;
-    font-size: 14px;
+    font-size: 20px;
 }
 .menu li.active:after{
     content: "";
@@ -495,7 +495,7 @@ a {
 }
 @media screen and (min-width: 1201px){
     .sectbg61 {
-        width: 1300px;
+        width: 1250px;
     }
 }
 @media screen and (min-width: 1600px) {
@@ -540,7 +540,8 @@ a {
 }
 
 .rs-head img {
-    margin-right: 10px;
+    margin-right: 6px;
+    vertical-align: -4px;
 }
 
 .rs-head p {
@@ -562,8 +563,8 @@ a {
 }
 
 .faq-list p {
-    height: 30px;
-    line-height: 30px;
+    height: 25px;
+    line-height: 25px;
     white-space: nowrap;
     font-size: 14px;
 }
