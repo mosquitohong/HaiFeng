@@ -214,9 +214,24 @@ a{
     top: 0px;
     left: 0;
     background-color:#737373; 
-    background-image: url(../images/phone.png);
+    /*background-image: url(../images/phone.png);*/
     background-repeat:no-repeat;
     background-position:center center;  
+}
+.icon-phone{
+    background-image: url(../images/phone.png);
+}
+.icon-password{
+    background-image: url(../images/password01.png);
+}
+.icon-rtppassword{
+    background-image: url(../images/passwordreset01.png);
+}
+.icon-code{
+    background-image: url(../images/code01.png);
+}
+.icon-qrcode{
+    background-image: url(../images/qrcode01.png);
 }
 .tab-form li .clearvalue{
     top: 2px;
