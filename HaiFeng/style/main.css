@@ -436,3 +436,10 @@ a{
     line-height: 25px;
     font-size: 12px;
 }
+
+#layerbox{
+    display: none;
+}
+.wrap-active{
+    opacity: 0.8;
+}
