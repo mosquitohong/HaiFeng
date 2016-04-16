@@ -34,7 +34,7 @@
         </div>
         <div id="container">
             <div class="section section1 active">
-                <div class="bg"></div>
+                <div class="bg bg11"></div>
                 <div class="sectbg11"></div>
                 <a href="#page2" class="godown">
                     <span></span>
@@ -76,7 +76,7 @@
             </div>
 
             <div class="section section2">
-                <div class="bg"></div>
+                <div class="bg bg21"></div>
                 <div class="sectbg21"></div>
                 <a href="#page3" class="godown">
                     <span></span>
@@ -118,7 +118,7 @@
             </div>
 
             <div class="section section3">
-                <div class="bg"></div>
+                <div class="bg bg31"></div>
                 <div class="sectbg31"></div>
                 <a href="#page4" class="godown">
                     <span></span>
@@ -146,7 +146,7 @@
             </div>
 
             <div class="section section4">
-                <div class="bg"></div>
+                <div class="bg bg41"></div>
                 <div class="sectbg41"></div>
                 <a href="#page5" class="godown">
                     <span></span>
@@ -180,7 +180,7 @@
                 </div>
             </div>
             <div class="section section5">
-                <div class="bg"></div>
+                <div class="bg bg51"></div>
                 <div class="sectbg51"></div>
                 <a href="#page6" class="godown">
                     <span></span>
@@ -418,7 +418,7 @@
                 continuousVertical:false,
                 anchors: ['page1', 'page2', 'page3', 'page4', 'page5','page6'],
                 menu: '#menu',
-                navigation: true
+                navigation: true,
             });
 
             // 自动轮播
@@ -446,7 +446,7 @@
                 $(".tab-menu li a").removeClass("active");
                 $(this).addClass("active");
                 var curId = $(this).attr("data-id");
-                $("#" + curId).show("slow").siblings(".tab-form").hide("slow");
+                $("#" + curId).slideDown("slow").siblings(".tab-form").slideUp("slow");
             });
 
 
