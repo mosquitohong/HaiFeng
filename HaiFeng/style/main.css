@@ -318,6 +318,13 @@ a {
     margin-right: 6px;
     vertical-align: -4px;
 }
+.rs-head h4{
+    height: 40px;
+    line-height: 64px;
+    vertical-align: text-bottom;
+    margin-bottom: 10px;
+    /*background: url(../images/);*/
+}
 .rs-head p {
     margin: 5px 0 20px;
 }
@@ -479,7 +486,7 @@ a {
 .tab-menu li a {
     width: 150px;
     display: inline-block;
-    font-size: 22px;
+    font-size: 18px;
     height: 30px;
     line-height: 30px;
     padding-bottom: 5px;
@@ -533,7 +540,7 @@ a {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
     color: #fff;

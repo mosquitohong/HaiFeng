@@ -28,7 +28,7 @@
                     <a href="">推荐人</a>
                 </li>
                 <li class="fl">
-                    <a href="">关于</a>
+                    <a href="#page6">关于</a>
                 </li>
             </ul>
         </div>
@@ -95,7 +95,7 @@
                                 <img src="images/2-2.png">
                                 <div class="at-infor">
                                     <p>拒绝傻等</p>
-                                    <span>自动帅选匹配，主动出击</span>
+                                    <span>自动s筛选匹配，主动出击</span>
                                 </div>
                             </div>
                             <div class="advantage dt4">
@@ -182,7 +182,7 @@
             <div class="section section5">
                 <div class="bg bg51"></div>
                 <div class="sectbg51"></div>
-                <a href="#page6" class="godown">
+                <a href="#page6" class="godown" id="pageAbout">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -349,7 +349,7 @@
                     <form id="loginForm" class="tab-form loginform">
                         <ul class="">
                             <li>
-                                <input type="text" placeholder="请输入手机号" id="loginPhone" oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))" >
+                                <input type="text" placeholder="请输入手机号" id="loginPhone" oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))">
                                 <p class="errortip">该手机号未注册</p>
                                 <span class="icon icon-phone"></span>
                                 <span class="clearvalue">×</span>
@@ -415,10 +415,25 @@
         $(function () {
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
-                continuousVertical:false,
-                anchors: ['page1', 'page2', 'page3', 'page4', 'page5','page6'],
+                continuousVertical: false,
+                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
                 menu: '#menu',
                 navigation: true,
+                afterLoad: function (anchorLink, index) {
+                    if (index == 6) {
+                        $('#header').css("background", "#6B6B6B");
+                    } else {
+                        $('#header').css("background", "rgba(0,0,0,0.3");
+                    }
+                    // if(index == 3){
+                    //     $('.section3').find('p').delay(500).animate({
+                    //         bottom: '0'
+                    //     }, 1500, 'easeOutExpo');
+                    // }
+                    // if(index == 4){
+                    //     $('.section4').find('p').fadeIn(2000);
+                    // }
+                }
             });
 
             // 自动轮播
@@ -433,6 +448,7 @@
             $("#merchant").click(function () {
                 $("#layerbox").show("slow");
                 $(".wrap").addClass("wrap-active");
+                $("#fp-nav").hide();
                 $.fn.fullpage.setAllowScrolling(false);
                 $.fn.fullpage.moveTo("page1");
             });
@@ -440,6 +456,10 @@
                 $("#layerbox").hide();
                 $(".wrap").removeClass("wrap-active");
                 $.fn.fullpage.setAllowScrolling(true);
+                $("#fp-nav").show();
+            });
+            $("#aboutPage").click(function () {
+                $("#pageAbout").trigger("click");
             });
             // 登录注册切换
             $(".tab-menu li a").click(function () {
@@ -461,10 +481,10 @@
 
                     // alert("密码不能为空！");
                     $(this).focus().siblings("p").show().text("验证码不能为空！")
-                } 
-                // else if ($(this).val()!= "验证码规则") {
-                //     $(this).focus().siblings("p").show().text("验证码错误")
-                // } 
+                }
+                    // else if ($(this).val()!= "验证码规则") {
+                    //     $(this).focus().siblings("p").show().text("验证码错误")
+                    // }
                 else {
                     $(this).siblings("p").hide();
                     $("#regPwd").val("").focus();
@@ -479,7 +499,7 @@
                     $(this).siblings("p").show().text("密码不能少于六位！")
                     // alert("密码不能少于六位！");
                 } else {
-                $("#regRepPwd").val("").focus();
+                    $("#regRepPwd").val("").focus();
                     $(this).siblings("p").hide();
                     // alert("密码正确");
                     // psw=2;
@@ -508,8 +528,8 @@
                     repsd = 2;
                 }
             });
-            $("#invitedCode").blur(function(){
-                if ($(this).val()=="验证方式") {
+            $("#invitedCode").blur(function () {
+                if ($(this).val() == "验证方式") {
                     $(this).siblings("p").show().text("特邀码不存在！")
                 }
             })
@@ -555,7 +575,7 @@
             }
         }
     </script>
-     <script type="text/javascript">
+    <script type="text/javascript">
         var time = 60;
         var interval;
         function waitEnabled() {

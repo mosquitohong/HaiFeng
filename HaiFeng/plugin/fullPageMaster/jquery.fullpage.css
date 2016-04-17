@@ -153,8 +153,9 @@ html, body {
     height: 8px;*/
     width: 14px;
     height: 14px;
-    border: 1px solid #000;
-    background: #fff;
+    /*border: 1px solid #000;*/
+    border: 1px solid #cccccc;
+    background: transparent;
     /*background: rgba(0, 0, 0, 0);*/
     border-radius: 50%;
     position: absolute;
