@@ -1,3 +1,8 @@
+/*这是测试git分支的代码*/
+/*这也是测试git分支的代码*/
+/*这也是测试git分支的代码*/
+/*这也是测试git分支的代码*/
+/*这也是测试git分支的代码*/
 html, body, .wrap, #container {
     height: 100%;
     width: 100%;
@@ -244,7 +249,9 @@ a {
     transition-delay:4.1s;
     opacity: 1;
 }
-
+.section .bg {
+    background-size: cover;
+}
 
 /*@media screen and (min-width: 1601px) {
 .sectbg61 {
