@@ -7,6 +7,7 @@ body {
     font-size: 12px;
     font-family: "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 }
+
 h1, h2, h3, h4, p {
     font-family: "微软雅黑", arial, helvetica;
     margin: 0;
@@ -26,6 +27,26 @@ ul {
 a {
     text-decoration: none;
     color: #7a7a7a;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    /*color: #fff !important;*/
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    /*color: #fff !important;*/
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}              
+::-webkit-input-placeholder{
+    /*color:#fff;*/
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}
+:-ms-input-placeholder{
+    /*color:#fff;*/
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
 }
 .fr {
     float: right;
@@ -85,7 +106,7 @@ a {
     width: 100px;
     height: 75px;
     line-height: 75px;
-    font-size: 20px;
+    font-size: 18px;
 }
 .menu li.active:after {
     content: "";
@@ -97,7 +118,7 @@ a {
     height: 2px;
     background: #3cabff;    /*border-bottom: 2px solid #3cabff*/
 }
-.menu li:first-child {
+.menu li{
     position: relative;
 }
 .wxcode {
@@ -133,12 +154,18 @@ a {
 .section1 .bg {
     /*width: 110%;*/
     /*left: -10%;*/
+
+
+    
     transition: all 10s ease;
     transform: scale(1.08);
     background: url(../images/1-1600.png) no-repeat center;
     background-size: cover;
 }
 .section2 .bg {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
     transition: all 12s ease;
     transform: scale(1.1);
     background: url(../images/2-1600.png) no-repeat center;
@@ -158,9 +185,10 @@ a {
     transition: all 2s;
     background: url(../images/5-1600.png) no-repeat center;
 }
-
-.section .sectbg {
-}
+/*.section1,.section3{
+    z-index: 99999;
+    overflow: hidden;
+}*/
 .section1 .sectbg11, .section3 .sectbg31, .section5 .sectbg51, .section2 .sectbg21, .section4 .sectbg41 {
     width: 470px;
     height: 140px;
@@ -188,6 +216,9 @@ a {
 .section3 .sectbg31 {
    /* transition: all 3s ease;
     right: -12%;*/
+
+
+
     transition: all 4s ease;
     transform: scale(0,0);
     /*transform: translateY();*/
@@ -196,7 +227,7 @@ a {
 .section4 .sectbg41 {
     transition: all 4s ease;
     transform: scale(1.5,1.5);
-    opacity: 0;
+    /*opacity: 0;*/
     background: url(../images/sectbg41.png);
 }
 .section5 .sectbg51 {
@@ -223,9 +254,12 @@ a {
     opacity: 1;
 }
 .active .bg11{
-    transform: scale(1);
-    transition-delay:4s;
     /*left: 0%;*/
+
+
+
+        transform: scale(1);
+    transition-delay:4s;
 }
 .active .bg21{
     transform: scale(1.0);
@@ -241,10 +275,16 @@ a {
 }
 .active .bg51{
     /*transform: scale(1.1);*/
+
+
+
+
     transition-delay:4.1s;
     opacity: 1;
 }
-
+.section .bg {
+    background-size: cover;
+}
 
 /*@media screen and (min-width: 1601px) {
 .sectbg61 {
@@ -316,7 +356,7 @@ a {
 }
 .rs-head img {
     margin-right: 6px;
-    vertical-align: -4px;
+    vertical-align: -13px;
 }
 .rs-head h4{
     height: 40px;
@@ -603,7 +643,6 @@ a {
 }
 .tab-form li .errortip {
     display: none;
-    font-size: 10px;
     position: absolute;
     top: 38px;
     right: 0;
@@ -611,9 +650,16 @@ a {
     line-height: 16px;
     color: #ff9600;
     text-align: right;
-    transform: scale(0.875);
+    /*font-size: 10px;*/
+    /*transform: scale(0.875);*/
 }
 .errortip a {
     color: #6ac8eb;
     text-decoration: underline;
+}
+/*fullpage CSS */
+body #fp-nav ul li a span,
+body .fp-slidesNav ul li a span {
+    border: 1px solid #cccccc;
+    background: transparent;
 }

@@ -14,8 +14,8 @@
                 <p>改变&middot;方式</p> -->
             </div>
             <ul class="menu fr">
-                <li class="fl" id="jobHunt">
-                    <a href="javascript:void(0);">找工作</a>
+                <li class="fl">
+                    <a href="javascript:void(0);" id="jobHunt">找工作</a>
                     <div class="wxcode">
                         <img src="images/wxcode.png">
                         <p>微信扫码找工作</p>
@@ -25,7 +25,7 @@
                     <a href="javascript:void(0);" id="merchant">商家</a>
                 </li>
                 <li class="fl">
-                    <a href="">推荐人</a>
+                    <a href="javascript:void(0);">推荐人</a>
                 </li>
                 <li class="fl">
                     <a href="#page6">关于</a>
@@ -425,6 +425,12 @@
                     } else {
                         $('#header').css("background", "rgba(0,0,0,0.3");
                     }
+                    if(index == 1){
+                        $('.section3').find('.bg').height("100%");
+                    }
+                    if(index == 6){
+                        $('.fp-tableCell').css("vertical-align","top");
+                    }
                     // if(index == 3){
                     //     $('.section3').find('p').delay(500).animate({
                     //         bottom: '0'
@@ -441,26 +447,68 @@
             //     $.fn.fullpage.moveSectionDown();
             // }, 3000);
 
-            $("#jobHunt").click(function () {
-                $(this).toggleClass("active");
+
+            // 头部导航切换
+            $("#jobHunt").hover(function(){
+                // $(this).click();
+                $(this).parent().toggleClass("active");
                 $(".wxcode").toggle();
+
+                $("#closeBtn").trigger("click");
             })
-            $("#merchant").click(function () {
-                $("#layerbox").show("slow");
-                $(".wrap").addClass("wrap-active");
-                $("#fp-nav").hide();
-                $.fn.fullpage.setAllowScrolling(false);
-                $.fn.fullpage.moveTo("page1");
+            $(".menu li a").click(function () {
+                $(".menu li").removeClass("active");
+                $(this).parent().addClass("active");
+                var curId = $(this).parent().index();
+                    // alert(curId);
+                // if (curId==0) {
+                //     // $(this).
+                //     $(this).toggleClass("active");
+                //     $(".wxcode").toggle();
+
+                //     $("#closeBtn").trigger("click");
+                // }
+                if (curId==1) {
+                    // alert(curId);
+                    $(".wxcode").hide();
+                    $("#layerbox").show("slow");
+                    $(".wrap").addClass("wrap-active");
+                    $("#fp-nav").hide();
+                    $.fn.fullpage.setAllowScrolling(false);
+                    $.fn.fullpage.moveTo("page1");
+                }
+                if (curId==2) {
+                    $(".wxcode").hide();
+                    $("#closeBtn").trigger("click");
+                    $("#pageAbout").trigger("click");
+                }
+                if (curId==3) {
+                    $(".wxcode").hide();
+                    $("#closeBtn").trigger("click");
+                    $("#pageAbout").trigger("click");
+
+                }
             });
+            // $("#jobHunt").click(function () {
+            //     $(this).toggleClass("active");
+            //     $(".wxcode").toggle();
+            // })
+            // $("#merchant").click(function () {
+            //     $("#layerbox").show("slow");
+            //     $(".wrap").addClass("wrap-active");
+            //     $("#fp-nav").hide();
+            //     $.fn.fullpage.setAllowScrolling(false);
+            //     $.fn.fullpage.moveTo("page1");
+            // });
             $("#closeBtn").click(function () {
                 $("#layerbox").hide();
                 $(".wrap").removeClass("wrap-active");
                 $.fn.fullpage.setAllowScrolling(true);
                 $("#fp-nav").show();
             });
-            $("#aboutPage").click(function () {
-                $("#pageAbout").trigger("click");
-            });
+            // $("#aboutPage").click(function () {
+            //     $("#pageAbout").trigger("click");
+            // });
             // 登录注册切换
             $(".tab-menu li a").click(function () {
                 $(".tab-menu li a").removeClass("active");
