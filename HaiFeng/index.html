@@ -12,7 +12,8 @@
             <div class="logo fl">
                 <img class="fl" src="images/logo01.png">
                 <!-- <p>Change&middot;Style</p>
-                <p>改变&middot;方式</p> -->
+                <p>改变&middot;方式</p>
+                -->
             </div>
             <ul class="menu fr">
                 <li class="fl">
@@ -220,7 +221,8 @@
             </div>
 
             <div class="section section6">
-                <!-- <div class="bg"></div> -->
+                <!-- <div class="bg"></div>
+                -->
                 <div class="sectbg61 clearfix">
                     <div class="reasons fl clearfix">
                         <div class="reason fl">
@@ -303,7 +305,7 @@
                     <div class="faq fl">
                         <div class="faq-cont clearfix">
                             <div class="faq-list fl">
-                                <h4>Q&amp;A</h4>
+                                <h3>Q&amp;A</h3>
                                 <p>Q：海蜂是啥？</p>
                                 <p>A：海蜂是专注于线下服务行业商家的人力服务平台</p>
                                 <p>Q：与其他网站有什么不同？</p>
@@ -336,19 +338,36 @@
                         </div>
                         <div class="bt-menu clearfix">
                             <ul class="clearfix">
-                                <li><span>关注我们：</span><a href=""><img src="">新浪</a><a href=""><img src="">微信</a>
-                                <a href=""><img src="">QQ</a></li>
+                                <li>
+                                    <span>关注我们：</span>
+                                    <a href="">
+                                        <img src="">新浪
+                                    </a>
+                                    <a href="">
+                                        <img src="">微信
+                                    </a>
+                                    <a href="">
+                                        <img src="">QQ
+                                    </a>
+                                </li>
                                 <li>杭州俊霖信息科技有限公司</li>
-                                <li><span>意见反馈：</span>feedback@haifeng.com</li>
+                                <li>
+                                    <span>意见反馈：</span>
+                                    feedback@haifeng.com
+                                </li>
                                 <li>杭州市余杭区未来科技城</li>
-                                <li><span>商务合作：</span>BD@ihaifeng.com</li>
+                                <li>
+                                    <span>商务合作：</span>
+                                    BD@ihaifeng.com
+                                </li>
                                 <li>梦想小镇3栋3F</li>
                             </ul>
                         </div>
                     </div>
-                        <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
+                    <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
                     <!-- <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
-                    <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p> -->
+                    <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p>
+                    -->
                 </div>
             </div>
         </div>
@@ -445,9 +464,9 @@
                     if (index == 6) {
                         $(".menu li").eq(3).addClass("active")
                         $('#header').css("background", "#6B6B6B");
-                    } else{
+                    } else {
                         $('#header').css("background", "rgba(0,0,0,0.3");
-                        if(index != 1){
+                        if (index != 1) {
                             $(".menu li").removeClass("active");
                         }
                         // $(".menu li").removeClass("active");
@@ -479,7 +498,7 @@
 
 
             // 头部导航切换
-            $(".codelink").hover(function(){
+            $(".codelink").hover(function () {
                 // $(this).click();
                 $(".menu li").removeClass("active");
                 $(this).parent().toggleClass("active");
@@ -494,7 +513,7 @@
                 $(".menu li").removeClass("active");
                 $(this).parent().addClass("active");
                 var curId = $(this).parent().index();
-                    // alert(curId);
+                // alert(curId);
                 // if (curId==0) {
                 //     // $(this).
                 //     $(this).toggleClass("active");
@@ -502,7 +521,7 @@
 
                 //     $("#closeBtn").trigger("click");
                 // }
-                if (curId==1) {
+                if (curId == 1) {
                     // alert(curId);
                     $(".wxcode").hide();
                     $("#layerbox").show("slow");
@@ -516,7 +535,7 @@
                 //     $("#closeBtn").trigger("click");
                 //     $("#pageAbout").trigger("click");
                 // }
-                if (curId==3) {
+                if (curId == 3) {
                     $(".wxcode").hide();
                     $("#closeBtn").trigger("click");
                     $("#pageAbout").trigger("click");
