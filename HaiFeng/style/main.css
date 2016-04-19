@@ -1,6 +1,7 @@
 html, body, .wrap, #container {
     height: 100%;
     width: 100%;
+    font-family: "微软雅黑";
 }
 body {
     color: #333;
@@ -199,7 +200,7 @@ a {
     background-size: cover;
 }
 .section2 .sectbg21, .section4 .sectbg41 {
-    left: 4%;
+    left: 8%;
 }
 .section1 .sectbg11 {
     transition: all 4s ease;
