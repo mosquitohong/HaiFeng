@@ -92,9 +92,9 @@ a {
     width: 150px;
 }
 .logo img {
-    width: 100px;
+    width: 110px;
     height: auto;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .menu {
     margin-right: 50px;
@@ -109,12 +109,12 @@ a {
     line-height: 75px;
     font-size: 18px;
 }
-.menu li.active:after {
+.menu li:hover:after,.menu li.active:after {
     content: "";
     display: block;
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 55px;
     width: 120px;
     height: 2px;
     background: #3cabff;    /*border-bottom: 2px solid #3cabff*/
@@ -360,10 +360,11 @@ a {
     margin-top: 30px;
 }
 .faq-list {
-    width: 50%;
+    width: 66%;
     text-align: left;
 }
 .faq-list:last-child {
+    width: 30%;
     margin-top: 22px;
 }
 .faq-list p {
@@ -406,10 +407,41 @@ a {
     height: 25px;
     line-height: 25px;
     font-size: 12px;
+    color: #999999;
     /*display: inline-block;*/
 }
-
-
+.bt-cont{
+    width: 760px;
+    margin: 0 auto;
+    color:#999999;
+}
+.bt-logo{
+    float: left;
+}
+.bt-logo img{
+    width: 114px;
+    height: auto;
+}
+.bt-menu{
+    float: right;
+}
+.bt-menu ul{
+    width:630px;
+}
+.bt-menu li{
+    width: 300px;
+    height: 20px;
+    line-height: 20px;
+    float: left;
+    text-align: left;
+}
+.bt-menu li span{
+    width: auto;
+    color:#999999;
+}
+.bt-cont>p{
+    text-align: center;
+}
 
 /*固定底部样式*/
 .sectfoot {

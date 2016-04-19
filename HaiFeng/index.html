@@ -29,7 +29,7 @@
                     <a href="javascript:void(0);" class="codelink" id="recmmend">推荐人</a>
                     <div class="wxcode">
                         <img src="images/wxcode.png">
-                        <p>微信扫码找工作</p>
+                        <p>微信扫码推荐人</p>
                     </div>
                 </li>
                 <li class="fl">
@@ -304,20 +304,20 @@
                         <div class="faq-cont clearfix">
                             <div class="faq-list fl">
                                 <h4>Q&amp;A</h4>
-                                <p>Q:海蜂是啥？</p>
-                                <p>A:海蜂是专注于线下服务行业商家的人力服务平台</p>
-                                <p>Q:与其他网站有什么不同？</p>
-                                <p>A:唯一的不同是处处不同</p>
+                                <p>Q：海蜂是啥？</p>
+                                <p>A：海蜂是专注于线下服务行业商家的人力服务平台</p>
+                                <p>Q：与其他网站有什么不同？</p>
+                                <p>A：唯一的不同是处处不同</p>
                                 <p class="pdlft">人家晒阅历，我来晒视频</p>
                                 <p class="pdlft">别人是去找工作，在这里是等工作找你</p>
                                 <p class="pdlft">还有很多，敬请期待......</p>
                             </div>
                             <div class="faq-list fl">
-                                <p>Q:为什么只有这些行业和岗位</p>
-                                <p>A:更多的岗位会陆续补充。当然，好的人才是要把</p>
+                                <p>Q：为什么只有这些行业和岗位</p>
+                                <p>A：更多的岗位会陆续补充。当然，好的人才是要把</p>
                                 <p class="pdlft">握的，试着先联系吧！</p>
-                                <p>Q:还有其他什么好玩的吗？</p>
-                                <p>A:当然等你来发现喽！</p>
+                                <p>Q：还有其他什么好玩的吗？</p>
+                                <p>A：当然等你来发现喽！</p>
                             </div>
                         </div>
                     </div>
@@ -330,8 +330,25 @@
                     </div>
                 </div>
                 <div class="bottom">
-                    <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
-                    <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p>
+                    <div class="bt-cont clearfix">
+                        <div class="bt-logo">
+                            <img src="images/logo01.png">
+                        </div>
+                        <div class="bt-menu clearfix">
+                            <ul class="clearfix">
+                                <li><span>关注我们：</span><a href=""><img src="">新浪</a><a href=""><img src="">微信</a>
+                                <a href=""><img src="">QQ</a></li>
+                                <li>杭州俊霖信息科技有限公司</li>
+                                <li><span>意见反馈：</span>feedback@haifeng.com</li>
+                                <li>杭州市余杭区未来科技城</li>
+                                <li><span>商务合作：</span>BD@ihaifeng.com</li>
+                                <li>梦想小镇3栋3F</li>
+                            </ul>
+                        </div>
+                    </div>
+                        <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
+                    <!-- <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
+                    <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p> -->
                 </div>
             </div>
         </div>
@@ -426,16 +443,24 @@
                 navigation: true,
                 afterLoad: function (anchorLink, index) {
                     if (index == 6) {
+                        $(".menu li").eq(3).addClass("active")
                         $('#header').css("background", "#6B6B6B");
-                    } else {
+                    } else{
                         $('#header').css("background", "rgba(0,0,0,0.3");
+                        if(index != 1){
+                            $(".menu li").removeClass("active");
+                        }
+                        // $(".menu li").removeClass("active");
+                        // if(curId==1){
+                        //     alert(12);
+                        // }
                     }
-                    if(index == 1){
-                        $('.section3').find('.bg').height("100%");
-                    }
-                    if(index == 6){
-                        $('.fp-tableCell').css("vertical-align","top");
-                    }
+                    // if(index == 1){
+                    //     $('.section3').find('.bg').height("100%");
+                    // }
+                    // if(index == 6){
+                    //     $('.fp-tableCell').css("vertical-align","top");
+                    // }
                     // if(index == 3){
                     //     $('.section3').find('p').delay(500).animate({
                     //         bottom: '0'
@@ -456,8 +481,12 @@
             // 头部导航切换
             $(".codelink").hover(function(){
                 // $(this).click();
+                $(".menu li").removeClass("active");
                 $(this).parent().toggleClass("active");
                 $(this).next(".wxcode").toggle();
+                // if ($(".wxcode").is(hide)) {
+
+                // }
 
                 $("#closeBtn").trigger("click");
             })
@@ -506,6 +535,7 @@
             //     $.fn.fullpage.moveTo("page1");
             // });
             $("#closeBtn").click(function () {
+                $(".menu li").removeClass("active");
                 $("#layerbox").hide();
                 $(".wrap").removeClass("wrap-active");
                 $.fn.fullpage.setAllowScrolling(true);
