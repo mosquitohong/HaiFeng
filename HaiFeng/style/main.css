@@ -52,6 +52,7 @@ a {
     visibility: hidden;
     clear: both;
 }
+/*兼容IE*/
 .clearfix {
     zoom: 1;
 }
