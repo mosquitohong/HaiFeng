@@ -16,7 +16,7 @@
             </div>
             <ul class="menu fr">
                 <li class="fl">
-                    <a href="javascript:void(0);" id="jobHunt">找工作</a>
+                    <a href="javascript:void(0);" class="codelink" id="jobHunt">找工作</a>
                     <div class="wxcode">
                         <img src="images/wxcode.png">
                         <p>微信扫码找工作</p>
@@ -26,7 +26,11 @@
                     <a href="javascript:void(0);" id="merchant">商家</a>
                 </li>
                 <li class="fl">
-                    <a href="javascript:void(0);">推荐人</a>
+                    <a href="javascript:void(0);" class="codelink" id="recmmend">推荐人</a>
+                    <div class="wxcode">
+                        <img src="images/wxcode.png">
+                        <p>微信扫码找工作</p>
+                    </div>
                 </li>
                 <li class="fl">
                     <a href="#page6">关于</a>
@@ -46,7 +50,7 @@
                             <div class="advantage dt4">
                                 <img src="images/1-1.png">
                                 <div class="at-infor">
-                                    <p>视频show!</p>
+                                    <p>视频show</p>
                                     <span>让所有人更看好你</span>
                                 </div>
                             </div>
@@ -60,7 +64,7 @@
                             <div class="advantage dt4">
                                 <img src="images/1-3.png">
                                 <div class="at-infor">
-                                    <p>精准匹配!</p>
+                                    <p>精准匹配</p>
                                     <span>最合适才是最好的</span>
                                 </div>
                             </div>
@@ -103,7 +107,7 @@
                                 <img src="images/2-3.png">
                                 <div class="at-infor">
                                     <p>高效招人</p>
-                                    <span>高效源于简单，简单源于专注!</span>
+                                    <span>高效源于简单，简单源于专注</span>
                                 </div>
                             </div>
                             <div class="advantage dt4">
@@ -450,10 +454,10 @@
 
 
             // 头部导航切换
-            $("#jobHunt").hover(function(){
+            $(".codelink").hover(function(){
                 // $(this).click();
                 $(this).parent().toggleClass("active");
-                $(".wxcode").toggle();
+                $(this).next(".wxcode").toggle();
 
                 $("#closeBtn").trigger("click");
             })
@@ -478,11 +482,11 @@
                     $.fn.fullpage.setAllowScrolling(false);
                     $.fn.fullpage.moveTo("page1");
                 }
-                if (curId==2) {
-                    $(".wxcode").hide();
-                    $("#closeBtn").trigger("click");
-                    $("#pageAbout").trigger("click");
-                }
+                // if (curId==2) {
+                //     $(".wxcode").hide();
+                //     $("#closeBtn").trigger("click");
+                //     $("#pageAbout").trigger("click");
+                // }
                 if (curId==3) {
                     $(".wxcode").hide();
                     $("#closeBtn").trigger("click");
