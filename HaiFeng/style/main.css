@@ -73,17 +73,15 @@ a {
 #header {
     position: fixed;
     height: 75px;
+    top: 0px;
+    min-width: 865px;
     display: block;
     width: 100%;    /*background: #333;*/
     z-index: 9;
     text-align: center;
     color: #f2f2f2;
     padding: 0;
-    background: rgba(0, 0, 0, 0.3);    /*opacity: 0.5;
-    filter: alpha(opacity=50);*/
-}
-#header {
-    top: 0px;
+    background: rgba(0, 0, 0, 0.3);
 }
 .logo {
     width: 180px;
@@ -161,7 +159,7 @@ a {
     
     transition: all 10s ease;
     transform: scale(1.08);
-    background: url(../images/1-1600.png) no-repeat center;
+    background: url(../images/1.01-1600.jpg) no-repeat center;
     background-size: cover;
 }
 .section2 .bg {
@@ -170,12 +168,12 @@ a {
     width: 100%;
     transition: all 12s ease;
     transform: scale(1.1);
-    background: url(../images/2-1600.png) no-repeat center;
+    background: url(../images/2.01-1600.jpg) no-repeat center;
 }
 .section3 .bg {
     opacity: 0.8;
     transition: all 3s ease;
-    background: url(../images/3-1600.png) no-repeat center;
+    background: url(../images/3.01-1600.jpg) no-repeat center;
 }
 .section4 .bg {
     transition: all 10s ease;
@@ -185,7 +183,7 @@ a {
 .section5 .bg {
     opacity: 0.8;
     transition: all 2s;
-    background: url(../images/5-1600.png) no-repeat center;
+    background: url(../images/5.01-1600.jpg) no-repeat center;
 }
 /*.section1,.section3{
     z-index: 99999;
@@ -200,8 +198,8 @@ a {
     background-size: cover;
 }
 .section2 .sectbg21, .section4 .sectbg41 {
-    /*left: 8%;*/
-    left: 4%;
+    left: 8%;
+    /*left: 4%;*/
 }
 .section1 .sectbg11 {
     transition: all 4s ease;
@@ -615,6 +613,10 @@ a {
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
+}
+.tab-form li input:focus{
+    height: 38px;
+    line-height: 38px;
 }
 .tab-form li button {
     background: #ff9600;
