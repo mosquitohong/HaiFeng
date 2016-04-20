@@ -200,7 +200,8 @@ a {
     background-size: cover;
 }
 .section2 .sectbg21, .section4 .sectbg41 {
-    left: 8%;
+    /*left: 8%;*/
+    left: 4%;
 }
 .section1 .sectbg11 {
     transition: all 4s ease;
@@ -332,11 +333,12 @@ a {
     font-size: 14px;
 }
 .reason ul li a {
-    width: 65px;
+    width: auto;
     display: inline-block;
     height: 14px;
     line-height: 14px;
     margin-right: 5px;
+    padding-right: 5px;
     border-right: 1px solid #7a7a7a;
 }
 .reason ul li:last-child a {
@@ -354,7 +356,7 @@ a {
     /*background: url(../images/);*/
 }
 .rs-head p {
-    margin: 5px 0 20px;
+    margin: 12px 0 12px;
 }
 .faq {
     width: 50%;
@@ -443,6 +445,17 @@ a {
 .bt-cont>p{
     text-align: center;
 }
+/*.focusus a{
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}*/
+.joinway img{
+    height: 20px;
+    width: auto;
+    vertical-align: -5px;
+}
 
 /*固定底部样式*/
 .sectfoot {
@@ -452,10 +465,11 @@ a {
     width: 100%;
     background: rgba(0, 0, 0, 0.3);
     overflow: visible;
+    min-width: 1200px;
 }
 .ft-content {
     margin: 0 auto;
-    width: 1200px;
+    /*width: 1200px;*/
     overflow: hidden;
     overflow: visible;
 }
@@ -472,24 +486,28 @@ a {
     top: 18px;
 }
 .dt4 {
-    width: 18%;
-    margin-left: 7%;    /*width: 285px;*/
+    width: 14%;
+    margin-left: 10%;    /*width: 285px;*/
     /*margin-left: 10px;*/
 }
+.advantages .dt4:last-child{
+    float: right;
+}
 .dt3 {
-    width: 280px;
-    margin-left: 100px;
+    width: 17%;
+    margin-left: 15%;
 }
 .advantages .dt2 {
     width: 25%;
     margin-left: 20%;
 }
 .advantages .dt3:nth-child(2) {
-    margin-left: 150px;
+    /*margin-left: 150px;*/
+    margin-left: 15%;
 }
 .advantages .dt3:last-child {
     float: right;
-    width: 245px;
+    /*width: 245px;*/
 }
 .at-infor {
     margin-top: 18px;
@@ -690,6 +708,8 @@ body .fp-slidesNav ul li a span {
 @media only screen and (max-width:1200px) {
     .sectbg61 {
         width: 890px;
+        margin: 111px auto 0;
+
     }
      .section6 .bottom{
         height: 90px;
@@ -705,6 +725,7 @@ body .fp-slidesNav ul li a span {
 @media screen and (min-width:1201px) {
     .sectbg61 {
         width: 1250px;
+        margin: 111px auto 0;
     }
     .section6 .bottom{
         height: 90px;
@@ -718,6 +739,10 @@ body .fp-slidesNav ul li a span {
     }*/
 }
 @media screen and (min-width:1440px) {
+        .sectbg61 {
+        width: 1250px;
+        margin: 111px auto 0;
+    }
     .section6 .bottom{
         height: 145px;
         /*padding-top: 50px;*/
@@ -730,11 +755,19 @@ body .fp-slidesNav ul li a span {
     }*/
 }
 @media screen and (min-width:1600px) {
+    .ft-content {
+        width: 1200px;
+    }
+    .ft-content {
+        width: 1200px;
+    }
     .sectbg61 {
-        width: 1400px;
+        width: 1500px;
+        margin: 111px auto 0;
+
     }
     .section6 .bottom{
-        height: 260px;
+        height: 200px;
         /*padding-top: 50px;*/
     }
     .bt-cont{
@@ -743,4 +776,18 @@ body .fp-slidesNav ul li a span {
     /*.section6 .bottom p:first-child{
         margin-top: 135px;
     }*/
+}
+@media screen and (min-width:1801px) {
+    .ft-content {
+        width: 1400px;
+    }
+    .sectbg61 {
+                width: 1500px;
+        margin: 161px auto 0;
+
+    }
+    .section6 .bottom{
+        height: 260px;
+        /*padding-top: 50px;*/
+    }
 }
