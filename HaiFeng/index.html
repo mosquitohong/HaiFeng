@@ -1,7 +1,15 @@
 ﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <title>主页</title>
+    <!-- <meta name="renderer" content="webkit"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="renderer" content="webkit" />
+
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
@@ -306,13 +314,13 @@
                         <div class="faq-cont clearfix">
                             <div class="faq-list fl">
                                 <h3>Q&amp;A</h3>
-                                <p>Q：海蜂是啥？</p>
+                                <p>Q：海蜂是做什么的？</p>
                                 <p>A：海蜂是专注于线下服务行业商家的人力服务平台</p>
-                                <p>Q：与其他网站有什么不同？</p>
+                                <p>Q：与其他平台有什么不同？</p>
                                 <p>A：唯一的不同是处处不同</p>
-                                <p class="pdlft">人家晒阅历，我来晒视频</p>
-                                <p class="pdlft">别人是去找工作，在这里是等工作找你</p>
-                                <p class="pdlft">还有很多，敬请期待......</p>
+                                <p class="pdlft"><span></span>人家晒阅历，我来晒视频</p>
+                                <p class="pdlft"><span></span>别人是去找工作，在这里是等工作找你</p>
+                                <p class="pdlft"><span></span>还有很多，敬请期待......</p>
                             </div>
                             <div class="faq-list fl">
                                 <p>Q：为什么只有这些行业和岗位</p>
@@ -454,6 +462,10 @@
     <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
     <script>
         $(function () {
+            if($.browser.msie && $.browser.version < 10){
+                $('body').addClass('ltie10');
+            }
+
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 continuousVertical: false,
@@ -462,24 +474,31 @@
                 navigation: true,
                 afterLoad: function (anchorLink, index) {
                     if (index == 6) {
-                        $(".menu li").eq(3).addClass("active")
-                        $('#header').css("background", "#365064");
+                        $("#header .menu li").eq(3).addClass("active")
+                        $('#header').css("background", "#1E1B29");
                     } else {
                         $('#header').css("background", "rgba(0,0,0,0.3");
                         if (index != 1) {
-                            $(".menu li").removeClass("active");
+                            $("#header .menu li").removeClass("active");
                         }
-                        // $(".menu li").removeClass("active");
+                        // $("#header .menu li").removeClass("active");
                         // if(curId==1){
                         //     alert(12);
                         // }
                     }
-                    // if(index == 1){
-                    //     $('.section3').find('.bg').height("100%");
-                    // }
-                    if(index == 6){
-                        $('.fp-tableCell').css("vertical-align","top");
+                    if(index == 1 || index==3){
+                        $('.section2').css("z-index","1");
+                        $('.section3').css("z-index","9999");
+                        $('.section1').css("z-index","9999");
                     }
+                     if(index == 2){
+                        $('.section3').css("z-index","1");
+                        $('.section1').css("z-index","1");
+                        $('.section2').css("z-index","9999");
+                    }
+                    // if (index == 6) {
+                    //     $('.fp-tableCell').css("vertical-align", "top");
+                    // }
                     // if(index == 3){
                     //     $('.section3').find('p').delay(500).animate({
                     //         bottom: '0'
@@ -500,7 +519,7 @@
             // 头部导航切换
             $(".codelink").hover(function () {
                 // $(this).click();
-                $(".menu li").removeClass("active");
+                $("#header .menu li").removeClass("active");
                 $(this).parent().toggleClass("active");
                 $(this).next(".wxcode").toggle();
                 // if ($(".wxcode").is(hide)) {
@@ -509,8 +528,8 @@
 
                 $("#closeBtn").trigger("click");
             })
-            $(".menu li a").click(function () {
-                $(".menu li").removeClass("active");
+            $("#header .menu li a").click(function () {
+                $("#header .menu li").removeClass("active");
                 $(this).parent().addClass("active");
                 var curId = $(this).parent().index();
                 // alert(curId);
@@ -526,6 +545,7 @@
                     $(".wxcode").hide();
                     $("#layerbox").show("slow");
                     $(".wrap").addClass("wrap-active");
+                    $(".tab-menu li:first a").addClass("active");
                     $("#fp-nav").hide();
                     $.fn.fullpage.setAllowScrolling(false);
                     $.fn.fullpage.moveTo("page1");
@@ -554,7 +574,7 @@
             //     $.fn.fullpage.moveTo("page1");
             // });
             $("#closeBtn").click(function () {
-                $(".menu li").removeClass("active");
+                $("#header .menu li").removeClass("active");
                 $("#layerbox").hide();
                 $(".wrap").removeClass("wrap-active");
                 $.fn.fullpage.setAllowScrolling(true);

@@ -29,6 +29,9 @@ a {
     text-decoration: none;
     color: #7a7a7a;
 }
+::-ms-clear, ::-ms-reveal{
+    display: none;
+}
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     /*color: #fff !important;*/
     font-family: "微软雅黑"!important;
@@ -148,8 +151,9 @@ a {
     width: 100%;
     background-size: cover;
 }
-.section1{
+.section1,.section3{
     /*width: 120%;*/
+    z-index: 9999;
 }
 .section1 .bg {
     /*width: 110%;*/
@@ -392,9 +396,25 @@ a {
 .pdlft {
     padding-left: 24px;
 }
+.pdlft span{
+    /*border:1px solid #000;*/
+    width: 4px;
+    height: 4px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #1E1B29;
+    margin-right: 6px;
+    vertical-align: 3px;
+}
+.section6{
+    background: #F5F5F5;
+}
+.section6 .fp-tableCell{
+    vertical-align: top;
+}
 .section6 .bottom {
     /*height: 60px;*/
-    background: #365064;
+    background: #1E1B29;
     position: absolute;
     bottom: 0;
     left: 0;
