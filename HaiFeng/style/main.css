@@ -201,6 +201,11 @@ a {
     right: 12%;
     background-size: cover;
 }
+.section1 .sectbg11{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
 .section2 .sectbg21, .section4 .sectbg41 {
     left: 8%;
     /*left: 4%;*/
@@ -251,7 +256,7 @@ a {
 /*动画效果*/
 .active .sectbg11,.active .sectbg31,.active .sectbg51{
     transform: scale(1,1);
-    transition-delay: 0.9s;
+    transition-delay: 0.1s;
 }
 .active .sectbg21,.active .sectbg41{
     transform: scale(1,1);

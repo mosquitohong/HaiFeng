@@ -103,10 +103,10 @@
             </ul>
         </div>
         <div id="container">
-            <div class="section section1 active">
+            <div class="section section1">
                 <div class="bg bg11"></div>
                 <div class="sectbg11"></div>
-                <a href="#page2" class="godown">
+                <a href="javascript:void(0)" data-id="godown0" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -148,7 +148,7 @@
             <div class="section section2">
                 <div class="bg bg21"></div>
                 <div class="sectbg21"></div>
-                <a href="#page3" class="godown">
+                <a href="javascript:void(0)" data-id="godown1" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -190,7 +190,7 @@
             <div class="section section3">
                 <div class="bg bg31"></div>
                 <div class="sectbg31"></div>
-                <a href="#page4" class="godown">
+                <a href="javascript:void(0)" data-id="godown2" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -218,7 +218,7 @@
             <div class="section section4">
                 <div class="bg bg41"></div>
                 <div class="sectbg41"></div>
-                <a href="#page5" class="godown">
+                <a href="javascript:void(0)" data-id="godown3" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -252,7 +252,7 @@
             <div class="section section5">
                 <div class="bg bg51"></div>
                 <div class="sectbg51"></div>
-                <a href="#page6" class="godown" id="pageAbout">
+                <a href="javascript:void(0)" data-id="godown4" class="godown" id="pageAbout">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -523,12 +523,30 @@
             //     $('body').addClass('ltie10');
             // }
 
+            $(".godown").click(function(){
+                var dataId=$(this).attr("data-id");
+                dataId=dataId.substr(dataId.length-1,dataId.length-1);
+                dataId=Number(dataId)+1;
+                // alert(dataId);
+                $('#fp-nav ul li:eq('+dataId+') a').trigger("click");
+            })
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 continuousVertical: false,
-                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+                // anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
                 menu: '#menu',
                 navigation: true,
+                afterRender:function(){
+                    $('.section1').find(".sectbg11").animate({
+                            width: 470,
+                            height: 140,
+                            opacity:1
+                    },1);
+                    // $('.section1').find(".bg").animate({
+                    //         left:0
+                    // });
+                    // $('.section1').find(".bg").fadeIn(2000)
+                },
                 afterLoad: function (anchorLink, index) {
                     if (index == 6) {
                         $("#header .menu li").eq(3).addClass("active")
@@ -547,6 +565,9 @@
                         $('.section2').css("z-index","1");
                         $('.section3').css("z-index","9999");
                         $('.section1').css("z-index","9999");
+                        if (index==1) {
+                            
+                        }
                     }
                      if(index == 2){
                         $('.section3').css("z-index","1");
