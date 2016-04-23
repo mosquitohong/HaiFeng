@@ -1,21 +1,87 @@
 ﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <title>主页</title>
+    <!-- <meta name="renderer" content="webkit"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="renderer" content="webkit" />
+
+    <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
+
+    <!-- <script type="text/javascript" src="js/browser.js"></script> -->
+    <script type="text/javascript">
+        var userAgent = navigator.userAgent,
+        rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
+        rFirefox = /(firefox)\/([\w.]+)/,
+        rOpera = /(opera).+version\/([\w.]+)/,
+        rChrome = /(chrome)\/([\w.]+)/,
+        rSafari = /version\/([\w.]+).*(safari)/;
+        var browser;
+        var version;
+        var ua = userAgent.toLowerCase();
+        function uaMatch(ua) {
+            var match = rMsie.exec(ua);
+            if (match != null) {
+                return { browser: "IE", version: match[2] || "0" };
+            }
+            var match = rFirefox.exec(ua);
+            if (match != null) {
+                return { browser: match[1] || "", version: match[2] || "0" };
+            }
+            var match = rOpera.exec(ua);
+            if (match != null) {
+                return { browser: match[1] || "", version: match[2] || "0" };
+            }
+            var match = rChrome.exec(ua);
+            if (match != null) {
+                return { browser: match[1] || "", version: match[2] || "0" };
+            }
+            var match = rSafari.exec(ua);
+            if (match != null) {
+                return { browser: match[2] || "", version: match[1] || "0" };
+            }
+            if (match != null) {
+                return { browser: "", version: "0" };
+            }
+        }
+        var browserMatch = uaMatch(userAgent.toLowerCase());
+        if (browserMatch.browser) {
+            browser = browserMatch.browser;
+            version = browserMatch.version;
+        }
+        // document.write(browser + version);
+        // function browserTest(){
+            var str=version.split('.',1);
+            if (str<=9) {
+            // alert(browser+":"+str);
+                alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！若为360等浏览器，请切换急速模式！');
+            }
+            if (browser=='chrome' && str<=32) {
+                alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！');
+            }
+            // alert(browser+":"+str);
+
+        // }
+    </script>
 </head>
 <body>
     <div class="wrap">
         <div id="header">
             <div class="logo fl">
-                <img class="fl" src="images/logo01.png">
+                <img class="fl" src="images/logo.png">
                 <!-- <p>Change&middot;Style</p>
-                <p>改变&middot;方式</p> -->
+                <p>改变&middot;方式</p>
+                -->
             </div>
             <ul class="menu fr">
                 <li class="fl">
-                    <a href="javascript:void(0);" id="jobHunt">找工作</a>
+                    <a href="javascript:void(0);" class="codelink" id="jobHunt">找工作</a>
                     <div class="wxcode">
                         <img src="images/wxcode.png">
                         <p>微信扫码找工作</p>
@@ -25,7 +91,11 @@
                     <a href="javascript:void(0);" id="merchant">商家</a>
                 </li>
                 <li class="fl">
-                    <a href="javascript:void(0);">推荐人</a>
+                    <a href="javascript:void(0);" class="codelink" id="recmmend">推荐人</a>
+                    <div class="wxcode">
+                        <img src="images/wxcode.png">
+                        <p>微信扫码推荐人</p>
+                    </div>
                 </li>
                 <li class="fl">
                     <a href="#page6">关于</a>
@@ -33,10 +103,10 @@
             </ul>
         </div>
         <div id="container">
-            <div class="section section1 active">
+            <div class="section section1">
                 <div class="bg bg11"></div>
                 <div class="sectbg11"></div>
-                <a href="#page2" class="godown">
+                <a href="javascript:void(0)" data-id="godown0" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -45,7 +115,7 @@
                             <div class="advantage dt4">
                                 <img src="images/1-1.png">
                                 <div class="at-infor">
-                                    <p>视频show!</p>
+                                    <p>视频show</p>
                                     <span>让所有人更看好你</span>
                                 </div>
                             </div>
@@ -59,7 +129,7 @@
                             <div class="advantage dt4">
                                 <img src="images/1-3.png">
                                 <div class="at-infor">
-                                    <p>精准匹配!</p>
+                                    <p>精准匹配</p>
                                     <span>最合适才是最好的</span>
                                 </div>
                             </div>
@@ -78,7 +148,7 @@
             <div class="section section2">
                 <div class="bg bg21"></div>
                 <div class="sectbg21"></div>
-                <a href="#page3" class="godown">
+                <a href="javascript:void(0)" data-id="godown1" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -95,14 +165,14 @@
                                 <img src="images/2-2.png">
                                 <div class="at-infor">
                                     <p>拒绝傻等</p>
-                                    <span>自动s筛选匹配，主动出击</span>
+                                    <span>自动筛选匹配，主动出击</span>
                                 </div>
                             </div>
                             <div class="advantage dt4">
                                 <img src="images/2-3.png">
                                 <div class="at-infor">
                                     <p>高效招人</p>
-                                    <span>高效源于简单，简单源于专注!</span>
+                                    <span>高效源于简单，简单源于专注</span>
                                 </div>
                             </div>
                             <div class="advantage dt4">
@@ -120,7 +190,7 @@
             <div class="section section3">
                 <div class="bg bg31"></div>
                 <div class="sectbg31"></div>
-                <a href="#page4" class="godown">
+                <a href="javascript:void(0)" data-id="godown2" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -148,7 +218,7 @@
             <div class="section section4">
                 <div class="bg bg41"></div>
                 <div class="sectbg41"></div>
-                <a href="#page5" class="godown">
+                <a href="javascript:void(0)" data-id="godown3" class="godown">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -182,7 +252,7 @@
             <div class="section section5">
                 <div class="bg bg51"></div>
                 <div class="sectbg51"></div>
-                <a href="#page6" class="godown" id="pageAbout">
+                <a href="javascript:void(0)" data-id="godown4" class="godown" id="pageAbout">
                     <span></span>
                 </a>
                 <div class="sectfoot">
@@ -215,15 +285,16 @@
             </div>
 
             <div class="section section6">
-                <!-- <div class="bg"></div> -->
+                <!-- <div class="bg"></div>
+                -->
                 <div class="sectbg61 clearfix">
                     <div class="reasons fl clearfix">
                         <div class="reason fl">
                             <div class="rs-head">
                                 <h4>
-                                    <img src="images/6-1.png">找工作就上海蜂
+                                    <img src="images/6-1.png">找工作，来海蜂
                                 </h4>
-                                <p>微信关注海蜂，好工作悄悄来</p>
+                                <p>微信关注海蜂，好工作悄悄来！</p>
                             </div>
                             <ul>
                                 <li class="fl">
@@ -240,57 +311,57 @@
                         <div class="reason fl">
                             <div class="rs-head">
                                 <h4>
-                                    <img src="images/6-2.png">找工作就上海蜂
+                                    <img src="images/6-2.png">找人不再那么难
                                 </h4>
-                                <p>微信关注海蜂，好工作悄悄来</p>
+                                <p>入驻海蜂，人才等你发现！</p>
                             </div>
                             <ul>
                                 <li class="fl">
-                                    <a href="">个性简历</a>
+                                    <a href="">简历预览</a>
                                 </li>
                                 <li class="fl">
-                                    <a href="">视频简历</a>
+                                    <a href="">视频筛选</a>
                                 </li>
                                 <li class="fl">
-                                    <a href="">工作定制</a>
+                                    <a href="">人才定制</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="reason fl">
                             <div class="rs-head">
                                 <h4>
-                                    <img src="images/6-3.png">找工作就上海蜂
+                                    <img src="images/6-3.png">有人推荐，也来海蜂
                                 </h4>
-                                <p>微信关注海蜂，好工作悄悄来</p>
+                                <p>发挥资源，创造价值！</p>
                             </div>
                             <ul>
                                 <li class="fl">
-                                    <a href="">个性简历</a>
+                                    <a href="">人才推荐</a>
                                 </li>
                                 <li class="fl">
-                                    <a href="">视频简历</a>
+                                    <a href="">推荐奖金</a>
                                 </li>
                                 <li class="fl">
-                                    <a href="">工作定制</a>
+                                    <a href="">资源合作</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="reason fl">
                             <div class="rs-head">
                                 <h4>
-                                    <img src="images/6-4.png">找工作就上海蜂
+                                    <img src="images/6-4.png">多彩工作，海蜂相伴
                                 </h4>
-                                <p>微信关注海蜂，好工作悄悄来</p>
+                                <p>感谢有你，相知相随！</p>
                             </div>
                             <ul>
                                 <li class="fl">
-                                    <a href="">个性简历</a>
+                                    <a href="">招聘</a>
                                 </li>
                                 <li class="fl">
-                                    <a href="">视频简历</a>
+                                    <a href="">咨询</a>
                                 </li>
                                 <li class="fl">
-                                    <a href="">工作定制</a>
+                                    <a href="">服务</a>
                                 </li>
                             </ul>
                         </div>
@@ -298,21 +369,21 @@
                     <div class="faq fl">
                         <div class="faq-cont clearfix">
                             <div class="faq-list fl">
-                                <h4>Q&amp;A</h4>
-                                <p>Q:海蜂是啥？</p>
-                                <p>A:海蜂是专注于线下服务行业商家的人力服务平台</p>
-                                <p>Q:与其他网站有什么不同？</p>
-                                <p>A:唯一的不同是处处不同</p>
-                                <p class="pdlft">人家晒阅历，我来晒视频</p>
-                                <p class="pdlft">别人是去找工作，在这里是等工作找你</p>
-                                <p class="pdlft">还有很多，敬请期待......</p>
+                                <h3>Q&amp;A</h3>
+                                <p>Q：海蜂是做什么的？</p>
+                                <p>A：海蜂是专注于线下服务行业商家的人力服务平台</p>
+                                <p>Q：与其他平台有什么不同？</p>
+                                <p>A：唯一的不同是处处不同</p>
+                                <p class="pdlft"><span></span>人家晒阅历，我来晒视频</p>
+                                <p class="pdlft"><span></span>别人是去找工作，在这里是等工作找你</p>
+                                <p class="pdlft"><span></span>还有很多，敬请期待......</p>
                             </div>
                             <div class="faq-list fl">
-                                <p>Q:为什么只有这些行业和岗位</p>
-                                <p>A:更多的岗位会陆续补充。当然，好的人才是要把</p>
+                                <p>Q：为什么只有这些行业和岗位</p>
+                                <p>A：更多的岗位会陆续补充。当然，好的人才是要把</p>
                                 <p class="pdlft">握的，试着先联系吧！</p>
-                                <p>Q:还有其他什么好玩的吗？</p>
-                                <p>A:当然等你来发现喽！</p>
+                                <p>Q：还有其他什么好玩的吗？</p>
+                                <p>A：当然等你来发现喽！</p>
                             </div>
                         </div>
                     </div>
@@ -325,8 +396,42 @@
                     </div>
                 </div>
                 <div class="bottom">
-                    <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
+                    <div class="bt-cont clearfix">
+                        <div class="bt-logo">
+                            <img src="images/logo01.png">
+                        </div>
+                        <div class="bt-menu clearfix">
+                            <ul class="clearfix">
+                                <li class="focusus">
+                                    <span>关注我们：</span>
+                                    <a href="" class="joinway">
+                                        <img src="images/footjoin.png">
+                                    </a>
+                                    <!-- <a href="">
+                                        <img src="">微信
+                                    </a>
+                                    <a href="">
+                                        <img src="">QQ
+                                    </a> -->
+                                </li>
+                                <li>杭州俊霖信息科技有限公司</li>
+                                <li>
+                                    <span>意见反馈：</span>
+                                    feedback@haifeng.com
+                                </li>
+                                <li>杭州市余杭区未来科技城</li>
+                                <li>
+                                    <span>商务合作：</span>
+                                    BD@ihaifeng.com
+                                </li>
+                                <li>梦想小镇3栋3F</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
+                    <!-- <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
                     <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p>
+                    -->
                 </div>
             </div>
         </div>
@@ -336,7 +441,7 @@
             <div class="lb-content">
                 <ul class="tab-menu clearfix">
                     <li class="fl">
-                        <a href="javascrip:void(0);" class="active" data-id="loginForm">登录</a>
+                        <a href="javascript:void(0);" class="active" data-id="loginForm">登录</a>
                     </li>
                     <li class="fl">
                         <a href="javascript:void(0);" data-id="registerForm">注册</a>
@@ -413,31 +518,64 @@
     <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
     <script>
         $(function () {
+            // browserTest();
+            // if($.browser.msie && $.browser.version < 10){
+            //     $('body').addClass('ltie10');
+            // }
+
+            $(".godown").click(function(){
+                var dataId=$(this).attr("data-id");
+                dataId=dataId.substr(dataId.length-1,dataId.length-1);
+                dataId=Number(dataId)+1;
+                // alert(dataId);
+                $('#fp-nav ul li:eq('+dataId+') a').trigger("click");
+            })
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 continuousVertical: false,
-                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+                // anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
                 menu: '#menu',
                 navigation: true,
+                afterRender:function(){
+                    $('.section1').find(".sectbg11").animate({
+                            width: 470,
+                            height: 140,
+                            opacity:1
+                    },1);
+                    // $('.section1').find(".bg").animate({
+                    //         left:0
+                    // });
+                    // $('.section1').find(".bg").fadeIn(2000)
+                },
                 afterLoad: function (anchorLink, index) {
                     if (index == 6) {
-                        $('#header').css("background", "#6B6B6B");
+                        $("#header .menu li").eq(3).addClass("active")
+                        $('#header').css("background", "#1E1B29");
                     } else {
                         $('#header').css("background", "rgba(0,0,0,0.3");
+                        if (index != 1) {
+                            $("#header .menu li").removeClass("active");
+                        }
+                        // $("#header .menu li").removeClass("active");
+                        // if(curId==1){
+                        //     alert(12);
+                        // }
                     }
-                    if(index == 1){
-                        $('.section3').find('.bg').height("100%");
+                    if(index == 1 || index==3){
+                        $('.section2').css("z-index","1");
+                        $('.section3').css("z-index","9999");
+                        $('.section1').css("z-index","9999");
+                        if (index==1) {
+                            
+                        }
                     }
-                    if(index == 6){
-                        $('.fp-tableCell').css("vertical-align","top");
+                     if(index == 2){
+                        $('.section3').css("z-index","1");
+                        $('.section1').css("z-index","1");
+                        $('.section2').css("z-index","9999");
                     }
-                    // if(index == 3){
-                    //     $('.section3').find('p').delay(500).animate({
-                    //         bottom: '0'
-                    //     }, 1500, 'easeOutExpo');
-                    // }
-                    // if(index == 4){
-                    //     $('.section4').find('p').fadeIn(2000);
+                    // if (index == 6) {
+                    //     $('.fp-tableCell').css("vertical-align", "top");
                     // }
                 }
             });
@@ -449,18 +587,37 @@
 
 
             // 头部导航切换
-            $("#jobHunt").hover(function(){
+// <<<<<<< HEAD
+//             $("#jobHunt").hover(function(){
+//                 // $(this).click();
+//                 $(this).parent().toggleClass("active");
+//                 $(".wxcode").toggle();
+
+//                 $("#closeBtn").trigger("click");
+//             })
+//             $(".menu li a").click(function () {
+//                 $(".menu li").removeClass("active");
+//                 $(this).parent().addClass("active");
+//                 var curId = $(this).parent().index();
+//                     // alert(curId);
+// =======
+            $(".codelink").hover(function () {
                 // $(this).click();
+                $("#header .menu li").removeClass("active");
                 $(this).parent().toggleClass("active");
-                $(".wxcode").toggle();
+                $(this).next(".wxcode").toggle();
+                // if ($(".wxcode").is(hide)) {
+
+                // }
 
                 $("#closeBtn").trigger("click");
             })
-            $(".menu li a").click(function () {
-                $(".menu li").removeClass("active");
+            $("#header .menu li a").click(function () {
+                $("#header .menu li").removeClass("active");
                 $(this).parent().addClass("active");
                 var curId = $(this).parent().index();
-                    // alert(curId);
+                // alert(curId);
+// >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                 // if (curId==0) {
                 //     // $(this).
                 //     $(this).toggleClass("active");
@@ -468,21 +625,38 @@
 
                 //     $("#closeBtn").trigger("click");
                 // }
-                if (curId==1) {
+// <<<<<<< HEAD
+//                 if (curId==1) {
+// =======
+                if (curId == 1) {
+// >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                     // alert(curId);
                     $(".wxcode").hide();
                     $("#layerbox").show("slow");
                     $(".wrap").addClass("wrap-active");
+// <<<<<<< HEAD
+// =======
+                    $(".tab-menu li:first a").addClass("active");
+// >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                     $("#fp-nav").hide();
                     $.fn.fullpage.setAllowScrolling(false);
                     $.fn.fullpage.moveTo("page1");
                 }
-                if (curId==2) {
-                    $(".wxcode").hide();
-                    $("#closeBtn").trigger("click");
-                    $("#pageAbout").trigger("click");
-                }
-                if (curId==3) {
+// <<<<<<< HEAD
+//                 if (curId==2) {
+//                     $(".wxcode").hide();
+//                     $("#closeBtn").trigger("click");
+//                     $("#pageAbout").trigger("click");
+//                 }
+                // if (curId==3) {
+// =======
+                // if (curId==2) {
+                //     $(".wxcode").hide();
+                //     $("#closeBtn").trigger("click");
+                //     $("#pageAbout").trigger("click");
+                // }
+                if (curId == 3) {
+// >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                     $(".wxcode").hide();
                     $("#closeBtn").trigger("click");
                     $("#pageAbout").trigger("click");
@@ -501,6 +675,7 @@
             //     $.fn.fullpage.moveTo("page1");
             // });
             $("#closeBtn").click(function () {
+                $("#header .menu li").removeClass("active");
                 $("#layerbox").hide();
                 $(".wrap").removeClass("wrap-active");
                 $.fn.fullpage.setAllowScrolling(true);
