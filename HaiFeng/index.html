@@ -98,7 +98,7 @@
                     </div>
                 </li>
                 <li class="fl">
-                    <a href="#page6">关于</a>
+                    <a href="javascript:void(0);" id="aboutPage">关于</a>
                 </li>
             </ul>
         </div>
@@ -658,9 +658,9 @@
                 $.fn.fullpage.setAllowScrolling(true);
                 $("#fp-nav").show();
             });
-            // $("#aboutPage").click(function () {
-            //     $("#pageAbout").trigger("click");
-            // });
+            $("#aboutPage").click(function () {
+                $("#pageAbout").trigger("click");
+            });
             // 登录注册切换
             $(".tab-menu li a").click(function () {
                 $(".tab-menu li a").removeClass("active");
