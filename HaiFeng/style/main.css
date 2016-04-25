@@ -643,6 +643,11 @@ a {
     height: 38px;
     line-height: 38px;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .tab-form li input:focus{
+        line-height: 20px;
+    }
+}
 .tab-form li button {
     background: #ff9600;
     width: 280px;
