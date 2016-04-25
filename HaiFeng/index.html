@@ -57,15 +57,15 @@
         }
         // document.write(browser + version);
         // function browserTest(){
-            var str=version.split('.',1);
-            if (str<=9) {
+        var str = version.split('.', 1);
+        if (str <= 9) {
             // alert(browser+":"+str);
-                alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！若为360等浏览器，请切换急速模式！');
-            }
-            if (browser=='chrome' && str<=32) {
-                alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！');
-            }
-            // alert(browser+":"+str);
+            alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！若为360等浏览器，请切换急速模式！');
+        }
+        if (browser == 'chrome' && str <= 32) {
+            alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！');
+        }
+        // alert(browser+":"+str);
 
         // }
     </script>
@@ -75,9 +75,6 @@
         <div id="header">
             <div class="logo fl">
                 <img class="fl" src="images/logo.png">
-                <!-- <p>Change&middot;Style</p>
-                <p>改变&middot;方式</p>
-                -->
             </div>
             <ul class="menu fr">
                 <li class="fl">
@@ -98,7 +95,7 @@
                     </div>
                 </li>
                 <li class="fl">
-                    <a href="#page6">关于</a>
+                    <a href="javascript:void(0);" id="aboutPage">关于</a>
                 </li>
             </ul>
         </div>
@@ -285,8 +282,6 @@
             </div>
 
             <div class="section section6">
-                <!-- <div class="bg"></div>
-                -->
                 <div class="sectbg61 clearfix">
                     <div class="reasons fl clearfix">
                         <div class="reason fl">
@@ -374,9 +369,18 @@
                                 <p>A：海蜂是专注于线下服务行业商家的人力服务平台</p>
                                 <p>Q：与其他平台有什么不同？</p>
                                 <p>A：唯一的不同是处处不同</p>
-                                <p class="pdlft"><span></span>人家晒阅历，我来晒视频</p>
-                                <p class="pdlft"><span></span>别人是去找工作，在这里是等工作找你</p>
-                                <p class="pdlft"><span></span>还有很多，敬请期待......</p>
+                                <p class="pdlft">
+                                    <span></span>
+                                    人家晒阅历，我来晒视频
+                                </p>
+                                <p class="pdlft">
+                                    <span></span>
+                                    别人是去找工作，在这里是等工作找你
+                                </p>
+                                <p class="pdlft">
+                                    <span></span>
+                                    还有很多，敬请期待......
+                                </p>
                             </div>
                             <div class="faq-list fl">
                                 <p>Q：为什么只有这些行业和岗位</p>
@@ -408,11 +412,10 @@
                                         <img src="images/footjoin.png">
                                     </a>
                                     <!-- <a href="">
-                                        <img src="">微信
-                                    </a>
+                                        <img src="">微信</a>
                                     <a href="">
-                                        <img src="">QQ
-                                    </a> -->
+                                        <img src="">QQ</a>
+                                    -->
                                 </li>
                                 <li>杭州俊霖信息科技有限公司</li>
                                 <li>
@@ -429,9 +432,6 @@
                         </div>
                     </div>
                     <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
-                    <!-- <p>International Business海蜂版权所有 2004-2016 ICP证: 沪B2-20150087</p>
-                    <p>杭州俊霖信息科技有限公司，杭州市余杭区良睦路互联网村梦想小镇3栋3F  商务合作:BD@ihaifeng.com</p>
-                    -->
                 </div>
             </div>
         </div>
@@ -518,17 +518,12 @@
     <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
     <script>
         $(function () {
-            // browserTest();
-            // if($.browser.msie && $.browser.version < 10){
-            //     $('body').addClass('ltie10');
-            // }
-
-            $(".godown").click(function(){
-                var dataId=$(this).attr("data-id");
-                dataId=dataId.substr(dataId.length-1,dataId.length-1);
-                dataId=Number(dataId)+1;
+            $(".godown").click(function () {
+                var dataId = $(this).attr("data-id");
+                dataId = dataId.substr(dataId.length - 1, dataId.length - 1);
+                dataId = Number(dataId) + 1;
                 // alert(dataId);
-                $('#fp-nav ul li:eq('+dataId+') a').trigger("click");
+                $('#fp-nav ul li:eq(' + dataId + ') a').trigger("click");
             })
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
@@ -536,16 +531,12 @@
                 // anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
                 menu: '#menu',
                 navigation: true,
-                afterRender:function(){
+                afterRender: function () {
                     $('.section1').find(".sectbg11").animate({
-                            width: 470,
-                            height: 140,
-                            opacity:1
-                    },1);
-                    // $('.section1').find(".bg").animate({
-                    //         left:0
-                    // });
-                    // $('.section1').find(".bg").fadeIn(2000)
+                        width: 470,
+                        height: 140,
+                        opacity: 1
+                    }, 1);
                 },
                 afterLoad: function (anchorLink, index) {
                     if (index == 6) {
@@ -556,27 +547,23 @@
                         if (index != 1) {
                             $("#header .menu li").removeClass("active");
                         }
-                        // $("#header .menu li").removeClass("active");
-                        // if(curId==1){
-                        //     alert(12);
-                        // }
                     }
-                    if(index == 1 || index==3){
-                        $('.section2').css("z-index","1");
-                        $('.section3').css("z-index","9999");
-                        $('.section1').css("z-index","9999");
-                        if (index==1) {
-                            
-                        }
+                    if (index == 1 || index == 3) {
+                        $('.section2').css("z-index", "1");
+                        $('.section3').css("z-index", "9999");
+                        $('.section1').css("z-index", "9999");
                     }
-                     if(index == 2){
-                        $('.section3').css("z-index","1");
-                        $('.section1').css("z-index","1");
-                        $('.section2').css("z-index","9999");
+                    if (index == 2) {
+                        $('.section3').css("z-index", "1");
+                        $('.section1').css("z-index", "1");
+                        $('.section2').css("z-index", "9999");
                     }
+<<<<<<< HEAD
                     // if (index == 6) {
                     //     $('.fp-tableCell').css("vertical-align", "top");
                     // }
+=======
+>>>>>>> 5961839bc8785dd20879b75e7f605bd471d062ac
                 }
             });
 
@@ -606,16 +593,13 @@
                 $("#header .menu li").removeClass("active");
                 $(this).parent().toggleClass("active");
                 $(this).next(".wxcode").toggle();
-                // if ($(".wxcode").is(hide)) {
-
-                // }
-
                 $("#closeBtn").trigger("click");
             })
             $("#header .menu li a").click(function () {
                 $("#header .menu li").removeClass("active");
                 $(this).parent().addClass("active");
                 var curId = $(this).parent().index();
+<<<<<<< HEAD
                 // alert(curId);
 // >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                 // if (curId==0) {
@@ -628,6 +612,8 @@
 // <<<<<<< HEAD
 //                 if (curId==1) {
 // =======
+=======
+>>>>>>> 5961839bc8785dd20879b75e7f605bd471d062ac
                 if (curId == 1) {
 // >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                     // alert(curId);
@@ -640,8 +626,10 @@
 // >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                     $("#fp-nav").hide();
                     $.fn.fullpage.setAllowScrolling(false);
-                    $.fn.fullpage.moveTo("page1");
+                    // $.fn.fullpage.moveTo("page1");
+                    $("#fp-nav ul li:eq(0) a").trigger("click");
                 }
+<<<<<<< HEAD
 // <<<<<<< HEAD
 //                 if (curId==2) {
 //                     $(".wxcode").hide();
@@ -655,25 +643,16 @@
                 //     $("#closeBtn").trigger("click");
                 //     $("#pageAbout").trigger("click");
                 // }
+=======
+>>>>>>> 5961839bc8785dd20879b75e7f605bd471d062ac
                 if (curId == 3) {
 // >>>>>>> 2242159dad70532b70fde848c1e453bf29e64862
                     $(".wxcode").hide();
                     $("#closeBtn").trigger("click");
                     $("#pageAbout").trigger("click");
-
                 }
             });
-            // $("#jobHunt").click(function () {
-            //     $(this).toggleClass("active");
-            //     $(".wxcode").toggle();
-            // })
-            // $("#merchant").click(function () {
-            //     $("#layerbox").show("slow");
-            //     $(".wrap").addClass("wrap-active");
-            //     $("#fp-nav").hide();
-            //     $.fn.fullpage.setAllowScrolling(false);
-            //     $.fn.fullpage.moveTo("page1");
-            // });
+
             $("#closeBtn").click(function () {
                 $("#header .menu li").removeClass("active");
                 $("#layerbox").hide();
@@ -681,9 +660,11 @@
                 $.fn.fullpage.setAllowScrolling(true);
                 $("#fp-nav").show();
             });
-            // $("#aboutPage").click(function () {
-            //     $("#pageAbout").trigger("click");
-            // });
+            $("#aboutPage").click(function () {
+                $("#pageAbout").trigger("click");
+            });
+
+
             // 登录注册切换
             $(".tab-menu li a").click(function () {
                 $(".tab-menu li a").removeClass("active");
