@@ -5,8 +5,7 @@ html, body, .wrap, #container {
 }
 body {
     color: #333;
-    font-size: 12px;
-    font-family: "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    font: 12px/1.5 "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 }
 
 h1, h2, h3, h4, p {
@@ -303,18 +302,21 @@ a {
     margin: 12px 0 12px;
 }
 .faq {
-    margin-top: 20px;
+    /*margin-top: 30px;*/
+    margin-top: 25px;
 }
 .faq-list {
     width: 75%;
     text-align: left;
 }
 .faq-list table{
-    width: 60%;
-    font-size: 12px;
+    /*width: 32%;*/
+    width: 38%;
+    /*font-size: 14px;*/
 }
 .faq-list table:last-child{
-    width: 37%;
+    /*width: 60%;*/
+    width: 46%;
     margin-left: 2%;
 }
 .faq-list:last-child {
@@ -326,11 +328,11 @@ a {
 }
 .qrcode {
     /*margin-left: 15%;*/
-    margin-top: 21px;
+    margin-top: 25px;
     text-align: left;
 }
 .qrcode p {
-    font-size: 14px;
+    /*font-size: 14px;*/
     height: 20px;
     line-height: 20px;
 }
