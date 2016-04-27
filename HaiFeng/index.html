@@ -14,44 +14,45 @@
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
-
+    <script src="js/jquery.min.js"></script>
+    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
     <!-- <script type="text/javascript" src="js/browser.js"></script>
     -->
     <script type="text/javascript">
         var userAgent = navigator.userAgent,
-        rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
-        rFirefox = /(firefox)\/([\w.]+)/,
-        rOpera = /(opera).+version\/([\w.]+)/,
-        rChrome = /(chrome)\/([\w.]+)/,
-        rSafari = /version\/([\w.]+).*(safari)/;
+            rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
+            rFirefox = /(firefox)\/([\w.]+)/,
+            rOpera = /(opera).+version\/([\w.]+)/,
+            rChrome = /(chrome)\/([\w.]+)/,
+            rSafari = /version\/([\w.]+).*(safari)/;
         var browser;
         var version;
         var ua = userAgent.toLowerCase();
+
         function uaMatch(ua) {
             var match = rMsie.exec(ua);
             if (match != null) {
                 return { browser: "IE", version: match[2] || "0" };
             }
-            var match = rFirefox.exec(ua);
+            match = rFirefox.exec(ua);
             if (match != null) {
                 return { browser: match[1] || "", version: match[2] || "0" };
             }
-            var match = rOpera.exec(ua);
+            match = rOpera.exec(ua);
             if (match != null) {
                 return { browser: match[1] || "", version: match[2] || "0" };
             }
-            var match = rChrome.exec(ua);
+            match = rChrome.exec(ua);
             if (match != null) {
                 return { browser: match[1] || "", version: match[2] || "0" };
             }
-            var match = rSafari.exec(ua);
+            match = rSafari.exec(ua);
             if (match != null) {
                 return { browser: match[2] || "", version: match[1] || "0" };
             }
-            if (match != null) {
-                return { browser: "", version: "0" };
-            }
+            return { browser: "", version: "0" };
         }
+
         var browserMatch = uaMatch(userAgent.toLowerCase());
         if (browserMatch.browser) {
             browser = browserMatch.browser;
@@ -64,7 +65,7 @@
             // alert(browser+":"+str);
             alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！若为360等浏览器，请切换急速模式！');
         }
-        if (browser == 'chrome' && str <= 32) {
+        if (browser === 'chrome' && str <= 32) {
             alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！');
         }
         // alert(browser+":"+str);
@@ -388,14 +389,10 @@
                                         <td>
                                             唯一的不同是处处不同
                                             <br>
-                                            <span class="dot-span"></span>
-                                            人家晒阅历，我来晒视频
+                                            <span class="dot-span"></span>人家晒阅历，我来晒视频
                                             <br>
-                                            <span class="dot-span"></span>
-                                            别人是去找工作，在这里是等工作找你
-                                            <br>
-                                            <span class="dot-span"></span>
-                                            还有很多，敬请期待......
+                                            <span class="dot-span"></span>别人是去找工作，在这里是等工作找你
+                                            <br><span class="dot-span"></span>还有很多，敬请期待......
                                         </td>
                                     </tr>
                                     <tr>
@@ -410,8 +407,7 @@
                                 </table>
                                 <table class="fl">
                                     <tr colspan="4">
-                                        <!-- <h3>Q&amp;A</h3>
-                                        -->
+                                        <!-- <h3>Q&amp;A</h3> -->
                                     </tr>
                                     <!-- <tr>
                                         <td class="lefttd">Q：</td>
@@ -420,8 +416,7 @@
                                     <tr>
                                         <td valign="top" class="lefttd">A：</td>
                                         <td>目前覆盖零售、餐饮、酒店、休闲娱乐、美容美发美甲、运动、其他热门行业岗位。</td>
-                                    </tr>
-                                    -->
+                                    </tr> -->
                                     <tr>
                                         <td class="lefttd">Q：</td>
                                         <td>这里没有我所在的行业和岗位，怎么办呢？</td>
@@ -443,7 +438,7 @@
                                             非常希望我们能合作成功，请把你的合作想法及联系方式邮件发送到bd@ihaifeng.com，我们业务人员会第一时间联系你喔！
                                         </td>
                                     </tr>
-                                    <!--  <tr>
+                                    <!-- <tr>
                                         <td class="lefttd">Q：</td>
                                         <td>为什么只有这些行业和岗位？</td>
                                     </tr>
@@ -460,8 +455,7 @@
                                     <tr>
                                         <td valign="top" class="lefttd">A：</td>
                                         <td>当然等你来发现喽！</td>
-                                    </tr>
-                                    -->
+                                    </tr> -->
                                 </table>
                             </div>
                             <div class="qrcode fl">
@@ -511,8 +505,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 登录注册弹框 -->
     <div id="layerbox">
         <div class="lb-container">
             <div class="lb-content">
@@ -537,7 +529,8 @@
                                 <span class="clearvalue">×</span>
                             </li>
                             <li>
-                                <input type="password" placeholder="请输入密码" minlength="6" maxlength="20" id="loginPwd">
+                                <input type="password" placeholder="请输入密码" minlength="6" maxlength="20" onblur="checkloginPwd($(this));" id="loginPwd">
+                                <p class="errortip">该手机号未注册</p>
                                 <span class="icon icon-password"></span>
                                 <span class="clearvalue">×</span>
                                 <p class="errortip">
@@ -546,7 +539,7 @@
                                 </p>
                             </li>
                             <li>
-                                <button type="submit" id="loginBtn">登录</button>
+                                <button type="button" id="loginBtn">登录</button>
                             </li>
                         </ul>
                     </form>
@@ -583,7 +576,7 @@
                                 <p class="errortip">特邀码不存在</p>
                             </li>
                             <li>
-                                <button type="submit" id="regBtn">注册</button>
+                                <button type="button" id="regBtn">注册</button>
                             </li>
                         </ul>
                     </form>
@@ -591,8 +584,7 @@
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
+
     <script>
         $(function () {
             $(".godown").click(function () {
@@ -601,7 +593,8 @@
                 dataId = Number(dataId) + 1;
                 // alert(dataId);
                 $('#fp-nav ul li:eq(' + dataId + ') a').trigger("click");
-            })
+            });
+
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 continuousVertical: false,
@@ -616,21 +609,21 @@
                     }, 1);
                 },
                 afterLoad: function (anchorLink, index) {
-                    if (index == 6) {
-                        $("#header .menu li").eq(3).addClass("active")
+                    if (index === 6) {
+                        $("#header .menu li").eq(3).addClass("active");
                         $('#header').css("background", "#1E1B29");
                     } else {
                         $('#header').css("background", "rgba(0,0,0,0.3");
-                        if (index != 1) {
+                        if (index !== 1) {
                             $("#header .menu li").removeClass("active");
                         }
                     }
-                    if (index == 1 || index == 3) {
+                    if (index === 1 || index === 3) {
                         $('.section2').css("z-index", "1");
                         $('.section3').css("z-index", "9999");
                         $('.section1').css("z-index", "9999");
                     }
-                    if (index == 2) {
+                    if (index === 2) {
                         $('.section3').css("z-index", "1");
                         $('.section1').css("z-index", "1");
                         $('.section2').css("z-index", "9999");
@@ -651,12 +644,12 @@
                 $(this).parent().toggleClass("active");
                 $(this).next(".wxcode").toggle();
                 $("#closeBtn").trigger("click");
-            })
+            });
             $("#header .menu li a").click(function () {
                 $("#header .menu li").removeClass("active");
                 $(this).parent().addClass("active");
                 var curId = $(this).parent().index();
-                if (curId == 1) {
+                if (curId === 1) {
                     // alert(curId);
                     $(".wxcode").hide();
                     $("#layerbox").show("slow");
@@ -667,7 +660,7 @@
                     // $.fn.fullpage.moveTo("page1");
                     $("#fp-nav ul li:eq(0) a").trigger("click");
                 }
-                if (curId == 3) {
+                if (curId === 3) {
                     $(".wxcode").hide();
                     $("#closeBtn").trigger("click");
                     $("#pageAbout").trigger("click");
@@ -699,77 +692,135 @@
             $(".clearvalue").click(function () {
                 $(this).prevAll("input").val("");
             });
+            $("input").focus(function(){
+                $(this).siblings(".clearvalue").show();
+            })
+            // .blur(function(){
+            //     $(this).siblings(".clearvalue").hide();
+            // });
 
             // 登录注册
+            var cCode = 1;
             $("#code").blur(function () {
-                if ($(this).val() == "") {
+                if ($(this).val() === "") {
 
                     // alert("密码不能为空！");
-                    $(this).focus().siblings("p").show().text("验证码不能为空！")
+                    cCode = 1;
+                    $(this).focus().siblings("p").show().text("验证码不能为空！");
+                    $(this).siblings(".clearvalue").show();
+                } else if ($(this).val().length < 6) {
+                    cCode = 1;
+                    $(this).siblings("p").show().text("验证码不能少于六位！");
+                    $(this).siblings(".clearvalue").show();
+                    // alert("密码不能少于六位！");
                 }
                     // else if ($(this).val()!= "验证码规则") {
                     //     $(this).focus().siblings("p").show().text("验证码错误")
                     // }
                 else {
+                    cCode = 2;
                     $(this).siblings("p").hide();
+                    $(this).siblings(".clearvalue").hide();
                     $("#regPwd").val("").focus();
                 }
             });
             $("#regPwd").blur(function () {
-                if ($(this).val() == "") {
+                if ($(this).val() === "") {
 
                     // alert("密码不能为空！");
-                    $(this).focus().siblings("p").show().text("密码不能为空！")
+                    psw = 1;
+                    $(this).focus().siblings("p").show().text("密码不能为空！");
                 } else if ($(this).val().length < 6) {
-                    $(this).siblings("p").show().text("密码不能少于六位！")
+                    psw = 1;
+                    $(this).siblings("p").show().text("密码不能少于六位！");
                     // alert("密码不能少于六位！");
                 } else {
                     $("#regRepPwd").val("").focus();
                     $(this).siblings("p").hide();
                     // alert("密码正确");
-                    // psw=2;
+                    psw=2;
+                    $(this).siblings(".clearvalue").hide();
                     // $("#regRepPwd").focus();
                 }
             });
 
             $("#regRepPwd").blur(function () {
-                if ($(this).val() == "") {
+                if ($(this).val() === "") {
                     repsd = 1;
                     // alert("密码不能为空！");
-                    $(this).focus().siblings("p").show().text("密码不能为空！")
+                    $(this).focus().siblings("p").show().text("密码不能为空！");
                 } else if ($(this).val().length < 6) {
-                    $(this).siblings("p").show().text("密码不能少于六位！")
-                    alert("密码不能少于六位！");
+                    $(this).siblings("p").show().text("密码不能少于六位！");
+                    // alert("密码不能少于六位！");
                     repsd = 1;
 
-                } else if ($(this).val() != $("#regPwd").val()) {
+                } else if ($(this).val() !== $("#regPwd").val()) {
                     // alert("密码不一致！");
-                    $(this).siblings("p").show().text("密码不一致！")
+                    $(this).siblings("p").show().text("密码不一致！");
                     $("#regPwd").focus();
                     repsd = 1;
                 } else {
                     $(this).siblings("p").hide();
                     // alert("验证密码号正确");
                     repsd = 2;
+                    $(this).siblings(".clearvalue").hide();
                 }
             });
             $("#invitedCode").blur(function () {
-                if ($(this).val() == "验证方式") {
-                    $(this).siblings("p").show().text("特邀码不存在！")
+                if ($(this).val() === "验证方式") {
+                    $(this).siblings("p").show().text("特邀码不存在！");
                 }
-            })
+            });
             $("#submitIn").click(function () {
-                if (ph == 2 && repsd == 2) {
+                if (ph === 2 && repsd === 2) {
                     alert("通过");
                 } else {
-                    alert("请先填写注册信息")
+                    alert("请先填写注册信息");
                 }
-            })
+            });
+            $("#loginBtn").click(function () {
+                var loginPhone = $('#loginPhone');
+                checkTextValue(loginPhone);
+                if (ph === 1) return false;
+                var loginPwd = $('#loginPwd');
+                checkloginPwd(loginPwd);
+                if (psw === 1) return false;
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'MerchantLogin', data: "{\"mobile\":\"" + loginPhone.val() + "\",\"password\":\"" + loginPwd.val() + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        window.location.href = 'main.html';
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                return true;
+            });
 
+            $("#regBtn").click(function () {
+                var regPhone = $('#regPhone');
+                checkTextValue(regPhone);
+                if (ph === 1) return false;
+                var code = $('#code');
+                checkTextValue(code);
+                if (cCode === 1) return false;
+                var regPwd = $('#regPwd');
+                checkloginPwd(regPwd);
+                if (psw === 1) return false;
+                var regRepPwd = $('#regRepPwd');
+                checkloginPwd(regRepPwd);
+                if (repsd === 1) return false;
+                
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'MerchantRegister', data: "{\"mobile\":\"" + regPhone.val() + "\",\"verify\":\"" + code.val() + "\",\"password\":\"" + regPwd.val() + "\",\"repassword\":\"" + regRepPwd.val() + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        window.location.href = 'main.html';
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                return true;
+            });
         });
-    </script>
-
-    <script type="text/javascript">
         // 验证密码
         var ph = 1;
         var psw = 1;
@@ -777,26 +828,46 @@
         // 验证手机号
         function checkTextLength(obj, length) {
             if (obj.value.length > length) {
-                obj.value = obj.value.substr(0, length)
+                obj.value = obj.value.substr(0, length);
             }
         }
         function checkTextValue(obj) {
             // var reg= /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
             var reg = /^1[0-9]{10}$/;
-            if (obj.val() == "") {
+            if (obj.val() === "") {
                 // alert("手机号不能为空！");
                 // obj.nextSiblings.innerText()
                 obj.focus().siblings("p").show().text("手机号不能为空！");
+                obj.siblings(".clearvalue").show();
                 ph = 1;
             } else if (!reg.test(obj.val())) {
                 ph = 1;
                 // alert("手机格式错误！");
                 obj.focus().siblings("p").show().text("手机格式错误！");
+                obj.siblings(".clearvalue").show();
                 // return
             } else {
-                obj.siblings("p").hide()
+                obj.siblings("p").hide();
                 // alert("手机号正确");
                 ph = 2;
+                obj.siblings(".clearvalue").hide();
+            }
+        }
+        function checkloginPwd(obj) {
+            if (obj.val() === "") {
+                // alert("密码不能为空！");
+                obj.focus().siblings("p").show().text("密码不能为空！");
+                obj.siblings(".clearvalue").show();
+
+            } else if (obj.val().length < 6) {
+                obj.siblings("p").show().text("密码不能少于六位！");
+                obj.siblings(".clearvalue").show();
+                // alert("密码不能少于六位！");
+            } else {
+                obj.siblings("p").hide();
+                // alert("密码正确");
+                obj.siblings(".clearvalue").hide();
+                psw=2;
             }
         }
     </script>
@@ -808,7 +879,7 @@
                 $("#GetVerifyCode").html("获取验证码");
                 $('#GetVerifyCode').removeAttr('disabled');
                 window.clearInterval(interval);
-                $('#GetVerifyCode').css("background", "#a4a4a4");
+                $('#GetVerifyCode').css("background", "#ff9600");
                 time = 60;
             } else {
                 $("#GetVerifyCode").html("已发送(" + --time + ")");
@@ -822,14 +893,23 @@
                 alert("手机号码为空或不合法");
                 return false;
             } else {
-                //SendType = 1 表示发送验证码
-                //收到短信之后允许修改手机号码
-                $('#regPhone').attr("readonly", true);
-                $('#GetVerifyCode').attr("disabled", "disabled");
-                $('#GetVerifyCode').css("background", "#A8A8A8");
-                $('#GetVerifyCode').html("已发送(60)");
-                interval = setInterval("waitEnabled()", 1000);
-                //alert("发送成功");
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'SendSms', data: "{\"mobile\":\"" + mobile + "\",\"opcode\":\"RegisterVerify\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        //SendType = 1 表示发送验证码
+                        //收到短信之后允许修改手机号码
+                        $('#regPhone').attr("readonly", true);
+                        $('#GetVerifyCode').attr("disabled", "disabled");
+                        $('#GetVerifyCode').css("background", "#A8A8A8");
+                        $('#GetVerifyCode').html("已发送(60)");
+                        interval = setInterval("waitEnabled()", 1000);
+                        //alert("发送成功");
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+
+                
             }
         }
 
@@ -837,6 +917,7 @@
         $('#GetVerifyCode').click(function () { verifyCode(); });
 
     </script>
+
 
 </body>
 </html>
