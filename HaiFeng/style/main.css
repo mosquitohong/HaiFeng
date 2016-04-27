@@ -182,7 +182,7 @@ a {
 }
 .section1 .sectbg11, .section3 .sectbg31, .section5 .sectbg51, .section2 .sectbg21, .section4 .sectbg41 {
     width: 470px;
-    height: 140px;
+    height: 210px;
     position: absolute;
     top: 44%;
     right: 12%;
@@ -194,31 +194,31 @@ a {
     opacity: 0;
 }
 .section2 .sectbg21, .section4 .sectbg41 {
-    left: 8%;
+    left: 10%;
 }
 .section1 .sectbg11 {
     transition: all 4s ease;
     transform: scale(0,0);
-    background: url(../images/sectbg11.png); 
+    background: url(../images/sectbg11.png) no-repeat; 
 }
 
 .section2 .sectbg21 {
     transition: all 4s ease;
     transform: scale(1.5,1.5);
     opacity: 0;
-    top: 30%;
-    background: url(../images/sectbg21.png);
+    top: 42%;
+    background: url(../images/sectbg21.png) no-repeat;
 }
 .section3 .sectbg31 {
     transition: all 4s ease;
     transform: scale(0,0);
-    background: url(../images/sectbg31.png);
+    background: url(../images/sectbg31.png) no-repeat;
 }
 .section4 .sectbg41 {
     transition: all 4s ease;
     transform: scale(1.5,1.5);
     opacity: 0;
-    background: url(../images/sectbg41.png);
+    background: url(../images/sectbg41.png) no-repeat;
 }
 .section5 .sectbg51 {
     transition: all 4s ease;
@@ -226,7 +226,7 @@ a {
     width: 528px;
     height: 210px;
     top: 38%;
-    background: url(../images/sectbg51.png);
+    background: url(../images/sectbg51.png) no-repeat;
 }
 
 /*动画效果*/
