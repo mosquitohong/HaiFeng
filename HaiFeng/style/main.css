@@ -70,7 +70,7 @@ a {
 }
 
 /*固定头部*/
-#header {
+#header {d
     position: fixed;
     height: 75px;
     top: 0px;
