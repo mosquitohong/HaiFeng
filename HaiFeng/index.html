@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>主页</title>
-    <!-- <meta name="renderer" content="webkit"> -->
+    <!-- <meta name="renderer" content="webkit">
+    -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -13,15 +14,17 @@
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="plugin/fullPageMaster/jquery.fullpage.css">
-
-    <!-- <script type="text/javascript" src="js/browser.js"></script> -->
+    <script src="js/jquery.min.js"></script>
+    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
+    <!-- <script type="text/javascript" src="js/browser.js"></script>
+    -->
     <script type="text/javascript">
         var userAgent = navigator.userAgent,
-        rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
-        rFirefox = /(firefox)\/([\w.]+)/,
-        rOpera = /(opera).+version\/([\w.]+)/,
-        rChrome = /(chrome)\/([\w.]+)/,
-        rSafari = /version\/([\w.]+).*(safari)/;
+            rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
+            rFirefox = /(firefox)\/([\w.]+)/,
+            rOpera = /(opera).+version\/([\w.]+)/,
+            rChrome = /(chrome)\/([\w.]+)/,
+            rSafari = /version\/([\w.]+).*(safari)/;
         var browser;
         var version;
         var ua = userAgent.toLowerCase();
@@ -30,25 +33,23 @@
             if (match != null) {
                 return { browser: "IE", version: match[2] || "0" };
             }
-            var match = rFirefox.exec(ua);
+            match = rFirefox.exec(ua);
             if (match != null) {
                 return { browser: match[1] || "", version: match[2] || "0" };
             }
-            var match = rOpera.exec(ua);
+            match = rOpera.exec(ua);
             if (match != null) {
                 return { browser: match[1] || "", version: match[2] || "0" };
             }
-            var match = rChrome.exec(ua);
+            match = rChrome.exec(ua);
             if (match != null) {
                 return { browser: match[1] || "", version: match[2] || "0" };
             }
-            var match = rSafari.exec(ua);
+            match = rSafari.exec(ua);
             if (match != null) {
                 return { browser: match[2] || "", version: match[1] || "0" };
             }
-            if (match != null) {
-                return { browser: "", version: "0" };
-            }
+            return { browser: "", version: "0" };
         }
         var browserMatch = uaMatch(userAgent.toLowerCase());
         if (browserMatch.browser) {
@@ -62,11 +63,10 @@
             // alert(browser+":"+str);
             alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！若为360等浏览器，请切换急速模式！');
         }
-        if (browser == 'chrome' && str <= 32) {
+        if (browser === 'chrome' && str <= 32) {
             alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！');
         }
         // alert(browser+":"+str);
-
         // }
     </script>
 </head>
@@ -364,74 +364,140 @@
                     <div class="faq fl">
                         <div class="faq-cont clearfix">
                             <div class="faq-list fl">
-                                <h3>Q&amp;A</h3>
-                                <p>Q：海蜂是做什么的？</p>
-                                <p>A：海蜂是专注于线下服务行业商家的人力服务平台</p>
-                                <p>Q：与其他平台有什么不同？</p>
-                                <p>A：唯一的不同是处处不同</p>
-                                <p class="pdlft">
-                                    <span></span>
-                                    人家晒阅历，我来晒视频
-                                </p>
-                                <p class="pdlft">
-                                    <span></span>
-                                    别人是去找工作，在这里是等工作找你
-                                </p>
-                                <p class="pdlft">
-                                    <span></span>
-                                    还有很多，敬请期待......
-                                </p>
+                                <table class="fl">
+                                    <tr colspan="4">
+                                        <h3>Q&amp;A</h3>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>海蜂是做什么的？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>海蜂是专注于线下服务行业商家的人力服务平台</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>与其他平台有什么不同？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>
+                                            唯一的不同是处处不同
+                                            <br>
+                                            <span class="dot-span"></span>人家晒阅历，我来晒视频
+                                            <br>
+                                            <span class="dot-span"></span>别人是去找工作，在这里是等工作找你
+                                            <br><span class="dot-span"></span>还有很多，敬请期待......
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>海蜂覆盖哪些行业商家呢？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>目前覆盖零售、餐饮、酒店、休闲娱乐、美容美发美甲、运动、其他热门行业岗位。</td>
+                                    </tr>
+
+                                </table>
+                                <table class="fl">
+                                    <tr colspan="4">
+                                        <!-- <h3>Q&amp;A</h3> -->
+                                    </tr>
+                                    <!-- <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>海蜂覆盖哪些行业商家呢？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>目前覆盖零售、餐饮、酒店、休闲娱乐、美容美发美甲、运动、其他热门行业岗位。</td>
+                                    </tr> -->
+                                    <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>这里没有我所在的行业和岗位，怎么办呢？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>
+                                            请把你的名称、联系方式、问题等信息邮件发送到feedback@haifeng.com，我们会第一时间向你反馈的。
+                                            更多的岗位会陆续补充进来，敬请期待。当然，好的人才是要把握的，试着从关联行业找找看，也许更适合你呢！
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>我有招聘、人力等资源，希望深度合作，该找谁？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>
+                                            非常希望我们能合作成功，请把你的合作想法及联系方式邮件发送到bd@ihaifeng.com，我们业务人员会第一时间联系你喔！
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>为什么只有这些行业和岗位？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>
+                                            更多的岗位会陆续补充。当然，好的人才是要把
+                                            <br>握的，试着先联系吧！</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="lefttd">Q：</td>
+                                        <td>还有其他什么好玩的吗？</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" class="lefttd">A：</td>
+                                        <td>当然等你来发现喽！</td>
+                                    </tr> -->
+                                </table>
                             </div>
-                            <div class="faq-list fl">
-                                <p>Q：为什么只有这些行业和岗位</p>
-                                <p>A：更多的岗位会陆续补充。当然，好的人才是要把</p>
-                                <p class="pdlft">握的，试着先联系吧！</p>
-                                <p>Q：还有其他什么好玩的吗？</p>
-                                <p>A：当然等你来发现喽！</p>
+                            <div class="qrcode fl">
+                                <p>扫一扫</p>
+                                <p>关注海蜂微信公众号</p>
+                                <div class="qrcode-public">
+                                    <img src="images/wxpublic.png">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="qrcode fl">
-                        <p>扫一扫</p>
-                        <p>关注海蜂微信公众号</p>
-                        <div class="qrcode-public">
-                            <img src="images/wxpublic.png">
+                        <div class="bottom">
+                            <div class="bt-cont clearfix">
+                                <div class="bt-logo">
+                                    <img src="images/logo01.png">
+                                </div>
+                                <div class="bt-menu clearfix">
+                                    <ul class="clearfix">
+                                        <li class="focusus">
+                                            <span>关注我们：</span>
+                                            <a href="" class="joinway">
+                                                <img src="images/footjoin.png">
+                                            </a>
+                                            <!-- <a href="">
+                                                <img src="">微信</a>
+                                            <a href="">
+                                                <img src="">QQ</a>
+                                            -->
+                                        </li>
+                                        <li>杭州骏霖信息科技有限公司</li>
+                                        <li>
+                                            <span>意见反馈：</span>
+                                            feedback@haifeng.com
+                                        </li>
+                                        <li>杭州市余杭区未来科技城</li>
+                                        <li>
+                                            <span>商务合作：</span>
+                                            BD@ihaifeng.com
+                                        </li>
+                                        <li>梦想小镇3栋3F</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
                         </div>
                     </div>
-                </div>
-                <div class="bottom">
-                    <div class="bt-cont clearfix">
-                        <div class="bt-logo">
-                            <img src="images/logo01.png">
-                        </div>
-                        <div class="bt-menu clearfix">
-                            <ul class="clearfix">
-                                <li class="focusus">
-                                    <span>关注我们：</span>
-                                    <a href="" class="joinway">
-                                        <img src="images/footjoin.png">
-                                    </a>
-                                    <!-- <a href="">
-                                        <img src="">微信</a>
-                                    <a href="">
-                                        <img src="">QQ</a>
-                                    -->
-                                </li>
-                                <li>杭州俊霖信息科技有限公司</li>
-                                <li>
-                                    <span>意见反馈：</span>
-                                    feedback@haifeng.com
-                                </li>
-                                <li>杭州市余杭区未来科技城</li>
-                                <li>
-                                    <span>商务合作：</span>
-                                    BD@ihaifeng.com
-                                </li>
-                                <li>梦想小镇3栋3F</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
                 </div>
             </div>
         </div>
@@ -460,7 +526,8 @@
                                 <span class="clearvalue">×</span>
                             </li>
                             <li>
-                                <input type="password" placeholder="请输入密码" minlength="6" maxlength="20" id="loginPwd">
+                                <input type="password" placeholder="请输入密码" minlength="6" maxlength="20" onblur="checkloginPwd($(this));" id="loginPwd">
+                                <p class="errortip">该手机号未注册</p>
                                 <span class="icon icon-password"></span>
                                 <span class="clearvalue">×</span>
                                 <p class="errortip">
@@ -469,7 +536,7 @@
                                 </p>
                             </li>
                             <li>
-                                <button type="submit" id="loginBtn">登录</button>
+                                <button type="button" id="loginBtn">登录</button>
                             </li>
                         </ul>
                     </form>
@@ -506,7 +573,7 @@
                                 <p class="errortip">特邀码不存在</p>
                             </li>
                             <li>
-                                <button type="submit" id="regBtn">注册</button>
+                                <button type="button" id="regBtn">注册</button>
                             </li>
                         </ul>
                     </form>
@@ -514,8 +581,7 @@
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="plugin/fullPageMaster/jquery.fullpage.min.js"></script>
+
     <script>
         $(function () {
             $(".godown").click(function () {
@@ -524,7 +590,7 @@
                 dataId = Number(dataId) + 1;
                 // alert(dataId);
                 $('#fp-nav ul li:eq(' + dataId + ') a').trigger("click");
-            })
+            });
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 continuousVertical: false,
@@ -533,40 +599,37 @@
                 navigation: true,
                 afterRender: function () {
                     $('.section1').find(".sectbg11").animate({
-                        width: 470,
-                        height: 140,
+                        width: 489,
+                        height: 248,
                         opacity: 1
                     }, 1);
                 },
                 afterLoad: function (anchorLink, index) {
-                    if (index == 6) {
-                        $("#header .menu li").eq(3).addClass("active")
+                    if (index === 6) {
+                        $("#header .menu li").eq(3).addClass("active");
                         $('#header').css("background", "#1E1B29");
                     } else {
                         $('#header').css("background", "rgba(0,0,0,0.3");
-                        if (index != 1) {
+                        if (index !== 1) {
                             $("#header .menu li").removeClass("active");
                         }
                     }
-                    if (index == 1 || index == 3) {
+                    if (index === 1 || index === 3) {
                         $('.section2').css("z-index", "1");
                         $('.section3').css("z-index", "9999");
                         $('.section1').css("z-index", "9999");
                     }
-                    if (index == 2) {
+                    if (index === 2) {
                         $('.section3').css("z-index", "1");
                         $('.section1').css("z-index", "1");
                         $('.section2').css("z-index", "9999");
                     }
                 }
             });
-
             // 自动轮播
             // setInterval(function () {
             //     $.fn.fullpage.moveSectionDown();
             // }, 3000);
-
-
             // 头部导航切换
             $(".codelink").hover(function () {
                 // $(this).click();
@@ -574,12 +637,14 @@
                 $(this).parent().toggleClass("active");
                 $(this).next(".wxcode").toggle();
                 $("#closeBtn").trigger("click");
-            })
+            });
             $("#header .menu li a").click(function () {
                 $("#header .menu li").removeClass("active");
                 $(this).parent().addClass("active");
                 var curId = $(this).parent().index();
-                if (curId == 1) {
+
+                if (curId === 1) {
+                    // alert(curId);
                     $(".wxcode").hide();
                     $("#layerbox").show("slow");
                     $(".wrap").addClass("wrap-active");
@@ -589,13 +654,12 @@
                     // $.fn.fullpage.moveTo("page1");
                     $("#fp-nav ul li:eq(0) a").trigger("click");
                 }
-                if (curId == 3) {
+                if (curId === 3) {
                     $(".wxcode").hide();
                     $("#closeBtn").trigger("click");
                     $("#pageAbout").trigger("click");
                 }
             });
-
             $("#closeBtn").click(function () {
                 $("#header .menu li").removeClass("active");
                 $("#layerbox").hide();
@@ -606,8 +670,6 @@
             $("#aboutPage").click(function () {
                 $("#pageAbout").trigger("click");
             });
-
-
             // 登录注册切换
             $(".tab-menu li a").click(function () {
                 $(".tab-menu li a").removeClass("active");
@@ -615,83 +677,133 @@
                 var curId = $(this).attr("data-id");
                 $("#" + curId).slideDown("slow").siblings(".tab-form").slideUp("slow");
             });
-
-
             // 清除内容
             $(".clearvalue").click(function () {
                 $(this).prevAll("input").val("");
             });
-
+            $("input").focus(function(){
+                $(this).siblings(".clearvalue").show();
+            })
+            // .blur(function(){
+            //     $(this).siblings(".clearvalue").hide();
+            // });
             // 登录注册
+            var cCode = 1;
             $("#code").blur(function () {
-                if ($(this).val() == "") {
-
+                if ($(this).val() === "") {
                     // alert("密码不能为空！");
-                    $(this).focus().siblings("p").show().text("验证码不能为空！")
+                    cCode = 1;
+                    $(this).focus().siblings("p").show().text("验证码不能为空！");
+                    $(this).siblings(".clearvalue").show();
+                } else if ($(this).val().length < 6) {
+                    cCode = 1;
+                    $(this).siblings("p").show().text("验证码不能少于六位！");
+                    $(this).siblings(".clearvalue").show();
+                    // alert("密码不能少于六位！");
                 }
                     // else if ($(this).val()!= "验证码规则") {
                     //     $(this).focus().siblings("p").show().text("验证码错误")
                     // }
                 else {
+                    cCode = 2;
                     $(this).siblings("p").hide();
+                    $(this).siblings(".clearvalue").hide();
                     $("#regPwd").val("").focus();
                 }
             });
             $("#regPwd").blur(function () {
-                if ($(this).val() == "") {
-
+                if ($(this).val() === "") {
                     // alert("密码不能为空！");
-                    $(this).focus().siblings("p").show().text("密码不能为空！")
+                    psw = 1;
+                    $(this).focus().siblings("p").show().text("密码不能为空！");
                 } else if ($(this).val().length < 6) {
-                    $(this).siblings("p").show().text("密码不能少于六位！")
+                    psw = 1;
+                    $(this).siblings("p").show().text("密码不能少于六位！");
                     // alert("密码不能少于六位！");
                 } else {
                     $("#regRepPwd").val("").focus();
                     $(this).siblings("p").hide();
                     // alert("密码正确");
-                    // psw=2;
+                    psw=2;
+                    $(this).siblings(".clearvalue").hide();
                     // $("#regRepPwd").focus();
                 }
             });
-
             $("#regRepPwd").blur(function () {
-                if ($(this).val() == "") {
+                if ($(this).val() === "") {
                     repsd = 1;
                     // alert("密码不能为空！");
-                    $(this).focus().siblings("p").show().text("密码不能为空！")
+                    $(this).focus().siblings("p").show().text("密码不能为空！");
                 } else if ($(this).val().length < 6) {
-                    $(this).siblings("p").show().text("密码不能少于六位！")
-                    alert("密码不能少于六位！");
+                    $(this).siblings("p").show().text("密码不能少于六位！");
+                    // alert("密码不能少于六位！");
                     repsd = 1;
-
-                } else if ($(this).val() != $("#regPwd").val()) {
+                } else if ($(this).val() !== $("#regPwd").val()) {
                     // alert("密码不一致！");
-                    $(this).siblings("p").show().text("密码不一致！")
+                    $(this).siblings("p").show().text("密码不一致！");
                     $("#regPwd").focus();
                     repsd = 1;
                 } else {
                     $(this).siblings("p").hide();
                     // alert("验证密码号正确");
                     repsd = 2;
+                    $(this).siblings(".clearvalue").hide();
                 }
             });
             $("#invitedCode").blur(function () {
-                if ($(this).val() == "验证方式") {
-                    $(this).siblings("p").show().text("特邀码不存在！")
+                if ($(this).val() === "验证方式") {
+                    $(this).siblings("p").show().text("特邀码不存在！");
                 }
-            })
+            });
             $("#submitIn").click(function () {
-                if (ph == 2 && repsd == 2) {
+                if (ph === 2 && repsd === 2) {
                     alert("通过");
                 } else {
-                    alert("请先填写注册信息")
+                    alert("请先填写注册信息");
                 }
-            })
-
+            });
+            $("#loginBtn").click(function () {
+                var loginPhone = $('#loginPhone');
+                checkTextValue(loginPhone);
+                if (ph === 1) return false;
+                var loginPwd = $('#loginPwd');
+                checkloginPwd(loginPwd);
+                if (psw === 1) return false;
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'MerchantLogin', data: "{\"mobile\":\"" + loginPhone.val() + "\",\"password\":\"" + loginPwd.val() + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        window.location.href = 'main.html';
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                return true;
+            });
+            $("#regBtn").click(function () {
+                var regPhone = $('#regPhone');
+                checkTextValue(regPhone);
+                if (ph === 1) return false;
+                var code = $('#code');
+                checkTextValue(code);
+                if (cCode === 1) return false;
+                var regPwd = $('#regPwd');
+                checkloginPwd(regPwd);
+                if (psw === 1) return false;
+                var regRepPwd = $('#regRepPwd');
+                checkloginPwd(regRepPwd);
+                if (repsd === 1) return false;
+                
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'MerchantRegister', data: "{\"mobile\":\"" + regPhone.val() + "\",\"verify\":\"" + code.val() + "\",\"password\":\"" + regPwd.val() + "\",\"repassword\":\"" + regRepPwd.val() + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        window.location.href = 'main.html';
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                return true;
+            });
         });
-    </script>
-
-    <script type="text/javascript">
         // 验证密码
         var ph = 1;
         var psw = 1;
@@ -699,26 +811,45 @@
         // 验证手机号
         function checkTextLength(obj, length) {
             if (obj.value.length > length) {
-                obj.value = obj.value.substr(0, length)
+                obj.value = obj.value.substr(0, length);
             }
         }
         function checkTextValue(obj) {
             // var reg= /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
             var reg = /^1[0-9]{10}$/;
-            if (obj.val() == "") {
+            if (obj.val() === "") {
                 // alert("手机号不能为空！");
                 // obj.nextSiblings.innerText()
                 obj.focus().siblings("p").show().text("手机号不能为空！");
+                obj.siblings(".clearvalue").show();
                 ph = 1;
             } else if (!reg.test(obj.val())) {
                 ph = 1;
                 // alert("手机格式错误！");
                 obj.focus().siblings("p").show().text("手机格式错误！");
+                obj.siblings(".clearvalue").show();
                 // return
             } else {
-                obj.siblings("p").hide()
+                obj.siblings("p").hide();
                 // alert("手机号正确");
                 ph = 2;
+                obj.siblings(".clearvalue").hide();
+            }
+        }
+        function checkloginPwd(obj) {
+            if (obj.val() === "") {
+                // alert("密码不能为空！");
+                obj.focus().siblings("p").show().text("密码不能为空！");
+                obj.siblings(".clearvalue").show();
+            } else if (obj.val().length < 6) {
+                obj.siblings("p").show().text("密码不能少于六位！");
+                obj.siblings(".clearvalue").show();
+                // alert("密码不能少于六位！");
+            } else {
+                obj.siblings("p").hide();
+                // alert("密码正确");
+                obj.siblings(".clearvalue").hide();
+                psw=2;
             }
         }
     </script>
@@ -730,35 +861,39 @@
                 $("#GetVerifyCode").html("获取验证码");
                 $('#GetVerifyCode').removeAttr('disabled');
                 window.clearInterval(interval);
-                $('#GetVerifyCode').css("background", "#a4a4a4");
+                $('#GetVerifyCode').css("background", "#ff9600");
                 time = 60;
             } else {
                 $("#GetVerifyCode").html("已发送(" + --time + ")");
             }
-
         }
-
         function verifyCode() {
             var mobile = $('#regPhone').val();
             if ($.trim(mobile) === "" || $.trim(mobile).length !== 11) {
                 alert("手机号码为空或不合法");
                 return false;
             } else {
-                //SendType = 1 表示发送验证码
-                //收到短信之后允许修改手机号码
-                $('#regPhone').attr("readonly", true);
-                $('#GetVerifyCode').attr("disabled", "disabled");
-                $('#GetVerifyCode').css("background", "#A8A8A8");
-                $('#GetVerifyCode').html("已发送(60)");
-                interval = setInterval("waitEnabled()", 1000);
-                //alert("发送成功");
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'SendSms', data: "{\"mobile\":\"" + mobile + "\",\"opcode\":\"RegisterVerify\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        //SendType = 1 表示发送验证码
+                        //收到短信之后允许修改手机号码
+                        $('#regPhone').attr("readonly", true);
+                        $('#GetVerifyCode').attr("disabled", "disabled");
+                        $('#GetVerifyCode').css("background", "#A8A8A8");
+                        $('#GetVerifyCode').html("已发送(60)");
+                        interval = setInterval("waitEnabled()", 1000);
+                        //alert("发送成功");
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                
             }
         }
-
-
         $('#GetVerifyCode').click(function () { verifyCode(); });
-
     </script>
+
 
 </body>
 </html>

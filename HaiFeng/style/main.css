@@ -5,8 +5,7 @@ html, body, .wrap, #container {
 }
 body {
     color: #333;
-    font-size: 12px;
-    font-family: "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    font: 12px/1.5 "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 }
 
 h1, h2, h3, h4, p {
@@ -182,7 +181,7 @@ a {
 }
 .section1 .sectbg11, .section3 .sectbg31, .section5 .sectbg51, .section2 .sectbg21, .section4 .sectbg41 {
     width: 470px;
-    height: 140px;
+    height: 210px;
     position: absolute;
     top: 44%;
     right: 12%;
@@ -194,31 +193,31 @@ a {
     opacity: 0;
 }
 .section2 .sectbg21, .section4 .sectbg41 {
-    left: 8%;
+    left: 10%;
 }
 .section1 .sectbg11 {
     transition: all 4s ease;
     transform: scale(0,0);
-    background: url(../images/sectbg11.png); 
+    background: url(../images/sectbg11.png) no-repeat; 
 }
 
 .section2 .sectbg21 {
     transition: all 4s ease;
     transform: scale(1.5,1.5);
     opacity: 0;
-    top: 30%;
-    background: url(../images/sectbg21.png);
+    top: 42%;
+    background: url(../images/sectbg21.png) no-repeat;
 }
 .section3 .sectbg31 {
     transition: all 4s ease;
     transform: scale(0,0);
-    background: url(../images/sectbg31.png);
+    background: url(../images/sectbg31.png) no-repeat;
 }
 .section4 .sectbg41 {
     transition: all 4s ease;
     transform: scale(1.5,1.5);
     opacity: 0;
-    background: url(../images/sectbg41.png);
+    background: url(../images/sectbg41.png) no-repeat;
 }
 .section5 .sectbg51 {
     transition: all 4s ease;
@@ -226,7 +225,7 @@ a {
     width: 528px;
     height: 210px;
     top: 38%;
-    background: url(../images/sectbg51.png);
+    background: url(../images/sectbg51.png) no-repeat;
 }
 
 /*动画效果*/
@@ -303,30 +302,37 @@ a {
     margin: 12px 0 12px;
 }
 .faq {
-    width: 50%;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    margin-top: 25px;
 }
 .faq-list {
-    width: 66%;
+    width: 75%;
     text-align: left;
 }
+.faq-list table{
+    /*width: 32%;*/
+    width: 38%;
+    /*font-size: 14px;*/
+}
+.faq-list table:last-child{
+    /*width: 60%;*/
+    width: 46%;
+    margin-left: 2%;
+}
 .faq-list:last-child {
-    width: 30%;
+    width: 40%;
     margin-top: 22px;
 }
-.faq-list p {
-    height: 25px;
-    line-height: 25px;
-    white-space: nowrap;
-    font-size: 14px;
+.lefttd{
+    width: 22px;
 }
 .qrcode {
-    margin-left: 25%;
-    margin-top: 30px;
+    /*margin-left: 15%;*/
+    margin-top: 25px;
     text-align: left;
 }
 .qrcode p {
-    font-size: 14px;
+    /*font-size: 14px;*/
     height: 20px;
     line-height: 20px;
 }
@@ -335,10 +341,7 @@ a {
     border: 1px solid #b3b3b3;
     padding: 2px;
 }
-.pdlft {
-    padding-left: 24px;
-}
-.pdlft span{
+.dot-span{
     width: 4px;
     height: 4px;
     display: inline-block;
@@ -590,7 +593,7 @@ a {
 }
 .tab-form li .send-code {
     width: 100px;
-    background: #a4a4a4;
+    background: #ff9600;
     color: #fff;
     height: 38px;
     line-height: 38px;
@@ -608,6 +611,9 @@ a {
 }
 .tab-form li .icon, .tab-form li .clearvalue, .tab-form li .errortip {
     position: absolute;
+}
+.clearvalue{
+    display: none;
 }
 .tab-form li .icon {
     width: 38px;
@@ -717,10 +723,10 @@ body .fp-slidesNav ul li a span {
 }
 @media screen and (min-width:1801px) {
     .ft-content {
-        width: 1400px;
+        width: 1600px;
     }
     .sectbg61 {
-        width: 1500px;
+        width: 1600px;
         margin: 161px auto 0;
     }
     .section6 .bottom{
