@@ -28,6 +28,7 @@
         var browser;
         var version;
         var ua = userAgent.toLowerCase();
+
         function uaMatch(ua) {
             var match = rMsie.exec(ua);
             if (match != null) {
@@ -51,6 +52,7 @@
             }
             return { browser: "", version: "0" };
         }
+
         var browserMatch = uaMatch(userAgent.toLowerCase());
         if (browserMatch.browser) {
             browser = browserMatch.browser;
@@ -591,6 +593,7 @@
                 // alert(dataId);
                 $('#fp-nav ul li:eq(' + dataId + ') a').trigger("click");
             });
+
             $('#container').fullpage({
                 // sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 continuousVertical: false,
@@ -686,10 +689,12 @@
             // .blur(function(){
             //     $(this).siblings(".clearvalue").hide();
             // });
+
             // 登录注册
             var cCode = 1;
             $("#code").blur(function () {
                 if ($(this).val() === "") {
+
                     // alert("密码不能为空！");
                     cCode = 1;
                     $(this).focus().siblings("p").show().text("验证码不能为空！");
@@ -712,6 +717,7 @@
             });
             $("#regPwd").blur(function () {
                 if ($(this).val() === "") {
+
                     // alert("密码不能为空！");
                     psw = 1;
                     $(this).focus().siblings("p").show().text("密码不能为空！");
@@ -737,6 +743,7 @@
                     $(this).siblings("p").show().text("密码不能少于六位！");
                     // alert("密码不能少于六位！");
                     repsd = 1;
+
                 } else if ($(this).val() !== $("#regPwd").val()) {
                     // alert("密码不一致！");
                     $(this).siblings("p").show().text("密码不一致！");
@@ -778,6 +785,7 @@
                 });
                 return true;
             });
+
             $("#regBtn").click(function () {
                 var regPhone = $('#regPhone');
                 checkTextValue(regPhone);
@@ -840,6 +848,7 @@
                 // alert("密码不能为空！");
                 obj.focus().siblings("p").show().text("密码不能为空！");
                 obj.siblings(".clearvalue").show();
+
             } else if (obj.val().length < 6) {
                 obj.siblings("p").show().text("密码不能少于六位！");
                 obj.siblings(".clearvalue").show();
@@ -887,12 +896,11 @@
                         alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
                     }
                 });
+
                 
             }
         }
         $('#GetVerifyCode').click(function () { verifyCode(); });
     </script>
-
-
 </body>
 </html>
