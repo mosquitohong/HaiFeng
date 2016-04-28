@@ -69,7 +69,6 @@
             alert('当前使用的浏览器版本过低，请升级浏览器或更换浏览器！');
         }
         // alert(browser+":"+str);
-
         // }
     </script>
 </head>
@@ -603,8 +602,8 @@
                 navigation: true,
                 afterRender: function () {
                     $('.section1').find(".sectbg11").animate({
-                        width: 470,
-                        height: 140,
+                        width: 489,
+                        height: 248,
                         opacity: 1
                     }, 1);
                 },
@@ -630,13 +629,10 @@
                     }
                 }
             });
-
             // 自动轮播
             // setInterval(function () {
             //     $.fn.fullpage.moveSectionDown();
             // }, 3000);
-
-
             // 头部导航切换
             $(".codelink").hover(function () {
                 // $(this).click();
@@ -666,7 +662,6 @@
                     $("#pageAbout").trigger("click");
                 }
             });
-
             $("#closeBtn").click(function () {
                 $("#header .menu li").removeClass("active");
                 $("#layerbox").hide();
@@ -677,8 +672,6 @@
             $("#aboutPage").click(function () {
                 $("#pageAbout").trigger("click");
             });
-
-
             // 登录注册切换
             $(".tab-menu li a").click(function () {
                 $(".tab-menu li a").removeClass("active");
@@ -686,8 +679,6 @@
                 var curId = $(this).attr("data-id");
                 $("#" + curId).slideDown("slow").siblings(".tab-form").slideUp("slow");
             });
-
-
             // 清除内容
             $(".clearvalue").click(function () {
                 $(this).prevAll("input").val("");
@@ -743,7 +734,6 @@
                     // $("#regRepPwd").focus();
                 }
             });
-
             $("#regRepPwd").blur(function () {
                 if ($(this).val() === "") {
                     repsd = 1;
@@ -884,9 +874,7 @@
             } else {
                 $("#GetVerifyCode").html("已发送(" + --time + ")");
             }
-
         }
-
         function verifyCode() {
             var mobile = $('#regPhone').val();
             if ($.trim(mobile) === "" || $.trim(mobile).length !== 11) {
@@ -912,12 +900,7 @@
                 
             }
         }
-
-
         $('#GetVerifyCode').click(function () { verifyCode(); });
-
     </script>
-
-
 </body>
 </html>
