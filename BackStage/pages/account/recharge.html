@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../style/normalize.css">
     <link rel="stylesheet" href="../../style/bs-main.css">
     <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -109,9 +110,9 @@
                                 <li>
                                     <label class="lf default-label">充值选项</label>
                                     <div class="charge fl">
-                                        <a href="">25看点</a>
-                                        <a href="">85看点</a>
-                                        <a href="">162看点</a>
+                                        <a href="javascript:void(0);" onclick="addMark($(this))" class="choosemark">25看点</a>
+                                        <a href="javascript:void(0);" onclick="addMark($(this))">85看点</a>
+                                        <a href="javascript:void(0);" onclick="addMark($(this))">162看点</a>
                                     </div>
                                 </li>
                                 <li>
@@ -121,10 +122,10 @@
                                 <li>
                                     <label class="lf default-label">支付方式</label>
                                     <div class="payway fl">
-                                        <a href="">
-                                            <input type="radio">支付宝</a>
-                                        <a href="">
-                                            <input type="radio">微信支付</a>
+                                        <a href="javascript:void(0);" class="alipay">
+                                            <input type="radio" name="payway" checked>支付宝</a>
+                                        <a href="javascript:void(0);" class="wxpay">
+                                            <input type="radio" name="payway">微信支付</a>
                                     </div>
                                 </li>
                             </ul>

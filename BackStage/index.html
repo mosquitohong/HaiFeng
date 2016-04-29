@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/bs-main.css">
     <script src="js/jquery.min.js"></script>
+    <script src="js/common.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -108,10 +109,10 @@
                             <div class="img">
                                 <img src="images/logo01.png"></div>
                             <div class="inport">
-                                <a href="">
+                                <p>
                                     <input type="file" >
                                     <span>点击上传</span>
-                                </a>
+                                </p>
                             </div>
                         </div>
                         <div class="base-infor clearfix fl">
@@ -156,13 +157,14 @@
                                 <input class="default-input lg-input" type="text" placeholder="请输入具体位置，如银泰城"></li>
                             <li>
                                 <label class="rt default-label">招聘岗位范围</label>
-
-                                <a href="" class="hiretype">
+                            </li>
+                            <li class="hirepost">
+                                <a href="javascript:void(0);" class="hiretype choosemark" onclick="addMark($(this))">
                                     <!-- <input type="checkbox">
                                     迎宾 -->
                                     迎宾
                                 </a>
-                                <a href="" class="hiretype">
+                                <a href="javascript:void(0);" class="hiretype" onclick="addMark($(this))">
                                     <!-- <input type="checkbox">
                                     迎宾 -->
                                     迎宾
@@ -215,5 +217,13 @@
         </div>
     </footer>
 </div>
+<script type="text/javascript">
+    // $(function(){
+    //     $(".hiretype").click(function(){
+    //         $(this).toggleClass("choosemark");
+    //     });
+    // })
+    
+</script>
 </body>
 </html>

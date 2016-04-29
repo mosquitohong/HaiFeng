@@ -29,6 +29,16 @@ a {
     text-decoration: none;
     color: #7a7a7a;
 }
+/*清除输入框上下箭头*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"]{
+    -moz-appearance:textfield;
+}
+
 /*清除浏览器自带清楚叉叉*/
 ::-ms-clear, ::-ms-reveal{
     display: none;
@@ -201,17 +211,18 @@ a {
     border-radius: 100%;
     border:1px solid #eee;
 }
-.inport a{
+.inport p{
     text-align: center;
     display: inline-block;
     width: 180px;
     position: relative;
     margin-top: 10px;
 }
-.inport input{
-    visibility: hidden;
-}
-.inport a span{
+.inport input,.inport p span{
+    /*visibility: hidden;*/
+    opacity: 0;
+    z-index: 2;
+
     position: absolute;
     left: 50%;
     display: inline-block;
@@ -219,7 +230,15 @@ a {
     text-align: center;
     margin-left: -30px;
     top: 0;
-
+    cursor: pointer;
+}
+.inport p span{
+    z-index: 1;
+    opacity: 1;
+}
+.inport input:hover + span{
+    cursor: pointer;
+    color:#f7982a;
 }
 .base-infor {
     margin:20px 0 0 5%;
@@ -280,6 +299,13 @@ a {
     padding:0px 20px;
     border-radius: 10px;
     border:1px solid #eee;
+}
+.hirepost{
+    padding-left: 70px;
+}
+.hirepost .choosemark{
+    border:1px solid #f7982a;
+    background: url(../images/choosemark.png);
 }
 .btnp{
     margin: 140px 0 30px;
@@ -364,8 +390,8 @@ a {
 }
 .recharge-menu li{
     /*width: 230px;*/
-    height: 64px;
-    line-height: 64px;
+    height: 80px;
+    line-height: 80px;
 }
 .charge a{
     display: inline-block;
@@ -377,6 +403,9 @@ a {
     font-size: 16px;
     margin-right: 20px;
 }
+.charge .choosemark{
+    border:2px solid #f7982a;
+}
 .recharge-menu li label{
     float: left;
 }
@@ -387,6 +416,294 @@ a {
     display: inline-block;
     height: 60px;
     line-height: 60px;
-    padding-left: 50px;
+    padding-left: 58px;
+    margin-right: 20px;
     background: url(../images/alipay.png) no-repeat left center;
+}
+.payway .wxpay{
+    background: url(../images/wxpay.png) no-repeat left center;
+}
+.payway input[type="radio"]{
+    vertical-align: -2px;
+    margin-right: 2px;
+}
+
+/*找人Style*/
+.hunttop{
+    padding: 30px 0 0 35px;
+    overflow: hidden;
+}
+.htleft-menu{
+    /*width: 270px;*/
+    margin-right: 30px;
+}
+.htleft-menu li{
+    /*width: 270px;*/
+    height: 36px;
+    margin-bottom: 70px;
+}
+.hunttop ul label{
+    width: auto;
+    font-weight: 500;
+    height: 36px;
+    line-height: 36px;
+}
+.choose-result,.input-320{
+    width: 320px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    border:1px solid #eee;
+}
+.choose-result{
+    padding-left: 2px;
+}
+.hunttop ul select{
+    height: 32px;
+    line-height: 32px;
+    margin-right: 20px;
+}
+.choose-result a{
+    display: inline-block;
+    width: auto;
+    padding: 0 10px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border:1px solid #eee;
+}
+.choose-result a span{
+
+}
+.input-320{
+    padding-left: 10px;
+}
+.input-320:focus,input[type="text"]:focus,input[type="number"]:focus,input[type="tel"]:focus,input[type="password"]:focus,input[type="email"]:focus,.agep input:focus{
+    /*width: 320px;*/
+    border:1px solid #f7982a;
+    outline: none;
+}
+
+.htmid-menu li p,.htleft-menu li p{
+    margin-right: 20px;
+    display: inline-block;
+}
+.htmid-menu input[type="radio"],.htmid-menu input[type="checkbox"],.htleft-menu p input[type="radio"]{
+    vertical-align: -2px;
+    margin-right: 3px;
+}
+.htmid-menu input[type="number"]{
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    border:1px solid #eee;
+    width: 38px;
+    display: inline-block;
+}
+.hunttop .btnp{
+    width: 130px;
+    margin: 30px 0 0 25px;
+}
+
+
+
+.hunt-pepole{
+    /*width: 100%;*/
+    margin: 0 auto;
+    overflow: hidden;
+}
+.single{
+    border:1px solid #eee;
+    margin: 10px 0 0 10px; 
+    padding: 10px 15px;
+}
+.single-image{
+    width: 120px;
+}
+.single-image img{
+    width: 120px;
+    height:120px;
+    border-radius: 100%; 
+    border:1px solid #eee;
+}
+.single-menu{
+    margin-left: 20px;
+}
+.single-menu li:first-child a{
+    
+}
+.single-menu li{
+    width: 150px;
+}
+
+.single-menu .btnp{
+    width: 94px;
+    margin:10px 0 0;
+}
+.single-menu .btnp button{
+    width: 100%;
+    margin:10px 0 0;
+    height: 26px;
+    line-height: 24px;
+    border-radius: 15px;
+    padding-left: 20px;
+    font-size: 12px;
+    background: #bcbcbc;
+}
+.single-menu .btnp button:hover{
+    background: #f7982a;
+}
+
+/*人才管理*/
+.timeli{
+    height: 36px;
+    line-height: 36px;
+}
+.timeli  .agep{
+    display: block;
+    padding-left: 74px;
+}
+.timeli  .agep input{
+    height: 22px;
+    line-height: 22px;
+    width: 75px;
+}
+.manage-status p{
+    /*text-align: center;*/
+    padding-left: 30px;
+}
+.manage-status p button{
+    width: 100px;
+    display: inline-block;
+    height: 32px;
+    line-height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    background: #c1c1c1;
+    margin-right: 20px;
+    border:none;
+}
+.manage-status p .activebtn{
+    background: #f7982a;
+}
+
+/*分页样式*/
+.pages{
+    margin: 30px auto;
+}
+.pages ul{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    margin-right: 2px;
+    list-style: none;
+    width: 460px;
+    margin: 0 auto 0;
+}
+.pages ul li{
+    *width:18px;
+    float: left;
+}
+.pages ul li a{
+    display: block;
+    border: none;
+    float: left;
+    background: none;
+    width: 40px;
+    height: 27px;
+    line-height: 27px;
+    color: #e1e1e1;
+    font-size: 14px;
+    text-align: center;
+}
+.pages ul li a:hover{
+    color: #f7982a;
+}
+.pages ul .pagesli3{
+    width: 22px;
+}
+.pages ul .pagesli3 a{
+    width: 22px;
+    /*margin-right:-10px;*/
+}
+.pages ul .pageactive a{
+    color: #f7982a;
+}
+.pages ul .pagesli1 a{
+    width: 18px;
+    background: url(../images/pagearrow.png) no-repeat;
+    background-position: 0 0;
+}
+.pages ul .pagesli2 a{
+    width: 16px;
+    background: url(../images/pagearrow.png) no-repeat;
+    background-position: -20px 0;
+}
+.pages ul .pagesli4 a{
+    width: 16px;
+    background: url(../images/pagearrow.png) no-repeat;
+    background-position: -80px 0;
+}
+.pages ul .pagesli5 a{
+    width: 16px;
+    background: url(../images/pagearrow.png) no-repeat;
+    background-position:-100px 0;
+}
+.pages ul .pagesli6{
+    width:130px;
+    display: block;
+    border: none;
+    float: left;
+    background: none;
+    height: 27px;
+    line-height: 27px;
+    /**line-height: 17px;*/
+    color: #e1e1e1;
+    font-size: 14px;
+    text-align: center;
+}
+.pages ul li label{
+    font-weight: normal;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: 4px;
+    height: 25px;
+    line-height: 25px;
+}
+ .pages ul li input{
+    width:50px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #7a7a7a;
+    border-radius: 10px;
+    padding-left: 4px;
+    font-size: 10px;
+    margin-right: 10px;
+    text-align:center;
+    vertical-align: top;
+}
+.pages ul li button{
+    width:25px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    line-height: 23px\0;
+    *line-height: 17px;
+    text-align: center;
+    border-radius: 100%;
+    background: none;
+    border: 1px solid #e1e1e1;
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 2px;
+    vertical-align: 6px\0;
+}
+.pages ul li input:focus,.pages li button:focus{
+    border: 1px solid #e1e1e1;
+    outline: none;
+} 
+.pages li button:hover{
+    background: rgba(7,170,178,.3);
 }
