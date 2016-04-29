@@ -49,11 +49,21 @@ a {
     font-family: "微软雅黑"!important;
     font-size: 14px;
 }
+/*清楚浏览器默认获得焦点时边框*/
+*:focus {
+    outline: none;
+} 
 .fr {
     float: right;
 }
 .fl {
     float: left;
+}
+.lf{
+    text-align: left;
+}
+.rt{
+    text-align: right;
 }
 /*清除浮动*/
 .clearfix:after {
@@ -68,7 +78,6 @@ a {
 .clearfix {
     zoom: 1;
 }
-/*底部样式*/
 
 /*头部样式*/
 .header{
@@ -115,14 +124,14 @@ a {
 
 .content{
     min-height: 680px;
-    /*border:1px solid #eee;*/
-    
+    border-bottom:1px solid #eee;
+    padding-bottom: 70px;
 }
 .maincontent{
-    border:1px solid red;
+    border:1px solid #eee;
     background: #fff;
     min-height: 680px;
-    width: 1050px;
+    /*width: 1050px;*/
     margin-left: 130px;
 }
 .icon{
@@ -160,8 +169,145 @@ a {
 .sub-menu li .active{
     color: #f7982a;
 }
-/*底部样式*/
+.sub-menu li a:hover{
+    color: #f7982a;
+}
 
+.content-panel{
+    padding:0 10px;
+}
+.panel-top{
+    border-bottom: 1px solid #eee;
+}
+.panel-top h3{
+    margin-top: 10px;
+    height: 46px;
+    line-height: 46px;
+    padding-left: 20px;
+}
+.infor{
+    height: auto;
+    overflow: hidden;
+    border-bottom: 2px solid #eee;
+}
+.portrait{
+    /*width: 200px;*/
+    margin:20px 0 0  90px;
+    /*border: 1px solid #ddd;*/
+}
+.portrait img{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    border:1px solid #eee;
+}
+.inport a{
+    text-align: center;
+    display: inline-block;
+    width: 180px;
+    position: relative;
+    margin-top: 10px;
+}
+.inport input{
+    visibility: hidden;
+}
+.inport a span{
+    position: absolute;
+    left: 50%;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    margin-left: -30px;
+    top: 0;
+
+}
+.base-infor {
+    margin:20px 0 0 5%;
+}
+.default-label{
+    width: 95px;
+    display: inline-block;
+    margin-right: 25px;
+}
+.infor-menu {
+    height: 270px;
+    overflow: hidden;
+}
+.infor-menu li{
+    height: 36px;
+    line-height: 36px;
+    margin-bottom: 10px;
+}
+.default-input,.default-select{
+    border:1px solid #eee;
+    padding:0 0 0 10px;
+    height: 34px;
+    line-height: 34px;
+    width: 204px;
+}
+.lg-input{
+    width: 410px;
+}
+.infor-menu li .default-input:focus,.infor-menu li textarea:focus{
+    border:1px solid #f7982a;
+}
+.infor-menu li textarea{
+    border:1px solid #eee;
+    padding:0 0 0 10px;
+}
+.infor-menu .textareali label{
+    line-height: 20px;
+    vertical-align: 32px;
+}
+.infor-menu .textareali textarea{
+    line-height: 25px;
+}
+
+.hire-infor{
+    margin: 20px 0 0 80px;
+}
+.infor-menu .default-select{
+    width: 128px;
+}
+.hire-menu{
+    height: auto;
+}
+.hiretype{
+    width: auto;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding:0px 20px;
+    border-radius: 10px;
+    border:1px solid #eee;
+}
+.btnp{
+    margin: 140px 0 30px;
+    text-align: center;
+}
+.btnp button{
+    display: inline-block;
+    width: 208px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    border-radius: 3px;
+    border:none;
+    background: #f7982a;
+    color: #fff;
+    font-size: 16px;
+}
+.btnp .editbtn{
+    width: 155px;
+    margin: 0 50px 0 -160px;
+}
+.btnp button:focus{
+    border:none;
+}
+/*底部样式*/
+.footer{
+    margin-top: 40px;
+}
 .bt-cont{
     width: 760px;
     margin: 0 auto;
@@ -205,4 +351,42 @@ a {
     font-size: 12px;
     color: #999999;
     text-align: center;
+}
+
+/*看点充值*/
+.recharge{
+    overflow: hidden;
+}
+.recharge-menu{
+    /*width: 200px;*/
+    display: block;
+    margin: 55px 0 0 80px;
+}
+.recharge-menu li{
+    /*width: 230px;*/
+    height: 64px;
+    line-height: 64px;
+}
+.charge a{
+    display: inline-block;
+    height: 64px;
+    line-height: 64px;
+    width: 120px;
+    text-align: center;
+    border:2px solid #eee;
+    font-size: 16px;
+    margin-right: 20px;
+}
+.recharge-menu li label{
+    float: left;
+}
+.payway{
+
+}
+.payway a{
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 50px;
+    background: url(../images/alipay.png) no-repeat left center;
 }
