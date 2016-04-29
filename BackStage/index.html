@@ -9,7 +9,7 @@
     <meta name="renderer" content="webkit" />
 
     <link rel="stylesheet" href="style/normalize.css">
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/bs-main.css">
     <script src="js/jquery.min.js"></script>
 </head>
 <body>
@@ -18,59 +18,57 @@
             <header>
                 <div class="head">
                     <div class="logo">
-                        <img src="images/logo.png"></div>
-                    <ul class="topmenu">
+                        <img src="images/logo01.png"></div>
+                    <ul class="topmenu fr">
                         <li>
-                            <a href=""></a>
+                            <a href=""><span class="icon icon-quit"></span>退出</a>
                         </li>
                         <li>
-                            <a href=""></a>
+                            <a href=""><span class="icon icon-publish"></span>公众号</a>
                         </li>
                         <li>
-                            <a href=""></a>
+                            <a href=""><span class="icon icon-index"></span>首页</a>
                         </li>
                     </ul>
                 </div>
             </header>
         </div>
-        <div class="content">
-            <ul class="sidebar-menu">
+        <div class="topinfor clearfix">
+            <p class="location fl">当前招聘地点：<span>杭州，银泰城</span><a href="">修改</a></p>
+            <p class="merchant-name fr">杭州外婆家餐饮有限公司</p>
+        </div>
+        <div class="content clearfix">
+            <ul class="sidebar-menu fl">
                 <li>
-                    <h2></h2>
-                    <ul>
+                    <h3><span class="icon icon-merchant"></span>商家中心</h3>
+                    <ul class="sub-menu">
                         <li>
-                            <a href=""></a>
+                            <a href="" >马上找人</a>
                         </li>
                         <li>
-                            <a href=""></a>
-                        </li>
-                        <li>
-                            <a href=""></a>
+                            <a href="">人才管理</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <h2></h2>
-                    <ul>
+                    <h3><span class="icon icon-account"></span>我的账户</h3>
+                    <ul class="sub-menu">
                         <li>
-                            <a href=""></a>
+                            <a href="">账户概览</a>
                         </li>
                         <li>
-                            <a href=""></a>
-                        </li>
-                        <li>
-                            <a href=""></a>
+                            <a href="">看点充值</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <h2></h2>
-                    <ul>
+                    <h3><span class="icon icon-setting"></span>商家设置</h3>
+                    <ul class="sub-menu">
                         <li>
-                            <a href=""></a>
+                            <a href="" class="active">档案管理</a>
                         </li>
                         <li>
-                            <a href=""></a>
+                            <a href="">安全设置</a>
                         </li>
                         <li>
                             <a href=""></a>
@@ -79,7 +77,72 @@
                 </li>
             </ul>
             <div class="maincontent">
-                <div class="content-panel"></div>
+                <div class="content-panel">
+                    <div class="panel-top">
+                        <h2>档案管理</h2>
+                    </div>
+                    <div class="infor">
+                        <div class="portrait">
+                            <div class="img"><img src=""></div>
+                            <div class="inport">
+                                <input type="file" value="点击上传">
+                            </div>
+                        </div>
+                        <div class="base-infor">
+                            <ul class="infor-menu">
+                                <li>
+                                    <label>商家名称</label>
+                                    <input type="text" placeholder="请输入商家名称">
+                                </li>
+                                <li>
+                                    <label>联系人</label>
+                                    <input type="text" placeholder="请输入联系人姓名">
+                                </li>
+                                <li>
+                                    <label>联系电话</label>
+                                    <input type="text" placeholder="请输入联系人电话">
+                                </li>
+                                <li>
+                                    <label>联系地址</label>
+                                    <input type="text" placeholder="请输入联系人地址">
+                                </li>
+                                <li>
+                                    <label>商家介绍</label>
+                                    <textarea rows="2" placeholder="可介绍的品牌、门店、服务等(限定50个字)"></textarea>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hire-infor">
+                        <ul class="infor-menu">
+                                <li>
+                                    <label>所属行业</label>
+                                    <select>
+                                        <option option="option1">餐饮</option>
+                                        <option option="option2">餐饮</option>
+                                        <option option="option3">餐饮</option>
+                                        <option option="option4">餐饮</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label>招聘岗位地点</label>
+                                    <select>
+                                        <option option="option1">杭州</option>
+                                        <option option="option2">宁波</option>
+                                        <option option="option3">绍兴</option>
+                                    </select>
+                                    <input type="text" placeholder="请输入具体位置，如银泰城">
+                                </li>
+                                <li>
+                                    <label>招聘岗位范围</label>
+                                    
+                                    <a href=""><input type="checkbox">迎宾</a>
+                                    <a href=""><input type="checkbox">迎宾</a>
+                                </li>
+                            </ul>
+                            <p><button type="button"></button>确认，找人</p>
+                    </div>
+                </div>
             </div>
         </div>
         <footer class="footer">

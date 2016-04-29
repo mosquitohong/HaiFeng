@@ -6,6 +6,7 @@ html, body, .wrap, #container {
 body {
     color: #333;
     font: 12px/1.5 "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    background: #F7F7F7;
 }
 
 h1, h2, h3, h4, p {
@@ -67,14 +68,100 @@ a {
 .clearfix {
     zoom: 1;
 }
-
 /*底部样式*/
-.footer p {
-    height: 25px;
-    line-height: 25px;
-    font-size: 12px;
-    color: #999999;
+
+/*头部样式*/
+.header{
+    height: 60px;
+    background: #F7982A;
 }
+.head,.topinfor,.content{
+    width: 1180px;
+    margin:0 auto;
+}
+.logo{
+    vertical-align: middle;
+    text-align: left;
+    display: table-cell;
+    width: 120px;
+    height: 60px;
+}
+.logo img{
+    width: auto;
+    height: 45px;
+}
+.topmenu{
+    width: 400px;
+    margin-top: -60px;
+}
+.topmenu li a {
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    width: auto;
+    padding: 0 6px;
+    color: #fff;
+    float: right;
+    text-align: right;
+}
+.topinfor{
+    height: 70px;
+    line-height: 70px;
+}
+.location a{
+    color: #F7982A;
+    text-decoration: underline;
+}
+
+.content{
+    min-height: 680px;
+    /*border:1px solid #eee;*/
+    
+}
+.maincontent{
+    border:1px solid red;
+    background: #fff;
+    min-height: 680px;
+    width: 1050px;
+    margin-left: 130px;
+}
+.icon{
+    width: 26px;
+    /*height: 26px;*/
+    /*display: inline-block;*/
+    position: relative;
+    margin-right: 30px;
+}
+.icon:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 26px;
+    width: 26px;
+    margin-top: -11px;
+    background: url(../images/icon.png) no-repeat center center;
+}
+/*侧边栏样式*/
+.sidebar-menu{
+    width: 130px;
+}
+.sidebar-menu h3{
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+}
+.sub-menu li a{
+    padding-left: 25px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.sub-menu li .active{
+    color: #f7982a;
+}
+/*底部样式*/
+
 .bt-cont{
     width: 760px;
     margin: 0 auto;
@@ -111,4 +198,11 @@ a {
     height: 20px;
     width: auto;
     vertical-align: -5px;
+}
+.footer p {
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #999999;
+    text-align: center;
 }
