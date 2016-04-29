@@ -1,0 +1,114 @@
+html, body, .wrap, #container {
+    height: 100%;
+    width: 100%;
+    font-family: "微软雅黑";
+}
+body {
+    color: #333;
+    font: 12px/1.5 "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+h1, h2, h3, h4, p {
+    font-family: "微软雅黑", arial, helvetica;
+    margin: 0;
+    padding: 0;
+}
+img {
+    -webkit-transition: all 0.7s ease-out;
+    -moz-transition: all 0.7s ease-out;
+    -o-transition: all 0.7s ease-out;
+    transition: all 0.7s ease-out;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #7a7a7a;
+}
+/*清除浏览器自带清楚叉叉*/
+::-ms-clear, ::-ms-reveal{
+    display: none;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}              
+::-webkit-input-placeholder{
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}
+:-ms-input-placeholder{
+    font-family: "微软雅黑"!important;
+    font-size: 14px;
+}
+.fr {
+    float: right;
+}
+.fl {
+    float: left;
+}
+/*清除浮动*/
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    clear: both;
+}
+/*兼容IE*/
+.clearfix {
+    zoom: 1;
+}
+
+/*底部样式*/
+.footer p {
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #999999;
+}
+.bt-cont{
+    width: 760px;
+    margin: 0 auto;
+    color:#999999;
+}
+.bt-logo{
+    float: left;
+}
+.bt-logo img{
+    width: 114px;
+    height: auto;
+}
+.bt-menu{
+    float: right;
+}
+.bt-menu ul{
+    width:630px;
+}
+.bt-menu li{
+    width: 300px;
+    height: 20px;
+    line-height: 20px;
+    float: left;
+    text-align: left;
+}
+.bt-menu li span{
+    width: auto;
+    color:#999999;
+}
+.bt-cont>p{
+    text-align: center;
+}
+.joinway img{
+    height: 20px;
+    width: auto;
+    vertical-align: -5px;
+}
