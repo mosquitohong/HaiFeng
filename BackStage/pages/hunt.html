@@ -9,539 +9,430 @@
     <meta name="renderer" content="webkit" />
 
     <link rel="stylesheet" href="../style/normalize.css">
-    <link rel="stylesheet" href="../style/bs-main.css">
+    <link rel="stylesheet" href="../style/main.css">
     <script src="../js/jquery.min.js"></script>
     <script src="../js/common.js"></script>
+    <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header">
-            <header>
-                <div class="head">
-                    <div class="logo">
-                        <img src="../images/logo01.png">
-                    </div>
-                    <ul class="topmenu fr">
-                        <li>
-                            <a href="">
-                                <span class="icon icon-quit"></span>
-                                退出
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span class="icon icon-publish"></span>
-                                公众号
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span class="icon icon-index"></span>
-                                首页
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </header>
+    <div class="content-panel">
+        <div class="panel-top">
+            <h3>马上找人</h3>
         </div>
-        <div class="topinfor clearfix">
-            <p class="location fl">
-                当前招聘地点：
-                <span>杭州，银泰城</span>
-                <a href="">修改</a>
-            </p>
-            <p class="merchant-name fr">杭州外婆家餐饮有限公司</p>
-        </div>
-        <div class="content clearfix">
-            <ul class="sidebar-menu fl">
-                <li>
-                    <h3>
-                        <span class="icon icon-merchant"></span>
-                        商家中心
-                    </h3>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="">马上找人</a>
-                        </li>
-                        <li>
-                            <a href="">人才管理</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>
-                        <span class="icon icon-account"></span>
-                        我的账户
-                    </h3>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="">账户概览</a>
-                        </li>
-                        <li>
-                            <a href="">看点充值</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>
-                        <span class="icon icon-setting"></span>
-                        商家设置
-                    </h3>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="" class="active">档案管理</a>
-                        </li>
-                        <li>
-                            <a href="">安全设置</a>
-                        </li>
-                        <li>
-                            <a href=""></a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="maincontent">
-                <div class="content-panel">
-                    <div class="panel-top">
-                        <h3>马上找人</h3>
-                    </div>
-                    <div class="hunttop">
-                        <div class="huntleft fl">
-                            <ul class="htleft-menu">
-                                <li>
-                                    <label class="default-label fl">岗位范围</label>
-                                    <select class="fl">
-                                        <option option="option1">选择</option>
-                                        <option option="option2">迎宾1</option>
-                                        <option option="option3">迎宾2</option>
-                                    </select>
-                                    <div class="choose-result fl">
-                                        <a href="javascript:void(0);">
-                                            迎宾
-                                            <span>×</span>
-                                        </a>
-                                        <a href="javascript:void(0);">
-                                            迎宾
-                                            <span>×</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <label class="default-label fl">岗位地点</label>
-                                    <select class="fl">
-                                        <option option="option1">选择</option>
-                                        <option option="option2">选择2</option>
-                                        <option option="option3">选择3</option>
-                                    </select>
-                                    <input type="text" class="input-320">
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <a href=""></a>
-                                            </li>
-                                            <li>
-                                                <a href=""></a>
-                                            </li>
-                                            <li>
-                                                <a href=""></a>
-                                            </li>
-                                            <li>
-                                                <a href=""></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="huntmid fl">
-                            <ul class="htmid-menu">
-                                <li>
-                                    <label class="default-label">简历</label>
-                                    <p>
-                                        <input type="checkbox" name="resume">有照片
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" name="resume">有视频
-                                    </p>
-                                </li>
-                                <li>
-                                    <label class="default-label">性别</label>
-                                    <p>
-                                        <input type="radio" name="gender" checked>不限
-                                    </p>
-                                    <p>
-                                        <input type="radio" name="gender">男
-                                    </p>
-                                    <p>
-                                        <input type="radio" name="gender">女
-                                    </p>
-                                </li>
-                                <li>
-                                    <label class="default-label">年龄</label>
-                                    <p>
-                                        <input type="radio" name="age" checked>不限
-                                    </p>
-                                    <p class="agep">
-                                        <input type="number">
-                                        <span>至</span>
-                                        <input type="number">
-                                    </p>
-                                </li>
-                                <li>
-                                    <label class="default-label">工作</label>
-                                    <p>
-                                        <input type="radio" name="jobtype" checked>全职
-                                    </p>
-                                    <p>
-                                        <input type="radio" name="jobtype">兼职
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <p class="btnp fl">
-                            <button type="button">查找</button>
-                        </p>
-                    </div>
-                    <div class="hunt-pepole clearfix">
-                        <div class="sigle-content clearfix">
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="single clearfix fl">
-                                <div class="single-image fl">
-                                    <img src="../images/logo01.png">
-                                    <a href="">
-                                        <span class="icon icon-picture"></span>
-                                        照片
-                                    </a>
-                                    <a href="">
-                                        <span class="icon icon-video"></span>
-                                        视频
-                                    </a>
-                                </div>
-                                <ul class="single-menu fl">
-                                    <li>
-                                        <label>姓名：</label>
-                                        <span>高司令</span>
-                                        <a href="" class="fr">18岁</a>
-                                    </li>
-                                    <li>
-                                        <label>岗位：</label>
-                                        <span>服务员</span>
-                                    </li>
-                                    <li>
-                                        <label>距离：</label>
-                                        <span>2kg以内</span>
-                                    </li>
-                                    <li>
-                                        <label>位置：</label>
-                                        <span>西溪花园水岸花苑</span>
-                                    </li>
-                                    <li>
-                                        <p class="btnp">
-                                            <button type="button" class="icon icon-lock">我要看看</button>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+        <div class="hunttop">
+            <div class="huntleft fl">
+                <ul class="htleft-menu">
+                     <li>
+                        <label class="default-label fl">岗位范围</label>
+                        <div class="hiretype-container fl">
+                            <span class="icon icon-arrow" id="chooseSpan">选择</span>
+                            <div class="hiretype-content">
+                                <p class="hiretype-infor lf">
+                                    请选择要招聘的岗位
+                                    <span class="fr">
+                                        当前行业：
+                                        <small>餐饮</small>
+                                    </span>
+                                </p>
+                                <a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
+                                <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
+                                <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
+                                <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
 
-                        <div class="pages">
+                                <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
+                                <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
+                                <p class="lf">
+                                    <button class="confirm-type fr">确定</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="choose-result fl" id="chooseResult"></div>
+                    </li>
+                    <li>
+                        <label class="default-label fl">岗位地点</label>
+                        <select class="fl">
+                            <option option="option1">选择</option>
+                            <option option="option2">选择2</option>
+                            <option option="option3">选择3</option>
+                        </select>
+                        <input type="text" class="input-320">
+                        <div>
                             <ul>
-                                <li class="pagesli1">
-                                    <a href="javascript:void(0);"></a>
+                                <li>
+                                    <a href=""></a>
                                 </li>
-                                <li class="pagesli2">
-                                    <a href="javascript:void(0);"></a>
+                                <li>
+                                    <a href=""></a>
                                 </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">1</a> </li>
-                                <li class="pagesli3 pageactive"> <a href="javascript:void(0);">2</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">3</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">4</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">5</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">6</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">7</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">...</a> </li>
-                                <li class="pagesli3"> <a href="javascript:void(0);">21</a> </li>
-                                <li class="pagesli4">
-                                    <a href="javascript:void(0);"></a>
+                                <li>
+                                    <a href=""></a>
                                 </li>
-                                <li class="pagesli5">
-                                    <a href="javascript:void(0);"></a>
-                                </li>
-                                <li class="pagesli6">
-                                    <input type="number">
-                                    <button> </button>
+                                <li>
+                                    <a href=""></a>
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="huntmid fl">
+                <ul class="htmid-menu">
+                    <li>
+                        <label class="default-label">简历</label>
+                        <p>
+                            <input type="checkbox" name="resume">有照片</p>
+                        <p>
+                            <input type="checkbox" name="resume">有视频</p>
+                    </li>
+                    <li>
+                        <label class="default-label">性别</label>
+                        <p>
+                            <input type="radio" name="gender" checked>不限</p>
+                        <p>
+                            <input type="radio" name="gender">男</p>
+                        <p>
+                            <input type="radio" name="gender">女</p>
+                    </li>
+                    <li>
+                        <label class="default-label">年龄</label>
+                        <p>
+                            <input type="radio" name="age" checked>不限</p>
+                        <p class="agep">
+                            <input type="number">
+                            <span>至</span>
+                            <input type="number"></p>
+                    </li>
+                    <li>
+                        <label class="default-label">工作</label>
+                        <p>
+                            <input type="radio" name="jobtype" checked>全职</p>
+                        <p>
+                            <input type="radio" name="jobtype">兼职</p>
+                    </li>
+                </ul>
+            </div>
+            <p class="btnp fl">
+                <button type="button">查找</button>
+            </p>
+        </div>
+        <div class="hunt-pepole clearfix">
+            <div class="sigle-content clearfix">
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
                     </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-women"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
                 </div>
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-women"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-women"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-women"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-man"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-women"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-image fl">
+                        <img src="../images/logo01.png">
+                        <a href="">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </div>
+                    <ul class="single-menu fl">
+                        <li>
+                            <label>姓名：</label>
+                            <span>高司令</span>
+                            <a href="" class="fr">
+                                <span class="icon icon-man"></span>
+                                18岁
+                            </a>
+                        </li>
+                        <li>
+                            <label>岗位：</label>
+                            <span>服务员</span>
+                        </li>
+                        <li>
+                            <label>距离：</label>
+                            <span>2kg以内</span>
+                        </li>
+                        <li>
+                            <label>位置：</label>
+                            <span>西溪花园水岸花苑</span>
+                        </li>
+                        <li>
+                            <p class="btnp">
+                                <button type="button" class=" icon-lock" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=inforicon','提示',['344px','124px'],['继续看']);">我要看看</button>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pages">
+                <ul>
+                    <li class="pagesli1">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli2">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">1</a>
+                    </li>
+                    <li class="pagesli3 pageactive">
+                        <a href="javascript:void(0);">2</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">3</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">4</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">5</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">6</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">7</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">...</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">21</a>
+                    </li>
+                    <li class="pagesli4">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli5">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli6">
+                        <input type="number">
+                        <button></button>
+                    </li>
+                </ul>
             </div>
         </div>
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="bt-cont clearfix">
-                    <div class="bt-logo">
-                        <img src="../images/logo01.png">
-                    </div>
-                    <div class="bt-menu clearfix">
-                        <ul class="clearfix">
-                            <li class="focusus">
-                                <span>关注我们：</span>
-                                <a href="" class="joinway">
-                                    <img src="../images/footjoin.png">
-                                </a>
-                                <!-- <a href="">
-                                    <img src="">微信</a>
-                                <a href="">
-                                    <img src="">QQ</a>
-                                -->
-                            </li>
-                            <li>杭州骏霖信息科技有限公司</li>
-                            <li>
-                                <span>意见反馈：</span>
-                                feedback@haifeng.com
-                            </li>
-                            <li>杭州市余杭区未来科技城</li>
-                            <li>
-                                <span>商务合作：</span>
-                                BD@ihaifeng.com
-                            </li>
-                            <li>梦想小镇3栋3F</li>
-                        </ul>
-                    </div>
-                </div>
-                <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
-            </div>
-        </footer>
     </div>
-    <script type="text/javascript">
-        // $(function(){
-        //     $(".hiretype").click(function(){
-        //         $(this).toggleClass("choosemark");
-        //     });
-        // })
-
-    </script>
 </body>
 </html>
