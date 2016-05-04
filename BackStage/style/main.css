@@ -6,7 +6,6 @@ html, body, .wrap, #container {
 body {
     color: #333;
     font: 12px/1.5 "微软雅黑", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
-    background: #F7F7F7;
 }
 
 h1, h2, h3, h4, p {
@@ -88,7 +87,9 @@ input[type="number"]{
 .clearfix {
     zoom: 1;
 }
-
+.wrapper{
+    background: #F7F7F7;
+}
 /*头部样式*/
 .header{
     height: 60px;
@@ -138,11 +139,14 @@ input[type="number"]{
     padding-bottom: 70px;
 }
 .maincontent{
-    border:1px solid #eee;
-    background: #fff;
+    /*border:1px solid #eee;*/
+    /*background: #fff!important;*/
     min-height: 680px;
     /*width: 1050px;*/
     margin-left: 130px;
+}
+.maincontent iframe{
+    background: #fff;
 }
 
 /*侧边栏样式*/
@@ -150,14 +154,14 @@ input[type="number"]{
     width: 130px;
 }
 .sidebar-menu h3{
-    height: 30px;
-    line-height: 30px;
+    height: 33px;
+    line-height: 33px;
     font-size: 16px;
 }
 .sub-menu li a{
     padding-left: 25px;
-    height: 30px;
-    line-height: 30px;
+    height: 35px;
+    line-height: 35px;
     font-size: 14px;
 }
 .sub-menu li .active{
@@ -169,6 +173,8 @@ input[type="number"]{
 
 .content-panel{
     padding:0 10px;
+    background: #fff;
+    border:1px solid #eee;
 }
 .panel-top{
     border-bottom: 1px solid #eee;
@@ -178,22 +184,23 @@ input[type="number"]{
     height: 46px;
     line-height: 46px;
     padding-left: 20px;
+    font-size: 18px;
 }
 .infor{
     height: auto;
     overflow: hidden;
-    border-bottom: 2px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 .portrait{
     /*width: 200px;*/
-    margin:20px 0 0  90px;
+    margin:60px 0 0  105px;
     /*border: 1px solid #ddd;*/
 }
 .portrait img{
-    width: 180px;
-    height: 180px;
+    width: 175px;
+    height: 175px;
     border-radius: 100%;
-    border:1px solid #eee;
+    border:2px solid #eee;
 }
 .inport p{
     text-align: center;
@@ -219,18 +226,20 @@ input[type="number"]{
 .inport p span{
     z-index: 1;
     opacity: 1;
+    font-size: 15px;
 }
 .inport input:hover + span{
     cursor: pointer;
     color:#f7982a;
 }
 .base-infor {
-    margin:20px 0 0 5%;
+    margin:60px 0 0 70px;
 }
 .default-label{
     width: 95px;
     display: inline-block;
     margin-right: 25px;
+    font-size: 15px;
 }
 .infor-menu {
     height: 270px;
@@ -244,8 +253,8 @@ input[type="number"]{
 .default-input,.default-select{
     border:1px solid #eee;
     padding:0 0 0 10px;
-    height: 34px;
-    line-height: 34px;
+    height: 32px;
+    line-height: 32px;
     width: 204px;
 }
 .lg-input{
@@ -271,6 +280,13 @@ input[type="number"]{
 }
 .infor-menu .default-select{
     width: 128px;
+    color:#333;
+    background: #fff url(../images/arrow.png) no-repeat 105px 12px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    -o-appearance:none;
 }
 .hire-menu{
     height: auto;
@@ -284,16 +300,18 @@ input[type="number"]{
     padding:0px 20px;
     border-radius: 10px;
     border:1px solid #eee;
+    margin-right: 15px;
 }
-.hirepost{
+.infor-menu .hirepost{
     padding-left: 70px;
+    height: 106px;
 }
 .hirepost .choosemark{
     border:1px solid #f7982a;
-    background: url(../images/choosemark.png);
+    /*background: url(../images/choosemark.png);*/
 }
 .btnp{
-    margin: 140px 0 30px;
+    margin: 70px 0 30px;
     text-align: center;
 }
 .btnp button,.btnp .confirm-link{
@@ -312,9 +330,11 @@ input[type="number"]{
 .btnp .confirm-link{
     display: none;
     padding:0 30px;
+    font-size: 20px;
 }
 .btnp .editbtn{
     width: 140px;
+    font-size: 20px;
 }
 .btnp button:focus{
     border:none;
@@ -324,7 +344,7 @@ input[type="number"]{
     margin-top: 40px;
 }
 .bt-cont{
-    width: 760px;
+    width: 960px;
     margin: 0 auto;
     color:#999999;
 }
@@ -337,14 +357,16 @@ input[type="number"]{
 }
 .bt-menu{
     float: right;
+    /*margin-right: 120px;*/
 }
 .bt-menu ul{
-    width:630px;
+    width:650px;
+    font-size: 14px;
 }
 .bt-menu li{
-    width: 300px;
-    height: 20px;
-    line-height: 20px;
+    width: 325px;
+    height: 29px;
+    line-height: 29px;
     float: left;
     text-align: left;
 }
@@ -361,11 +383,13 @@ input[type="number"]{
     vertical-align: -5px;
 }
 .footer p {
+    width: 520px;
+    margin: 30px auto;
     height: 25px;
     line-height: 25px;
-    font-size: 12px;
+    font-size: 14px;
     color: #999999;
-    text-align: center;
+    text-align: left;
 }
 
 /*看点充值*/
@@ -391,15 +415,61 @@ input[type="number"]{
     border:2px solid #eee;
     font-size: 16px;
     margin-right: 20px;
+    color: #bcbcbc;
+    position: relative;
+    overflow: hidden;
 }
+.charge a span{
+    font-size: 24px;
+}
+
 .charge .choosemark{
     border:2px solid #f7982a;
+    color: #f7982a;
 }
+.charge a .icon-choose{
+    display: none;
+}
+.charge .choosemark .icon-choose{
+    display: inline-block;
+    position: absolute;
+    right: -23px;
+    bottom: 20px;
+}
+/*.discount:after{
+    content: "";
+    position: absolute;
+    display: block;
+    top: -2px;
+    left: -3px;
+    width: 36px;
+    height: 36px;
+    background: url(../images/spriteicon.png) no-repeat -199px -7px;
+
+}*/
+
+.discount i{
+    position: absolute;
+    top: -23px;
+    left: -33px;
+    width: 67px;
+    height: 50px;
+    line-height: 87px;
+    color: #fff;
+    font-size: 10px;
+    font-style: normal;
+    transform: rotate(-45deg);
+    z-index: 9999;
+    background: #e60012;
+}
+
 .recharge-menu li label{
     float: left;
+    font-size: 17px;
 }
-.payway{
-
+.recharge-menu li>p{
+    font-size: 16px;
+    color: #bcbcbc;
 }
 .payway a{
     display: inline-block;
@@ -407,6 +477,8 @@ input[type="number"]{
     line-height: 60px;
     padding-left: 58px;
     margin-right: 20px;
+    font-size: 16px;
+    color: #bcbcbc;
     background: url(../images/alipay.png) no-repeat left center;
 }
 .payway .wxpay{
@@ -418,12 +490,13 @@ input[type="number"]{
 }
 .btnp .confirm-recharge{
     width: 140px;
+    font-size: 20px;
 }
 
 /*找人Style*/
 .hunttop{
     padding: 30px 0 0 35px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .htleft-menu{
     /*width: 270px;*/
@@ -434,11 +507,16 @@ input[type="number"]{
     height: 36px;
     margin-bottom: 70px;
 }
+.htmid-menu li{
+    height: 36px;
+    line-height: 36px;
+}
 .hunttop ul label{
     width: auto;
     font-weight: 500;
-    height: 36px;
-    line-height: 36px;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 15px;
 }
 .hiretype-container{
     display: inline-block;
@@ -449,11 +527,12 @@ input[type="number"]{
     background-color: #fff;
     display: inline-block;
     border-radius: 0;
-    width: 54px;
+    width: 48px;
     height: 32px;
     line-height: 32px;
     margin-right: 20px;
-    text-align: center;
+    text-align: left;
+    padding-left: 6px;
     cursor: pointer;
 }
 .hiretype-content{
@@ -466,6 +545,7 @@ input[type="number"]{
     border:1px solid #f7982a;
     padding: 0 10px 10px;
     display: none;
+    z-index: 9999;
 }
 .hiretype-content .hiretype-infor{
     border-bottom: 1px solid #eee;
@@ -479,7 +559,7 @@ input[type="number"]{
 }
 .hiretype-content .choosemark{
     border:1px solid #f7982a;
-    background: url(../images/choosemark.png);
+    /*background: url(../images/choosemark.png);*/
 }
 .hiretype-content p{
     display: block!important;
@@ -497,8 +577,8 @@ input[type="number"]{
 }
 .choose-result,.input-320{
     width: 320px;
-    height: 36px;
-    line-height: 36px;
+    height: 32px;
+    line-height: 32px;
     display: inline-block;
     border:1px solid #eee;
 }
@@ -509,13 +589,23 @@ input[type="number"]{
     height: 32px;
     line-height: 32px;
     margin-right: 20px;
+    width: 54px;
+    padding-left: 6px;
+    border:1px solid #eee;
+    color:#333;
+    background: #fff url(../images/arrow.png) no-repeat 35px 12px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    -o-appearance:none;
 }
 .choose-result a{
     display: inline-block;
     width: auto;
     padding: 0 10px;
-    height: 32px;
-    line-height: 32px;
+    height: 28px;
+    line-height: 28px;
     text-align: center;
     border:1px solid #eee;
     margin-right: 2px;
@@ -528,13 +618,14 @@ input[type="number"]{
 }
 .input-320:focus,input[type="text"]:focus,input[type="number"]:focus,input[type="tel"]:focus,input[type="password"]:focus,input[type="email"]:focus,.agep input:focus{
     /*width: 320px;*/
-    border:1px solid #f7982a;
+    border:1px solid #f7982a!important;
     outline: none;
 }
 
 .htmid-menu li p,.htleft-menu li p{
     margin-right: 20px;
     display: inline-block;
+    font-size: 15px;
 }
 .htmid-menu input[type="radio"],.htmid-menu input[type="checkbox"],.htleft-menu p input[type="radio"]{
     vertical-align: -2px;
@@ -554,6 +645,7 @@ input[type="number"]{
 }
 .hunttop .btnp button{
     width: 140px;
+    font-size: 20px;
 }
 
 
@@ -608,25 +700,31 @@ input[type="number"]{
     /*padding-left: 20px;*/
     font-size: 12px;
     background: #bcbcbc;
+    cursor: pointer;
 }
 .single-menu .btnp button:hover{
     background: #f7982a;
 }
-
+.single-menu .btnp button span{
+    margin-left: -10px;
+    margin-right: 23px;
+}
 /*人才管理*/
 .timeli{
     height: 36px;
     line-height: 36px;
+    margin-right: 14px;
 }
 .timeli  .agep{
     display: block;
-    padding-left: 74px;
+    padding-left: 85px;
 }
-.timeli  .agep input{
+.timeli .agep input[type="text"]{
     height: 22px;
     line-height: 22px;
     width: 75px;
     padding-left: 10px;
+    border:1px solid #eee;
 }
 .manage-status p{
     /*text-align: center;*/
@@ -647,13 +745,13 @@ input[type="number"]{
 .manage-status p button:first-child:hover,.manage-status p .color0{
     background: #65A5E6;
 }
-.manage-status p button:nth-child(1):hover,.manage-status p .color1{
+.manage-status p button:nth-child(2):hover,.manage-status p .color1{
     background: #f7982a;
 }
-.manage-status p button:nth-child(2):hover,.manage-status p .color2{
+.manage-status p button:nth-child(3):hover,.manage-status p .color2{
     background: #7BD868;
 }
-.manage-status p button:nth-child(3):hover,.manage-status p .color3{
+.manage-status p button:nth-child(4):hover,.manage-status p .color3{
     background: #EB7155;
 }
 .viewtime{
@@ -684,7 +782,7 @@ input[type="number"]{
     cursor: pointer;
 }
 .opration-p button{
-    padding-left: 0;
+    padding: 0;
 }
 .opration-p button:hover,.opration span:hover{
     background: #f7982a;
@@ -711,7 +809,7 @@ input[type="number"]{
 }
 .usedetail label{
     width: 60px;
-    margin-right: 0;
+    margin-right: 20px;
 }
 .usedetail input[type="radio"]{
     vertical-align: -2px;
@@ -826,7 +924,7 @@ input[type="number"]{
     width: 40px;
     height: 27px;
     line-height: 27px;
-    color: #e1e1e1;
+    color: #bcbcbc;
     font-size: 14px;
     text-align: center;
 }
@@ -870,7 +968,7 @@ input[type="number"]{
     float: left;
     background: none;
     height: 27px;
-    line-height: 27px;
+    line-height: 8px;
     /**line-height: 17px;*/
     color: #e1e1e1;
     font-size: 14px;
@@ -888,7 +986,7 @@ input[type="number"]{
     width:50px;
     height: 25px;
     line-height: 25px;
-    border: 1px solid #7a7a7a;
+    border: 1px solid #e1e1e1;
     border-radius: 10px;
     padding-left: 4px;
     font-size: 10px;
@@ -906,7 +1004,7 @@ input[type="number"]{
     text-align: center;
     border-radius: 100%;
     background: none;
-    border: 1px solid #e1e1e1;
+    border: none;
     font-size: 12px;
     font-weight: 300;
     margin: 0;
@@ -914,10 +1012,10 @@ input[type="number"]{
     padding-bottom: 2px;
     vertical-align: 6px\0;
     background: url(../images/spriteicon.png) no-repeat;
-    background-position: -58px -120px;
+    background-position: -60px -187px;
 }
-.pages ul li input:focus,.pages li button:focus{
-    border: 1px solid #e1e1e1;
+.pages ul li input:focus{
+    border: 1px solid #7a7a7a;
     outline: none;
 } 
 
@@ -990,7 +1088,7 @@ input[type="number"]{
     height: 50px;
     line-height: 50px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -1016,6 +1114,7 @@ input[type="number"]{
     height: 36px;
     line-height: 36px;
     margin-right: 20px;
+    width: 110px;
 }
 .clearvalue{
     display: none;
@@ -1024,7 +1123,7 @@ input[type="number"]{
     position: absolute;
     top: -1px;
     right: 40px;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
 }
 .tab-form li .errortip {
@@ -1045,6 +1144,9 @@ input[type="number"]{
     text-decoration: underline;
 }
 /*详情页*/
+#layerbox{
+    background: #fff;
+}
 .box-container{
     /*width: 1000px;*/
     width: 750px;
@@ -1202,7 +1304,11 @@ input[type="number"]{
 }
 .icon-arrow:after{
     left: 42px;
-    background-position: -125px -12px;
+    background-position: -125px -14px;
+}
+.hiretype-container .icon-arrow:after{
+    left: 36px;
+    background-position: -173px -54px;
 }
 .icon-man:after{
     background-position: -125px -90px;
@@ -1211,10 +1317,16 @@ input[type="number"]{
     background-position: -125px -49px;
 }
 .icon-picture:after{
-    background-position: -125px -130px;
+    background-position: -123px -130px;
+}
+.icon-picture:hover:after{
+    background-position: -168px -130px;
 }
 .icon-video:after{
-    background-position: -125px -172px;
+    background-position: -124px -172px;
+}
+.icon-video:hover:after{
+    background-position: -168px -172px;
 }
 .icon-phone:after{
     background-position: -13px -189px;
@@ -1224,4 +1336,12 @@ input[type="number"]{
 }
 .icon-job:after{
     background-position: -13px -158px;
+}
+.icon-lock:after{
+    background-position: -62px -159px;
+}
+.charge .choosemark .icon-choose:after{
+    width: 36px;
+    height: 36px;
+    background-position: -159px -7px;
 }

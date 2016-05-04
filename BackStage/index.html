@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -14,14 +14,15 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/common.js"></script>
     <script type="text/javascript">
-        $(function(){
+
+        $(function () {
             // 侧边栏
-            $(".sidebar-menu li a").click(function(){
+            $(".sidebar-menu li a").click(function () {
                 $(".sidebar-menu li a").removeClass("active");
                 $(this).addClass("active");
-                var curLink="pages/"+$(this).attr("data-href");
+                var curLink = "pages/" + $(this).attr("data-href");
                 // alert(curLink);
-                $("#iframe").attr("src",curLink);
+                $("#iframe").attr("src", curLink);
                 // $(this).attr('href',"javascript:void(0);");
             });
         })
@@ -67,7 +68,7 @@
             <p class="merchant-name fr">杭州外婆家餐饮有限公司</p>
         </div>
         <div class="content clearfix">
-             <ul class="sidebar-menu fl" id="sideBar">
+            <ul class="sidebar-menu fl" id="sideBar">
                 <li>
                     <h3>
                         <span class="icon icon-merchant"></span>
@@ -111,8 +112,9 @@
                     </ul>
                 </li>
             </ul>
-            <div class="maincontent" >
-                <iframe id="iframe" src="pages/record.html" frameborder="0" width=100% height="925" scrolling="no"  onLoad="iFrameHeight()"></iframe>
+            <div class="maincontent">
+                <iframe id="iframe" src="pages/record.html" frameborder="0" width=100%  scrolling="no" onload="iFrameHeight();"></iframe>
+                <!-- <iframe src="pages/record.html" frameborder="0" width=100% scrolling="no" id="ifm" name="ifm" onload="javascript:dyniframesize('ifm');"></iframe> -->
             </div>
         </div>
         <footer class="footer">
