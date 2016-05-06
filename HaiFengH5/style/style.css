@@ -1,0 +1,324 @@
+/*登录注册 CSS*/
+html,body{
+	width: 100%;
+	/*height: 100%;*/
+	background: #f7f7f7;
+}
+*{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+button{
+	background: none;
+	border:none;
+	outline: none;
+}
+button:focus{
+	outline: none;
+}
+/*头部样式*/
+.header{
+	margin: 0 auto 30px;
+	text-align: center;
+	/*min-width: 40%;
+	min-height: 40%;*/
+	width: 100%;
+}
+.header a {
+	display: inline-block;
+	border-radius: 100%;
+	/*width: 40%;
+	min-height: 40%;*/
+	background: #fff;
+	width: 105px;
+	height: 105px;
+	border-radius: 100%;
+}
+.header a img{
+	width: 105px;
+	height: 105px;
+	border-radius: 100%;
+}
+.content_wrap{
+	width: 100%;
+	height: 100%;
+	color: #bcbcbc;
+	text-align: center;
+	background: #f7f7f7;
+	padding-top: 80px;
+	overflow: visible;
+	/*margin-bottom: 50px;*/
+}
+.applicants_form{
+	margin: 0 auto;
+	padding: 0 35px;
+	width: 100%;
+}
+.applicants_form li{
+	height: 38px;
+	line-height: 38px;
+	margin-bottom: 21px;
+	position: relative;
+}
+.applicants_form li input,.applicants_form li button{
+	width: 100%;
+	height: 36px;
+	line-height: 36px;
+	border:1px solid #e5e5e5;
+	color: #606060;
+	text-align: left;
+	border-radius: 0;
+	box-shadow: 0;
+	outline: none;
+}
+.applicants_form li input{
+	padding-left: 40px;
+	background: #fff;
+}
+.applicants_form li button{
+	border:1px solid #f7982a;
+	text-align: center;
+	color: #f7982a;
+	border-radius: 5px;
+	font-size: 1.4rem;
+}
+.applicants_form li input:focus{
+	border:1px solid #f7982a;
+}
+.applicants_form li input:focus+.icon{
+	background-color: #f7982a;
+}
+.clearvalue{
+	position: absolute;
+	top: 0px;
+	right: 9px;
+	font-size: 22px;
+}
+.errortip{
+	float: right;
+	height: 20px;
+	line-height: 20px;
+	color: #f7982a;
+}
+.applicants_form span.icon{
+	position: absolute;
+	top: 2px;
+	left: 1px;
+	height: 35px;
+	width: 36px;
+	display: inline-block;
+	line-height: 37px;
+	background: #bcbcbc url(../images/hspriteicon.png);
+}
+
+/*注册页面*/
+.resume_menu{
+	padding: 0 24px;
+	width: 100%;
+	height: 100%;
+	/*margin: 0 auto;*/
+}
+.register_menu li .send_code{
+	width: 30%;
+	position: absolute;
+	border:none;
+	background: transparent;
+	right: 0px;
+	top: 0;
+	float: right;
+}
+.register_menu li .send_code:after{
+	content: "";
+	position: absolute;
+	display: inline-block;
+	left: 0;
+	top: 5px;
+	height: 27px;
+	border-right: 1px solid #bcbcbc;
+	/*width: 1px;*/
+	/*background: #bcbcbc;*/
+}
+.code_li .clearvalue{
+	right: 31%;
+}
+
+.register_menu{
+	display: none;
+}
+
+.bottom p{
+	height: 30px;
+	line-height: 30px;
+}
+.bottom p:first-child{
+	margin-bottom: 20px;
+}
+
+
+/*简历录入*/
+.resume_menu li{
+	height: 36px;
+	line-height: 36px;
+	margin-bottom: 23px;
+	border-bottom: 1px solid #ccc;
+}
+.resume_menu li label{
+	display: inline-block;
+	float: left;
+	text-align: left;
+	padding-left: 30px;
+	width: 90px;
+	height: 36px;
+	line-height: 36px;
+	color: #333;
+}
+.border_none,.border_none:focus{
+	border:none;
+	outline: none;
+	appearance:none;
+	-webkit-appearance:none;
+	background: none;
+}
+.resume_menu li input,.resume_menu li select{
+	/*height: */
+	text-align: right;
+	height: 36px;
+	line-height: 36px;
+	display: inline-block;
+	color: #bcbcbc;
+}
+.resume_menu li input{
+	color: #f7982a;
+}
+
+.media_area{
+	padding: 10px;
+	width: 100%;
+}
+.media_block{
+	/*display: inline-block;*/
+	/*width: */
+	margin-top: 20px;
+}
+.media_title{
+	border-bottom: 1px solid #ccc;
+	padding-left: 50px;
+	text-align: left;
+	height: 24px;
+}
+.media_show {
+	position: relative;
+	border: 1px dashed #ccc;
+}
+.media_show input[type="file"]{
+	/*visibility: hidden;*/
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+.media_show span{
+	font-size: 30px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+	z-index: 2;
+}
+.media_show img{
+	width: 100%;
+	height: 100%;
+}
+
+.media_block p{
+	display: block;
+}
+.video_show{
+	width: 50%;
+	margin-left: 25%;
+}
+.upload_infor{
+	margin: 30px 15px;
+	padding: 15px;
+	text-align: left;
+	border:1px dashed #ccc;
+	border-radius: 5px;
+}
+.upload_infor p{
+	/*display: table-cell;*/
+	height: 20px;
+	line-height: 13px;
+	margin-bottom: 6px;
+}
+.job_expecting{
+	margin: 25% 0;
+}
+.default_btn{
+	/*margin-top: 90px;*/
+	display: inline-block;
+	width: 100%;
+	height: 36px;
+	line-height: 36px;
+	border:1px solid #e5e5e5;
+	color: #606060;
+	outline: none;
+	border:1px solid #f7982a;
+	text-align: center;
+	color: #f7982a;
+	border-radius: 5px;
+	font-size: 1.4rem;
+	letter-spacing: 1px;
+}
+
+/*推荐管理*/
+.rec_management{
+	padding: 0;
+}
+.rec_top{
+	background: #f7982a;
+	padding: 40px 0;
+}
+.top_item{
+	text-align: center;
+	width: 50%;
+	display: inline-block;
+	border-right: 1px solid #fff;
+	color: #fff;
+	float: left;
+}
+.top_item:last-child{
+	border:none;
+}
+.number_p{
+	font-size: 20px;
+}
+.top_item p a{
+	margin-left: 10px;
+	color: #fff;
+	cursor: pointer;
+}
+.rec_list{
+	padding: 0 12px;
+}
+.rec_list,.table{
+	width: 100%;
+}
+.table{
+	background: #f7f7f7;
+	border-collapse: separate;
+	border-spacing:0 6px;
+}
+.table thead th{
+	background: #f7f7f7;
+}
+.table tr,.table th,.table td{
+	height: 30px;
+	background: #fff;
+	/*border:1px solid red;*/
+}

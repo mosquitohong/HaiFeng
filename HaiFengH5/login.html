@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>海蜂——登录页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/loginRegister.js"></script>
+</head>
+
+<body>
+
+    <div class="content_wrap">
+        <form class="applicants_form">
+            <ul class="loginmenu clearfix">
+                <header class="logo_black header">
+                    <a href="javascript:void(0);">
+                        <!-- <img src="images/logo01.png" />
+                        -->
+                    </a>
+                </header>
+                <li>
+                    <input type="text" name="phone_number" class="text_input text_username phone_number" placeholder="请输入手机号码" autocomplete="off" id="phone_number" />
+                    <span class="icon icon_phone"></span>
+
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">未注册</p>
+                </li>
+                <li>
+                    <input id="password" name="password" class="text_input text_password" type="password" placeholder="密码" oonblur="v_password();" onkeyup="v_password();" />
+
+                    <span class="icon icon_password"></span>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">密码不正确</p>
+                </li>
+                <li>
+                    <button type="button" class="default_btn">登&nbsp;录</button>
+                </li>
+            </ul>
+
+            <ul class="register_menu">
+                <li>
+                    <input type="text" class="reg_phone" placeholder="请输入手机号" id="regPhone" oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))">
+                    <span class="icon icon_phone"></span>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">手机号已注册</p>
+                </li>
+                <li class="code_li">
+                    <input type="text" placeholder="请输入验证码" id="code">
+                    <span class="icon icon_code"></span>
+
+                    <button type="button" class="send_code" id="GetVerifyCode">发送验证码</button>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">验证码错误</p>
+                </li>
+                <li>
+                    <input type="password" placeholder="请输入密码" minlength="6" maxlength="20" id="regPwd">
+                    <span class="icon icon_password"></span>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">密码位数不足</p>
+                </li>
+                <li>
+                    <button type="button" id="regBtn">注&nbsp;册</button>
+                </li>
+            </ul>
+
+            <ul class="register_menu resetpwd_menu">
+                <li>
+                    <input type="text" class="reg_phone" placeholder="请输入手机号" id="regPhone" oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))">
+                    <span class="icon icon_phone"></span>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">手机号已注册</p>
+                </li>
+                <li class="code_li">
+                    <input type="text" placeholder="请输入验证码" id="code">
+                    <span class="icon icon_code"></span>
+
+                    <button type="button" class="send_code" id="GetVerifyCode">发送验证码</button>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">验证码错误</p>
+                </li>
+                <li>
+                    <input type="password" placeholder="请输入新密码" minlength="6" maxlength="20" id="regPwd">
+                    <span class="icon icon_password"></span>
+                    <span class="clearvalue">×</span>
+                    <p class="errortip">密码位数不足</p>
+                </li>
+                <li>
+                    <button type="button" id="regBtn">找回密码</button>
+                </li>
+            </ul>
+            <div class="bottom">
+                <p>
+                    <a href="javascript:void(0);" id="changeStat">找回密码</a>
+                </p>
+                <p>
+                    <a href="javascript:void(0);">or</a>
+                </p>
+                <p>
+                    <a href="javascript:void(0);" id="changeMenu">免费注册</a>
+                </p>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+      $(function(){
+        $("#changeStat").click(function(){
+          if ($(this).text()=="找回密码") {
+          $(".applicants_form ul").hide();
+
+            $(this).text("返回登录");
+            // $("#changeMenu").text("注册")
+            // $(".loginmenu").hide();
+            $(".resetpwd_menu").show();
+            $(".header").hide();
+            $(".content_wrap").css("margin-top","120px")
+          }else{
+            $(".applicants_form ul").hide();
+
+            $(this).text("找回密码");
+            $(".loginmenu").show();
+            // $(".resetpwd_menu").hide();
+            $(".header").show();
+            // $(".content_wrap").css("margin-top","0px")
+
+          }
+
+        });
+        $("#changeMenu").click(function(){
+          if ($(this).text()=="免费注册") {
+            $(".applicants_form ul").hide();
+            // $(".resetpwd_menu").show();
+            $(".header").hide();
+            // $(".content_wrap").css("margin-top","120px");
+            // alert(1)
+            if($("#changeStat").text()=="返回登录"){
+              $(".register_menu").show();
+              $(".resetpwd_menu").hide();
+              // alert(2);
+              $(this).text("返回登录");
+              $("#changeStat").text("找回密码")
+
+            }else{
+              $(this).text("返回登录");
+              $(".register_menu").show();
+              $(".loginmenu").hide();
+              $(".resetpwd_menu").hide();
+            }
+
+
+          }else{
+            $(".applicants_form ul").hide();
+
+            $(this).text("免费注册")
+            $(".loginmenu").show();
+            // $(".resetpwd_menu").hide();
+            $(".header").show();
+            // $(".content_wrap").css("margin-top","0px")
+
+          }
+        })
+      })
+    </script>
+</body>
+</html>

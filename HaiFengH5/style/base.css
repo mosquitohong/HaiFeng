@@ -1,0 +1,124 @@
+/* 初始化代码 */
+html{
+  font-size:62.5%;/*10 ÷ 16 × 100% = 62.5%*/
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body, input, button, select, textarea {
+  font: 62.5%/1.5 "微软雅黑" ,"Microsoft Yahei", "Helvetica Neue";
+  color: #34495e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern";
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+img, a img {
+  border: 0
+}
+a {
+  color: #bcbcbc;
+  outline: medium none;
+  text-decoration: none;
+  font-size: 1.2rem;
+  star: expression(this.onFocus=this.blur())
+}
+a:hover {
+  text-decoration: none
+}
+label {
+  cursor: pointer
+}
+ul li, .ol li {
+  list-style: none
+}
+em, cite, i {
+  font-style: normal
+}
+input:focus, textarea:focus {
+  outline: none;
+}
+input::-ms-clear {
+  display: none;
+}
+textarea {
+  resize: none;
+}
+
+/* 通用样式 */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.clearfix{
+  zoom: 1;
+}
+.fl {
+  float: left !important;
+}
+.fr {
+  float: right !important;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mt-15 {
+  margin-top: 15px;
+}
+.mt-60 {
+  margin-top: 60px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.b1 {
+  background-color: #ffb300;
+}
+.b2 {
+  background-color: #ff8d35;
+}
+.b3 {
+  background-color: #4cc9e7;
+}
+.b4 {
+  background-color: #3ec78b;
+}
+.i1 {
+  border: solid 1px #ffb300;
+}
+.i2 {
+  border: solid 1px #ff8d35;
+}
+.i3 {
+  border: solid 1px #4cc9e7;
+}
+.i4 {
+  border: solid 1px #3ec78b;
+}
+
+/*字体图标*/
+/*.iconfont, [class^="icon-"], [class*=" icon-"] {
+  font-family: "iconfont" !important;
+  font-size: 1.6rem;
+  color: #b8c4ce;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}*/

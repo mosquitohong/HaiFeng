@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>录入简历</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../../style/base.css">
+	<link rel="stylesheet" href="../../style/style.css">
+
+	<link rel="stylesheet" href="../../plugin/swiper/css/swiper.min.css">
+
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/loginRegister.js"></script>
+	<script src="../../plugin/swiper/swiper.min.js"></script>
+
+	<style type="text/css">
+        body {
+            /*background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;*/
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+             /*width: 500px;
+            height: 300px;*/
+            /*margin: 20px auto;*/
+            /*box-sizing: border-box;*/
+            height: 100%;
+            width: 100%;
+        }
+
+        .swiper-slide {
+            /*text-align: center;*/
+            /*font-size: 18px;*/
+            /*background: #fff;*/
+            /* Center slide text vertically */
+            /*display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;*/
+        }
+    </style>
+</head>
+<body>
+
+	<div class="content_wrap">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<header class="logo_black header">
+						<a href="javascript:void(0);">
+							<img src="../../images/male.png" />
+							<img src="../../images/edit.png"></a>
+					</header>
+					<ul class="resume_menu">
+						<li>
+							<label>
+								<span class="icon icon-name"></span>
+								姓名
+							</label>
+							<input type="text" placeholder="请填写" class="border_none fr" />
+						</li>
+						<li>
+							<label>
+								<span class="icon icon-gender"></span>
+								性别
+							</label>
+							<select class="border_none fr">
+								<option option="option1">请选择</option>
+								<option option="option1">男</option>
+								<option option="option2">女</option>
+							</select>
+						</li>
+						<li>
+							<label>
+								<span class="icon icon-phone"></span>
+								手机号
+							</label>
+							<input type="text" placeholder="手机号" class="border_none fr"></li>
+						<li>
+							<label>
+								<span class="icon icon-age"></span>
+								年龄
+							</label>
+							<select class="border_none fr">
+								<option option="option1">请选择</option>
+								<option option="option2">1</option>
+								<option option="option3">2</option>
+								<option option="option4">3</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+				<div class="swiper-slide">
+					<div class="media_area">
+						<h2 class="media_title">
+							<span class="icon icon-piture"></span>
+							职业照(最多三张)
+						</h2>
+						<div class="media_block_swiper">
+							<div class="swiper-wrapper">
+								<div class="media_block swiper-slide">
+									<div class="media_show">
+										<img src="../../images/male.png">
+										<input type="file" name="file">
+										<span>+</span>
+									</div>
+									<p>
+										<button type="button">更换</button>
+										<button type="button">删除</button>
+									</p>
+								</div>
+								<div class="media_block swiper-slide">
+									<div class="media_show">
+										<img src="../../images/male.png">
+										<input type="file" name="file">
+										<span>+</span>
+									</div>
+									<p>
+										<button type="button">更换</button>
+										<button type="button">删除</button>
+									</p>
+								</div>
+								<div class="media_block swiper-slide">
+									<div class="media_show">
+										<img src="../../images/male.png">
+										<input type="file" name="file">
+										<span>+</span>
+									</div>
+									<p>
+										<button type="button">更换</button>
+										<button type="button">删除</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="media_area">
+						<h2 class="media_title">
+							<span class="icon icon-video"></span>
+							微视频
+						</h2>
+						<div class="media_block ">
+							<div class="media_show video_show">
+								<img src="../../images/male.png">
+								<input type="file" name="file">
+								<span>+</span>
+							</div>
+							<p>
+								<button type="button">更换</button>
+								<button type="button">删除</button>
+							</p>
+						</div>
+					</div>
+
+					<div class="upload_infor">
+						<p class="p1">视频说什么呢？</p>
+						<p class="p2">可以说说您的经验、专长、要求等等，记得 最好用手机水平拍摄哦，浏览效果更好。</p>
+						<p class="p1">视频会给谁看？</p>
+						<p class="p2">我们只匹配适合你岗位要求的认证商家查看， 不会提供给其他人使用和下载哦。</p>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<h2 class="job_expecting">
+						<q>您期望的工作</q>
+					</h2>
+					<ul class="resume_menu">
+						<li>
+							<label>
+								<span class="icon icon-job"></span>
+								职位类型
+							</label>
+							<select class="border_none fr">
+								<option option="option1">请选择</option>
+								<option option="option2">全职</option>
+								<option option="option3">兼职</option>
+							</select>
+						</li>
+						<li>
+							<label>
+								<span class="icon icon-post"></span>
+								期望岗位
+							</label>
+							<select class="border_none fr">
+								<option option="option1">请选择</option>
+								<option option="option2">全职</option>
+								<option option="option3">兼职</option>
+							</select>
+						</li>
+						<li>
+							<label>
+								<span class="icon icon-location"></span>
+								工作地点
+							</label>
+							<input type="text" placeholder="手机号" class="border_none fr"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var swiper = new Swiper('.swiper-container');
+	var swiper2 = new Swiper('.media_block_swiper', {
+        // pagination: '.swiper-pagination',
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30
+    });
+</script>
+</body>
+</html>
