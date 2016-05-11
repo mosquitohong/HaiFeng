@@ -102,14 +102,14 @@ $(function() {
 	// 时间日期选择
 	$("#startDate").click(function() {
 		WdatePicker({
-			dateFmt: 'yyyy-MM-dd HH:mm',
+			dateFmt: 'yyyy-MM-dd',
 			maxDate: '#F{$dp.$D(\'endDate\')}'
 		});
 	});
 
 	$("#endDate").click(function() {
 		WdatePicker({
-			dateFmt: 'yyyy-MM-dd HH:mm',
+			dateFmt: 'yyyy-MM-dd',
 			minDate: '#F{$dp.$D(\'startDate\')}'
 		});
 	});

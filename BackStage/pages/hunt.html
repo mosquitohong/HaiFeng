@@ -10,9 +10,13 @@
 
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../plugin/Pagination/pagination.css" />
     <script src="../js/jquery.min.js"></script>
     <script src="../js/common.js"></script>
     <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ac3c45852cfdc6b80b64068e03dbf36b&plugin=AMap.Autocomplete"></script>
+
+    <script type="text/javascript" src="../plugin/Pagination/jquery.pagination.js"></script>
 </head>
 <body>
     <div class="content-panel">
@@ -34,13 +38,15 @@
                                         <small>餐饮</small>
                                     </span>
                                 </p>
-                                <a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
-
-                                <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
+                                <div>
+                                    <a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
+                                    <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
+                                    <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
+                                    <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
+                                    
+                                    <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
+                                    <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
+                                </div>
                                 <p class="lf">
                                     <button class="confirm-type fr">确定</button>
                                 </p>
@@ -50,12 +56,15 @@
                     </li>
                     <li>
                         <label class="default-label fl">岗位地点</label>
-                        <select class="fl">
+                        <!-- <select class="fl">
                             <option option="option1">选择</option>
                             <option option="option2">选择2</option>
                             <option option="option3">选择3</option>
-                        </select>
-                        <input type="text" class="input-320">
+                        </select> -->
+                        <input style=" border: 1px solid #eee;padding: 0 0 0 10px;height: 32px;line-height: 32px; width: 60px;background: #fff url(../images/arrow.png) no-repeat 50px 12px;" type="text" value="" size="6" id="homecity_name" name="homecity_name" mod="address|notice" mod_address_source="hotel" mod_address_suggest="@Beijing|北京|53@Shanghai|上海|321@Shenzhen|深圳|91@Guangzhou|广州|80@Qingdao|青岛|292@Chengdu|成都|324@Hangzhou|杭州|383@Wuhan|武汉|192@Tianjin|天津|343@Dalian|大连|248@Xiamen|厦门|61@Chongqing|重庆|394@" mod_address_reference="cityid" mod_notice_tip="中文/拼音" />
+                        <input id="cityid" name="cityid" type="hidden" value="{$cityid}" />
+
+                        <input type="text" class="input-320" id="txtLocation">
                         <div>
                             <ul>
                                 <li>
@@ -121,10 +130,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/female.png">
-                        <a href="">
+                        <a href="javascript:void(0);" class="withdetail">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);" class="withdetail">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -159,10 +168,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/female.png">
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -189,7 +198,7 @@
                         </li>
                         <li>
                             <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=修改成功！&img=inforicon','提示',['375px','124px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
+                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
                             </p>
                         </li>
                     </ul>
@@ -197,10 +206,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/female.png">
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -227,7 +236,7 @@
                         </li>
                         <li>
                             <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=修改成功！&img=inforicon','提示',['375px','124px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
+                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
                             </p>
                         </li>
                     </ul>
@@ -235,10 +244,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/female.png">
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -265,7 +274,7 @@
                         </li>
                         <li>
                             <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=修改成功！&img=inforicon','提示',['375px','124px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
+                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
                             </p>
                         </li>
                     </ul>
@@ -273,10 +282,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/male.png">
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -303,7 +312,7 @@
                         </li>
                         <li>
                             <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=修改成功！&img=inforicon','提示',['375px','124px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
+                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
                             </p>
                         </li>
                     </ul>
@@ -311,10 +320,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/female.png">
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -341,7 +350,7 @@
                         </li>
                         <li>
                             <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=修改成功！&img=inforicon','提示',['375px','124px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
+                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
                             </p>
                         </li>
                     </ul>
@@ -349,10 +358,10 @@
                 <div class="single clearfix fl">
                     <div class="single-image fl">
                         <img src="../images/male.png">
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-picture"></span>
                         </a>
-                        <a href="">
+                        <a href="javascript:void(0);">
                             <span class="icon icon-video"></span>
                         </a>
                     </div>
@@ -379,7 +388,7 @@
                         </li>
                         <li>
                             <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=修改成功！&img=inforicon','提示',['375px','124px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
+                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
                             </p>
                         </li>
                     </ul>
@@ -435,5 +444,206 @@
             </div>
         </div>
     </div>
+     <script type="text/javascript">
+        var iDataCount = 9;
+        var pagesize = 9;
+        var pageindex = 1;
+        var allresume = null;
+        
+        function getpositiondata() {
+            var html = "";
+
+            $.each(window.parent.oIndustryAndPosition.Industrys, function (n, value) {
+                if (value.Id === window.parent.oUserInfo.Industry) {
+                    $("#myindustry").html(value.IndustryName);
+                }
+            });
+            $.each(window.parent.oIndustryAndPosition.Positions, function (n, value) {
+                if (value.IndustryId === window.parent.oUserInfo.Industry) {
+                    if (window.parent.oUserInfo.Position.indexOf(value.Id) !== -1) {
+                        html += '<a href="javascript:void(0);" class="hiretype choosemark" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                        $("#chooseResult").append('<a href=\"javascript:void(0);\" data-rtIndex=' + value.Id + ' onclick=\"delResult($(this))\">' + value.PositionName + '<span>×</span> </a>');
+                    } else {
+                        html += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                    }
+
+                }
+            });
+            $("#apositions").html(html);
+        }
+        function getpositionname(positionid) {
+            var v = "";
+            var s = positionid.split(',');
+            for (var i = 0; i < s.length; i++) {
+                for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
+                    if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
+                        if (v == "")
+                            v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                        else
+                            v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                    }
+                }
+            }
+            return v;
+        }
+        $(function () {
+            var oUserInfo = window.parent.oUserInfo;
+            if (oUserInfo !== null) {
+                $('#txtLocation').val(oUserInfo.Location === '' ? '' : oUserInfo.Location);
+                $("#hidLng").val(oUserInfo.Longitude);
+                $("#hidLat").val(oUserInfo.Latitude);
+                $("#homecity_name").val(window.parent.sCity);
+                getpositiondata();
+
+                $("#divcontent").hide();
+                $("#divnolist").show();
+                //初始化地图
+                var map = new AMap.Map("container", {
+                    resizeEnable: true
+                });
+                //为地图注册click事件获取鼠标点击出的经纬度坐标
+                //var clickEventListener = map.on('click', function (e) {
+                //    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+                //});
+                var auto = new AMap.Autocomplete({
+                    input: "txtLocation"
+                });
+                AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+                function select(e) {
+                    if (e.poi && e.poi.location) {
+                        //map.setZoom(15);
+                        //map.setCenter(e.poi.location);
+                    }
+                    //经纬度获取
+                    $("#txtLocation").val(e.poi.name);
+                    $("#hidLng").val(e.poi.location.lng);
+                    $("#hidLat").val(e.poi.location.lat);
+                }
+                fShowdata(0, null);
+            }
+        });
+        //resumelist
+        $("#btnSearch").click(function () {
+            fShowdata(0, null);
+        });
+        $("#sage,#eage").focus(function () {
+            $("input[name='age']").eq(1).attr("checked", "checked");
+        });
+
+        $("#txtLocation").focus(function () {
+            $(this).val('');
+            $("#hidLng").val('');
+            $("#hidLat").val('');
+        });
+
+        function fShowdata(page_index, jq) {
+            page_index = page_index + 1;
+            var sage = 0;
+            var eage = 0;
+            var position = "";
+            var choosePositions = $("#chooseResult a");
+            if (choosePositions != undefined && choosePositions != null) {
+                $.each(choosePositions, function (n, value) {
+                    position += $(value).attr("data-rtindex") + ",";
+                });
+            }
+            if (position !== "") {
+                position = position.substr(0, position.length - 1);
+            } else {
+                alert("请选择岗位");
+                return;
+            }
+            var longitude = $("#hidLng").val();
+            var latitude = $("#hidLat").val();
+            if ($("#txtLocation").val() === "" || longitude === '' || latitude === '') {
+                alert("输入地址有误，请填写地址后在下拉框中选中一个精确地点");
+                $("#txtLocation").focus();
+                return;
+            }
+            var haspic = $("#pic").prop("checked");
+            var hasvideo = $("#video").prop("checked");
+            var sex = $('input[name="gender"]:checked').val();
+            var age = $('input[name="age"]:checked').val();
+            if (age == 1) {
+                if ($("#sage").val() == "") {
+                    alert("请填写年纪");
+                    $("#sage").focus();
+                    return;
+                }
+                if ($("#eage").val() == "") {
+                    alert("请填写年纪");
+                    $("#eage").focus();
+                    return;
+                }
+                sage = $("#sage").val();
+                eage = $("#eage").val();
+            }
+            var jobnature = $('input[name="jobtype"]:checked').val();
+            $.post('/Ajax/MerchantCenter/FindTalents.ashx', { action: 'SearchResumes', data: "{\"pagesize\":\"" + pagesize + "\",\"pageindex\":\"" + page_index + "\",\"sex\":\"" + sex + "\",\"position\":\"" + position + "\",\"haspic\":\"" + haspic + "\",\"hasvideo\":\"" + hasvideo + "\",\"startage\":\"" + sage + "\",\"endage\":\"" + eage + "\",\"longitude\":\"" + longitude + "\",\"latitude\":\"" + latitude + "\",\"jobnature\":\"" + jobnature + "\"}" }, function (resp) {
+                if (resp.code === "1000") {
+                    allresume = resp.data;
+
+                    if (allresume.Total > 0) {
+                        $("#divcontent").show();
+                        $("#divnolist").hide();
+
+                        var temp = '<div class="single clearfix fl"><div class="single-image fl"><img src="{$logo}"><a href="javascript:void(0)" class="{$pic}"><span class="icon icon-picture"></span>' +
+                            '</a><a href="javascript:void(0)" class="{$video}"><span class="icon icon-video"></span></a></div><ul class="single-menu fl"><li><label>姓名：</label><span>{$name}</span>' +
+                            '<a href="" class="fr"><span class="{$sex}"></span>{$age}岁</a></li><li><label>岗位：</label><span>{$position}</span>' +
+                            '</li><li><label>距离：</label><span>{$distance}km以内</span></li><li><label>位置：</label><span>{$location}</span></li><li><p class="btnp">' +
+                            '<button type="button" class=" icon-lock" onclick=dialogModality("/pages/details.html?id={$id}&accid={$accid}","简历详情",["1000px","564px"],["继续看"]);>我要看</button></p></li></ul></div>';
+                        var html = "";
+                        $("#resumelist").html(html);
+                        console.log(allresume);
+                        for (var i = 0; i < allresume.Total; i++) {
+                            var logo = "../images/male.png";
+                            if (allresume.ViewResumeList[i].Portrait !== "")
+                                logo = allresume.ViewResumeList[i].Portrait;
+                            else
+                                logo = allresume.ViewResumeList[i].Sex == 1 ? "../images/male.png" : "../images/female.png";
+
+                            var name = allresume.ViewResumeList[i].Name;
+                            var age = allresume.ViewResumeList[i].Age;
+                            var position = getpositionname(allresume.ViewResumeList[i].Position);
+                            var distance = parseFloat(allresume.ViewResumeList[i].Distance).toFixed(2);
+                            var location = allresume.ViewResumeList[i].Location;
+                            var sex = allresume.ViewResumeList[i].Sex == 1 ? "icon icon-man" : "icon icon-women";
+                            var id = allresume.ViewResumeList[i].Id;
+                            var accid = window.parent.oUserInfo.Id;
+                            var pic = allresume.ViewResumeList[i].HasPicture == true ? "withdetail" : "";
+                            var video = allresume.ViewResumeList[i].HasVideo == true ? "withdetail" : "";
+                            html += temp.replace("{$logo}", logo).replace("{$name}", name).replace("{$age}", age).replace("{$position}", position).replace("{$distance}", distance).replace("{$location}", location).replace("{$sex}", sex).replace("{$id}", id).replace("{$accid}", accid).replace("{$pic}", pic).replace("{$video}", video);
+                        }
+                        $("#resumelist").html(html);
+                        iDataCount = allresume.Total;
+
+                        var optInit = {
+                            callback: fShowdata,
+                            items_per_page: pagesize,
+                            num_display_entries: 5,
+                            prev_text: "Prev",
+                            next_text: "Next"
+                        };
+                        $("#Pagination").pagination(iDataCount, optInit);
+                        if (iDataCount > pagesize)
+                            $("#searchPage").show();
+                        else
+                            $("#searchPage").hide();
+
+                    } else {
+                        $("#divcontent").hide();
+                        $("#divnolist").show();
+                    }
+                }
+                else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+            return true;
+        }
+
+    </script>
+    <script src="../js/fixdiv.js"></script>
+    <script src="../js/address.js"></script>
 </body>
 </html>
