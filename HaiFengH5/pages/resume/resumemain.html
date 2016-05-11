@@ -15,209 +15,299 @@
 	<script src="../../plugin/swiper/swiper.min.js"></script>
 
 	<style type="text/css">
-        body {
-            /*background: #eee;
-            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            color:#000;*/
-            margin: 0;
-            padding: 0;
-        }
-
-        .swiper-container {
-             /*width: 500px;
-            height: 300px;*/
-            /*margin: 20px auto;*/
-            /*box-sizing: border-box;*/
+        .swiper-container,.swiper-slide {
             height: 100%;
             width: 100%;
         }
-
-        .swiper-slide {
-            /*text-align: center;*/
-            /*font-size: 18px;*/
-            /*background: #fff;*/
-            /* Center slide text vertically */
-            /*display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;*/
+        .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+        	position: absolute;
+        	/*bottom: 20%;*/
         }
+        .my-pagination .swiper-pagination-bullet {
+		    width: 25px;
+		    height: 25px;
+		    line-height: 25px;
+		    border: 1px solid #fff;
+		    background: #eee;
+		    height: 25px;
+		    text-align: center;
+		    border-radius: 100%;
+		    opacity: .5;
+		}
+		.my-pagination .swiper-pagination-bullet-active {
+		    opacity: 1;
+		    background:#f7982a;
+		    color: #fff;
+		}
     </style>
 </head>
 <body>
+	<div class="confirm_box">
+		<div class="layer_content">
+			<ul class="resume_menu">
+				<li>
+					<label>手机号</label>
+					<input type="text" placeholder="请输入新手机号" class="border_none fl txtlt"></li>
+				<li class="li_dif code_li">
+					<label>验证码</label>
+					<input type="text" placeholder="请输入验证码" class="border_none fl txtlt">
+					<button type="button" class="send_code">发送验证码</button>
+				</li>
+			</ul>
+			<p>提示：更换后，登录验证将变为新号码。</p>
+			<p class="layer_btn_p txtlt">
+				<button type="button">关闭</button>
+				<button type="button" class="fr">取消</button>
+			</p>
+		</div>
+	</div>
+	<div class="wrapper resume">
+		<div class="content_wrap">
+			<div class="swiper-container swiper-container-horizontal">
 
-	<div class="content_wrap">
-		<div class="swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<header class="logo_black header">
-						<a href="javascript:void(0);">
-							<img src="../../images/male.png" />
-							<img src="../../images/edit.png"></a>
-					</header>
-					<ul class="resume_menu">
-						<li>
-							<label>
-								<span class="icon icon-name"></span>
-								姓名
-							</label>
-							<input type="text" placeholder="请填写" class="border_none fr" />
-						</li>
-						<li>
-							<label>
-								<span class="icon icon-gender"></span>
-								性别
-							</label>
-							<select class="border_none fr">
-								<option option="option1">请选择</option>
-								<option option="option1">男</option>
-								<option option="option2">女</option>
-							</select>
-						</li>
-						<li>
-							<label>
-								<span class="icon icon-phone"></span>
-								手机号
-							</label>
-							<input type="text" placeholder="手机号" class="border_none fr"></li>
-						<li>
-							<label>
-								<span class="icon icon-age"></span>
-								年龄
-							</label>
-							<select class="border_none fr">
-								<option option="option1">请选择</option>
-								<option option="option2">1</option>
-								<option option="option3">2</option>
-								<option option="option4">3</option>
-							</select>
-						</li>
-					</ul>
-				</div>
-				<div class="swiper-slide">
-					<div class="media_area">
-						<h2 class="media_title">
-							<span class="icon icon-piture"></span>
-							职业照(最多三张)
-						</h2>
-						<div class="media_block_swiper">
-							<div class="swiper-wrapper">
-								<div class="media_block swiper-slide">
-									<div class="media_show">
-										<img src="../../images/male.png">
-										<input type="file" name="file">
-										<span>+</span>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide swiper-no-swiping">
+						<header class="logo_black header">
+							<a href="javascript:void(0);">
+								<img src="../../images/male.png" />
+								<img src="../../images/edit.png" class="edit_img" id="editImg"></a>
+						</header>
+						<ul class="resume_menu">
+							<li>
+								<label>
+									<span class="icon icon-name"></span>
+									姓名
+								</label>
+								<input type="text" placeholder="请填写" class="border_none txtrt fr" id="nameIn">
+							</li>
+							<li>
+								<label>
+									<span class="icon icon-gender"></span>
+									性别
+								</label>
+								<select class="border_none txtrt fr">
+									<option option="option1">请选择</option>
+									<option option="option1">男</option>
+									<option option="option2">女</option>
+								</select>
+							</li>
+							<li>
+								<label>
+									<span class="icon icon-phone"></span>
+									手机号
+								</label>
+								<input type="text" placeholder="手机号" class="border_none txtrt fr"></li>
+							<li class="date_li">
+								<label>
+									<span class="icon icon-age"></span>
+									年龄
+								</label>
+								<!-- <span class="date_choose" style="z-index: -1;">请选择</span> -->
+								<input class="fr txtrt" type="date" id="dateId" style="border:none;
+								padding:0;margin: 0 -20px 0 0;text-align: center;"autofocus="autofocus">
+								<!-- <select class="border_none txtrt fr">
+									<option option="option1">请选择</option>
+									<option option="option2">1</option>
+									<option option="option3">2</option>
+									<option option="option4">3</option>
+								</select> -->
+							</li>
+						</ul>
+					</div>
+					<!-- 不可滑动 -->
+					<!-- <div class="swiper-slide swiper-no-swiping"> -->
+					<div class="swiper-slide">
+						<div class="media_area">
+							<h2 class="media_title">
+								<span class="icon icon-piture"></span>
+								职业照(最多三张)
+							</h2>
+							<div class="media_block_swiper">
+								<div class="swiper-wrapper">
+									<div class="media_block swiper-slide">
+										<div class="media_show">
+											<img src="../../images/male.png">
+											<input type="file" name="file">
+											<span>+</span>
+										</div>
+										<p class="txtlt">
+											<button type="button">更换</button>
+											<button class="fr" type="button">删除</button>
+										</p>
 									</div>
-									<p>
-										<button type="button">更换</button>
-										<button type="button">删除</button>
-									</p>
-								</div>
-								<div class="media_block swiper-slide">
-									<div class="media_show">
-										<img src="../../images/male.png">
-										<input type="file" name="file">
-										<span>+</span>
+									<div class="media_block swiper-slide">
+										<div class="media_show">
+											<img src="../../images/male.png">
+											<input type="file" name="file">
+											<span>+</span>
+										</div>
+										<p class="txtlt">
+											<button type="button">更换</button>
+											<button class="fr" type="button">删除</button>
+										</p>
 									</div>
-									<p>
-										<button type="button">更换</button>
-										<button type="button">删除</button>
-									</p>
-								</div>
-								<div class="media_block swiper-slide">
-									<div class="media_show">
-										<img src="../../images/male.png">
-										<input type="file" name="file">
-										<span>+</span>
+									<div class="media_block swiper-slide">
+										<div class="media_show">
+											<img src="../../images/male.png">
+											<input type="file" name="file">
+											<span>+</span>
+										</div>
+										<p class="txtlt">
+											<button type="button">更换</button>
+											<button class="fr" type="button">删除</button>
+										</p>
 									</div>
-									<p>
-										<button type="button">更换</button>
-										<button type="button">删除</button>
-									</p>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="media_area">
-						<h2 class="media_title">
-							<span class="icon icon-video"></span>
-							微视频
-						</h2>
-						<div class="media_block ">
-							<div class="media_show video_show">
-								<img src="../../images/male.png">
-								<input type="file" name="file">
-								<span>+</span>
+						<div class="media_area">
+							<h2 class="media_title">
+								<span class="icon icon-video"></span>
+								微视频
+							</h2>
+							<div class="media_block ">
+								<div class="media_show video_show">
+									<img src="../../images/male.png">
+									<input type="file" name="file">
+									<span>+</span>
+								</div>
+								<p class="video_p txtlt">
+									<button type="button">更换</button>
+									<button class="fr" type="button">删除</button>
+								</p>
 							</div>
-							<p>
-								<button type="button">更换</button>
-								<button type="button">删除</button>
+						</div>
+
+						<div class="upload_infor">
+							<p class="p1">
+								<span class="icon icon-qus"></span>
+								视频说什么呢？
+							</p>
+							<p class="p2">
+								<span class="icon icon-anw"></span>
+								可以说说您的经验、专长、要求等等，记得 最好用手机水平拍摄哦，浏览效果更好。
+							</p>
+							<p class="p1">
+								<span class="icon icon-qus"></span>
+								视频会给谁看？
+							</p>
+							<p class="p2">
+								<span class="icon icon-anw"></span>
+								我们只匹配适合你岗位要求的认证商家查看， 不会提供给其他人使用和下载哦。
 							</p>
 						</div>
 					</div>
-
-					<div class="upload_infor">
-						<p class="p1">视频说什么呢？</p>
-						<p class="p2">可以说说您的经验、专长、要求等等，记得 最好用手机水平拍摄哦，浏览效果更好。</p>
-						<p class="p1">视频会给谁看？</p>
-						<p class="p2">我们只匹配适合你岗位要求的认证商家查看， 不会提供给其他人使用和下载哦。</p>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<h2 class="job_expecting">
-						<q>您期望的工作</q>
-					</h2>
-					<ul class="resume_menu">
-						<li>
-							<label>
-								<span class="icon icon-job"></span>
-								职位类型
-							</label>
-							<select class="border_none fr">
+					<div class="swiper-slide ">
+						<h2 class="job_expecting">
+							<q>您期望的工作</q>
+						</h2>
+						<ul class="resume_menu">
+							<li>
+								<label>
+									<span class="icon icon-job"></span>
+									职位类型
+								</label>
+								<select class="border_none txtrt fr">
+									<option option="option1">选择</option>
+									<option option="option2">全职</option>
+									<option option="option3">兼职</option>
+								</select>
+							</li>
+							<li>
+								<label>
+									<span class="icon icon-post"></span>
+									期望岗位
+								</label>
+								<a href="jobpost.html" class="fr">请选择</a>
+								<!-- <select class="border_none txtrt fr">
 								<option option="option1">请选择</option>
 								<option option="option2">全职</option>
 								<option option="option3">兼职</option>
 							</select>
-						</li>
-						<li>
-							<label>
-								<span class="icon icon-post"></span>
-								期望岗位
-							</label>
-							<select class="border_none fr">
-								<option option="option1">请选择</option>
-								<option option="option2">全职</option>
-								<option option="option3">兼职</option>
-							</select>
+							-->
 						</li>
 						<li>
 							<label>
 								<span class="icon icon-location"></span>
 								工作地点
 							</label>
-							<input type="text" placeholder="手机号" class="border_none fr"></li>
+							<a href="jobaddress.html" class="fr">请选择</a>
+							<!-- <input type="text" placeholder="手机号" class="border_none txtrt fr"></li>
+						-->
 					</ul>
 				</div>
 			</div>
+			<div class="my-pagination swiper-pagination-clickable swiper-pagination-bullets">
+				<span class="swiper-pagination-bullet swiper-pagination-bullet-active">1</span>
+				<span class="swiper-pagination-bullet">2</span>
+				<span class="swiper-pagination-bullet">3</span>
+			</div>
+			<a href="javascript:void(0);" id="nextStep" class="next_step">下一步</a>
+		</div>
+		<!-- 录入成功 -->
+		<div class="success_infor" style="display: none;">
+			<img src="../../images/light.png">
+			<p>您已完成海蜂人才登记</p>
+			<p>接下来我们将您推荐给匹配商家</p>
+			<p>请您准备好接听电话</p>
+			<p>期待您能找到满意的工作</p>
 		</div>
 	</div>
-	<script type="text/javascript">
-	var swiper = new Swiper('.swiper-container');
+</div>
+<script type="text/javascript">
+	var mySwiper = new Swiper('.swiper-container',{
+		pagination: '.my-pagination',
+		paginationClickable: true,
+		// noSwiping : true,
+		// noSwipingClass : 'stop-swiping',
+		paginationBulletRender: function (index, className) {
+			switch (index) {
+			  case 0: name='1';break;
+			  case 1: name='2';break;
+			  case 2: name='3';break;
+			  default: name='';
+			}
+			      return '<span class="' + className + '">' + name + '</span>';
+		},
+		onTouchStart: function(swiper,even){
+	      // alert('事件触发了;');
+	      if ($("#nameIn").val()=="") {
+	      	// alert(12);
+	      	// return
+	      	// $(".swiper-slide-active").addClass("swiper-no-swiping");
+	      	// alert(12);
+
+	      }else{
+	      	// alert("text");
+	      	$(".swiper-slide-active").removeClass("swiper-no-swiping");
+	      }
+	    }
+	})
 	var swiper2 = new Swiper('.media_block_swiper', {
         // pagination: '.swiper-pagination',
         slidesPerView: 3,
         paginationClickable: true,
         spaceBetween: 30
     });
+
+    $(function(){
+        $("#editImg").click(function(){
+             $(".confirm_box").show();
+        });
+        $(".layer_btn_p button").click(function(){
+            $(".confirm_box").hide();
+        });
+        $("#nextStep").click(function(){
+        	$(".swiper-container").hide()
+        	$(".success_infor").show()
+        });
+        $(".date_choose").click(function(){
+        	$("#dateId").click(function(){
+        		alert(12);
+        	});
+        	// alert(12)
+        })
+    })
 </script>
 </body>
 </html>

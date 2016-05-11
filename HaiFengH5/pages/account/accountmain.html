@@ -1,0 +1,130 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>海蜂——我的账户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../plugin/swiper/swiper.min.js"></script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirm_box">
+        <div class="layer_content">
+            <h2>温馨提示</h2>
+            <p class="txtlt">由于您当前账户佣金不足500元，为提高转账效率，暂时还不能提现，请谅解。</p>
+            <p class="layer_btn_p txtct">
+            <a href="acctwithdraw.html">我知道了</a>
+        </p>
+    </div>
+</div>
+
+<div class="wrapper account">
+    <div class="content_wrap rec_management">
+        <div class="rec_top clearfix">
+            <div class="top_cont">
+                <p class="txtlt">当前佣金(RMB)</p>
+                <p class="txtlt">
+                    <span class="number_big">88.00</span>
+                    <button type="button" class="withdraw_btn fr">申请提现</button>
+                </p>
+            </div>
+    
+        </div>
+        <div class="table_head">
+            <p class="tab_head">
+                <span class="active txtct">佣金明细</span>
+                <span class="txtct fr">提现明细</span>
+            </p>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="rec_list">
+                        <div class="table_cont">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>详情</th>
+                                        <th>金额</th>
+                                        <th>被浏览人</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2015-04-28</td>
+                                        <td>收入</td>
+                                        <td>+1.00</td>
+                                        <td>诸葛孔明</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2015-04-28</td>
+                                        <td>收入</td>
+                                        <td>+1.00</td>
+                                        <td>诸葛孔明</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                       <!--  </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="rec_list">
+                        <div class="table_cont"> -->
+                            <table class="table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>详情</th>
+                                        <th>金额</th>
+                                        <th>体现人</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2015-04-28</td>
+                                        <td>提现</td>
+                                        <td>-100</td>
+                                        <td>诸葛孔明</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2015-04-28</td>
+                                        <td>提现</td>
+                                        <td>-100</td>
+                                        <td>诸葛孔明</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        var swiper = new Swiper('.swiper-container');
+
+        $(function () {
+            $(".tab_head span").click(function () {
+                $(this).addClass("active").siblings("span").removeClass("active");
+                $(".table").eq($(this).index()).show().siblings(".table").hide();
+            });
+            $(".withdraw_btn").click(function () {
+                $(".confirm_box").show();
+            });
+            $(".layer_btn_p button").click(function () {
+                $(".confirm_box").hide();
+            });
+        })
+    </script>
+</body>
+</html>

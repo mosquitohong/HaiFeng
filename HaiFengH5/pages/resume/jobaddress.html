@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>录入简历——岗位地点</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../../style/base.css">
+	<link rel="stylesheet" href="../../style/style.css">
+
+	<link rel="stylesheet" href="../../plugin/iosselect/iosSelect.css">
+
+	<script src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&amp;key=ac3c45852cfdc6b80b64068e03dbf36b&amp;plugin=AMap.Autocomplete"></script>
+</head>
+<body>
+	<div class="wrapper jobaddress">
+		<div class="content_wrap">
+			<p class="top_p txtlt">
+				<span onclick="javascript:history.back()">取消</span>
+				<span class="done_span fr" onclick="javascript:history.back()">完成</span>
+			</p>
+			<div class="jobchoosed">
+				<p class="txtlt fl">当前城市：</p>
+				<div class="pc_box fl"  id="selectContact">
+					<input type="hidden" name="contact_province_code" data-id="0001" id="contact_province_code" value="" data-province-name="">
+					<input type="hidden" name="contact_city_code" id="contact_city_code" value="" data-city-name="">
+					<span data-city-code="510100" data-province-code="510000" data-district-code="510105" id="show_contact">杭州</span>
+					<a href="javascript:void(0)" id="editAddress">修改</a>
+				</div>
+
+				<p class="txtlt" style="width: 100%;">定位您的居住地址，寻找附近的工作</p>
+				<p class="search_con">
+					<span class="icon icon-search"></span>
+					<!-- <input type="text" placeholder="请输入名字或电话">
+					-->
+					<input id="cityid" name="cityid" type="hidden" value="{$cityid}">
+					<input type="text" placeholder="请输入小区名称或附近标志性建筑" id="txtLocation">
+					<button type="button" id="searchBtn">查找</button>
+				</p>
+			</div>
+		</div>
+	</div>
+	<script src="../../plugin/iosselect/zepto.js"></script>
+	<script src="../../plugin/iosselect/iscroll.js"></script>
+	<script src="../../plugin/iosselect/areaData_v2.js"></script>
+	<script src="../../plugin/iosselect/iosSelect.js"></script>
+	<script type="text/javascript">
+    var selectContactDom = $('#selectContact');
+    var showContactDom = $('#show_contact');
+    var contactProvinceCodeDom = $('#contact_province_code');
+    var contactCityCodeDom = $('#contact_city_code');
+    selectContactDom.bind('click', function () {
+        var sccode = showContactDom.attr('data-city-code');
+        var scname = showContactDom.attr('data-city-name');
+
+        var oneLevelId = showContactDom.attr('data-province-code');
+        var twoLevelId = showContactDom.attr('data-city-code');
+        var threeLevelId = showContactDom.attr('data-district-code');
+        var iosSelect = new IosSelect(3, 
+            [iosProvinces, iosCitys, iosCountys],
+            {
+                title: '地址选择',
+                itemHeight: 35,
+                oneTwoRelation: 1,
+                twoThreeRelation: 1,
+                oneLevelId: oneLevelId,
+                twoLevelId: twoLevelId,
+                threeLevelId: threeLevelId,
+                callback: function (selectOneObj, selectTwoObj, selectThreeObj) {
+                    contactProvinceCodeDom.val(selectOneObj.id); 
+                    contactProvinceCodeDom.attr('data-province-name', selectOneObj.value);
+                    contactCityCodeDom.val(selectTwoObj.id);
+                    contactCityCodeDom.attr('data-city-name', selectTwoObj.value);
+
+                    showContactDom.attr('data-province-code', selectOneObj.id);
+                    showContactDom.attr('data-city-code', selectTwoObj.id);
+                    showContactDom.attr('data-district-code', selectThreeObj.id);
+                    showContactDom.html(selectOneObj.value + ' ' + selectTwoObj.value + ' ' + selectThreeObj.value);
+                }
+        });
+    });
+</script>
+	<script type="text/javascript">
+        $(function () {
+            $("#homecity_name").val(window.parent.sCity);
+            //初始化地图
+            var map = new AMap.Map("container", {
+                resizeEnable: true
+            });
+            //为地图注册click事件获取鼠标点击出的经纬度坐标
+            //var clickEventListener = map.on('click', function (e) {
+            //    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+            //});
+            var auto = new AMap.Autocomplete({
+                input: "txtLocation"
+            });
+            AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+            function select(e) {
+                if (e.poi && e.poi.location) {
+                    //map.setZoom(15);
+                    //map.setCenter(e.poi.location);
+                }
+                //经纬度获取
+                $("#txtLocation").val(e.poi.name);
+                $("#hidLng").val(e.poi.location.lng);
+                $("#hidLat").val(e.poi.location.lat);
+            }
+            $("#txtLocation").focus(function () {
+                $(this).val('');
+                $("#hidLng").val('');
+                $("#hidLat").val('');
+            });
+
+        });
+
+    </script>
+</body>
+</html>

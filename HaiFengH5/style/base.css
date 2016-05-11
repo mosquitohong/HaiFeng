@@ -6,6 +6,7 @@ body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, 
   margin: 0;
   padding: 0;
   border: 0;
+  font-size: 1.2rem;
 }
 body, input, button, select, textarea {
   font: 62.5%/1.5 "微软雅黑" ,"Microsoft Yahei", "Helvetica Neue";
@@ -13,6 +14,7 @@ body, input, button, select, textarea {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga", "kern";
+  font-size: 1.2rem;
 }
 table {
   border-collapse: collapse;
@@ -68,44 +70,14 @@ textarea {
 .fr {
   float: right !important;
 }
-.mt-10 {
-  margin-top: 10px;
+.txtct{
+  text-align: center;
 }
-.mt-15 {
-  margin-top: 15px;
+.txtlt{
+  text-align: left;
 }
-.mt-60 {
-  margin-top: 60px;
-}
-.ml-10 {
-  margin-left: 10px;
-}
-.mr-10 {
-  margin-right: 10px;
-}
-.b1 {
-  background-color: #ffb300;
-}
-.b2 {
-  background-color: #ff8d35;
-}
-.b3 {
-  background-color: #4cc9e7;
-}
-.b4 {
-  background-color: #3ec78b;
-}
-.i1 {
-  border: solid 1px #ffb300;
-}
-.i2 {
-  border: solid 1px #ff8d35;
-}
-.i3 {
-  border: solid 1px #4cc9e7;
-}
-.i4 {
-  border: solid 1px #3ec78b;
+.txtrt{
+  text-align: right;
 }
 
 /*字体图标*/

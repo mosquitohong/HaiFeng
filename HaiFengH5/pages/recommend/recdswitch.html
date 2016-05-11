@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>录入简历</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../../style/base.css">
+	<link rel="stylesheet" href="../../style/style.css">
+	<script src="../../js/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="confirm_box">
+		<div class="layer_content">
+			<h2>温馨提示</h2>
+			<p class="txtlt">如果关闭推荐，将不再为你推荐工作。 即使已经上班了，也建议打开，可以多些 工作选择机会哦。</p>
+			<p class="layer_btn_p txtlt">
+				<button type="button">关闭</button>
+				<button type="button" class="fr">取消</button>
+			</p>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="content_wrap">
+			<ul class="resume_menu rec_switch">
+				<li>
+					<label>
+						<span class="icon icon-job"></span>
+						推介开关
+					</label>
+					<span class="rec_status">我要工作</span>
+					<a href="javascript:void(0);" class="rec_switch_btn fr" id="switchBtn"></a>
+
+				</li>
+				<li>
+					<label>
+						<span class="icon icon-job-type"></span>
+						职位类型
+					</label>
+					<select class="border_none fr">
+						<option option="option1">修改</option>
+						<option option="option2">全职</option>
+						<option option="option3">兼职</option>
+					</select>
+					<br>
+					<p>全职</p>
+				</li>
+				<li>
+					<label>
+						<span class="icon icon-post"></span>
+						期望岗位
+					</label>
+					<select class="border_none fr">
+						<option option="option1">修改</option>
+						<option option="option2">全职</option>
+						<option option="option3">兼职</option>
+					</select>
+					<br>
+					<div class="txtlt">
+						<a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
+						<a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
+						<a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
+						<a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
+
+						<a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
+						<a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
+					</div>
+				</li>
+				<li>
+					<label>
+						<span class="icon icon-location"></span>
+						工作地点
+					</label>
+					<!-- <input type="text" placeholder="修改" class="border_none txtrt fr">
+					-->
+					<a href="../resume/jobaddress.html" class="fr txtrt">修改</a>
+					<br>
+					<p>杭州，银泰城</p>
+				</li>
+			</ul>
+			<div class="tips_infor">
+				<p>我们将按照你最新的工作意愿匹配给适合你的商家，安心等待商家的电话吧！</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("#switchBtn").click(function(){
+			// alert(12)
+			$(this).toggleClass("rec_switch_btn_off");
+			// alert($(this).hasClass(".rec_switch_btn_off"))
+			if ($(this).hasClass("rec_switch_btn_off")==false) {
+				// alert(12);
+				$(".rec_status").text("我要工作");
+			}else{
+				$(".confirm_box").show();
+				$(".rec_status").text("我已上班");
+				// alert(123)
+			}
+			$(".layer_btn_p button").click(function(){
+				$(".confirm_box").hide();
+			});
+			
+			$(".content_wrap").click(function(){
+				// $(".layer_btn_p button").trigger("click")
+			})
+		})
+	</script>
+</body>
+</html>

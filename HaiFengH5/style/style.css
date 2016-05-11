@@ -18,26 +18,31 @@ button:focus{
 }
 /*头部样式*/
 .header{
-	margin: 0 auto 30px;
+	margin: 0 auto 60px;
 	text-align: center;
-	/*min-width: 40%;
-	min-height: 40%;*/
 	width: 100%;
 }
 .header a {
 	display: inline-block;
 	border-radius: 100%;
-	/*width: 40%;
-	min-height: 40%;*/
 	background: #fff;
 	width: 105px;
 	height: 105px;
 	border-radius: 100%;
+	position: relative;
 }
 .header a img{
 	width: 105px;
 	height: 105px;
 	border-radius: 100%;
+}
+.header .edit_img{
+	width: 43px;
+	height: auto;
+	position: absolute;
+	bottom: -1px;
+	right: 0;
+	border-radius: 0
 }
 .content_wrap{
 	width: 100%;
@@ -45,9 +50,8 @@ button:focus{
 	color: #bcbcbc;
 	text-align: center;
 	background: #f7f7f7;
-	padding-top: 80px;
+	padding-top: 70px;
 	overflow: visible;
-	/*margin-bottom: 50px;*/
 }
 .applicants_form{
 	margin: 0 auto;
@@ -100,23 +104,11 @@ button:focus{
 	line-height: 20px;
 	color: #f7982a;
 }
-.applicants_form span.icon{
-	position: absolute;
-	top: 2px;
-	left: 1px;
-	height: 35px;
-	width: 36px;
-	display: inline-block;
-	line-height: 37px;
-	background: #bcbcbc url(../images/hspriteicon.png);
-}
-
 /*注册页面*/
 .resume_menu{
 	padding: 0 24px;
 	width: 100%;
 	height: 100%;
-	/*margin: 0 auto;*/
 }
 .register_menu li .send_code{
 	width: 30%;
@@ -135,17 +127,13 @@ button:focus{
 	top: 5px;
 	height: 27px;
 	border-right: 1px solid #bcbcbc;
-	/*width: 1px;*/
-	/*background: #bcbcbc;*/
 }
 .code_li .clearvalue{
 	right: 31%;
 }
-
 .register_menu{
 	display: none;
 }
-
 .bottom p{
 	height: 30px;
 	line-height: 30px;
@@ -154,20 +142,19 @@ button:focus{
 	margin-bottom: 20px;
 }
 
-
 /*简历录入*/
 .resume_menu li{
 	height: 36px;
 	line-height: 36px;
 	margin-bottom: 23px;
 	border-bottom: 1px solid #ccc;
+	position: relative;
 }
 .resume_menu li label{
 	display: inline-block;
 	float: left;
 	text-align: left;
-	padding-left: 30px;
-	width: 90px;
+	padding-left: 15%;
 	height: 36px;
 	line-height: 36px;
 	color: #333;
@@ -180,8 +167,6 @@ button:focus{
 	background: none;
 }
 .resume_menu li input,.resume_menu li select{
-	/*height: */
-	text-align: right;
 	height: 36px;
 	line-height: 36px;
 	display: inline-block;
@@ -190,14 +175,20 @@ button:focus{
 .resume_menu li input{
 	color: #f7982a;
 }
-
+.date_li{
+	position: relative;
+}
+.date_choose{
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+}
 .media_area{
-	padding: 10px;
+	padding: 10px 20px;
 	width: 100%;
 }
 .media_block{
-	/*display: inline-block;*/
-	/*width: */
 	margin-top: 20px;
 }
 .media_title{
@@ -205,13 +196,15 @@ button:focus{
 	padding-left: 50px;
 	text-align: left;
 	height: 24px;
+	line-height: 24px;
+	color: #333;
+	font-weight: normal;
 }
 .media_show {
 	position: relative;
 	border: 1px dashed #ccc;
 }
 .media_show input[type="file"]{
-	/*visibility: hidden;*/
 	opacity: 0;
 	position: absolute;
 	top: 0;
@@ -235,32 +228,39 @@ button:focus{
 	width: 100%;
 	height: 100%;
 }
-
 .media_block p{
 	display: block;
+	margin-top: 3px;
+}
+.media_block p button{
+	padding:0;
+	color: #bcbcbc;
+}
+.video_p{
+	width: 50%;
+	margin-left: 25%;
 }
 .video_show{
 	width: 50%;
 	margin-left: 25%;
 }
 .upload_infor{
-	margin: 30px 15px;
+	margin: 10px 15px;
 	padding: 15px;
 	text-align: left;
 	border:1px dashed #ccc;
 	border-radius: 5px;
 }
 .upload_infor p{
-	/*display: table-cell;*/
 	height: 20px;
 	line-height: 13px;
 	margin-bottom: 6px;
 }
 .job_expecting{
-	margin: 25% 0;
+	margin: 9% 0 25%;
+	color: #333;
 }
 .default_btn{
-	/*margin-top: 90px;*/
 	display: inline-block;
 	width: 100%;
 	height: 36px;
@@ -275,14 +275,61 @@ button:focus{
 	font-size: 1.4rem;
 	letter-spacing: 1px;
 }
-
+.resume .layer_content{
+	width: 270px;
+	margin-left: -135px;
+}
+.resume .layer_content .layer_btn_p{
+	padding: 0 15%;
+}
+.resume .layer_content .resume_menu li input{
+	padding-left: 20px;
+}
+.resume .layer_content .resume_menu label{
+	padding-left: 0;
+}
+.resume .send_code{
+	width: 72px;
+    background: #ff9600;
+    color: #fff;
+    height: 26px;
+    line-height: 25px;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+.resume .code_li{
+	position: relative;
+}
+/*录入成功*/
+.resume .success_infor{
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+}
+.resume .success_infor p{
+	height: 26px;
+	line-height: 26px;
+}
+.resume .success_infor img{
+	width: 26%;
+	height: auto;
+}
+.resume .next_step{
+	position: absolute;
+	bottom: 10px;
+	right:10%; 
+	height: 25px;
+	line-height: 25px;
+}
 /*推荐管理*/
 .rec_management{
 	padding: 0;
 }
 .rec_top{
 	background: #f7982a;
-	padding: 40px 0;
+	padding: 70px 0 25px;
 }
 .top_item{
 	text-align: center;
@@ -320,5 +367,642 @@ button:focus{
 .table tr,.table th,.table td{
 	height: 30px;
 	background: #fff;
-	/*border:1px solid red;*/
+}
+/*推介开关*/
+.rec_switch .rec_switch_btn{
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	background: url(../images/hspriteicon.png) no-repeat -111px 2px;
+}
+.rec_switch .rec_switch_btn_off{
+	background: url(../images/hspriteicon.png) no-repeat -111px -31px;
+}
+.rec_switch li{
+	min-height: 36px;
+	height: auto;
+}
+.rec_switch li p{
+	height: 40px;
+	line-height: 40px;
+	text-align: left;
+	padding-left: 30px;
+}
+.hiretype{
+    width: auto;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding:0px 20px;
+    border-radius: 3px;
+    border:1px solid #f7982a;
+    margin:0 10px 10px 0;
+}
+.confirm_box{
+	display: none;
+}
+.layer_content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -87px 0 0 -120px;
+	width: 240px;
+	text-align: center;
+	padding: 0 3px 11px;
+	border-radius: 20px;
+	font-size: 12px;
+	z-index: 99999;
+	background: #fff;
+}
+.layer_content h2{
+	font-weight: normal;
+	margin-bottom: 5px;
+	font-size: 12px;
+	color: #333;
+	height: 32px;
+	line-height: 32px;
+	border-bottom: 1px solid #e1e1e1;
+}
+.layer_content p{
+	color: #bcbcbc;
+}
+.layer_btn_p{
+	margin-top: 10px;
+}
+.layer_content p{
+	padding: 0 10px;
+}
+.layer_btn_p button,.layer_btn_p a{
+	border:1px solid #f7982a;
+	display: inline-block;
+	height: 30px;
+	line-height: 28px;
+	color: #f7982a;
+	font-size: 1.4rem;
+	width: 80px;
+	border-radius: 10px;
+}
+.tips_infor{
+	border:1px dashed #ccc;
+	text-align: center;
+	border-radius: 4px;
+	margin: 20px 10px;
+	padding: 0 38px;
+	overflow: hidden;
+	height: 90px;
+}
+.tips_infor p{
+	height: 26px;
+	line-height: 26px;
+	margin: 20px 0;
+}
+/*推荐注册*/
+.recommend .resume_menu li:last-child{
+    margin-top: 120px;
+    border: none;
+}
+.recommend .rec_cont{
+    display: none;
+}
+.recommend .rec_success{
+    width: 216px;
+    margin: 120px auto 0;
+    overflow: hidden;
+    text-align: left;
+    height: auto;
+}
+.recommend .rec_success img{
+    float: left;
+    margin-right: 13px;
+}
+.recommend .rec_success p{
+    font-size: 1.4rem;
+    width: auto;
+    white-space: nowrap;
+    height: 18px;
+    line-height: 47px;
+}
+.recommend .rec_success p:nth-child(3){
+    font-size: 12px;
+}
+.recommend .default_btn{
+    width: 130px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+.recommend .resume_menu li input{
+    line-height: 38px;
+}
+.recommend .resume_menu .li_dif {
+    height: 50px;
+    line-height: 50px;
+}
+.recommend .resume_menu .li_dif input{
+    line-height: 50px;
+}
+.recommend .resume_menu .li_dif label{
+    line-height: 1px;
+}
+/*查找推荐人*/
+.rec_search{
+	margin: 10px auto;
+	padding: 0 10px;
+}
+.rec_search h3{
+	color: #333;
+	margin: 20px;
+}
+.search_con{
+	position: relative;
+	margin-bottom: 20px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: text-bottom;
+}
+.search_con input[type="text"],.search_con button{
+	/*margin-left:-33px;*/
+	width: 77%;
+	border:1px solid #f7982a;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 3px;
+	padding-left: 24px;
+	color: #f7982a;
+}
+.search_con button{
+	margin-left:5px;
+	width: 15%; 
+	line-height: 29px;
+	display: inline-block;
+	vertical-align: -2px;
+	padding: 0;
+	/*float: right;*/
+}
+.single{
+    border:1px solid #eee;
+    padding: 10px 15px;
+    width: 100%;
+    background: #fff;
+}
+.single_image{
+    text-align: center;
+    width: 40%;
+    margin-top: 10px;
+}
+.single_image p{
+	height: 26px;
+}
+.single_image p a{
+    margin: 10px 0 0 10px;
+    display: inline-block;
+    position: relative;
+}
+.single_image img{
+    border-radius: 100%; 
+    border:1px solid #eee;
+    width: 100%;
+    height: 100%;
+}
+.single_menu{
+	margin-left: 5%;
+	width: 55%;
+}
+.single_menu li{
+    height: 28px;
+    line-height: 28px;
+    text-align: left;
+    color: #333;
+}
+.single_menu li a{
+	color: #333;
+}
+.single_menu .btnp{
+    margin:10px 0 0;
+}
+.single_menu .btnp button{
+    width: 100%;
+    height: 26px;
+    line-height: 24px;
+    border-radius: 15px;
+    font-size: 12px;
+    background: #bcbcbc;
+    cursor: pointer;
+}
+.single_menu .btnp button:hover{
+    background: #f7982a;
+}
+.single_menu .btnp button span{
+    margin-left: -10px;
+    margin-right: 23px;
+}
+.btn_group{
+	text-align: left;
+	padding: 0 10px;
+}
+.btn_group a{
+	padding: 0;
+	color: #bcbcbc;
+	width: 20%;
+	margin-right:7%;
+	text-align: left; 
+	display: inline-block;
+}
+.btn_group a:last-child{
+	width: 10%;
+	white-space: nowrap;
+	margin: 0;
+	text-align: right;
+}
+/*工作地址*/
+.top_p{
+	padding: 0 20px;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid #ccc;
+}
+.jobchoosed_con{
+	background: #fff;
+	padding: 8px 20px 10px;
+}
+.done_span{
+	color: #f7982a;
+}
+.jobchoosed{
+	margin-top: 5px;
+}
+.jobchoosed p{
+	padding: 0 22px;
+	height: 30px;
+	line-height: 30px;
+	color: #333;
+	font-size: 1.5rem;
+	display: inline-block;
+}
+.jobchoosed p:first-child{
+	padding-right: 0;
+}
+.jobchoosed p:last-child{
+	margin-top: 7px;
+	width: 100%;
+}
+.jobchoosed p a{
+	font-size: 1.5rem;
+}
+.jobchoosed_con{
+	min-height: 50px;
+	text-align: left;
+}
+.pc_box{
+	display: inline-block;
+}
+.pc_box span,.pc_box a{
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	color: #333;
+	font-size: 1.5rem;
+}
+.pc_box a{
+	color: #bcbcbc;
+	margin-left: 10px;
+}
+
+/*工作类型*/
+.jobpost .hiretype{
+    width: auto;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding:0px 20px;
+    border-radius: 4px;
+    border:1px solid #eee;
+    margin-right: 15px;
+	margin:0 10px 10px 0;
+}
+.jobpost .jobchoosed_con a{
+    display: inline-block;
+    width: auto;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 28px;
+    border-radius: 4px;
+    text-align: center;
+    border:1px solid #f7982a;
+    margin:2px 2px 0;
+    color: #f7982a;
+}
+.jobpost .jobchoosed_con a span{
+	font-size: 1.8rem;
+	/*display: inline-block;
+	height: 30px;
+	line-height: 30px;*/
+	vertical-align: -2px;
+}
+.jobpost .hire_cont .choosemark{
+    border:1px solid #f7982a;
+    color: #f7982a;
+    /*background: url(../images/choosemark.png);*/
+}
+.jobpost .top_p{
+	padding: 0 20px;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid #ccc;
+}
+.jobpost .jobchoosed_con{
+	background: #fff;
+	padding: 8px 20px 10px;
+}
+.jobpost .done_span{
+	color: #f7982a;
+}
+.jobpost .jobchoosed p{
+	padding: 0 22px;
+	height: 38px;
+	line-height: 38px;
+	font-size: 1.5rem;
+	color: #333;
+	display: block;
+}
+.jobpost .jobchoosed_con{
+	min-height: 50px;
+	text-align: left;
+}
+.jobpost .choose_area{
+	margin-top: 20px;
+}
+.jobpost .choose_area_left{
+	width: 35%;
+	border-right: 1px solid #ccc;
+	min-height: 50%;
+}
+.jobpost .choose_menu li{
+	height: 36px;
+	line-height: 36px;
+	text-align: left;
+	padding-left: 32%;
+	/*margin-left: 10%;*/
+}
+.jobpost .choose_menu li.active{
+	background: #fff;
+}
+.jobpost .choose_area_right{
+	width: 65%;
+	min-height: 50%;
+	background: #fff;
+}
+.hire_cont{
+	padding-top: 10px;
+}
+/*我的账户*/
+.account .swiper-container,.swiper-wrapper,.swiper-slide {
+    height: 100%;
+    width: 100%;
+}
+.account .table_head p {
+    border-bottom: 2px solid #ccc;
+}
+.account .number_big {
+    font-size: 3.0rem;
+}
+.account .content_wrap {
+    height: 100%;
+}
+.account .rec_top {
+    padding: 0 20px;
+    height: 30%;
+}
+.account .withdraw_btn {
+    width: 100px;
+    height: 33px;
+    line-height: 32px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.4rem;
+}
+.account .top_cont {
+    padding-top: 25%;
+    color: #fff;
+}
+.account .table_head p span {
+    width: 50%;
+    display: inline-block;
+    height: 33px;
+    line-height: 33px;
+    font-size: 1.4rem;
+    position: relative;
+}
+.account .table_head p .active:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 33px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #f7982a;
+}
+
+/*提现页面*/
+.account .rec_success {
+    width: 216px;
+    margin: 120px auto 0;
+    overflow: hidden;
+    text-align: left;
+    height: auto;
+}
+.account .rec_success img {
+    float: left;
+    margin-right: 13px;
+}
+.account .rec_success p {
+    font-size: 16px;
+    width: auto;
+    white-space: nowrap;
+    height: 18px;
+    line-height: 47px;
+}
+.account .rec_success p:nth-child(3) {
+    font-size: 12px;
+}
+.account .default_btn {
+    width: 130px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+.account .resume_menu .li_dif label {
+    line-height: 1px;
+}
+.account .send_code {
+    width: 72px;
+    background: #ff9600;
+    color: #fff;
+    height: 33px;
+    line-height: 32px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+.account .code_li {
+    position: relative;
+}
+.withdraw_infor {
+    padding: 0 10px;
+}
+.withdraw_infor_menu li {
+    padding: 0 10px;
+    text-align: left;
+    height: 58px;
+    line-height: 58px;
+}
+.withdraw_infor_menu .border_li {
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 10px;
+    height: 68px;
+}
+.withdraw_infor_menu li input {
+    width: 50%;
+    border: 1px solid #e1e1e1;
+    padding-left: 15px;
+    height: 34px;
+    line-height: 34px;
+}
+.withdraw_infor_menu li label {
+    margin-right: 3%;
+}
+.withdraw_infor_menu li .default_btn {
+    width: 100%;
+}
+/*图标*/
+.icon{
+    position: relative;
+}
+.icon:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    /*left: -28px;*/
+    left: -34px;
+    height: 20px;
+    width: 20px;
+    margin-top: -10px;
+    /*background: url(../images/hspriteicon.png) no-repeat center center;*/
+    background: url(../images/hspriteicon02.png) no-repeat center center;
+}
+.choose_menu .icon:after{
+    left: -28px;
+}
+.applicants_form .icon:after{
+    left: 0px;
+}
+.icon-man:after{
+    background-position: -86px -159px;
+}
+.icon-women:after{
+    background-position: -125px -49px;
+}
+.single_image .icon-picture:after{
+	width: 40px;
+    background-position: -81px -105px;
+}
+.single_image .icon-video:after{
+	width: 40px;
+	left:0 ;
+    background-position: -81px -74px;
+}
+.withdetail .icon-picture:after{
+    background-position: -113px -105px;
+}
+.withdetail .icon-video:after{
+    background-position: -113px -74px;
+}
+.icon-job:after{
+    background-position: -9px -10px;
+}
+.icon-job-type:after{
+    background-position: -9px -40px;
+}
+.icon-post:after{
+    background-position: -9px -70px;
+}
+.icon-location:after{
+    background-position: -9px -98px;
+}
+.icon-user-phone:after{
+	width: 38px;
+	height: 35px;
+	top: 0;
+	background-color: #bcbcbc;
+    background-position: -31px -245px;
+}
+.icon-user-password:after{
+	width: 38px;
+	height: 35px;
+	top: 0;
+	background-color: #bcbcbc;
+    background-position: 1px -274px;
+}
+.icon-user-code:after{
+	width: 38px;
+	height: 35px;
+	top: 0;
+	background-color: #bcbcbc;
+    background-position: -32px -274px;
+}
+.icon-name:after{
+    background-position: -9px -126px;
+}
+.icon-gender:after{
+    background-position: -9px -70px;
+}
+.icon-phone:after{
+    background-position: -9px -157px;
+}
+.icon-age:after{
+    background-position: -9px -186px;
+}
+.icon-piture:after{
+	width: 40px;
+	left: -40px;
+    background-position: -81px -105px;
+}
+.icon-video:after{
+	width: 40px;
+	left: -40px;
+    background-position: -81px -74px;
+}
+.icon-qus:after{
+	left: -21px;
+    background-position: -34px -10px;
+}
+.icon-anw:after{
+	left: -21px;
+    background-position: -34px -26px;
+}
+.icon-search:after{
+	left: 2px;
+    background-position: -84px -135px;
+}
+.icon-ls:after{
+    background-position: -39px -70px;
+}
+.icon-cy:after{
+    background-position: -39px -99px;
+}
+.icon-jd:after{
+    background-position: -39px -129px;
+}
+.icon-jz:after{
+    background-position: -39px -157px;
+}
+.icon-yd:after{
+    background-position: -39px -188px;
+}
+.icon-yl:after{
+    background-position: -9px -217px;
+}
+.icon-lr:after{
+    background-position: -9px -252px;
+}
+.icon-others:after{
+    background-position: -39px -218px;
 }
