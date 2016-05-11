@@ -19,6 +19,9 @@
             height: 100%;
             width: 100%;
         }
+        .swiper-container{
+        	margin-top:20px;
+        }
         .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
         	position: absolute;
         	/*bottom: 20%;*/
@@ -298,8 +301,9 @@
             $(".confirm_box").hide();
         });
         $("#nextStep").click(function(){
-        	$(".swiper-container").hide()
-        	$(".success_infor").show()
+        	$(".swiper-container").hide();
+        	$(".success_infor").show();
+        	$(".resume .content_wrap").css("padding-top","60px")
         });
         $(".date_choose").click(function(){
         	$("#dateId").click(function(){

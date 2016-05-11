@@ -18,7 +18,7 @@ button:focus{
 }
 /*头部样式*/
 .header{
-	margin: 0 auto 60px;
+	margin: 0 auto 40px;
 	text-align: center;
 	width: 100%;
 }
@@ -105,6 +105,18 @@ button:focus{
 	color: #f7982a;
 }
 /*注册页面*/
+.resume{
+	/*padding-top: 20px;*/
+}
+.resume .content_wrap{
+	padding-top: 0;
+}
+.recdsearch .content_wrap{
+	padding-top: 20px;
+}
+.jobaddress .content_wrap,.jobpost .content_wrap{
+	padding-top: 20px;
+}
 .resume_menu{
 	padding: 0 24px;
 	width: 100%;
@@ -237,12 +249,12 @@ button:focus{
 	color: #bcbcbc;
 }
 .video_p{
-	width: 50%;
-	margin-left: 25%;
+	width: 40%;
+	margin-left: 30%;
 }
 .video_show{
-	width: 50%;
-	margin-left: 25%;
+	width: 40%;
+	margin-left: 30%;
 }
 .upload_infor{
 	margin: 10px 15px;
@@ -257,7 +269,7 @@ button:focus{
 	margin-bottom: 6px;
 }
 .job_expecting{
-	margin: 9% 0 25%;
+	margin: 9% 0 16%;
 	color: #333;
 }
 .default_btn{
@@ -782,7 +794,7 @@ button:focus{
     font-size: 1.4rem;
 }
 .account .top_cont {
-    padding-top: 25%;
+    padding: 25% 0 5%;
     color: #fff;
 }
 .account .table_head p span {
@@ -834,13 +846,14 @@ button:focus{
     line-height: 1px;
 }
 .account .send_code {
-    width: 72px;
+    /*width: 72px;*/
     background: #ff9600;
     color: #fff;
     height: 33px;
     line-height: 32px;
     border-radius: 5px;
     white-space: nowrap;
+    padding: 0 5px;
 }
 .account .code_li {
     position: relative;
