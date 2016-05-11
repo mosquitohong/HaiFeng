@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>弹框-提示</title>
+    <style type="text/css">
+        .tips{
+            margin-left: 30px;
+        }
+        .tips p{
+            display: inline-block;
+            float: left;
+        }
+        .tipsp2{
+            margin: 25px 0 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tipsbox">
+        <div class="tips">
+            <p>
+                <!-- <img src="../images/editpwd.png"> -->
+                <img src="" id="curImg">
+                </p>
+            <p id="pTip" class="tipsp2"></p>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("#pTip").html(getUrlParam("tip"));
+            var curImg="../images/"+getUrlParam("img")+".png";
+            $("#curImg").attr("src",curImg);
+        });
+
+        //获取url中的参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(r[2]); return null;
+        }
+    </script>
+</body>
+</html>

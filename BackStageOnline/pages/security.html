@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>海蜂后台——安全管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="renderer" content="webkit" />
+
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
+</head>
+<body>
+    <div class="content-panel">
+        <div class="panel-top">
+            <h3>安全设置</h3>
+        </div>
+        <div class="lb-container">
+            <div class="lb-content">
+                <ul class="tab-menu">
+                    <li class="fl">
+                        <a href="javascript:void(0);" class="active" data-id="loginForm">改密码</a>
+                    </li>
+                    <li class="fl">
+                        <a href="javascript:void(0);" data-id="registerForm">换手机</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <form id="loginForm" class="tab-form loginform">
+                        <ul>
+                            <li>
+                                <label class="default-label fl rt">当前绑定手机号</label>
+                                <span class="default-phone fl">136××××8888</span><button type="button" class="send-code fr" id="GetVerifyCode">发送验证码</button>
+                            </li>
+                            <li>
+                                <label class="default-label fl rt">验证码</label>
+                                <input type="text" placeholder="请输入验证码" id="code">
+                                <span class="clearvalue">×</span>
+                                <p class="errortip">验证码错误</p>
+                            </li>
+                            <li>
+                                <label class="default-label fl rt">新密码</label>
+                                <input type="password" placeholder="请输入新密码" id="regPwd">
+                                <span class="clearvalue">×</span>
+                                <p class="errortip"></p>
+                            </li>
+                            <li>
+                                <label class="default-label fl rt">再次输入新密码</label>
+                                <input type="password" placeholder="请再次输入新密码" id="regRepPwd">
+                                <span class="clearvalue">×</span>
+                                <p class="errortip">两次密码不一致</p>
+                            </li>
+                            <li><button type="button" id="editPwd" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=editpwd','提示',['344px','124px']);">确认修改</button></li>
+                        </ul>
+                    </form>
+                    <form id="registerForm" class="tab-form regform">
+                        <ul>
+                            <li>
+                                <label class="default-label fl rt">当前绑定手机号</label>
+                                <span class="default-phone fl">136××××8888</span><button type="button" class="send-code fr" id="GetVerifyCode">发送验证码</button>
+                            </li>
+                            <li>
+                                <label class="default-label fl rt">验证码</label>
+                                <input type="text" placeholder="请输入验证码" id="code">
+                                <span class="clearvalue">×</span>
+                                <p class="errortip">验证码错误</p>
+                            </li>
+                            <li>
+                                <label class="default-label fl rt">手机号</label>
+                                <input type="tel" class="newphone" placeholder="请输入新手机号" id="regPhone" oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))"><button type="button" class="send-code fr" id="GetVerifyCode">发送验证码</button>
+                            </li>
+                            <li>
+                                <label class="default-label fl rt">验证码</label>
+                                <input type="text" placeholder="请输入验证码" id="code">
+                                <span class="clearvalue">×</span>
+                                <p class="errortip">验证码错误</p>
+                            </li>
+                            <li><button type="button">确认修改</button></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript"><script type="text/javascript">
+    $(function () {
+        var oUserInfo = window.parent.oUserInfo;
+        if (oUserInfo !== null) {
+            $("#spModifyPwdMobile,#spChangeMobile").html(oUserInfo.Mobile);
+
+            // 登录注册切换
+            $(".tab-menu li a").click(function () {
+                $(".tab-menu li a").removeClass("active");
+                $(this).addClass("active");
+                var curId = $(this).attr("data-id");
+                $("#" + curId).slideDown("slow").siblings(".tab-form").slideUp("slow");
+            });
+            // 清除内容
+            $(".clearvalue").click(function () {
+                $(this).prevAll("input").val("");
+            });
+            $("input").focus(function () {
+                $(this).siblings(".clearvalue").show();
+            });
+            // .blur(function(){
+            //     $(this).siblings(".clearvalue").hide();
+            // });
+
+            // 登录注册
+            $("#modifyCode,#changeCode,#newChangeCode").blur(function () {
+                checkVerifyCode($(this));
+            });
+            $("#modifyPwd").blur(function () {
+                checkModifyPwd($(this));
+            });
+            $("#reModifyPwd").blur(function () {
+                checkRePwd($(this));
+            });
+
+
+            $("#editPwd").click(function () {
+                var modifyCode = $('#modifyCode');
+                checkVerifyCode(modifyCode);
+                if (sCode === 1) return false;
+                var modifyPwd = $('#modifyPwd');
+                checkModifyPwd(modifyPwd);
+                if (psw === 1) return false;
+                var reModifyPwd = $('#reModifyPwd');
+                checkRePwd(reModifyPwd);
+                if (repsd === 1) return false;
+
+                $.post('/Ajax/MerchantSetting/SecurityManagement.ashx', { action: 'ModifyPwdByMobile', data: "{\"mobile\":\"" + $('#spModifyPwdMobile').html() + "\",\"verify\":\"" + modifyCode.val() + "\",\"newpwd\":\"" + modifyPwd.val() + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        alert('修改密码成功');
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                return true;
+            });
+
+            $("#regBtn").click(function () {
+                var regPhone = $('#regPhone');
+                checkTextValue(regPhone);
+                if (ph === 1) return false;
+                var code = $('#code');
+                checkTextValue(code);
+                if (sCode === 1) return false;
+                var changePwd = $('#changePwd');
+                checkModifyPwd(changePwd);
+                if (psw === 1) return false;
+                var reChangePwd = $('#reChangePwd');
+                checkRePwd(reChangePwd);
+                if (repsd === 1) return false;
+
+                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'MerchantRegister', data: "{\"mobile\":\"" + regPhone.val() + "\",\"verify\":\"" + code.val() + "\",\"password\":\"" + changePwd.val() + "\",\"repassword\":\"" + reChangePwd.val() + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        window.location.href = 'main.html';
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                return true;
+            });
+        } else {
+            alert('登录失效');
+            window.location.href = 'index.html';
+        }
+    });
+    // 验证密码
+    var sCode = 1;
+    var ph = 1;
+    var psw = 1;
+    var repsd = 1;
+    // 验证手机号
+    function checkTextLength(obj, length) {
+        if (obj.value.length > length) {
+            obj.value = obj.value.substr(0, length);
+        }
+    }
+    function checkTextValue(obj) {
+        // var reg= /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
+        var reg = /^1[0-9]{10}$/;
+        if (obj.val() === "") {
+            // alert("手机号不能为空！");
+            // obj.nextSiblings.innerText()
+            obj.focus().siblings("p").show().text("手机号不能为空！");
+            obj.siblings(".clearvalue").show();
+            ph = 1;
+        } else if (!reg.test(obj.val())) {
+            ph = 1;
+            // alert("手机格式错误！");
+            obj.focus().siblings("p").show().text("手机格式错误！");
+            obj.siblings(".clearvalue").show();
+            // return
+        } else {
+            obj.siblings("p").hide();
+            // alert("手机号正确");
+            ph = 2;
+            obj.siblings(".clearvalue").hide();
+        }
+    }
+    function checkModifyPwd(obj) {
+        if (obj.val() === "") {
+            // alert("密码不能为空！");
+            obj.focus().siblings("p").show().text("密码不能为空！");
+            obj.siblings(".clearvalue").show();
+
+        } else if (obj.val().length < 6) {
+            obj.siblings("p").show().text("密码不能少于六位！");
+            obj.siblings(".clearvalue").show();
+            // alert("密码不能少于六位！");
+        } else {
+            obj.siblings("p").hide();
+            // alert("密码正确");
+            obj.siblings(".clearvalue").hide();
+            psw = 2;
+        }
+    }
+    function checkRePwd(obj) {
+        if (obj.val() === "") {
+            // alert("密码不能为空！");
+            obj.focus().siblings("p").show().text("密码不能为空！");
+        } else if (obj.val().length < 6) {
+            obj.siblings("p").show().text("密码不能少于六位！");
+            // alert("密码不能少于六位！");
+        } else if (obj.val() !== $("#modifyPwd").val()) {
+            // alert("密码不一致！");
+            obj.siblings("p").show().text("密码不一致！");
+            //$("#regPwd").focus();
+        } else {
+            obj.siblings("p").hide();
+            // alert("验证密码号正确");
+            repsd = 2;
+            obj.siblings(".clearvalue").hide();
+        }
+    }
+    function checkVerifyCode(obj) {
+        if (obj.val() === "") {
+            // alert("密码不能为空！");
+            obj.focus().siblings("p").show().text("验证码不能为空！");
+            obj.siblings(".clearvalue").show();
+        } else if (obj.val().length < 6) {
+            obj.siblings("p").show().text("验证码不能少于六位！");
+            obj.siblings(".clearvalue").show();
+            // alert("密码不能少于六位！");
+        }
+            // else if ($(this).val()!= "验证码规则") {
+            //     $(this).focus().siblings("p").show().text("验证码错误")
+            // }
+        else {
+            sCode = 2;
+            obj.siblings("p").hide();
+            obj.siblings(".clearvalue").hide();
+            //$("#regPwd").val("").focus();
+        }
+    }
+    </script>
+    </script>
+   <script type="text/javascript">
+        var time = 60;
+        var interval;
+        //var __sto = setInterval;
+        //window.setInterval = function (callback, timeout, param) {
+        //    var args = Array.prototype.slice.call(arguments, 2);
+        //    var _cb = function () {
+        //        callback.apply(null, args);
+        //    }
+        //    __sto(_cb, timeout);
+        //}
+        function waitEnabled(obj) {
+            if (window.parent.time === 0) {
+                obj.html("获取验证码");
+                obj.removeAttr('disabled');
+                obj.css("background", "#ff9600");
+                window.parent.time = 60;
+                window.clearInterval(interval);
+            } else {
+                obj.html("已发送(" + --window.parent.time + ")");
+            }
+
+        }
+        function verifyCode(iType, obj) {
+            var mobile, opcode;
+            switch (iType) {
+                case 1:
+                    mobile = $('#spModifyPwdMobile').html();
+                    opcode = 'ModifyPwdVerify';
+                    break;
+                case 2:
+                    mobile = $('#spModifyPwdMobile').html();
+                    opcode = 'ChangeMobileVerify';
+                    break;
+                case 3:
+                    mobile = $('#spChangeMobile').html();
+                    opcode = 'ChangeNewMobileVerify';
+                    break;
+                default:
+                    mobile = $('#newMobile').val();
+                    opcode = 'ModifyPwdVerify';
+                    break;
+            }
+
+            if ($.trim(mobile) === "" || $.trim(mobile).length !== 11) {
+                alert("手机号码为空或不合法");
+                return false;
+            } else {
+                $.post('/Ajax/BasePage/UserBase.ashx', { action: 'SendSmsLogin', data: "{\"mobile\":\"" + mobile + "\",\"opcode\":\"" + opcode + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        //SendType = 1 表示发送验证码
+                        //收到短信之后允许修改手机号码
+                        if (iType === 3)
+                            $('#newMobile').attr("readonly", true);
+                        obj.attr("disabled", "disabled");
+                        obj.css("background", "#A8A8A8");
+                        obj.html("已发送(60)");
+                        interval = setInterval(function () { waitEnabled(obj); }, 1000);
+                        //window.setInterval(waitEnabled, 1000, obj);
+                        //alert("发送成功");
+                    }
+                    else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+
+
+            }
+            return true;
+        }
+        $('#GetModifyCode').click(function () { verifyCode(1, $(this)); });
+        $('#GetChangeCode').click(function () { verifyCode(2, $(this)); });
+        $('#GetChangeNewCode').click(function () { verifyCode(3, $(this)); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>海蜂后台——看点充值</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="renderer" content="webkit" />
+
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <div class="content-panel">
+        <div class="panel-top">
+            <h3>看点充值</h3>
+        </div>
+        <div class="recharge clearfix">
+            <div class="clearfix">
+                <ul class="recharge-menu fl">
+                    <li>
+                        <label class="lf default-label">充值选项</label>
+                        <div class="charge fl">
+                            <a href="javascript:void(0);" onclick="addMark($(this))" class="choosemark"><span>25</span><span class="icon icon-choose"></span>看点</a>
+                            <a href="javascript:void(0);"  class="discount" onclick="addMark($(this))"><span>85</span><span class="icon icon-choose"></span><i>7.7折</i>看点</a>
+                            <a href="javascript:void(0);"  class="discount" onclick="addMark($(this))"><span>162</span><span class="icon icon-choose"></span><i>8.8折</i>看点</a>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="lf default-label">充值金额</label>
+                        <p>100.00元</p>
+                    </li>
+                    <li>
+                        <label class="lf default-label">支付方式</label>
+                        <div class="payway fl">
+                            <a href="javascript:void(0);" class="alipay">
+                                <input type="radio" name="payway" checked>支付宝</a>
+                            <a href="javascript:void(0);" class="wxpay">
+                                <input type="radio" name="payway">微信支付</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="btnp">
+                <button type="button" class="confirm-recharge">确认充值</button>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" language="javascript">
+    var iType = 1;
+    function fChangeFits(obj,type) {
+        addMark(obj);
+        iType = type;
+        var iAmount = "100.00元";
+        if (type === 2)
+            iAmount = "300.00元";
+        else if (type === 3)
+            iAmount = "500.00元";
+        $("#spAmount").html(iAmount);
+    }
+
+    function chargenow() {
+        if (window.parent.oUserInfo !== null) {
+            $.post('/Ajax/MyAccount/WatchingFocusCharge.ashx', { action: 'ChargeWatchingFocus', data: "{\"accountid\":\"" + window.parent.oUserInfo.Id + "\",\"chargelevel\":\"" + iType + "\"}" }, function (resp) {
+                if (resp.code === "1000") {
+                    $('#spForm').html(resp.data);
+                    dialogModality("/pages/tipsbox.html?tip=充值已提交，请在新页面完成充值操作");
+                } else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+        } else {
+            alert('登录信息失效，请重新登录');
+        }
+    }
+</script>
+</body>
+</html>

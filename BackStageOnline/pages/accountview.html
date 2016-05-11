@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>海蜂后台-账户概览</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="renderer" content="webkit" />
+
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
+</head>
+<body>
+    <div class="content-panel">
+        <div class="panel-top">
+            <h3>账户概览</h3>
+        </div>
+        <div class="hunttop accountview-top clearfix">
+            <div class="viewtop">
+                <img  class="fl" src="../images/viewimg.png">
+                <div class="viewinfor fl">
+                    <h3>
+                        可用看点：
+                        <span>25</span>
+                        点
+                    </h3>
+                    <p>
+                        最后使用时间：
+                        <span>2016-04-30</span>
+                    </p>
+                </div>
+                <p class="btnp fl">
+                    <!-- <button type="button">搜索</button> -->
+                    <a href="recharge.html" class="confirm-link">看点充值</a>
+                </p>
+            </div>
+        </div>
+        <div class="usedetail">
+            <h3>看点使用明细</h3>
+            <div class="timeli fr">
+                <label class="default-label fl">选择时间</label>
+                <p>
+                    <input type="radio" name="time" checked>全部(默认)</p>
+                <p>
+                    <input type="radio" name="time">三天</p>
+                <p>
+                    <input type="radio" name="time">一周内</p>
+                <p class="agep">
+                    <input type="radio" name="time">自定义
+                    <input type="text" id="startDate">
+                    <span>至</span>
+                    <input type="text" id="endDate"></p>
+                <button type="button" class="condition-btn">筛选</button>
+                <button type="button" class="condition-btn">清空</button>
+            </div>
+        </div>
+        <div class="hunt-pepole accountview clearfix">
+            <div class="sigle-content clearfix">
+                <div class="single clearfix fl">
+                    <div class="single-penal clearfix">
+                        <div class="single-image fl">
+                            <img src="../images/female.png">
+                            <a href="">
+                                <span class="icon icon-picture"></span>
+                            </a>
+                            <a href="">
+                                <span class="icon icon-video"></span>
+                            </a>
+                        </div>
+                        <ul class="single-menu fl">
+                            <li>
+                                <label>姓名：</label>
+                                <span>高司令</span>
+                                <a href="" class="fr">
+                                    <span class="icon icon-women"></span>
+                                    18岁
+                                </a>
+                            </li>
+                            <li>
+                                <label>岗位：</label>
+                                <span>服务员</span>
+                            </li>
+                            <li>
+                                <label>距离：</label>
+                                <span>2kg以内</span>
+                            </li>
+                            <li>
+                                <label>位置：</label>
+                                <span>西溪花园水岸花苑</span>
+                            </li>
+                            <li>
+                                <p class="opration-p">
+                                    <button type="button" class="" onclick="dialogModality('pages/details.html','提示',['1000px','564px'],['关闭','下一个']);">查看</button>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="viewtime lf">
+                        浏览时间：
+                        <span>2016.04.29</span>
+                    </p>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-penal clearfix">
+                        <div class="single-image fl">
+                            <img src="../images/female.png">
+                            <a href="">
+                                <span class="icon icon-picture"></span>
+                            </a>
+                            <a href="">
+                                <span class="icon icon-video"></span>
+                            </a>
+                        </div>
+                        <ul class="single-menu fl">
+                            <li>
+                                <label>姓名：</label>
+                                <span>高司令</span>
+                                <a href="" class="fr">
+                                    <span class="icon icon-women"></span>
+                                    18岁
+                                </a>
+                            </li>
+                            <li>
+                                <label>岗位：</label>
+                                <span>服务员</span>
+                            </li>
+                            <li>
+                                <label>距离：</label>
+                                <span>2kg以内</span>
+                            </li>
+                            <li>
+                                <label>位置：</label>
+                                <span>西溪花园水岸花苑</span>
+                            </li>
+                            <li>
+                                <p class="opration-p">
+                                    <button type="button" class="" onclick="dialogModality('pages/details.html','提示',['1000px','564px'],['关闭','下一个']);">查看</button>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="viewtime lf">
+                        浏览时间：
+                        <span>2016.04.29</span>
+                    </p>
+                </div>
+                <div class="single clearfix fl">
+                    <div class="single-penal clearfix">
+                        <div class="single-image fl">
+                            <img src="../images/male.png">
+                            <a href="">
+                                <span class="icon icon-picture"></span>
+                            </a>
+                            <a href="">
+                                <span class="icon icon-video"></span>
+                            </a>
+                        </div>
+                        <ul class="single-menu fl">
+                            <li>
+                                <label>姓名：</label>
+                                <span>高司令</span>
+                                <a href="" class="fr">
+                                    <span class="icon icon-man"></span>
+                                    18岁
+                                </a>
+                            </li>
+                            <li>
+                                <label>岗位：</label>
+                                <span>服务员</span>
+                            </li>
+                            <li>
+                                <label>距离：</label>
+                                <span>2kg以内</span>
+                            </li>
+                            <li>
+                                <label>位置：</label>
+                                <span>西溪花园水岸花苑</span>
+                            </li>
+                            <li>
+                                <p class="opration-p">
+                                    <button type="button" class="" onclick="dialogModality('pages/details.html','提示',['1000px','564px'],['关闭','下一个']);">查看</button>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="viewtime lf">
+                        浏览时间：
+                        <span>2016.04.29</span>
+                    </p>
+                </div>
+            </div>
+            <!-- 分页开始 -->
+            <div class="pages">
+                <ul>
+                    <li class="pagesli1">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli2">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">1</a>
+                    </li>
+                    <li class="pagesli3 pageactive">
+                        <a href="javascript:void(0);">2</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">3</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">4</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">5</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">6</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">7</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">...</a>
+                    </li>
+                    <li class="pagesli3">
+                        <a href="javascript:void(0);">21</a>
+                    </li>
+                    <li class="pagesli4">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli5">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li class="pagesli6">
+                        <input type="number">
+                        <button></button>
+                    </li>
+                </ul>
+            </div>
+            </div>
+    </div>
+<script src="../plugin/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+        $(function(){
+            // 筛选按钮样式
+            $(".choosebtn button").click(function(){
+                var curColor="color"+$(this).index();
+                $(this).addClass(curColor).siblings("button").removeClass()
+            });
+        })
+
+    </script>
+    <script type="text/javascript">
+        var pageSize = 9;
+        var iDataCount = 9;
+        $(function () {
+            //获取登录用户的手机号码
+            var oUserInfo = window.parent.oUserInfo;
+            if (oUserInfo !== null) {
+                var mydate = new Date();
+                var stryear = mydate.getFullYear();
+                $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                mydate.setDate(mydate.getDate() - 30);
+                $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+
+                $.post('/Ajax/MyAccount/AccountPreview.ashx', { action: 'GetWatchingFocusInfo', data: "{\"accountid\":\"" + oUserInfo.Id + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        $("#spKanDian").html(resp.data.WatchingFocusBalance);
+                        $("#spLastUsedTime").html(resp.data.LastUsedTime);
+                    } else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+                // 筛选按钮样式
+                $(".choosebtn button").click(function () {
+                    var curColor = "color" + $(this).index();
+                    $(this).addClass(curColor).siblings("button").removeClass();
+                });
+
+                $("#queryResume").click(function () {
+
+                    fShowData(0, null);
+                });
+
+                $("#clearDate").click(function () {
+                    $('#startDate').val('');
+                    $('#endDate').val('');
+                    $("input[name='time']").eq(0).attr("checked", "checked");
+                });
+
+                $("#startDate,#endDate").focus(function () {
+                    $("input[name='time']").eq(3).attr("checked", "checked");
+                });
+
+                $("input[name=time]").click(function () {
+                    switch ($('input[name="time"]:checked').val()) {
+                        case "1":
+                            mydate = new Date();
+                            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                            mydate.setDate(mydate.getDate() - 30);
+                            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                            break;
+                        case "2":
+                            mydate = new Date();
+                            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                            mydate.setDate(mydate.getDate() - 3);
+                            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                            break;
+                        case "3":
+                            mydate = new Date();
+                            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                            mydate.setDate(mydate.getDate() - 7);
+                            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                            break;
+                        case "4":
+                            $('#startDate').focus();
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            } else {
+                alert('登录失效');
+                window.location.href = 'index.html';
+            }
+        });
+        function getpositionname(positionid) {
+            var v = "";
+            var s = positionid.split(',');
+            for (var i = 0; i < s.length; i++) {
+                for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
+                    if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
+                        if (v == "")
+                            v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                        else
+                            v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                    }
+                }
+            }
+            return v;
+        }
+        function fShowData(page_index, jq) {
+            page_index = page_index + 1;
+            var sStartDate = $('#startDate').val();
+            mydate = new Date();
+            var sEndDate = $('#endDate').val() === "" ? stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate() : $('#endDate').val();
+            if (sStartDate !== "") {
+                $("#resumelist").html('');
+                $.post('/Ajax/MyAccount/AccountPreview.ashx', { action: 'GetViewedResumeList', data: "{\"accountid\":\"" + window.parent.oUserInfo.Id + "\",\"pagesize\":\"" + pageSize + "\",\"pageindex\":\"" + page_index + "\",\"startdate\":\"" + sStartDate + "\",\"enddate\":\"" + sEndDate + "\"}" }, function (resp) {
+                    if (resp.code === "1000") {
+                        var html = '';
+                        var temp = '<div class="single clearfix fl"><div class="single-penal clearfix"><div class="single-image fl"><img src="{$logo}">' +
+                            '<a href="javascript:void(0)" class="{$pic}"><span class="icon icon-picture"></span></a><a href="javascript:void(0)" class="{$video}"><span class="icon icon-video"></span></a></div><ul class="single-menu fl">' +
+                            '<li><label>姓名：</label><span>{$name}</span><a href="" class="fr"><span class="{$sex}"></span>{$age}岁</a></li><li><label>岗位：</label>' +
+                            '<span>{$position}</span></li><li><label>距离：</label><span>{$distance}以内</span></li><li><label>位置：</label><span>{$location}</span></li>' +
+                            '<li><p class="opration-p"><button type="button" class="" onclick=dialogModality("/pages/details.html?id={$id}&accid={$accid}","简历详情",["1000px","564px"],["关闭","下一个"]);>查看</button>' +
+                            '</p></li></ul></div><p class="viewtime lf">浏览时间：<span>{$viewtime}</span></p></div>';
+                        console.log(resp.data);
+                        for (var i = 0; i < resp.data.Total; i++) {
+                            var logo = "../images/male.png";
+                            if (resp.data.ViewResumeList[i].Portrait !== "")
+                                logo = resp.data.ViewResumeList[i].Portrait;
+                            else
+                                logo = resp.data.ViewResumeList[i].Sex == 1 ? "../images/male.png" : "../images/female.png";
+
+                            var name = resp.data.ViewResumeList[i].Name;
+                            var age = resp.data.ViewResumeList[i].Age;
+                            var position = getpositionname(resp.data.ViewResumeList[i].Position);
+                            var distance = 1;
+                            var location = resp.data.ViewResumeList[i].Location;
+                            var sex = resp.data.ViewResumeList[i].Sex == 1 ? "icon icon-man" : "icon icon-women";
+                            var id = resp.data.ViewResumeList[i].Id;
+                            var accid = window.parent.oUserInfo.Id;
+                            var pic = resp.data.ViewResumeList[i].HasPicture == true ? "withdetail" : "";
+                            var video = resp.data.ViewResumeList[i].HasVideo == true ? "withdetail" : "";
+                            var viewtime = resp.data.ViewResumeList[i].ViewedTime;
+                            html += temp.replace("{$logo}", logo).replace("{$name}", name).replace("{$age}", age).replace("{$position}", position).replace("{$distance}", distance).replace("{$location}", location).replace("{$sex}", sex).replace("{$id}", id).replace("{$accid}", accid).replace("{$pic}", pic).replace("{$video}", video).replace("{$viewtime}", viewtime);
+                        }
+                        $("#resumelist").html(html);
+                        //alert($(".content-panel").height());
+                        iDataCount = resp.data.Total;
+
+                        var optInit = {
+                            callback: fShowData,
+                            items_per_page: pageSize,
+                            num_display_entries: 5,
+                            prev_text: "Prev",
+                            next_text: "Next"
+                        };
+                        $("#Pagination").pagination(iDataCount, optInit);
+                        if (iDataCount > pageSize)
+                            $("#searchPage").show();
+                        else
+                            $("#searchPage").hide();
+
+                        window.parent.document.getElementById("iframe").height = $(".content-panel").height();
+                    } else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+            } else {
+                alert("请选择开始日期");
+            }
+        }
+    </script>
+</body>
+</html>
