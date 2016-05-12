@@ -187,14 +187,23 @@ button:focus{
 .resume_menu li input{
 	color: #f7982a;
 }
-.date_li{
+/*.date_li{
 	position: relative;
-}
+}*/
 .date_choose{
 	position: absolute;
-	right: 0;
+	right: 10px;
 	top: 0;
 	z-index: 1;
+	display: inline-block;
+}
+.date_input{
+	border:none;
+	padding:0 10px 0 0;
+	text-align: center;
+	background: transparent;
+	width: 60%;
+	text-align: right;
 }
 .media_area{
 	padding: 10px 20px;

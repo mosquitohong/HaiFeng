@@ -9,6 +9,7 @@
 /*基本重置*/
 .gray{
     box-shadow: -0px -0px 5px #000;
+    -webkit-box-shadow: -0px -0px 5px #000;
 }
 body{ _margin:0; }/*IE6 BUG*/
 .ui_lock_scroll{ *overflow:hidden; }

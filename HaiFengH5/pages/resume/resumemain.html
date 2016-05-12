@@ -105,9 +105,8 @@
 									<span class="icon icon-age"></span>
 									年龄
 								</label>
-								<!-- <span class="date_choose" style="z-index: -1;">请选择</span> -->
-								<input class="fr txtrt" type="date" id="dateId" style="border:none;
-								padding:0;margin: 0 -20px 0 0;text-align: center;"autofocus="autofocus">
+								<a href="javascript:void(0)" class="date_choose">请选择</a>
+								<input class="date_input fr txtrt" type="date" id="dateId">
 								<!-- <select class="border_none txtrt fr">
 									<option option="option1">请选择</option>
 									<option option="option2">1</option>
@@ -305,12 +304,19 @@
         	$(".success_infor").show();
         	$(".resume .content_wrap").css("padding-top","60px")
         });
-        $(".date_choose").click(function(){
-        	$("#dateId").click(function(){
-        		alert(12);
-        	});
-        	// alert(12)
+        $("#dateId").focus(function(){
+        	$(".date_choose").hide();
         })
+        $("#dateId").blur(function(){
+        	if ($(this).val()=="") {
+        		// alert(1);
+        		$(".date_choose").show();
+        	}else{
+        		$(".date_choose").hide();
+        		// alert(2);
+        	}
+        })
+        
     })
 </script>
 </body>
