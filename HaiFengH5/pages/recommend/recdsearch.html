@@ -28,7 +28,7 @@
                     <span class="icon icon-search"></span>
                     <input id="cityid" name="cityid" type="hidden" value="{$cityid}">
                     <input type="text" placeholder="请输入名字或电话" id="txtLocation">
-                    <button type="button" id="searchBtn">查找</button>
+                    <!-- <button type="button" id="searchBtn">查找</button> -->
                 </p>
                 <div class="single clearfix fl">
                     <div class="single_image fl">
@@ -77,8 +77,8 @@
     <script type="text/javascript">
         $(function(){
             $("#deleteBtn").click(function(){
-                 $(".confirm_box").show();
-            })
+                 $(".confirm_box").show().addClass("active");
+            });
             $(".layer_btn_p button").click(function(){
                 $(".confirm_box").hide();
             });

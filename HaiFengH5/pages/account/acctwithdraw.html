@@ -76,22 +76,14 @@
     </div>
     <script type="text/javascript">
         $(function () {
-            // $(".tab_head span").click(function () {
-            //     $(this).addClass("active").siblings("span").removeClass("active");
-            //     $(".table").eq($(this).index()).show().siblings(".table").hide();
-            // });
             $("#confmWithdraw").click(function () {
-                $(".confirm_box").show();
+                $(".confirm_box").show().addClass("active");
             });
             $(".layer_btn_p button").click(function () {
                 $(".confirm_box").hide();
                 $(".withdraw_infor").hide();
                 $(".rec_management").show();
             });
-            // $("#completeBtn").click(function () {
-            //     $(".resume_menu").hide();
-            //     $(".rec_cont").show();
-            // });
         })
     </script>
 </body>

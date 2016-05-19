@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,14 @@
 
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../plugin/swiper/css/swiper.min.css">
+
     <script src="../../js/jquery.min.js"></script>
+    <script src="../../plugin/swiper/swiper.min.js"></script>
+    <style type="text/css">
+        .wrapper,.swiper-container,.rec_list,.table_cont{width:100%;height:100%;}
+        tr th,tr td{width:25%;}
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -30,31 +37,133 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>时间</th>
+                                <th><span class="choose_span">时间</span><input type="date" id="recdDate" style="position:absolute;top: -1000000px;"></th>
                                 <th>姓名</th>
                                 <th>性别</th>
-                                <th>全部</th>
+                                <th><select class="border_none"><option option="option1">全部</option><option option="option2">已浏览</option><option option="option3">已推荐</option></select></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>2015-04-28</td>
-                                <td>诸葛孔明</td>
-                                <td>男</td>
-                                <td>被浏览</td>
-                            </tr>
-                            <tr>
-                                <td>2015-04-28</td>
-                                <td>诸葛孔明</td>
-                                <td>男</td>
-                                <td>被浏览</td>
-                            </tr>
-                        </tbody>
                     </table>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <table class="table">
+                                    <tbody class="tbody">
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2015-04-28</td>
+                                            <td>诸葛孔明</td>
+                                            <td>男</td>
+                                            <td>被浏览</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="swiper-scrollbar"></div>
     </div>
-    <script type="text/javascript"></script>
-</body>
+    <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-container', {
+            scrollbar: '.swiper-scrollbar',
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            mousewheelControl: true,
+            freeMode: true,
+            onTouchEnd: function (swiper) {
+
+                if (swiper.translate > 60) { //判断下拉刷新
+                    // $('.tbody').addClass('visible');//下拉刷新的div显示
+                    loadNewData();//加载更多数据
+                } else if (swiper.translate < -40) { //判断上拉加载新数据
+                    if (swiper.isEnd) {
+                        //mySwiper.isEnd这个函数用来判断时候滑动到底部，但是不能单独的用这个来写，还需要在外层写一个swiper.translate<-40，是为了需要先判断是手势是上拉还是下拉，否则可能造成了点击页面，还没设计到上下拉就执行里面的函数了，这里的40也不                  是固定的，只是为了先判断手势方向，再判断是否到底
+
+                        // $('.tipsgray').addClass('visible');
+                        loadHistoryData();
+                    }
+                }
+            }
+        });
+        function loadNewData() {
+            alert("12");
+        }
+
+        function loadHistoryData() {
+            alert("321");
+        }
+        $(function(){
+            $(".choose_span").click(function(){
+                $(this).next("input").focus();
+            });
+        })
+    </script></body>
 </html>

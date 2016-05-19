@@ -1,7 +1,7 @@
 /*登录注册 CSS*/
 html,body{
 	width: 100%;
-	/*height: 100%;*/
+	height: 100%;
 	background: #f7f7f7;
 }
 *{
@@ -15,6 +15,14 @@ button{
 }
 button:focus{
 	outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"]{
+    -moz-appearance:textfield;
 }
 /*头部样式*/
 .header{
@@ -130,6 +138,9 @@ button:focus{
 	right: 0px;
 	top: 0;
 	float: right;
+	padding: 0;
+	white-space: nowrap;
+	cursor: pointer;
 }
 .register_menu li .send_code:after{
 	content: "";
@@ -156,7 +167,8 @@ button:focus{
 
 /*简历录入*/
 .resume_menu li{
-	height: 36px;
+	/*height: 36px;*/
+	min-height: 36px;
 	line-height: 36px;
 	margin-bottom: 23px;
 	border-bottom: 1px solid #ccc;
@@ -170,6 +182,7 @@ button:focus{
 	height: 36px;
 	line-height: 36px;
 	color: #333;
+	width: 50%;
 }
 .border_none,.border_none:focus{
 	border:none;
@@ -186,6 +199,7 @@ button:focus{
 }
 .resume_menu li input{
 	color: #f7982a;
+	width: 50%;
 }
 /*.date_li{
 	position: relative;
@@ -204,6 +218,7 @@ button:focus{
 	background: transparent;
 	width: 60%;
 	text-align: right;
+	z-index: 999;
 }
 .media_area{
 	padding: 10px 20px;
@@ -224,6 +239,10 @@ button:focus{
 .media_show {
 	position: relative;
 	border: 1px dashed #ccc;
+	height: 100%;
+	overflow:hidden;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 .media_show input[type="file"]{
 	opacity: 0;
@@ -246,8 +265,12 @@ button:focus{
 	z-index: 2;
 }
 .media_show img{
-	width: 100%;
-	height: 100%;
+	/*width: 100%;
+	height: 100%;*/
+	width: 100px;
+	height: 100px;
+	/*width: auto;*/
+	/*max-width: 100%;*/
 }
 .media_block p{
 	display: block;
@@ -319,6 +342,7 @@ button:focus{
     position: absolute;
     right: 0;
     top: 5px;
+    cursor: pointer;
 }
 .resume .code_li{
 	position: relative;
@@ -343,6 +367,8 @@ button:focus{
 	right:10%; 
 	height: 25px;
 	line-height: 25px;
+	cursor: pointer;
+	z-index: 9999999999;
 }
 /*推荐管理*/
 .rec_management{
@@ -389,6 +415,10 @@ button:focus{
 	height: 30px;
 	background: #fff;
 }
+.table select{
+	color: #bcbcbc;
+	text-align: center;
+}
 /*推介开关*/
 .rec_switch .rec_switch_btn{
 	display: inline-block;
@@ -400,9 +430,10 @@ button:focus{
 	background: url(../images/hspriteicon.png) no-repeat -111px -31px;
 }
 .rec_switch li{
-	min-height: 36px;
-	height: auto;
+	/*min-height: 36px;
+	height: auto;*/
 }
+
 .rec_switch li p{
 	height: 40px;
 	line-height: 40px;
@@ -419,15 +450,39 @@ button:focus{
     border:1px solid #f7982a;
     margin:0 10px 10px 0;
 }
+/*填入信息后*/
+.resume_li{
+	/*min-height: 36px;*/
+	height: auto;
+	clear: both;
+	overflow: hidden;
+}
+.resume_li label,
+.resume_li .edit_a{
+	width: 50%;
+}
+.jot_post_cont{
+	/*display: block;*/
+}
+/*弹框样式*/
 .confirm_box{
 	display: none;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.confirm_box.active{
+	background: rgba(0,0,0,0.2);
+	z-index: 9999999;
 }
 .layer_content{
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	margin: -87px 0 0 -120px;
-	width: 240px;
+	left: 5%;
+	margin: -87px 0 0 0;
+	width: 90%;
 	text-align: center;
 	padding: 0 3px 11px;
 	border-radius: 20px;
@@ -444,14 +499,12 @@ button:focus{
 	line-height: 32px;
 	border-bottom: 1px solid #e1e1e1;
 }
-.layer_content p{
-	color: #bcbcbc;
-}
 .layer_btn_p{
 	margin-top: 10px;
 }
 .layer_content p{
-	padding: 0 10px;
+	color: #bcbcbc;
+	padding: 5% 10% 0;
 }
 .layer_btn_p button,.layer_btn_p a{
 	border:1px solid #f7982a;
@@ -477,6 +530,39 @@ button:focus{
 	line-height: 26px;
 	margin: 20px 0;
 }
+/*我的名片*/
+.card_edit .resume_menu{
+	padding-top: 20px;
+}
+.card_edit li label{
+	padding-left: 0;
+	width: auto;
+} 
+.card_edit li input{
+	width: auto;
+	padding-left: 20px;
+}
+.card_edit li .send_code{
+	/*width: 30%;*/
+	position: absolute;
+	border:none;
+	background: #f7982a;
+	right: 0px;
+	top:3px;
+	float: right;
+	padding: 0 10px;
+	border-radius: 5px;
+	color: #fff;
+	height: 28px;
+	line-height: 28px;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.card_edit .layer_btn_p{
+	padding: 0 15%;
+	margin-top: 18px;
+}
+
 /*推荐注册*/
 .recommend .resume_menu li:last-child{
     margin-top: 120px;
@@ -514,7 +600,7 @@ button:focus{
 .recommend .resume_menu li input{
     line-height: 38px;
 }
-.recommend .resume_menu .li_dif {
+/*.recommend .resume_menu .li_dif {
     height: 50px;
     line-height: 50px;
 }
@@ -523,7 +609,7 @@ button:focus{
 }
 .recommend .resume_menu .li_dif label{
     line-height: 1px;
-}
+}*/
 /*查找推荐人*/
 .rec_search{
 	margin: 10px auto;
@@ -542,7 +628,7 @@ button:focus{
 }
 .search_con input[type="text"],.search_con button{
 	/*margin-left:-33px;*/
-	width: 77%;
+	width: 90%;
 	border:1px solid #f7982a;
 	height: 30px;
 	line-height: 30px;
@@ -550,15 +636,14 @@ button:focus{
 	padding-left: 24px;
 	color: #f7982a;
 }
-.search_con button{
+/*.search_con button{
 	margin-left:5px;
 	width: 15%; 
 	line-height: 29px;
 	display: inline-block;
 	vertical-align: -2px;
 	padding: 0;
-	/*float: right;*/
-}
+}*/
 .single{
     border:1px solid #eee;
     padding: 10px 15px;
@@ -700,7 +785,7 @@ button:focus{
     margin-right: 15px;
 	margin:0 10px 10px 0;
 }
-.jobpost .jobchoosed_con a{
+.jobpost .jobchoosed_con a,.job_choosed{
     display: inline-block;
     width: auto;
     padding: 0 10px;
@@ -776,10 +861,10 @@ button:focus{
 	padding-top: 10px;
 }
 /*我的账户*/
-.account .swiper-container,.swiper-wrapper,.swiper-slide {
+/*.account .swiper-container,.swiper-wrapper,.swiper-slide {
     height: 100%;
     width: 100%;
-}
+}*/
 .account .table_head p {
     border-bottom: 2px solid #ccc;
 }
@@ -806,7 +891,7 @@ button:focus{
     padding: 25% 0 5%;
     color: #fff;
 }
-.account .table_head p span {
+/*.account .table_head p span {
     width: 50%;
     display: inline-block;
     height: 33px;
@@ -822,7 +907,7 @@ button:focus{
     left: 0;
     width: 100%;
     border-bottom: 2px solid #f7982a;
-}
+}*/
 
 /*提现页面*/
 .account .rec_success {
@@ -863,6 +948,7 @@ button:focus{
     border-radius: 5px;
     white-space: nowrap;
     padding: 0 5px;
+    cursor: pointer;
 }
 .account .code_li {
     position: relative;
@@ -887,6 +973,15 @@ button:focus{
     padding-left: 15px;
     height: 34px;
     line-height: 34px;
+	color: #f7982a;
+}
+.withdraw_infor_menu li input:focus{
+	line-height: 20px;
+	font-weight: normal;
+	color: #f7982a;
+	border-color: #f7982a;
+	box-shadow: 0px 0px 2px #f7982a;
+    -webkit-box-shadow: 0px 0px 2px #f7982a;
 }
 .withdraw_infor_menu li label {
     margin-right: 3%;

@@ -15,8 +15,7 @@
 	<script src="../../plugin/swiper/swiper.min.js"></script>
 </head>
 <body>
-	<div class="wrapper jobpost">
-
+	<div class="wrapper jobpost" id="jobPost">
 		<div class="content_wrap">
 			<p class="top_p txtlt">
 				<span onclick="javascript:history.back()">取消</span>
@@ -81,7 +80,7 @@
 		$(function(){
 			$(".choose_menu li").click(function(){
 				$(this).addClass("active").siblings("li").removeClass("active")
-			})
+			});
 		});
 		// 岗位选择
 		function addMark(obj) {

@@ -4,15 +4,23 @@
     <meta charset="utf-8">
     <title>海蜂——我的账户</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../plugin/swiper/css/swiper.min.css">
     <script src="../../js/jquery.min.js"></script>
     <script src="../../plugin/swiper/swiper.min.js"></script>
     <style type="text/css">
-        html, body {
-            height: 100%;
-        }
+        html,body,.swiper-container{height:100%;}
+        .swiper-container-horizontal > .swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{top:0;z-index:9999;height:40px;background:#f7f7f7;}
+        .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{margin:0;z-index:99999;}
+        .swiper-slide{margin-top:30px;}
+        .rec_list .swiper-slide{margin-top:0px;}
+        .my-pagination{width:100%;position:absolute;z-index:99999;}
+        .my-pagination .swiper-pagination-bullet{width:50%;display:inline-block;border-radius:0;height:33px;line-height:33px;font-size:1.4rem;position:relative;opacity:1;background:none;}
+        .my-pagination .swiper-pagination-bullet-active:after{content:"";display:inline-block;position:absolute;top:33px;left:0;width:100%;border-bottom:2px solid #f7982a;z-index:9999;}
+        .table-swiper-container1,.table-swiper-container2,.table-swiper-container1 .swiper-wrapper,.table-swiper-container2 .swiper-wrapper{z-index:-1;}
+        .wrapper,.table-swiper-container1,.table-swiper-container2,.rec_list,.table_cont{width:100%;height:100%;}
+        tr th,tr td{width:25%;}
     </style>
 </head>
 <body>
@@ -21,108 +29,185 @@
             <h2>温馨提示</h2>
             <p class="txtlt">由于您当前账户佣金不足500元，为提高转账效率，暂时还不能提现，请谅解。</p>
             <p class="layer_btn_p txtct">
-            <a href="acctwithdraw.html">我知道了</a>
-        </p>
-    </div>
-</div>
-
-<div class="wrapper account">
-    <div class="content_wrap rec_management">
-        <div class="rec_top clearfix">
-            <div class="top_cont">
-                <p class="txtlt">当前佣金(RMB)</p>
-                <p class="txtlt">
-                    <span class="number_big">88.00</span>
-                    <button type="button" class="withdraw_btn fr">申请提现</button>
-                </p>
-            </div>
-    
-        </div>
-        <div class="table_head">
-            <p class="tab_head">
-                <span class="active txtct">佣金明细</span>
-                <span class="txtct fr">提现明细</span>
+                <a href="acctwithdraw.html">我知道了</a>
             </p>
         </div>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="rec_list">
-                        <div class="table_cont">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>时间</th>
-                                        <th>详情</th>
-                                        <th>金额</th>
-                                        <th>被浏览人</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2015-04-28</td>
-                                        <td>收入</td>
-                                        <td>+1.00</td>
-                                        <td>诸葛孔明</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015-04-28</td>
-                                        <td>收入</td>
-                                        <td>+1.00</td>
-                                        <td>诸葛孔明</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                       <!--  </div>
-                    </div>
+    </div>
+    <div class="wrapper account">
+        <div class="content_wrap rec_management">
+            <div class="rec_top clearfix">
+                <div class="top_cont">
+                    <p class="txtlt">当前佣金(RMB)</p>
+                    <p class="txtlt">
+                        <span class="number_big">88.00</span>
+                        <button type="button" class="withdraw_btn fr">申请提现</button>
+                    </p>
                 </div>
-                <div class="swiper-slide">
-                    <div class="rec_list">
-                        <div class="table_cont"> -->
-                            <table class="table" style="display: none;">
-                                <thead>
-                                    <tr>
-                                        <th>时间</th>
-                                        <th>详情</th>
-                                        <th>金额</th>
-                                        <th>体现人</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2015-04-28</td>
-                                        <td>提现</td>
-                                        <td>-100</td>
-                                        <td>诸葛孔明</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2015-04-28</td>
-                                        <td>提现</td>
-                                        <td>-100</td>
-                                        <td>诸葛孔明</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            </div>
+            <div class="swiper-container">
+                <div class="my-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                    <span class="swiper-pagination-bullet swiper-pagination-bullet-active">佣金明细</span>
+                    <span class="swiper-pagination-bullet">提现明细</span>
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="rec_list">
+                            <div class="table_cont">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th><span class="choose_span">时间</span><input type="date" id="fundDate" style="position:absolute;top: -1000000px;"></th>
+                                            <th>详情</th>
+                                            <th>金额</th>
+                                            <th>被浏览人</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="table-swiper-container1">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>2015-04-28</td>
+                                                        <td>收入</td>
+                                                        <td>+1.00</td>
+                                                        <td>诸葛孔明</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2015-04-28</td>
+                                                        <td>收入</td>
+                                                        <td>+1.00</td>
+                                                        <td>诸葛孔明</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-scrollbar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="rec_list">
+                            <div class="table_cont">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th><span class="choose_span">时间</span><input type="date" id="withdrawDate" style="position:absolute;top: -1000000px;"></th>
+                                            <th>详情</th>
+                                            <th>金额</th>
+                                            <th>体现人</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="table-swiper-container2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>2015-04-28</td>
+                                                        <td>提现</td>
+                                                        <td>-100</td>
+                                                        <td>诸葛孔明</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2015-04-28</td>
+                                                        <td>提现</td>
+                                                        <td>-100</td>
+                                                        <td>诸葛孔明</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="swiper-scrollbar"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script type="text/javascript">
-        var swiper = new Swiper('.swiper-container');
+    <script type="text/javascript">
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.my-pagination',
+            paginationClickable: true,
+            paginationBulletRender: function (index, className) {
+                switch (index) {
+                    case 0: name = '佣金明细'; break;
+                    case 1: name = '提现明细'; break;
+                    default: name = '';
+                }
+                return '<span class="' + className + '">' + name + '</span>';
+            }
+        });
+
+        var tableSwiper1 = new Swiper('.table-swiper-container1', {
+            scrollbar: '.swiper-scrollbar',
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            mousewheelControl: true,
+            freeMode: true,
+            onTouchEnd: function (tableSwiper1) {
+
+                if (tableSwiper1.translate > 60) { //判断下拉刷新
+                    // $('.tbody').addClass('visible');//下拉刷新的div显示
+                    loadNewData();//加载更多数据
+                } else if (tableSwiper1.translate < -40) { //判断上拉加载新数据
+                    if (tableSwiper1.isEnd) {
+                        //mySwiper.isEnd这个函数用来判断时候滑动到底部，但是不能单独的用这个来写，还需要在外层写一个swiper.translate<-40，是为了需要先判断是手势是上拉还是下拉，否则可能造成了点击页面，还没设计到上下拉就执行里面的函数了，这里的40也不                  是固定的，只是为了先判断手势方向，再判断是否到底
+
+                        // $('.tipsgray').addClass('visible');
+                        loadHistoryData();
+                    }
+                }
+            }
+        });
+        var tableSwiper2 = new Swiper('.table-swiper-container2', {
+            scrollbar: '.swiper-scrollbar',
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            mousewheelControl: true,
+            freeMode: true,
+            onTouchEnd: function (tableSwiper) {
+
+                if (tableSwiper.translate > 60) { //判断下拉刷新
+                    // $('.tbody').addClass('visible');//下拉刷新的div显示
+                    loadNewData();//加载更多数据
+                } else if (tableSwiper.translate < -40) { //判断上拉加载新数据
+                    if (tableSwiper.isEnd) {
+                        //mySwiper.isEnd这个函数用来判断时候滑动到底部，但是不能单独的用这个来写，还需要在外层写一个swiper.translate<-40，是为了需要先判断是手势是上拉还是下拉，否则可能造成了点击页面，还没设计到上下拉就执行里面的函数了，这里的40也不                  是固定的，只是为了先判断手势方向，再判断是否到底
+
+                        // $('.tipsgray').addClass('visible');
+                        loadHistoryData();
+                    }
+                }
+            }
+        });
+        function loadNewData() {
+            alert("12");
+        }
+
+        function loadHistoryData() {
+            alert("321");
+        }
 
         $(function () {
-            $(".tab_head span").click(function () {
-                $(this).addClass("active").siblings("span").removeClass("active");
-                $(".table").eq($(this).index()).show().siblings(".table").hide();
-            });
             $(".withdraw_btn").click(function () {
-                $(".confirm_box").show();
+                $(".confirm_box").show().addClass("active");
             });
             $(".layer_btn_p button").click(function () {
                 $(".confirm_box").hide();
+            });
+            $(".choose_span").click(function(){
+                $(this).next("input").focus();
+            });
+            $(".choose_span").click(function(){
+                $(this).next("input").focus();
             });
         })
     </script>
