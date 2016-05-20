@@ -660,14 +660,25 @@ input[type="radio"]:focus,input[type="checkbox"]:focus{
 .htmid-menu input[type="radio"],.htmid-menu input[type="checkbox"],.htleft-menu p input[type="radio"]{
     vertical-align: -2px;
     margin-right: 3px;
+    height: auto;
+    width:auto;
 }
-.htmid-menu input[type="number"]{
+.htmid-menu input[type="number"],.htmid-menu .agep input{
     height: 23px;
     line-height: 23px;
     text-align: center;
     border:1px solid #eee;
     width: 38px;
     display: inline-block;
+}
+.htmid-menu .agep input:first-child{
+    width:auto;
+    height:auto;
+    outline: none;
+}
+.htmid-menu .agep input:first-child{
+    outline: none;
+    border:none!important;
 }
 .hunttop .btnp{
     width: 140px;
@@ -763,18 +774,28 @@ input[type="radio"]:focus,input[type="checkbox"]:focus{
 .timeli  .agep{
     display: block;
     padding-left: 71px;
+    padding-left: 61px\9;
 }
 /*@-moz-document url-prefix() { 
     .timeli  .agep{
     padding-left: 71px;
 }
 }*/
-.timeli .agep input[type="text"]{
+.timeli .agep input[type="text"],.timeli .agep input{
     height: 22px;
     line-height: 22px;
     width: 75px;
     padding-left: 10px;
     border:1px solid #eee;
+}
+.timeli .agep input:first-child{
+    width:auto;
+    height:auto;
+    outline: none;
+    border: none;
+}
+.timeli .agep input:first-child:focus{
+    border:none!important;
 }
 .manage-status p{
     /*text-align: center;*/
