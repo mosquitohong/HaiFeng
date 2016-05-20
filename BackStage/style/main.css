@@ -519,7 +519,8 @@ input[type="radio"]:focus,input[type="checkbox"]:focus{
     margin-bottom: 70px;
 }
 .htleft-menu li:first-child{
-    margin-bottom: 45px;
+    /*margin-bottom: 45px;*/
+    margin-bottom: 36px;
     position: relative;
     width: 470px;
 }
@@ -675,6 +676,7 @@ input[type="radio"]:focus,input[type="checkbox"]:focus{
 .hunttop .btnp button{
     width: 140px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 
@@ -877,6 +879,7 @@ input[type="radio"]:focus,input[type="checkbox"]:focus{
     height: 24px;
     border-radius: 10px;
     border:none;
+    cursor: pointer;
 }
 .accountview-top{
     border-bottom: 1px solid #eee;
@@ -1263,7 +1266,7 @@ input[type="radio"]:focus,input[type="checkbox"]:focus{
 /*视频区域样式*/
 .video-show{
     /*height: 140px;*/
-    width: 360px;
+    /*width: 360px;*/
     position: relative;
 }
 .vedio-container{

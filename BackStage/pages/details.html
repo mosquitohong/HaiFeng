@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../plugin/videoJS/video-js.min.css">
 
     <!-- 弹框轮播 -->
     <link rel="stylesheet" href="../plugin/lightGallery/lightGallery.min.css" />
@@ -18,34 +19,18 @@
     <script src="../js/common.js"></script>
 
     <script src="../plugin/lightGallery/lightGallery.min.js"></script>
+    <script src="../plugin/videoJS/video.js"></script>
 
-    <script type="text/javascript">
-        $(function () {
-            // 弹出框轮播图
-            $("#slider").lightGallery({
-                loop: true,
-                auto: true,
-                pause: 4000
-            });
-
-            // tab切换
-            $(".tab-menu li a").click(function(){
-                var curIndex=$(this).parent("li").index();
-                $(".tab-menu li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tab-panel").eq(curIndex).show().siblings(".tab-panel").hide();
-            });
-            $(".btngroup button").click(function(){
-                $(this).addClass("active").siblings("button").removeClass("active")
-            })
-        });
-    </script>
     <style type="text/css">
-    .video-control{
-        border:none;
-        background: none;
-        cursor: pointer;
-    }
+   .video-js{
+    margin: 0 auto;
+    box-shadow: 0 0 30px #000;
+    -webkit-box-shadow: 0 0 30px #000;
+    -moz-box-shadow: 0 0 30px #000;
+    -ms-box-shadow: 0 0 30px #000;
+    -o-box-shadow: 0 0 30px #000;
+    background: rgba(0,0,0,0.8);
+   }
     </style>
 </head>
 <body>
@@ -126,100 +111,50 @@
                     </div>
                     <div class="tab-panel video-show">
                         <div class="vedio-container">
-                            <div class="video_content">
-                                <video id="video1" class="video">
-                                    <source src="../images/videos/mov_bbb.mp4" type="video/mp4" />
-                                    <source src="../images/videos/mov_bbb.ogg" type="video/ogg" />
-                                </video>
-                            </div>
-
-
-                            <div id="video_controller">
-                                <button class="video-control" onclick="playPause()">播放/暂停</button>
-                                <!-- <input type="range" min="0" max="1" step="0.1" id="btn_volume"> -->
-                                <button class="video-control" id="btn_mute">Mute</button>
-                                <label id="time">-:--:--</label>
-
-                                <!-- <button type="button" id="btn_fullscreen">全屏</button> -->
-                            </div>
-                        </div>
-
-
-                        <script type="text/javascript">
-                            var myVideo=document.getElementById("video1");
-                            var video;
-                            window.onload=function(){
-                                video=document.getElementsByTagName("video")[0];
-
-                                // btn_fullscreen.addEventListener("click", forceFullScreen, false);
-                                // video.addEventListener("loadedmetadata", makeVisible, false)
-
-                                var btn_mute=document.getElementById("btn_mute");
-                                var btn_volume=document.getElementById("btn_volume");
-
-                                btn_mute.addEventListener("click",mute,false);
-                                video.addEventListener("timeupdate",updateTime,false);
-
-                                btn_volume.value=video.volume;
-                                btn_volume.addEventListener("change",function(e){
-                                    myVol=e.target.value;
-                                    video.volume=myVol;
-
-                                    if(myVol==0){
-                                        video.muted=true;
-                                    }else{
-                                        video.muted=false;
-                                    }
-                                    return false;
-                                },true)
-                            }
-                            function playPause(){
-                                if(myVideo.paused){         myVideo.play();
-                                }else{
-                                    myVideo.pause();
-                                }
-
-                            }
-
-                            // function makeVisible() {
-                            //     if (video.webkitSupportsFullscreen) {
-                            //         document.getElementById("btn_fullscreen").style.visibility = "visible";
-                            //     }
-                            // }
-                            // function forceFullScreen() {
-                            //     video.webkitEnterFullscreen();
-                            // }
-
-                            function mute(){
-                                document.getElementById("btn_volume").value=0;
-                                video.muted=true;
-                            };
-
-                            function updateTime(){
-                                var sec=video.currentTime;
-                                var h=Math.floor(sec/3600);
-                                sec=sec%3600;
-                                var min=Math.floor(sec/60);
-                                sec=Math.floor(sec%60);
-
-                                if(sec.toString().length<2) sec="0"+sec;
-                                if(min.toString().length<2) min="0"+min;<!--两位数表示-->
-
-                                document.getElementById("time").innerHTML=h+":"+min+":"+sec;
-                            }
-                        </script>
+                            <video id="example_video_1" src="../images/videos/mov_bbb.mp4" class="video-js vjs-default-skin" controls preload="none" width="600" height="250" poster="../images/logo01.png" data-setup="{}">
+                                <!-- <source src="../images/videos/mov_bbb.mp4" type='video/mp4' />
+                                <source src="../images/videos/mov_bbb.webm" type='video/webm' />
+                                <source src="../images/videos/mov_bbb.ogv" type='video/ogg' />
+                                <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
+                                -->
+                                <!-- Tracks need an ending tag thanks to IE9 -->
+                                <!-- <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>
+                            -->
+                            <!-- Tracks need an ending tag thanks to IE9 --> </video>
                     </div>
-                    <div class="tab-panel word-show">
-                        文字展示
-                    </div>
-
-                    <!-- <div class="box-bottom">
-                        <button type="button" class="closeBox">关闭</button>
-                        <a href="" class="nextdetail">下一个</a>
-                    </div> -->
                 </div>
+                <div class="tab-panel word-show">文字展示</div>
+
+                <!-- <div class="box-bottom">
+                <button type="button" class="closeBox">关闭</button>
+                <a href="" class="nextdetail">下一个</a>
             </div>
+            -->
         </div>
     </div>
+</div>
+</div>
+<script>videojs.options.flash.swf = "video-js.swf";</script>
+<script type="text/javascript">
+        $(function () {
+            // 弹出框轮播图
+            $("#slider").lightGallery({
+                loop: true,
+                auto: true,
+                pause: 4000
+            });
+
+            // tab切换
+            $(".tab-menu li a").click(function(){
+                var curIndex=$(this).parent("li").index();
+                $(".tab-menu li a").removeClass("active");
+                $(this).addClass("active");
+                $(".tab-panel").eq(curIndex).show().siblings(".tab-panel").hide();
+            });
+            $(".btngroup button").click(function(){
+                $(this).addClass("active").siblings("button").removeClass("active")
+            });
+        });
+    </script>
 </body>
 </html>
