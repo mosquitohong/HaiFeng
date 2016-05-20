@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<html lang="zh-CN">
 <head>
+    <link rel="stylesheet" type="text/css" href="http://webapi.amap.com/theme/v1.3/style1.3.15.3.css">
     <meta charset="utf-8">
     <title>海蜂后台-马上找人</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit">
 
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../style/main.css">
@@ -14,612 +14,1044 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/common.js"></script>
     <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&amp;key=ac3c45852cfdc6b80b64068e03dbf36b&amp;plugin=AMap.Autocomplete"></script>
+    <style type="text/css">.amap-container {
+        cursor: url(http://webapi.amap.com/theme/v1.3/openhand.cur), default;
+    }
+
+    .amap-drag {
+        cursor: url(http://webapi.amap.com/theme/v1.3/closedhand.cur), default;
+    }</style>
+
     <script type="text/javascript" src="../plugin/Pagination/jquery.pagination.js"></script>
+
+    <style type="text/css">.tuna_calendar {
+        width: 362px;
+        font-size: 12px;
+        font-family: tahoma, Arial, Helvetica, simsun, sans-serif;
+        position: absolute;
+        z-index: 1000;
+        background-color: #fff;
+        border: solid 1px #999;
+        -moz-box-shadow: 3px 4px 5px #ccc;
+        -webkit-box-shadow: 3px 4px 5px #ccc;
+        box-shadow: 3px 4px 5px #ccc;
+        margin: 0;
+        padding: 5px 6px 4px
+    }
+
+    .tuna_calendar dt, .tuna_calendar dd {
+        margin: 0;
+        padding: 0
+    }
+
+    .tuna_calendar dl, .tuna_calendar dt, .tuna_calendar dd {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tuna_calendar .select_day, .tuna_calendar dd a:hover, .tuna_calendar .calendar_title01 a, .tuna_calendar .calendar_title02 a, .tuna_calendar .today {
+        background: #FFF url(/common/un_bg_calender110117.png) no-repeat
+    }
+
+    .tuna_calendar a {
+        color: #005ead;
+        font-weight: bold;
+        text-decoration: none !important
+    }
+
+    .tuna_calendar dl {
+        float: left;
+        width: 175px;
+        padding: 6px 0 0
+    }
+
+    .tuna_calendar #calendar_month2 {
+        position: absolute;
+        top: 28px;
+        left: 186px;
+        z-index: 2;
+        padding-bottom: 5px;
+        padding-left: 6px;
+        border-left: 2px solid #999
+    }
+
+    .tuna_calendar dt {
+        float: left;
+        width: 25px;
+        height: 22px;
+        background: #ececec;
+        font-weight: normal;
+        color: #666;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        cursor: default
+    }
+
+    .tuna_calendar .day0, .tuna_calendar .day6 {
+        color: #f90;
+        font-weight: bold
+    }
+
+    .tuna_calendar .day6 {
+        width: 24px
+    }
+
+    .tuna_calendar dd {
+        clear: both;
+        padding-top: 1px;
+        display: inline-block
+    }
+
+    .tuna_calendar dd a {
+        font-size: 11px;
+        text-align: center;
+        height: 24px;
+        width: 22px;
+        line-height: 24px;
+        float: left;
+        outline-width: 0;
+        background-color: #fff;
+        padding: 0 2px 1px 1px
+    }
+
+    .tuna_calendar dd a:hover {
+        background-color: #fff;
+        background-position: -26px -48px
+    }
+
+    .tuna_calendar .today {
+        font-weight: bold;
+        background-position: 0 -74px;
+    }
+
+    .tuna_calendar .today:hover {
+    }
+
+    .tuna_calendar .select_day, .tuna_calendar .select_day:hover {
+        color: #fff;
+        background-color: #629be0;
+        background-position: 0 -48px
+    }
+
+    .tuna_calendar .blank_day, .tuna_calendar .over_day {
+        color: #dbdbdb;
+        font-weight: normal;
+        cursor: default
+    }
+
+    .tuna_calendar .blank_day:hover, .tuna_calendar .over_day:hover {
+        background-color: #fff;
+        background-image: none
+    }
+
+    .tuna_calendar div {
+        float: left;
+        width: 181px;
+        color: #fff;
+        font-weight: bold;
+        height: 23px;
+        background: #004fb8
+    }
+
+    .tuna_calendar div a {
+        cursor: pointer;
+        width: 40px;
+        line-height: 20px
+    }
+
+    .tuna_calendar .calendar_title01 span, .tuna_calendar .calendar_title02 span {
+        float: left;
+        width: 143px;
+        text-align: center;
+        line-height: 23px
+    }
+
+    .tuna_calendar .calendar_title01 span {
+        padding-right: 14px
+    }
+
+    .tuna_calendar .calendar_title02 span {
+        padding-left: 14px
+    }
+
+    .tuna_calendar .calendar_title01 a, .tuna_calendar .calendar_title02 a {
+        background-color: #2d7fdd;
+        float: left;
+        width: 23px;
+        height: 23px;
+        overflow: hidden;
+        text-indent: -10em
+    }
+
+    .tuna_calendar .calendar_title01 a {
+        float: left
+    }
+
+    .tuna_calendar .calendar_title02 a {
+        background-position: right 0;
+        float: right
+    }
+
+    .tuna_calendar .calendar_title01 a:hover {
+        background-color: #4895ec;
+        background-position: 0 -24px
+    }
+
+    .tuna_calendar .calendar_title02 a:hover {
+        background-color: #4895ec;
+        background-position: right -24px
+    }
+
+    .tuna_calendar b, .tuna_calendar i {
+        background-color: #fff;
+        display: block;
+        width: 372px;
+        height: 1px;
+        border-right: 1px solid #c3c3c3;
+        border-left: 1px solid #c3c3c3;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        z-index: 1
+    }
+
+    .tuna_calendar i {
+        border-top: 1px solid #999;
+        top: -2px
+    }
+
+    .tuna_calendar b {
+        border-bottom: 1px solid #999;
+        bottom: -2px;
+        _bottom: -3px
+    }
+
+    address_hot li, .address_hot_abb, .address_hot_adress {
+        list-style: none;
+        margin: 0;
+        padding: 0
+    }
+
+    .address_hot_adress a {
+        text-decoration: none
+    }
+
+    #tuna_address {
+        font-family: Arial, Simsun;
+        font-size: 12px;
+    }
+
+    #tuna_address #address_warp {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #7F9DB9;
+        margin: 0;
+        min-height: 305px;
+        padding: 0 0 4px;
+        text-align: left;
+        width: 220px;
+    }
+
+    * html #tuna_address #address_warp {
+        height: 305px;
+    }
+
+    #tuna_address #address_message {
+        background-color: #F7982A;
+        border: medium none;
+        color: #FFFFFF;
+        display: block;
+        font-family: Simyou;
+        height: 1.7em;
+        line-height: 20px;
+        overflow: hidden;
+        padding: 2px 0 2px 9px;
+        width: auto;
+        word-wrap: break-word;
+    }
+
+    #tuna_address #address_list {
+        margin: 0;
+        min-height: 277px;
+        padding: 0;
+    }
+
+    * html #tuna_address #address_list {
+        height: 277px;
+    }
+
+    #tuna_address #address_list span {
+        float: right;
+        font: 10px/22px verdana;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        text-align: right;
+        white-space: nowrap;
+        width: 110px;
+    }
+
+    #tuna_address #address_list a {
+        border-bottom: 1px solid #FFFFFF;
+        border-top: 1px solid #FFFFFF;
+        color: #0055AA;
+        cursor: pointer;
+        display: block;
+        height: 22px;
+        line-height: 22px;
+        min-height: 22px;
+        overflow: hidden;
+        padding: 1px 9px 0;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    * html #tuna_address #address_list a {
+        height: 22px;
+    }
+
+    #tuna_address #address_list a:hover {
+        background: none repeat scroll 0 0 #E8F4FF;
+        border-bottom: 1px solid #7F9DB9;
+        border-top: 1px solid #7F9DB9;
+    }
+
+    #tuna_address .address_selected {
+        background: none repeat scroll 0 0 #FFE6A6;
+        color: #FFFFFF;
+        height: 22px;
+    }
+
+    #tuna_address .address_pagebreak {
+        display: none;
+        line-height: 25px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    #tuna_address .address_pagebreak a {
+        color: #0055AA;
+        display: inline-block;
+        font-family: Arial, Simsun, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0 4px;
+        text-align: center;
+        text-decoration: underline;
+        width: 15px;
+    }
+
+    #tuna_address #address_arrowl, #tuna_address #address_arrowr {
+        color: #0055AA;
+    }
+
+    #tuna_address a.address_current {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .address_hot {
+        background-color: #FFFFFF;
+        font-size: 12px;
+        width: 550px;
+    }
+
+    .address_hotcity {
+        background-color: #F7982A;
+        border-color: #F18A13;
+        border-style: solid;
+        border-width: 1px 1px 0;
+        color: #CEE3FC;
+        height: 24px;
+        line-height: 24px;
+        padding-left: 10px;
+    }
+
+    .address_hotcity strong {
+        color: #FFFFFF;
+    }
+
+    .address_hotlist {
+        border-color: #999999;
+        border-style: solid;
+        border-width: 0 1px 1px;
+        overflow: hidden;
+        padding: 5px;
+    }
+
+    .address_hot_abb {
+        border-bottom: 1px solid #5DA9E2;
+        padding-bottom: 20px;
+    }
+
+    .address_hot_abb li {
+        color: #005DAA;
+        cursor: pointer;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .address_hot_abb li span {
+        padding: 0 8px;
+    }
+
+    .address_hot_abb li .hot_selected {
+        display: block;
+        padding: 0 7px;
+        background-color: #FFFFFF;
+        border-color: #5DA9E2;
+        border-style: solid;
+        border-width: 1px 1px 0;
+        color: #000000;
+        font-weight: bold;
+    }
+
+    .address_hot_adress {
+        padding-top: 4px;
+        width: 100%;
+    }
+
+    .address_hot_adress li {
+        float: left;
+        height: 24px;
+        overflow: hidden;
+        width: 67px;
+    }
+
+    .address_hot_adress li a {
+        border: 1px solid #FFFFFF;
+        color: #000000;
+        display: block;
+        height: 22px;
+        line-height: 22px;
+        padding-left: 5px;
+    }
+
+    .address_hot_adress li a:hover {
+        background-color: #E8F4FF;
+        border: 1px solid #ACCCEF;
+        text-decoration: none;
+    }
+
+    .span_fest {
+        text-indent: -9999px
+    }
+
+    .yuan_dan span, .chu_xi span, .chun_jie span, .yuan_xiao span, .qing_ming span, .lao_dong span, .duan_wu span, .zhong_qiu span, .guo_qing span {
+        display: block;
+        height: 24px;
+        background-image: url(/common/icon_festival.png);
+        background-repeat: no-repeat;
+    }
+
+    .tuna_calendar .yuan_dan:hover, .tuna_calendar .chu_xi:hover, .tuna_calendar .chun_jie:hover, .tuna_calendar .yuan_xiao:hover, .tuna_calendar .qing_ming:hover, .tuna_calendar .lao_dong:hover, .tuna_calendar .duan_wu:hover, .tuna_calendar .zhong_qiu:hover, .tuna_calendar .guo_qing:hover {
+        background-image: url(/common/icon_festival.png);
+        background-repeat: no-repeat;
+        background-position: 0 -400px;
+        cursor: pointer;
+    }
+
+    .tuna_calendar .festival_select, .tuna_calendar .festival_select:hover {
+        background-image: url(/common/icon_festival.png);
+        background-repeat: no-repeat;
+        background-position: 0 -360px;
+    }
+
+    .yuan_dan span {
+        background-position: 0 6px;
+    }
+
+    .chu_xi span {
+        background-position: 0 -35px;
+    }
+
+    .chun_jie span {
+        background-position: 0 -74px;
+    }
+
+    .yuan_xiao span {
+        background-position: 0 -114px;
+    }
+
+    .qing_ming span {
+        background-position: 0 -155px;
+    }
+
+    .lao_dong span {
+        background-position: 0 -194px;
+    }
+
+    .duan_wu span {
+        background-position: 0 -234px;
+    }
+
+    .zhong_qiu span {
+        background-position: 0 -274px;
+    }
+
+    .guo_qing span {
+        background-position: 0 -314px;
+    }</style>
 </head>
 <body>
-    <div class="content-panel">
-        <div class="panel-top">
-            <h3>马上找人</h3>
-        </div>
-        <div class="hunttop clearfix">
-            <div class="huntleft fl">
-                <ul class="htleft-menu">
-                     <li>
-                        <label class="default-label fl">岗位范围</label>
-                        <div class="hiretype-container fl">
-                            <span class="icon icon-arrow" id="chooseSpan">选择</span>
-                            <div class="hiretype-content">
-                                <p class="hiretype-infor lf">
-                                    请选择要招聘的岗位
+<div class="content-panel">
+    <div class="panel-top">
+        <h3>马上找人</h3>
+    </div>
+    <div class="hunttop clearfix">
+        <div class="huntleft fl">
+            <ul class="htleft-menu">
+                <li>
+                    <label class="default-label fl">岗位范围</label>
+
+                    <div class="hiretype-container fl">
+                        <span class="icon icon-arrow" id="chooseSpan">选择</span>
+
+                        <div class="hiretype-content">
+                            <p class="hiretype-infor lf">
+                                请选择要招聘的岗位
                                     <span class="fr">
                                         当前行业：
                                         <small>餐饮</small>
                                     </span>
-                                </p>
-                                <div>
-                                    <a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
-                                    <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
-                                    <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
-                                    <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
-                                    
-                                    <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
-                                    <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
-                                </div>
-                                <p class="lf">
-                                    <button class="confirm-type fr">确定</button>
-                                </p>
+                            </p>
+                            <div id="apositions">
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="1"
+                                   onclick="addMark($(this))">店长</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="2"
+                                   onclick="addMark($(this))">督导</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="3"
+                                   onclick="addMark($(this))">主管</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="4"
+                                   onclick="addMark($(this))">营业员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="5"
+                                   onclick="addMark($(this))">导购员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="6"
+                                   onclick="addMark($(this))">收银员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="7"
+                                   onclick="addMark($(this))">理货员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="8"
+                                   onclick="addMark($(this))">店员</a>
                             </div>
+                            <p class="lf">
+                                <button class="confirm-type fr">确定</button>
+                            </p>
                         </div>
-                        <div class="choose-result fl" id="chooseResult"></div>
-                    </li>
-                    <li>
-                        <label class="default-label fl">岗位地点</label>
-                        <select class="fl">
-                            <option option="option1">选择</option>
-                            <option option="option2">选择2</option>
-                            <option option="option3">选择3</option>
-                        </select>
-                        <input type="text" class="input-320">
-                        <div>
-                            <ul>
-                                <li>
-                                    <a href=""></a>
-                                </li>
-                                <li>
-                                    <a href=""></a>
-                                </li>
-                                <li>
-                                    <a href=""></a>
-                                </li>
-                                <li>
-                                    <a href=""></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="huntmid fl">
-                <ul class="htmid-menu">
-                    <li>
-                        <label class="default-label">简历</label>
-                        <p>
-                            <input type="checkbox" name="resume">有照片</p>
-                        <p>
-                            <input type="checkbox" name="resume">有视频</p>
-                    </li>
-                    <li>
-                        <label class="default-label">性别</label>
-                        <p>
-                            <input type="radio" name="gender" checked>不限</p>
-                        <p>
-                            <input type="radio" name="gender">男</p>
-                        <p>
-                            <input type="radio" name="gender">女</p>
-                    </li>
-                    <li>
-                        <label class="default-label">年龄</label>
-                        <p>
-                            <input type="radio" name="age" checked>不限</p>
-                        <p class="agep">
-                            <input type="radio" name="age">自定义
-                            <input type="number">
-                            <span>至</span>
-                            <input type="number"></p>
-                    </li>
-                    <li>
-                        <label class="default-label">工作</label>
-                        <p>
-                            <input type="radio" name="jobtype" checked>全职</p>
-                        <p>
-                            <input type="radio" name="jobtype">兼职</p>
-                    </li>
-                </ul>
-            </div>
-            <p class="btnp fl">
-                <button type="button">查找</button>
-            </p>
-        </div>
-        <div class="hunt-pepole clearfix">
-            <div class="sigle-content clearfix">
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/female.png">
-                        <a href="javascript:void(0);" class="withdetail">
-                            <span class="icon icon-picture"></span>
+                    </div>
+                    <div class="choose-result fl" id="chooseResult">
+                        <a href="javascript:void(0);" data-rtindex="1" onclick="delResult($(this))">
+                            店长
+                            <span>×</span>
                         </a>
-                        <a href="javascript:void(0);" class="withdetail">
-                            <span class="icon icon-video"></span>
+                        <a href="javascript:void(0);" data-rtindex="2" onclick="delResult($(this))">
+                            督导
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="3" onclick="delResult($(this))">
+                            主管
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="4" onclick="delResult($(this))">
+                            营业员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="5" onclick="delResult($(this))">
+                            导购员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="6" onclick="delResult($(this))">
+                            收银员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="7" onclick="delResult($(this))">
+                            理货员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="8" onclick="delResult($(this))">
+                            店员
+                            <span>×</span>
                         </a>
                     </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-women"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/female.png">
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-picture"></span>
-                        </a>
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-video"></span>
-                        </a>
-                    </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-women"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/female.png">
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-picture"></span>
-                        </a>
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-video"></span>
-                        </a>
-                    </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-women"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/female.png">
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-picture"></span>
-                        </a>
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-video"></span>
-                        </a>
-                    </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-women"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/male.png">
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-picture"></span>
-                        </a>
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-video"></span>
-                        </a>
-                    </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-man"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/female.png">
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-picture"></span>
-                        </a>
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-video"></span>
-                        </a>
-                    </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-women"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-image fl">
-                        <img src="../images/male.png">
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-picture"></span>
-                        </a>
-                        <a href="javascript:void(0);">
-                            <span class="icon icon-video"></span>
-                        </a>
-                    </div>
-                    <ul class="single-menu fl">
-                        <li>
-                            <label>姓名：</label>
-                            <span>高司令</span>
-                            <a href="" class="fr">
-                                <span class="icon icon-man"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <label>岗位：</label>
-                            <span>服务员</span>
-                        </li>
-                        <li>
-                            <label>距离：</label>
-                            <span>2kg以内</span>
-                        </li>
-                        <li>
-                            <label>位置：</label>
-                            <span>西溪花园水岸花苑</span>
-                        </li>
-                        <li>
-                            <p class="btnp">
-                                <button type="button" onclick="dialogModality('pages/tipsbox.html?tip=可用看点不足，马上去补充吧！&img=inforicon','提示',['375px','134px'],['继续看']);"><span class="icon icon-lock"></span>我要看</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <label class="default-label fl">岗位地点</label>
+                    <!--<select class="fl" id="selCity">
+                    <option option="option1">杭州</option>
+                </select>
+                -->
+                    <input style=" border: 1px solid #eee;padding: 0 0 0 10px;height: 32px;line-height: 32px; width: 60px; background: #fff url(../images/arrow.png) no-repeat 50px 12px;"
+                           type="text" value="" size="6" id="homecity_name" name="homecity_name" mod="address|notice"
+                           mod_address_source="hotel"
+                           mod_address_suggest="@Beijing|北京|53@Shanghai|上海|321@Shenzhen|深圳|91@Guangzhou|广州|80@Qingdao|青岛|292@Chengdu|成都|324@Hangzhou|杭州|383@Wuhan|武汉|192@Tianjin|天津|343@Dalian|大连|248@Xiamen|厦门|61@Chongqing|重庆|394@"
+                           mod_address_reference="cityid" mod_notice_tip="中文/拼音" autocomplete="off">
+                    <input id="cityid" name="cityid" type="hidden" value="{$cityid}">
 
-            <div class="pages">
-                <ul>
-                    <li class="pagesli1">
-                        <a href="javascript:void(0);"></a>
+                    <input type="text" class="input-320" id="txtLocation">
+
+                    <div>
+                        <ul>
+                            <li>
+                                <a href=""></a>
+                            </li>
+                            <li>
+                                <a href=""></a>
+                            </li>
+                            <li>
+                                <a href=""></a>
+                            </li>
+                            <li>
+                                <a href=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="huntmid fl">
+            <ul class="htmid-menu">
+                <li>
+                    <label class="default-label">简历</label>
+
+                    <p>
+                        <input type="checkbox" name="resume" id="pic">有照片</p>
+
+                    <p>
+                        <input type="checkbox" name="resume" id="video">有视频</p>
+                </li>
+                <li>
+                    <label class="default-label">性别</label>
+
+                    <p>
+                        <input type="radio" name="gender" value="-1" checked="">不限</p>
+
+                    <p>
+                        <input type="radio" name="gender" value="1">男</p>
+
+                    <p>
+                        <input type="radio" name="gender" value="2">女</p>
+                </li>
+                <li>
+                    <label class="default-label">年龄</label>
+
+                    <p>
+                        <input type="radio" name="age" value="0" checked="">不限</p>
+
+                    <p class="agep">
+                        <input type="radio" name="age" value="1">
+                        自定义
+                        <input type="number" id="sage">
+                        <span>至</span>
+                        <input type="number" id="eage"></p>
+                </li>
+                <li>
+                    <label class="default-label">工作</label>
+
+                    <p>
+                        <input type="radio" name="jobtype" value="1" checked="">全职</p>
+
+                    <p>
+                        <input type="radio" name="jobtype" value="2">兼职</p>
+                </li>
+            </ul>
+        </div>
+        <p class="btnp fl">
+            <button type="button" id="btnSearch">查找</button>
+        </p>
+    </div>
+    <div class="hunt-pepole clearfix" id="divcontent" style="display: block;">
+        <div class="sigle-content clearfix" id="resumelist">
+            <div class="single clearfix fl">
+                <div class="single-image fl">
+                    <img src="../images/male.png">
+                    <a href="javascript:void(0)" class="withdetail">
+                        <span class="icon icon-picture"></span>
+                    </a>
+                    <a href="javascript:void(0)" class="withdetail">
+                        <span class="icon icon-video"></span>
+                    </a>
+                </div>
+                <ul class="single-menu fl">
+                    <li>
+                        <label>姓名：</label>
+                        <span>郜石岭23</span>
+                        <a href="" class="fr">
+                            <span class="icon icon-man"></span>
+                            0岁
+                        </a>
                     </li>
-                    <li class="pagesli2">
-                        <a href="javascript:void(0);"></a>
+                    <li class="location_li">
+                        <label>岗位：</label>
+                        <span>店长,导购员,酒吧服务,传单派发,美容店长</span>
                     </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">1</a>
+                    <li>
+                        <label>距离：</label>
+                        <span>1122.03km以内</span>
                     </li>
-                    <li class="pagesli3 pageactive">
-                        <a href="javascript:void(0);">2</a>
+                    <li class="location_li">
+                        <label>位置：</label>
+                        <span>问天阁茶业(三里河东路)</span>
                     </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">3</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">4</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">5</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">6</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">7</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">...</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">21</a>
-                    </li>
-                    <li class="pagesli4">
-                        <a href="javascript:void(0);"></a>
-                    </li>
-                    <li class="pagesli5">
-                        <a href="javascript:void(0);"></a>
-                    </li>
-                    <li class="pagesli6">
-                        <input type="number">
-                        <button></button>
+                    <li>
+                        <p class="btnp">
+                            <button type="button" class=" icon-lock"
+                                    onclick="dialogModality(&quot;/pages/details.html?id=11&amp;accid=1&quot;,&quot;简历详情&quot;,[&quot;1000px&quot;,&quot;564px&quot;],[&quot;继续看&quot;]);">
+                                我要看
+                            </button>
+                        </p>
                     </li>
                 </ul>
+            </div>
+            <div class="single clearfix fl">
+                <div class="single-image fl">
+                    <img src="../images/male.png">
+                    <a href="javascript:void(0)" class="">
+                        <span class="icon icon-picture"></span>
+                    </a>
+                    <a href="javascript:void(0)" class="">
+                        <span class="icon icon-video"></span>
+                    </a>
+                </div>
+                <ul class="single-menu fl">
+                    <li>
+                        <label>姓名：</label>
+                        <span>郜石岭</span>
+                        <a href="" class="fr">
+                            <span class="icon icon-man"></span>
+                            13岁
+                        </a>
+                    </li>
+                    <li class="location_li">
+                        <label>岗位：</label>
+                        <span>店长,督导,主管</span>
+                    </li>
+                    <li>
+                        <label>距离：</label>
+                        <span>15626.69km以内</span>
+                    </li>
+                    <li class="location_li">
+                        <label>位置：</label>
+                        <span>梦想小镇</span>
+                    </li>
+                    <li>
+                        <p class="btnp">
+                            <button type="button" class=" icon-lock"
+                                    onclick="dialogModality(&quot;/pages/details.html?id=9&amp;accid=1&quot;,&quot;简历详情&quot;,[&quot;1000px&quot;,&quot;564px&quot;],[&quot;继续看&quot;]);">
+                                我要看
+                            </button>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pages">
+            <div id="Pagination"></div>
+            <div class="searchPage" id="searchPage" style="display: none;">
+                <span class="page-sum">
+                    共 <strong class="allPage">1</strong>
+                    页
+                </span>
+                <span class="page-go">
+                    跳转
+                    <input type="text">页</span>
+                <a href="javascript:;" class="page-btn">GO</a>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        var iDataCount = 9;
-        var pagesize = 9;
-        var pageindex = 1;
-        var allresume = null;
-        function getpositiondata() {
-            var html = "";
+    <div class="sigle-content-none" id="divnolist" style="display: none;">
+        <img src="../images/talentsnone.png">
 
-            $.each(window.parent.oIndustryAndPosition.Industrys, function (n, value) {
-                if (value.Id === window.parent.oUserInfo.Industry) {
-                    $("#myindustry").html(value.IndustryName);
-                }
-            });
-            $.each(window.parent.oIndustryAndPosition.Positions, function (n, value) {
-                if (value.IndustryId === window.parent.oUserInfo.Industry) {
-                    if (window.parent.oUserInfo.Position.indexOf(value.Id) !== -1) {
-                        html += '<a href="javascript:void(0);" class="hiretype choosemark" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
-                        $("#chooseResult").append('<a href=\"javascript:void(0);\" data-rtIndex=' + value.Id + ' onclick=\"delResult($(this))\">' + value.PositionName + '<span>×</span> </a>');
-                    } else {
-                        html += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
-                    }
+        <p>
+            没有匹配数据，
+            <a href="hunt.html">马上找人！</a>
+        </p>
+        <input type="hidden" id="hidLng" value="120.004198">
+        <input type="hidden" id="hidLat" value="30.292129"></div>
+</div>
+<div id="jsContainer" class="jsContainer" style="height:0">
+    <div id="tuna_alert" style="display:none;position:absolute;z-index:999;overflow:hidden;"></div>
+    <div id="tuna_jmpinfo" style="visibility:hidden;position:absolute;z-index:120;"></div>
+    <div style="width: 0px; height: 0px;">
+        <div id="tuna_address"
+             style="display:none;position:absolute;top:0;z-index:120;overflow:hidden;-moz-box-shadow:2px 2px 5px #333;-webkit-box-shadow:2px 2px 5px #333;">
+            <div id="address_warp">
+                <div id="address_message">&nbsp;</div>
+                <div id="address_list">
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                    <a class="a1" href="###">
+                        <span>&nbsp;</span>
+                        &nbsp;
+                    </a>
+                </div>
+                <div class="address_pagebreak" id="address_p">
+                    <a id="address_arrowl" href="javascript:;" name="p">&lt;-</a>
+                    <a id="address_p1" href="javascript:;" name="1" class="address_current">1</a>
+                    <a id="address_p2" href="javascript:;" name="2">2</a>
+                    <a id="address_p3" href="javascript:;" name="3">3</a>
+                    <a id="address_p4" href="javascript:;" name="4">4</a>
+                    <a id="address_p5" href="javascript:;" name="5">5</a>
+                    <a id="address_arrowr" href="javascript:;" name="n">-&gt;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var iDataCount = 9;
+    var pagesize = 9;
+    var pageindex = 1;
+    var allresume = null;
 
-                }
-            });
-            $("#apositions").html(html);
-        }
-        function getpositionname(positionid) {
-            var v = "";
-            var s = positionid.split(',');
-            for (var i = 0; i < s.length; i++) {
-                for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
-                    if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
-                        if (v == "")
-                            v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
-                        else
-                            v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
-                    }
-                }
-            }
-            return v;
-        }
-        $(function () {
-            var oUserInfo = window.parent.oUserInfo;
-            if (oUserInfo !== null) {
-                $('#txtLocation').val(oUserInfo.Location === '' ? '' : oUserInfo.Location);
-                getpositiondata();
+    function getpositiondata() {
+        var html = "";
 
-                $("#divcontent").hide();
-                $("#divnolist").show();
-                //初始化地图
-                var map = new AMap.Map("container", {
-                    resizeEnable: true
-                });
-                //为地图注册click事件获取鼠标点击出的经纬度坐标
-                //var clickEventListener = map.on('click', function (e) {
-                //    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
-                //});
-                var auto = new AMap.Autocomplete({
-                    input: "txtLocation"
-                });
-                AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
-                function select(e) {
-                    if (e.poi && e.poi.location) {
-                        //map.setZoom(15);
-                        //map.setCenter(e.poi.location);
-                    }
-                    //经纬度获取
-                    $("#txtLocation").val(e.poi.name);
-                    $("#hidLng").val(e.poi.location.lng);
-                    $("#hidLat").val(e.poi.location.lat);
-                }
+        $.each(window.parent.oIndustryAndPosition.Industrys, function (n, value) {
+            if (value.Id === window.parent.oUserInfo.Industry) {
+                $("#myindustry").html(value.IndustryName);
             }
         });
-        //resumelist
-        $("#btnSearch").click(function () {
+        $.each(window.parent.oIndustryAndPosition.Positions, function (n, value) {
+            if (value.IndustryId === window.parent.oUserInfo.Industry) {
+                if (window.parent.oUserInfo.Position.indexOf(value.Id) !== -1) {
+                    html += '<a href="javascript:void(0);" class="hiretype choosemark" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                    $("#chooseResult").append('<a href=\"javascript:void(0);\" data-rtIndex=' + value.Id + ' onclick=\"delResult($(this))\">' + value.PositionName + '<span>×</span> </a>');
+                } else {
+                    html += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                }
+
+            }
+        });
+        $("#apositions").html(html);
+    }
+    function getpositionname(positionid) {
+        var v = "";
+        var s = positionid.split(',');
+        for (var i = 0; i < s.length; i++) {
+            for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
+                if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
+                    if (v == "")
+                        v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                    else
+                        v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                }
+            }
+        }
+        return v;
+    }
+    $(function () {
+        var oUserInfo = window.parent.oUserInfo;
+        if (oUserInfo !== null) {
+            $('#txtLocation').val(oUserInfo.Location === '' ? '' : oUserInfo.Location);
+            $("#hidLng").val(oUserInfo.Longitude);
+            $("#hidLat").val(oUserInfo.Latitude);
+            $("#homecity_name").val(window.parent.sCity);
+            getpositiondata();
+
+            $("#divcontent").hide();
+            $("#divnolist").show();
+            //初始化地图
+            var map = new AMap.Map("container", {
+                resizeEnable: true
+            });
+            //为地图注册click事件获取鼠标点击出的经纬度坐标
+            //var clickEventListener = map.on('click', function (e) {
+            //    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+            //});
+            var auto = new AMap.Autocomplete({
+                input: "txtLocation"
+            });
+            AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+            function select(e) {
+                if (e.poi && e.poi.location) {
+                    //map.setZoom(15);
+                    //map.setCenter(e.poi.location);
+                }
+                //经纬度获取
+                $("#txtLocation").val(e.poi.name);
+                $("#hidLng").val(e.poi.location.lng);
+                $("#hidLat").val(e.poi.location.lat);
+            }
+
             fShowdata(0, null);
-        });
-        $("#sage,#eage").focus(function () {
-            $("input[name='age']").eq(1).attr("checked", "checked");
-        });
+        }
+    });
+    //resumelist
+    $("#btnSearch").click(function () {
+        fShowdata(0, null);
+    });
+    $("#sage,#eage").focus(function () {
+        $("input[name='age']").eq(1).attr("checked", "checked");
+    });
 
-        function fShowdata(page_index, jq) {
-            page_index = page_index + 1;
-            var sage = 0;
-            var eage = 0;
-            var position = "";
-            var choosePositions = $("#chooseResult a");
-            if (choosePositions != undefined && choosePositions != null) {
-                $.each(choosePositions, function (n, value) {
-                    position += $(value).attr("data-rtindex") + ",";
-                });
-            }
-            if (position !== "") {
-                position = position.substr(0, position.length - 1);
-            } else {
-                alert("请选择岗位");
+    $("#txtLocation").focus(function () {
+        $(this).val('');
+        $("#hidLng").val('');
+        $("#hidLat").val('');
+    });
+
+    function fShowdata(page_index, jq) {
+        page_index = page_index + 1;
+        var sage = 0;
+        var eage = 0;
+        var position = "";
+        var choosePositions = $("#chooseResult a");
+        if (choosePositions != undefined && choosePositions != null) {
+            $.each(choosePositions, function (n, value) {
+                position += $(value).attr("data-rtindex") + ",";
+            });
+        }
+        if (position !== "") {
+            position = position.substr(0, position.length - 1);
+        } else {
+            alert("请选择岗位");
+            return;
+        }
+        var longitude = $("#hidLng").val();
+        var latitude = $("#hidLat").val();
+        if ($("#txtLocation").val() === "" || longitude === '' || latitude === '') {
+            alert("输入地址有误，请填写地址后在下拉框中选中一个精确地点");
+            $("#txtLocation").focus();
+            return;
+        }
+        var haspic = $("#pic").prop("checked");
+        var hasvideo = $("#video").prop("checked");
+        var sex = $('input[name="gender"]:checked').val();
+        var age = $('input[name="age"]:checked').val();
+        if (age == 1) {
+            if ($("#sage").val() == "") {
+                alert("请填写年纪");
+                $("#sage").focus();
                 return;
             }
-            var longitude;
-            var latitude
-            var haspic = $("#pic").prop("checked");
-            var hasvideo = $("#video").prop("checked");
-            var sex = $('input[name="gender"]:checked').val();
-            var age = $('input[name="age"]:checked').val();
-            if (age == 1) {
-                if ($("#sage").val() == "") {
-                    alert("请填写年纪");
-                    $("#sage").focus();
-                    return;
-                }
-                if ($("#eage").val() == "") {
-                    alert("请填写年纪");
-                    $("#eage").focus();
-                    return;
-                }
-                sage = $("#sage").val();
-                eage = $("#eage").val();
+            if ($("#eage").val() == "") {
+                alert("请填写年纪");
+                $("#eage").focus();
+                return;
             }
-            var jobnature = $('input[name="jobtype"]:checked').val();
-            $.post('/Ajax/MerchantCenter/FindTalents.ashx', { action: 'SearchResumes', data: "{\"pagesize\":\"" + pagesize + "\",\"pageindex\":\"" + page_index + "\",\"sex\":\"" + sex + "\",\"position\":\"" + position + "\",\"haspic\":\"" + haspic + "\",\"hasvideo\":\"" + hasvideo + "\",\"startage\":\"" + sage + "\",\"endage\":\"" + eage + "\",\"longitude\":\"" + longitude + "\",\"latitude\":\"" + latitude + "\",\"jobnature\":\"" + jobnature + "\"}" }, function (resp) {
-                if (resp.code === "1000") {
-                    allresume = resp.data;
-
-                    if (allresume.Total > 0) {
-                        $("#divcontent").show();
-                        $("#divnolist").hide();
-
-                        var temp = '<div class="single clearfix fl"><div class="single-image fl"><img src="{$logo}"><a href="javascript:void(0)" class="{$pic}"><span class="icon icon-picture"></span>' +
-                            '</a><a href="javascript:void(0)" class="{$video}"><span class="icon icon-video"></span></a></div><ul class="single-menu fl"><li><label>姓名：</label><span>{$name}</span>' +
-                            '<a href="" class="fr"><span class="{$sex}"></span>{$age}岁</a></li><li><label>岗位：</label><span>{$position}</span>' +
-                            '</li><li><label>距离：</label><span>{$distance}以内</span></li><li><label>位置：</label><span>{$location}</span></li><li><p class="btnp">' +
-                            '<button type="button" class=" icon-lock" onclick=dialogModality("/pages/details.html?id={$id}&accid={$accid}","简历详情",["1000px","564px"],["继续看"]);>我要看</button></p></li></ul></div>';
-                        var html = "";
-                        $("#resumelist").html(html);
-                        console.log(allresume);
-                        for (var i = 0; i < allresume.Total; i++) {
-                            var logo = "../images/male.png";
-                            if (allresume.ViewResumeList[i].Portrait !== "")
-                                logo = allresume.ViewResumeList[i].Portrait;
-                            else
-                                logo = allresume.ViewResumeList[i].Sex == 1 ? "../images/male.png" : "../images/female.png";
-
-                            var name = allresume.ViewResumeList[i].Name;
-                            var age = allresume.ViewResumeList[i].Age;
-                            var position = getpositionname(allresume.ViewResumeList[i].Position);
-                            var distance = 1;
-                            var location = allresume.ViewResumeList[i].Location;
-                            var sex = allresume.ViewResumeList[i].Sex == 1 ? "icon icon-man" : "icon icon-women";
-                            var id = allresume.ViewResumeList[i].Id;
-                            var accid = window.parent.oUserInfo.Id;
-                            var pic = allresume.ViewResumeList[i].HasPicture == true ? "withdetail" : "";
-                            var video = allresume.ViewResumeList[i].HasVideo == true ? "withdetail" : "";
-                            html += temp.replace("{$logo}", logo).replace("{$name}", name).replace("{$age}", age).replace("{$position}", position).replace("{$distance}", distance).replace("{$location}", location).replace("{$sex}", sex).replace("{$id}", id).replace("{$accid}", accid).replace("{$pic}", pic).replace("{$video}", video);
-                        }
-                        $("#resumelist").html(html);
-                        iDataCount = allresume.Total;
-
-                        var optInit = {
-                            callback: fShowdata,
-                            items_per_page: pagesize,
-                            num_display_entries: 5,
-                            prev_text: "Prev",
-                            next_text: "Next"
-                        };
-                        $("#Pagination").pagination(iDataCount, optInit);
-                        if (iDataCount > pagesize)
-                            $("#searchPage").show();
-                        else
-                            $("#searchPage").hide();
-
-                    } else {
-                        $("#divcontent").hide();
-                        $("#divnolist").show();
-                    }
-                }
-                else {
-                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
-                }
-            });
-            return true;
+            sage = $("#sage").val();
+            eage = $("#eage").val();
         }
-    </script>
+        var jobnature = $('input[name="jobtype"]:checked').val();
+        $.post('/Ajax/MerchantCenter/FindTalents.ashx', {
+            action: 'SearchResumes',
+            data: "{\"pagesize\":\"" + pagesize + "\",\"pageindex\":\"" + page_index + "\",\"sex\":\"" + sex + "\",\"position\":\"" + position + "\",\"haspic\":\"" + haspic + "\",\"hasvideo\":\"" + hasvideo + "\",\"startage\":\"" + sage + "\",\"endage\":\"" + eage + "\",\"longitude\":\"" + longitude + "\",\"latitude\":\"" + latitude + "\",\"jobnature\":\"" + jobnature + "\"}"
+        }, function (resp) {
+            if (resp.code === "1000") {
+                allresume = resp.data;
+
+                if (allresume.Total > 0) {
+                    $("#divcontent").show();
+                    $("#divnolist").hide();
+
+                    var temp = '<div class="single clearfix fl"><div class="single-image fl"><img src="{$logo}"><a href="javascript:void(0)" class="{$pic}"><span class="icon icon-picture"></span>' +
+                            '</a><a href="javascript:void(0)" class="{$video}"><span class="icon icon-video"></span></a></div><ul class="single-menu fl"><li><label>姓名：</label><span>{$name}</span>' +
+                            '<a href="" class="fr"><span class="{$sex}"></span>{$age}岁</a></li><li class="location_li"><label>岗位：</label><span>{$position}</span>' +
+                            '</li><li><label>距离：</label><span>{$distance}km以内</span></li><li class="location_li"><label>位置：</label><span>{$location}</span></li><li><p class="btnp">' +
+                            '<button type="button" class=" icon-lock" onclick=dialogModality("/pages/details.html?id={$id}&accid={$accid}","简历详情",["1000px","564px"],["继续看"]);>我要看</button></p></li></ul></div>';
+                    var html = "";
+                    $("#resumelist").html(html);
+                    console.log(allresume);
+                    for (var i = 0; i < allresume.ViewResumeList.length; i++) {
+                        var logo = "../images/male.png";
+                        if (allresume.ViewResumeList[i].Portrait !== "")
+                            logo = allresume.ViewResumeList[i].Portrait;
+                        else
+                            logo = allresume.ViewResumeList[i].Sex == 1 ? "../images/male.png" : "../images/female.png";
+
+                        var name = allresume.ViewResumeList[i].Name;
+                        var age = allresume.ViewResumeList[i].Age;
+                        var position = getpositionname(allresume.ViewResumeList[i].Position);
+                        var distance = parseFloat(allresume.ViewResumeList[i].Distance).toFixed(2);
+                        var location = allresume.ViewResumeList[i].Location;
+                        var sex = allresume.ViewResumeList[i].Sex == 1 ? "icon icon-man" : "icon icon-women";
+                        var id = allresume.ViewResumeList[i].Id;
+                        var accid = window.parent.oUserInfo.Id;
+                        var pic = allresume.ViewResumeList[i].HasPicture == true ? "withdetail" : "";
+                        var video = allresume.ViewResumeList[i].HasVideo == true ? "withdetail" : "";
+                        html += temp.replace("{$logo}", logo).replace("{$name}", name).replace("{$age}", age).replace("{$position}", position).replace("{$distance}", distance).replace("{$location}", location).replace("{$sex}", sex).replace("{$id}", id).replace("{$accid}", accid).replace("{$pic}", pic).replace("{$video}", video);
+                    }
+                    $("#resumelist").html(html);
+                    iDataCount = allresume.Total;
+
+                    var optInit = {
+                        callback: fShowdata,
+                        items_per_page: pagesize,
+                        num_display_entries: 5,
+                        prev_text: "Prev",
+                        next_text: "Next"
+                    };
+                    $("#Pagination").pagination(iDataCount, optInit);
+                    if (iDataCount > pagesize)
+                        $("#searchPage").show();
+                    else
+                        $("#searchPage").hide();
+
+                } else {
+                    $("#divcontent").hide();
+                    $("#divnolist").show();
+                }
+            }
+            else {
+                alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+            }
+        });
+        return true;
+    }
+
+
+</script>
+<script src="../js/fixdiv.js"></script>
+<script src="../js/address.js"></script>
+
+<div class="amap-sug-result" style="left: 193px; top: 199px; min-width: 332px;"></div>
 </body>
 </html>

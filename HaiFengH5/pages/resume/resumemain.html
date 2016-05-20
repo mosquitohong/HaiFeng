@@ -83,7 +83,6 @@
                 vertical-align: middle;
             }
             #upLoad{
-                display: none;
                 position: absolute;
                 display: table-cell;
                 text-align: center;
@@ -93,6 +92,7 @@
                 height: 100%;
                 z-index: 999999;
                 background: rgba(0,0,0,0.8);
+                display: none;
             }
             #upLoad img{
                 width: 24px;
@@ -255,7 +255,8 @@
                             </h2>
                             <div class="media_block ">
                                 <div class="media_show video_show">
-                                    <img src="../../images/male.png">
+                                    <!-- <img src="../../images/male.png"> -->
+                                    <video id="videoView" src="../../images/mov_bbb.mp4"></video>
                                     <!-- <div class="picture_container ">
                                         <div class="picture_content">
                                             <img src="../../images/light.png" id="upLoadImg"></div>

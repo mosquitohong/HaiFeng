@@ -1,0 +1,203 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>海蜂——提现</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../js/jquery.min.js"></script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+    </style>
+    <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+</head>
+<body>
+<div class="wrapper account">
+    <div class="content_wrap withdraw_infor">
+        <ul class="withdraw_infor_menu">
+            <li>
+                <label>当前绑定手机：</label>
+                <span id="spMobile">15868186686</span>
+            </li>
+            <li class="code_li">
+                <label>验证码：</label>
+                <input type="text" placeholder="请输入验证码" class=" txtlt" id="verifycode">
+                <button type="button" class="send_code" id="GetVerifyCode">发送验证码</button>
+            </li>
+            <li class="border_li">
+                <label>提现金额：</label>
+                <input type="number" id="amount"></li>
+            <li>
+                <label>支付宝实名：</label>
+                <input type="text" id="alipayname"></li>
+            <li>
+                <label>支付宝账户：</label>
+                <input type="text" id="alipayaccount"></li>
+            <li>
+                <button type="button" class="default_btn" id="confmWithdraw">确&nbsp;认</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content_wrap rec_management" style="display: none;">
+        <div class="rec_cont">
+            <div class="rec_success">
+                <img src="../../images/tips01.png">
+
+                <p>提现申请成功！</p>
+
+                <p>预计五个工作日到账</p>
+            </div>
+            <a href="javascript:viid(0);" class="default_btn">确认</a>
+        </div>
+    </div>
+</div>
+<div class="confirm_box">
+    <div class="layer_content">
+        <h2>温馨提示</h2>
+
+        <p class="txtlt">
+            <span>提现金额：</span>
+            <span id="spAmount">loading...</span>
+        </p>
+
+        <p class="txtlt">
+            <span>支付宝实名：</span>
+            <span id="spAlipayName">loading...</span>
+        </p>
+
+        <p class="txtlt">
+            <span>支付宝账户：</span>
+            <span id="spAlipayAccount">loading...</span>
+        </p>
+
+        <p class="layer_btn_p txtlt">
+            <button type="button">确定</button>
+            <button type="button" class="rt" style="float: right;">返回</button>
+        </p>
+    </div>
+</div>
+<script type="text/javascript">
+    var oUserInfo = null;
+    var sVerifyCode = "", dAmount = 0, sAlipayname = "", sAlipayaccount = "";
+    $(function () {
+        $.post('/Ajax/BasePage/UserBase.ashx', {action: 'GetLoginInfo'}, function (resp) {
+            if (resp.code === "1000") {
+                oUserInfo = resp.data;
+                $("#spMobile").html(oUserInfo.Mobile);
+            }
+        });
+        $("#confmWithdraw").click(function () {
+            sVerifyCode = $("#verifycode").val();
+            if (sVerifyCode === "") {
+                alert("输入的验证码有误，请重新输入");
+                $("verifycode").focus();
+                return false;
+            }
+            dAmount = $("#amount").val();
+            if (dAmount === "" || parseFloat(dAmount) < 500.00 || parseFloat(dAmount) > oUserInfo.Amount) {
+                alert("提现金额有误，请重新输入");
+                $("amount").focus();
+                return false;
+            }
+            sAlipayname = $("#alipayname").val();
+            if (sAlipayname === "") {
+                alert("支付宝实名不能为空");
+                $("alipayname").focus();
+                return false;
+            }
+            sAlipayaccount = $("#alipayaccount").val();
+            if (sAlipayaccount === "") {
+                alert("支付宝账户不能为空");
+                $("alipayaccount").focus();
+                return false;
+            }
+            $("#spAmount").html(parseFloat(dAmount) + '元');
+            $("#spAlipayName").html(sAlipayname);
+            $("#spAlipayAccount").html(sAlipayaccount);
+            $(".confirm_box").show().addClass("active");
+        });
+        $(".layer_btn_p button").click(function () {
+            $.post('../../../Ajax/MobileH5/Referee.ashx', {
+                action: 'DoWithdraw',
+                data: "{\"accountid\":\"" + oUserInfo.Id + "\",\"mobile\":\"" + oUserInfo.Mobile + "\",\"verifycode\":\"" + sVerifyCode + "\",\"amount\":\"" + dAmount + "\",\"alipayname\":\"" + sAlipayname + "\",\"alipayaccount\":\"" + sAlipayaccount + "\"}"
+            }, function (resp) {
+                if (resp.code === "1000") {
+                    $(".confirm_box").hide();
+                    $(".withdraw_infor").hide();
+                    $(".rec_management").show();
+                }
+                else {
+                    $(".confirm_box").hide();
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+
+
+        });
+    });
+</script>
+<script type="text/javascript">
+    var time = 60;
+    var interval;
+    function waitEnabled() {
+        if (time === 0) {
+            $("#GetVerifyCode").html("获取验证码");
+            $('#GetVerifyCode').removeAttr('disabled');
+            window.clearInterval(interval);
+            $('#GetVerifyCode').css("background", "#ff9600");
+            time = 60;
+        } else {
+            $("#GetVerifyCode").html("已发送(" + --time + ")");
+        }
+    }
+    function verifyCode() {
+        var mobile = $('#spMobile').html();
+        if ($.trim(mobile) === "" || $.trim(mobile).length !== 11) {
+            alert("手机号码为空或不合法");
+            return false;
+        } else {
+            $.post('../../../Ajax/BasePage/UserBaseNotLogin.ashx', {
+                action: 'SendSms',
+                data: "{\"mobile\":\"" + mobile + "\",\"opcode\":\"WithdrawVerify\"}"
+            }, function (resp) {
+                if (resp.code === "1000") {
+                    //SendType = 1 表示发送验证码
+                    //收到短信之后允许修改手机号码
+                    $('#GetVerifyCode').attr("disabled", "disabled");
+                    $('#GetVerifyCode').css("background", "#A8A8A8");
+                    $('#GetVerifyCode').html("已发送(60)");
+                    interval = setInterval("waitEnabled()", 1000);
+                    //alert("发送成功");
+                }
+                else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+
+        }
+    }
+    $('#GetVerifyCode').click(function () {
+        verifyCode();
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,25 +1,52 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <title>海蜂后台-马上找人</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit">
 
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../plugin/videoJS/video-js.min.css">
 
     <!-- 弹框轮播 -->
-    <link rel="stylesheet" href="../plugin/lightGallery/lightGallery.min.css" />
+    <link rel="stylesheet" href="../plugin/lightGallery/lightGallery.min.css">
 
     <script src="../js/jquery.min.js"></script>
     <script src="../js/common.js"></script>
 
     <script src="../plugin/lightGallery/lightGallery.min.js"></script>
 
+    <!--<script src="../plugin/videoJS/video.js"></script>-->
+    <style type="text/css">
+        .video-js {
+            margin: 0 auto;
+            box-shadow: 0 0 30px #000;
+            -webkit-box-shadow: 0 0 30px #000;
+            -moz-box-shadow: 0 0 30px #000;
+            -ms-box-shadow: 0 0 30px #000;
+            -o-box-shadow: 0 0 30px #000;
+            background: rgba(0,0,0,0.8);
+        }
+    </style>
     <script type="text/javascript">
+        function getpositionname(positionid) {
+            var v = "";
+            var s = positionid.split(',');
+            for (var i = 0; i < s.length; i++) {
+                for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
+                    if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
+                        if (v == "")
+                            v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                        else
+                            v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                    }
+                }
+            }
+            return v;
+        }
         $(function () {
             // 弹出框轮播图
             $("#slider").lightGallery({
@@ -29,197 +56,309 @@
             });
 
             // tab切换
-            $(".tab-menu li a").click(function(){
-                var curIndex=$(this).parent("li").index();
+            $(".tab-menu li a").click(function () {
+                var curIndex = $(this).parent("li").index();
                 $(".tab-menu li a").removeClass("active");
                 $(this).addClass("active");
                 $(".tab-panel").eq(curIndex).show().siblings(".tab-panel").hide();
             });
-            $(".btngroup button").click(function(){
-                $(this).addClass("active").siblings("button").removeClass("active")
-            })
+            var sid = getUrlParam("id");
+            var cid = getUrlParam("accid");
+            $.post('/Ajax/MerchantCenter/FindTalents.ashx', {
+                action: 'GetResumeDetail',
+                data: "{\"accountid\":\"" + cid + "\",\"resumeid\":\"" + sid + "\"}"
+            }, function (resp) {
+                if (resp.code === "1000") {
+                    $("#name").html(resp.data.Name);
+                    $("#sex").attr("class", resp.data.Sex == 1 ? "icon icon-man" : "icon icon-women");
+                    $("#age").html(resp.data.Age);
+                    $("#phone").html(resp.data.Mobile);
+                    $("#location").html(resp.data.Location);
+                    $("#position").html(getpositionname(resp.data.Position));
+                    $("#description").html(resp.data.Description);
+                    var logo = '../images/male.png';
+                    if (resp.data.Portrait !== "")
+                        logo = resp.data.Portrait;
+                    else
+                        logo = resp.data.Sex == 1 ? "../images/male.png" : "../images/female.png";
+
+                    $("#logo").attr("src", logo);
+                    $("#img1").attr("src", resp.data.Pic_1);
+                    $("#img2").attr("src", resp.data.Pic_2);
+                    $("#img3").attr("src", resp.data.Pic_3);
+                    $("#liimg1").attr("data-src", resp.data.Pic_1);
+                    $("#liimg2").attr("data-src", resp.data.Pic_2);
+                    $("#liimg3").attr("data-src", resp.data.Pic_3);
+                    $("#example_video_1").attr("src", "../../../" + resp.data.Video);
+
+                    window.parent.document.getElementsByTagName('iframe')[0].setAttribute("allowfullscreen", "");
+
+                    var head = document.getElementsByTagName('head')[0];
+                    var script = document.createElement('script');
+                    script.src = '../plugin/videoJS/video.js';
+                    script.type = 'text/javascript';
+                    head.appendChild(script);
+                    script.content = '../plugin/videoJS/video.js';
+                    script.type = 'text/javascript';
+                    head.appendChild(script);
+                }
+                else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    window.location.href = "../index.html";
+                }
+            });
         });
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(r[2]);
+            return null;
+        }
+        function operatorresume(o, obj) {
+            var sid = getUrlParam("id");
+            var cid = getUrlParam("accid");
+            obj.addClass("active").siblings("button").removeClass("active");
+            $.post('/Ajax/MerchantCenter/FindTalents.ashx', {
+                action: 'UpdateResumeStatus',
+                data: "{\"accountid\":\"" + cid + "\",\"resumeid\":\"" + sid + "\",\"status\":\"" + o + "\"}"
+            }, function (resp) {
+                if (resp.code === "1000") {
+                    alert("操作成功");
+                }
+                else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+        }
     </script>
-    <style type="text/css">
-    .video-control{
-        border:none;
-        background: none;
-        cursor: pointer;
-    }
-    </style>
+
+    <script src="../plugin/videoJS/video.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="layerbox">
-        <div class="box-container details">
-            <div class="box-top clearfix">
-                <img src="../images/male.png" class="fl">
-                <div class="inforlist fl">
-                    <ul>
-                        <li>
-                            <span class="namespan">张三</span>
-                            <a href="">
-                                <span class="icon icon-man"></span>
-                                18岁
-                            </a>
-                        </li>
-                        <li>
-                            <span class="icon icon-phone"></span>
-                            <span class="phone">13612341234</span>
-                        </li>
-                        <li>
-                            <span class="icon icon-location"></span>
-                            <span class="phone">杭州市，西湖区，西溪花苑</span>
-                        </li>
-                        <li>
-                            <span class="icon icon-job"></span>
-                            <span class="job">服务员、传菜员、迎宾员</span>
-                        </li>
-                        <li class="btngroup">
-                            <button type="button" class="hire">录用</button>
-                            <button type="button" class="delete">删除</button>
-                            <button type="button" class="delete">暂存</button>
-                            <button type="button" class="firing">解聘</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="box-content">
-                <ul class="tab-menu clearfix ">
-                    <li class="fl">
-                        <a href="javascript:void(0);" class="active">照片展示</a>
+<div id="layerbox">
+    <div class="box-container details">
+        <div class="box-top clearfix">
+            <img src="../images/male.png" class="fl" id="logo">
+
+            <div class="inforlist fl">
+                <ul>
+                    <li>
+                        <span class="namespan" id="name">郜石岭23</span>
+                        <a href="">
+                            <span class="icon icon-man" id="sex"></span>
+                            <span id="age">0</span>
+                            岁
+                        </a>
                     </li>
-                    <li class="fl">
-                        <a href="javascript:void(0);">视频展示</a>
+                    <li>
+                        <span class="icon icon-phone"></span>
+                        <span class="phone" id="phone">12122121212</span>
                     </li>
-                    <li class="fl">
-                        <a href="javascript:void(0);">文字介绍</a>
+                    <li>
+                        <span class="icon icon-location"></span>
+                        <span class="phone" id="location">问天阁茶业(三里河东路)</span>
+                    </li>
+                    <li>
+                        <span class="icon icon-job"></span>
+                        <span class="job" id="position">店长,导购员,酒吧服务,传单派发,美容店长</span>
+                    </li>
+                    <li class="btngroup">
+                        <button type="button" class="hire" onclick="operatorresume(&quot;4&quot;, $(this))">录用</button>
+                        <button type="button" class="delete" onclick="operatorresume(&quot;3&quot;, $(this))">删除
+                        </button>
+                        <button type="button" class="stay" onclick="operatorresume(&quot;2&quot;, $(this))">暂存</button>
+                        <button type="button" class="firing" onclick="operatorresume(&quot;5&quot;, $(this))">解聘
+                        </button>
                     </li>
                 </ul>
-                <div class="tab-content">
-                    <div class="tab-panel picture-show">
-                        <!-- 轮播图 -->
-                        <div class="rolling">
-                            <ul id="slider" class="gallery">
-                                <li data-src="../images/1.01-1600.jpg">
-                                    <a href="#">
-                                        <img src="../images/1.01-1600.jpg" title="信息图" />
-                                    </a>
-                                </li>
-                                <li data-src="../images/3.01-1600.jpg">
-                                    <a href="#">
-                                        <img src="../images/3.01-1600.jpg" title="信息图" />
-                                    </a>
-                                </li>
-                                <li data-src="../images/4-1600.png">
-                                    <a href="#">
-                                        <img src="../images/4-1600.png" title="信息图" />
-                                    </a>
-                                </li>
-                            </ul>
-                            <div id="rounddot">
-                                <a href="javascript:;" class="active" id="380"></a>
-                                <a href="javascript:;" id="418"></a>
-                                <a href="javascript:;" id="417"></a>
-                                <a href="javascript:;" id="413"></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <ul class="tab-menu clearfix ">
+                <li class="fl">
+                    <a href="javascript:void(0);" class="active">照片展示</a>
+                </li>
+                <li class="fl">
+                    <a href="javascript:void(0);">视频展示</a>
+                </li>
+                <li class="fl">
+                    <a href="javascript:void(0);">文字介绍</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-panel picture-show">
+                    <!-- 轮播图 -->
+                    <div class="rolling">
+                        <ul id="slider" class="gallery">
+                            <li id="liimg1" data-src="/Upload/Pictures/1/20160519183358378.jpg">
+                                <a href="#">
+                                    <img id="img1" src="/Upload/Pictures/1/20160519183358378.jpg" title="信息图"></a>
+                            </li>
+                            <li id="liimg2" data-src="/Upload/Pictures/1/20160519183404841.jpg">
+                                <a href="#">
+                                    <img id="img2" src="/Upload/Pictures/1/20160519183404841.jpg" title="信息图"></a>
+                            </li>
+                            <li id="liimg3" data-src="/Upload/Pictures/1/20160519183408984.jpg">
+                                <a href="#">
+                                    <img id="img3" src="/Upload/Pictures/1/20160519183408984.jpg" title="信息图"></a>
+                            </li>
+                        </ul>
+                        <div id="rounddot">
+                            <a href="javascript:;" class="active" id="380"></a>
+                            <a href="javascript:;" id="418"></a>
+                            <a href="javascript:;" id="417"></a>
+                            <a href="javascript:;" id="413"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-panel video-show">
+                    <div class="vedio-container">
+                        <div id="example_video_1"
+                             class="video-js vjs-default-skin vjs-paused vjs-controls-enabled vjs-user-inactive"
+                             style="width: 600px; height: 260px;">
+                            <video id="example_video_1_html5_api" class="vjs-tech" preload="none"
+                                   poster="../images/logo01.png" data-setup="{}"
+                                   src="../../..//Upload/Videos/1/20160519183429192.mp4">
+
+                                <!-- Tracks need an ending tag thanks to IE9 -->
+
+                                <!-- Tracks need an ending tag thanks to IE9 --> </video>
+                            <div></div>
+                            <div class="vjs-poster" tabindex="-1"
+                                 style="background-image: url(&quot;../images/logo01.png&quot;);"></div>
+                            <div class="vjs-text-track-display"></div>
+                            <div class="vjs-loading-spinner"></div>
+                            <div class="vjs-big-play-button" role="button" aria-live="polite" tabindex="0"
+                                 aria-label="play video">
+                                <span aria-hidden="true"></span>
+                            </div>
+                            <div class="vjs-control-bar">
+                                <div class="vjs-play-control vjs-control " role="button" aria-live="polite"
+                                     tabindex="0">
+                                    <div class="vjs-control-content">
+                                        <span class="vjs-control-text">Play</span>
+                                    </div>
+                                </div>
+                                <div class="vjs-current-time vjs-time-controls vjs-control">
+                                    <div class="vjs-current-time-display" aria-live="off">
+                                        <span class="vjs-control-text">Current Time</span>
+                                        0:00
+                                    </div>
+                                </div>
+                                <div class="vjs-time-divider">
+                                    <div>
+                                        <span>/</span>
+                                    </div>
+                                </div>
+                                <div class="vjs-duration vjs-time-controls vjs-control">
+                                    <div class="vjs-duration-display" aria-live="off">
+                                        <span class="vjs-control-text">Duration Time</span>
+                                        0:00
+                                    </div>
+                                </div>
+                                <div class="vjs-remaining-time vjs-time-controls vjs-control">
+                                    <div class="vjs-remaining-time-display" aria-live="off">
+                                        <span class="vjs-control-text">Remaining Time</span>
+                                        -0:00
+                                    </div>
+                                </div>
+                                <div class="vjs-progress-control vjs-control">
+                                    <div role="slider" aria-valuenow="NaN" aria-valuemin="0" aria-valuemax="100"
+                                         tabindex="0" class="vjs-progress-holder vjs-slider"
+                                         aria-label="video progress bar" aria-valuetext="0:00">
+                                        <div class="vjs-load-progress">
+                                            <span class="vjs-control-text">Loaded: 0%</span>
+                                        </div>
+                                        <div class="vjs-play-progress" style="width: 0%;">
+                                            <span class="vjs-control-text">Progress: 0%</span>
+                                        </div>
+                                        <div class="vjs-seek-handle vjs-slider-handle" aria-live="off"
+                                             style="left: 0%;">
+                                            <span class="vjs-control-text">00:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vjs-fullscreen-control vjs-control " role="button" aria-live="polite"
+                                     tabindex="0">
+                                    <div class="vjs-control-content">
+                                        <span class="vjs-control-text">Fullscreen</span>
+                                    </div>
+                                </div>
+                                <div class="vjs-volume-control vjs-control">
+                                    <div role="slider" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                         tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level"
+                                         aria-valuetext="100%">
+                                        <div class="vjs-volume-level" style="width: 100%;">
+                                            <span class="vjs-control-text"></span>
+                                        </div>
+                                        <div class="vjs-volume-handle vjs-slider-handle" style="left: 100%;">
+                                            <span class="vjs-control-text">00:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vjs-mute-control vjs-control" role="button" aria-live="polite" tabindex="0">
+                                    <div>
+                                        <span class="vjs-control-text">Mute</span>
+                                    </div>
+                                </div>
+                                <div class="vjs-subtitles-button vjs-menu-button vjs-control " role="button"
+                                     aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Subtitles Menu">
+                                    <div class="vjs-control-content">
+                                        <span class="vjs-control-text">Subtitles</span>
+                                    </div>
+                                    <div class="vjs-menu">
+                                        <ul class="vjs-menu-content">
+                                            <li class="vjs-menu-item vjs-selected" role="button" aria-live="polite"
+                                                tabindex="0" aria-selected="true">subtitles off
+                                            </li>
+                                            <li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0"
+                                                aria-selected="false">English
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="vjs-captions-button vjs-menu-button vjs-control " role="button"
+                                     aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Captions Menu">
+                                    <div class="vjs-control-content">
+                                        <span class="vjs-control-text">Captions</span>
+                                    </div>
+                                    <div class="vjs-menu">
+                                        <ul class="vjs-menu-content">
+                                            <li class="vjs-menu-item vjs-selected" role="button" aria-live="polite"
+                                                tabindex="0" aria-selected="true">captions off
+                                            </li>
+                                            <li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0"
+                                                aria-selected="false">English
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="vjs-chapters-button vjs-menu-button vjs-control " role="button"
+                                     aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Chapters Menu"
+                                     style="display: none;">
+                                    <div class="vjs-control-content">
+                                        <span class="vjs-control-text">Chapters</span>
+                                    </div>
+                                    <div class="vjs-menu">
+                                        <ul class="vjs-menu-content"></ul>
+                                        <li class="vjs-menu-title">Chapters</li>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-panel video-show">
-                        <div class="vedio-container">
-                            <div class="video_content">
-                                <video id="video1" class="video">
-                                    <source src="../images/videos/mov_bbb.mp4" type="video/mp4" />
-                                    <source src="../images/videos/mov_bbb.ogg" type="video/ogg" />
-                                </video>
-                            </div>
 
+                </div>
+                <div class="tab-panel word-show" id="description">郜石岭23的简历</div>
 
-                            <div id="video_controller">
-                                <button class="video-control" onclick="playPause()">播放/暂停</button>
-                                <!-- <input type="range" min="0" max="1" step="0.1" id="btn_volume"> -->
-                                <button class="video-control" id="btn_mute">Mute</button>
-                                <label id="time">-:--:--</label>
-
-                                <!-- <button type="button" id="btn_fullscreen">全屏</button> -->
-                            </div>
-                        </div>
-
-
-                        <script type="text/javascript">
-                            var myVideo=document.getElementById("video1");
-                            var video;
-                            window.onload=function(){
-                                video=document.getElementsByTagName("video")[0];
-
-                                // btn_fullscreen.addEventListener("click", forceFullScreen, false);
-                                // video.addEventListener("loadedmetadata", makeVisible, false)
-
-                                var btn_mute=document.getElementById("btn_mute");
-                                var btn_volume=document.getElementById("btn_volume");
-
-                                btn_mute.addEventListener("click",mute,false);
-                                video.addEventListener("timeupdate",updateTime,false);
-
-                                btn_volume.value=video.volume;
-                                btn_volume.addEventListener("change",function(e){
-                                    myVol=e.target.value;
-                                    video.volume=myVol;
-
-                                    if(myVol==0){
-                                        video.muted=true;
-                                    }else{
-                                        video.muted=false;
-                                    }
-                                    return false;
-                                },true)
-                            }
-                            function playPause(){
-                                if(myVideo.paused){         myVideo.play();
-                                }else{
-                                    myVideo.pause();
-                                }
-
-                            }
-
-                            // function makeVisible() {
-                            //     if (video.webkitSupportsFullscreen) {
-                            //         document.getElementById("btn_fullscreen").style.visibility = "visible";
-                            //     }
-                            // }
-                            // function forceFullScreen() {
-                            //     video.webkitEnterFullscreen();
-                            // }
-
-                            function mute(){
-                                document.getElementById("btn_volume").value=0;
-                                video.muted=true;
-                            };
-
-                            function updateTime(){
-                                var sec=video.currentTime;
-                                var h=Math.floor(sec/3600);
-                                sec=sec%3600;
-                                var min=Math.floor(sec/60);
-                                sec=Math.floor(sec%60);
-
-                                if(sec.toString().length<2) sec="0"+sec;
-                                if(min.toString().length<2) min="0"+min;<!--两位数表示-->
-
-                                document.getElementById("time").innerHTML=h+":"+min+":"+sec;
-                            }
-                        </script>
-                    </div>
-                    <div class="tab-panel word-show">
-                        文字展示
-                    </div>
-
-                    <!-- <div class="box-bottom">
-                        <button type="button" class="closeBox">关闭</button>
-                        <a href="" class="nextdetail">下一个</a>
-                    </div> -->
+                <div class="box-bottom" style="display: none;">
+                    <button type="button" class="closeBox">关闭</button>
+                    <a href="" class="nextdetail">下一个</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 </body>
 </html>

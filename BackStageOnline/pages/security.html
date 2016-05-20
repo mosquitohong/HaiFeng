@@ -1,12 +1,11 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <title>海蜂后台——安全管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit">
 
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../style/main.css">
@@ -15,78 +14,91 @@
     <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
 </head>
 <body>
-    <div class="content-panel">
-        <div class="panel-top">
-            <h3>安全设置</h3>
-        </div>
-        <div class="lb-container">
-            <div class="lb-content">
-                <ul class="tab-menu">
-                    <li class="fl">
-                        <a href="javascript:void(0);" class="active" data-id="loginForm">改密码</a>
-                    </li>
-                    <li class="fl">
-                        <a href="javascript:void(0);" data-id="registerForm">换手机</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <form id="loginForm" class="tab-form loginform">
-                        <ul>
-                            <li>
-                                <label class="default-label fl rt">当前绑定手机号</label>
-                                <span class="default-phone fl">136××××8888</span><button type="button" class="send-code fr" id="GetVerifyCode">发送验证码</button>
-                            </li>
-                            <li>
-                                <label class="default-label fl rt">验证码</label>
-                                <input type="text" placeholder="请输入验证码" id="code">
-                                <span class="clearvalue">×</span>
-                                <p class="errortip">验证码错误</p>
-                            </li>
-                            <li>
-                                <label class="default-label fl rt">新密码</label>
-                                <input type="password" placeholder="请输入新密码" id="regPwd">
-                                <span class="clearvalue">×</span>
-                                <p class="errortip"></p>
-                            </li>
-                            <li>
-                                <label class="default-label fl rt">再次输入新密码</label>
-                                <input type="password" placeholder="请再次输入新密码" id="regRepPwd">
-                                <span class="clearvalue">×</span>
-                                <p class="errortip">两次密码不一致</p>
-                            </li>
-                            <li><button type="button" id="editPwd" onclick="dialogModality('tipsbox.html?tip=修改成功！&img=editpwd','提示',['344px','124px']);">确认修改</button></li>
-                        </ul>
-                    </form>
-                    <form id="registerForm" class="tab-form regform">
-                        <ul>
-                            <li>
-                                <label class="default-label fl rt">当前绑定手机号</label>
-                                <span class="default-phone fl">136××××8888</span><button type="button" class="send-code fr" id="GetVerifyCode">发送验证码</button>
-                            </li>
-                            <li>
-                                <label class="default-label fl rt">验证码</label>
-                                <input type="text" placeholder="请输入验证码" id="code">
-                                <span class="clearvalue">×</span>
-                                <p class="errortip">验证码错误</p>
-                            </li>
-                            <li>
-                                <label class="default-label fl rt">手机号</label>
-                                <input type="tel" class="newphone" placeholder="请输入新手机号" id="regPhone" oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))"><button type="button" class="send-code fr" id="GetVerifyCode">发送验证码</button>
-                            </li>
-                            <li>
-                                <label class="default-label fl rt">验证码</label>
-                                <input type="text" placeholder="请输入验证码" id="code">
-                                <span class="clearvalue">×</span>
-                                <p class="errortip">验证码错误</p>
-                            </li>
-                            <li><button type="button">确认修改</button></li>
-                        </ul>
-                    </form>
-                </div>
+<div class="content-panel">
+    <div class="panel-top">
+        <h3>安全设置</h3>
+    </div>
+    <div class="lb-container">
+        <div class="lb-content">
+            <ul class="tab-menu">
+                <li class="fl">
+                    <a href="javascript:void(0);" class="active" data-id="modifyPwdForm">改密码</a>
+                </li>
+                <li class="fl">
+                    <a href="javascript:void(0);" data-id="changeMobileForm">换手机</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <form id="modifyPwdForm" class="tab-form loginform">
+                    <ul>
+                        <li>
+                            <label class="default-label fl rt">当前绑定手机号</label>
+                            <span class="default-phone fl" id="spModifyPwdMobile">15868186686</span>
+                            <button type="button" class="send-code fr" id="GetModifyCode">发送验证码</button>
+                        </li>
+                        <li>
+                            <label class="default-label fl rt">验证码</label>
+                            <input type="text" placeholder="请输入验证码" id="modifyCode">
+                            <span class="clearvalue">×</span>
+
+                            <p class="errortip">验证码错误</p>
+                        </li>
+                        <li>
+                            <label class="default-label fl rt">新密码</label>
+                            <input type="password" placeholder="请输入新密码" id="modifyPwd">
+                            <span class="clearvalue">×</span>
+
+                            <p class="errortip"></p>
+                        </li>
+                        <li>
+                            <label class="default-label fl rt">再次输入新密码</label>
+                            <input type="password" placeholder="请再次输入新密码" id="reModifyPwd">
+                            <span class="clearvalue">×</span>
+
+                            <p class="errortip">两次密码不一致</p>
+                        </li>
+                        <li>
+                            <button type="button" id="editPwd">确认修改</button>
+                        </li>
+                    </ul>
+                </form>
+                <form id="changeMobileForm" class="tab-form regform">
+                    <ul>
+                        <li>
+                            <label class="default-label fl rt">当前绑定手机号</label>
+                            <span class="default-phone fl" id="spChangeMobile">15868186686</span>
+                            <button type="button" class="send-code fr" id="GetChangeCode">发送验证码</button>
+                        </li>
+                        <li>
+                            <label class="default-label fl rt">验证码</label>
+                            <input type="text" placeholder="请输入验证码" id="changeCode">
+                            <span class="clearvalue">×</span>
+
+                            <p class="errortip">验证码错误</p>
+                        </li>
+                        <li>
+                            <label class="default-label fl rt">手机号</label>
+                            <input type="tel" class="newphone" placeholder="请输入新手机号" id="newMobile"
+                                   oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))">
+                            <button type="button" class="send-code fr" id="GetChangeNewCode">发送验证码</button>
+                        </li>
+                        <li>
+                            <label class="default-label fl rt">验证码</label>
+                            <input type="text" placeholder="请输入验证码" id="newChangeCode">
+                            <span class="clearvalue">×</span>
+
+                            <p class="errortip">验证码错误</p>
+                        </li>
+                        <li>
+                            <button type="button">确认修改</button>
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
     </div>
-    <script type="text/javascript"><script type="text/javascript">
+</div>
+<script type="text/javascript">
     $(function () {
         var oUserInfo = window.parent.oUserInfo;
         if (oUserInfo !== null) {
@@ -133,7 +145,10 @@
                 checkRePwd(reModifyPwd);
                 if (repsd === 1) return false;
 
-                $.post('/Ajax/MerchantSetting/SecurityManagement.ashx', { action: 'ModifyPwdByMobile', data: "{\"mobile\":\"" + $('#spModifyPwdMobile').html() + "\",\"verify\":\"" + modifyCode.val() + "\",\"newpwd\":\"" + modifyPwd.val() + "\"}" }, function (resp) {
+                $.post('/Ajax/MerchantSetting/SecurityManagement.ashx', {
+                    action: 'ModifyPwdByMobile',
+                    data: "{\"mobile\":\"" + $('#spModifyPwdMobile').html() + "\",\"verify\":\"" + modifyCode.val() + "\",\"newpwd\":\"" + modifyPwd.val() + "\"}"
+                }, function (resp) {
                     if (resp.code === "1000") {
                         alert('修改密码成功');
                     }
@@ -158,7 +173,10 @@
                 checkRePwd(reChangePwd);
                 if (repsd === 1) return false;
 
-                $.post('/Ajax/UserBaseNotLogin.ashx', { action: 'MerchantRegister', data: "{\"mobile\":\"" + regPhone.val() + "\",\"verify\":\"" + code.val() + "\",\"password\":\"" + changePwd.val() + "\",\"repassword\":\"" + reChangePwd.val() + "\"}" }, function (resp) {
+                $.post('/Ajax/UserBaseNotLogin.ashx', {
+                    action: 'MerchantRegister',
+                    data: "{\"mobile\":\"" + regPhone.val() + "\",\"verify\":\"" + code.val() + "\",\"password\":\"" + changePwd.val() + "\",\"repassword\":\"" + reChangePwd.val() + "\"}"
+                }, function (resp) {
                     if (resp.code === "1000") {
                         window.location.href = 'main.html';
                     }
@@ -251,9 +269,9 @@
             obj.siblings(".clearvalue").show();
             // alert("密码不能少于六位！");
         }
-            // else if ($(this).val()!= "验证码规则") {
-            //     $(this).focus().siblings("p").show().text("验证码错误")
-            // }
+        // else if ($(this).val()!= "验证码规则") {
+        //     $(this).focus().siblings("p").show().text("验证码错误")
+        // }
         else {
             sCode = 2;
             obj.siblings("p").hide();
@@ -261,81 +279,92 @@
             //$("#regPwd").val("").focus();
         }
     }
-    </script>
-    </script>
-   <script type="text/javascript">
-        var time = 60;
-        var interval;
-        //var __sto = setInterval;
-        //window.setInterval = function (callback, timeout, param) {
-        //    var args = Array.prototype.slice.call(arguments, 2);
-        //    var _cb = function () {
-        //        callback.apply(null, args);
-        //    }
-        //    __sto(_cb, timeout);
-        //}
-        function waitEnabled(obj) {
-            if (window.parent.time === 0) {
-                obj.html("获取验证码");
-                obj.removeAttr('disabled');
-                obj.css("background", "#ff9600");
-                window.parent.time = 60;
-                window.clearInterval(interval);
-            } else {
-                obj.html("已发送(" + --window.parent.time + ")");
-            }
+</script>
+<script type="text/javascript">
+    var time = 60;
+    var interval;
+    //var __sto = setInterval;
+    //window.setInterval = function (callback, timeout, param) {
+    //    var args = Array.prototype.slice.call(arguments, 2);
+    //    var _cb = function () {
+    //        callback.apply(null, args);
+    //    }
+    //    __sto(_cb, timeout);
+    //}
+    function waitEnabled(obj) {
+        if (window.parent.time === 0) {
+            obj.html("获取验证码");
+            obj.removeAttr('disabled');
+            obj.css("background", "#ff9600");
+            window.parent.time = 60;
+            window.clearInterval(interval);
+        } else {
+            obj.html("已发送(" + --window.parent.time + ")");
+        }
+
+    }
+    function verifyCode(iType, obj) {
+        var mobile, opcode;
+        switch (iType) {
+            case 1:
+                mobile = $('#spModifyPwdMobile').html();
+                opcode = 'ModifyPwdVerify';
+                break;
+            case 2:
+                mobile = $('#spModifyPwdMobile').html();
+                opcode = 'ChangeMobileVerify';
+                break;
+            case 3:
+                mobile = $('#spChangeMobile').html();
+                opcode = 'ChangeNewMobileVerify';
+                break;
+            default:
+                mobile = $('#newMobile').val();
+                opcode = 'ModifyPwdVerify';
+                break;
+        }
+
+        if ($.trim(mobile) === "" || $.trim(mobile).length !== 11) {
+            alert("手机号码为空或不合法");
+            return false;
+        } else {
+            $.post('/Ajax/BasePage/UserBase.ashx', {
+                action: 'SendSmsLogin',
+                data: "{\"mobile\":\"" + mobile + "\",\"opcode\":\"" + opcode + "\"}"
+            }, function (resp) {
+                if (resp.code === "1000") {
+                    //SendType = 1 表示发送验证码
+                    //收到短信之后允许修改手机号码
+                    if (iType === 3)
+                        $('#newMobile').attr("readonly", true);
+                    obj.attr("disabled", "disabled");
+                    obj.css("background", "#A8A8A8");
+                    obj.html("已发送(60)");
+                    interval = setInterval(function () {
+                        waitEnabled(obj);
+                    }, 1000);
+                    //window.setInterval(waitEnabled, 1000, obj);
+                    //alert("发送成功");
+                }
+                else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+
 
         }
-        function verifyCode(iType, obj) {
-            var mobile, opcode;
-            switch (iType) {
-                case 1:
-                    mobile = $('#spModifyPwdMobile').html();
-                    opcode = 'ModifyPwdVerify';
-                    break;
-                case 2:
-                    mobile = $('#spModifyPwdMobile').html();
-                    opcode = 'ChangeMobileVerify';
-                    break;
-                case 3:
-                    mobile = $('#spChangeMobile').html();
-                    opcode = 'ChangeNewMobileVerify';
-                    break;
-                default:
-                    mobile = $('#newMobile').val();
-                    opcode = 'ModifyPwdVerify';
-                    break;
-            }
+        return true;
+    }
+    $('#GetModifyCode').click(function () {
+        verifyCode(1, $(this));
+    });
+    $('#GetChangeCode').click(function () {
+        verifyCode(2, $(this));
+    });
+    $('#GetChangeNewCode').click(function () {
+        verifyCode(3, $(this));
+    });
+</script>
 
-            if ($.trim(mobile) === "" || $.trim(mobile).length !== 11) {
-                alert("手机号码为空或不合法");
-                return false;
-            } else {
-                $.post('/Ajax/BasePage/UserBase.ashx', { action: 'SendSmsLogin', data: "{\"mobile\":\"" + mobile + "\",\"opcode\":\"" + opcode + "\"}" }, function (resp) {
-                    if (resp.code === "1000") {
-                        //SendType = 1 表示发送验证码
-                        //收到短信之后允许修改手机号码
-                        if (iType === 3)
-                            $('#newMobile').attr("readonly", true);
-                        obj.attr("disabled", "disabled");
-                        obj.css("background", "#A8A8A8");
-                        obj.html("已发送(60)");
-                        interval = setInterval(function () { waitEnabled(obj); }, 1000);
-                        //window.setInterval(waitEnabled, 1000, obj);
-                        //alert("发送成功");
-                    }
-                    else {
-                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
-                    }
-                });
-
-
-            }
-            return true;
-        }
-        $('#GetModifyCode').click(function () { verifyCode(1, $(this)); });
-        $('#GetChangeCode').click(function () { verifyCode(2, $(this)); });
-        $('#GetChangeNewCode').click(function () { verifyCode(3, $(this)); });
-    </script>
 </body>
 </html>

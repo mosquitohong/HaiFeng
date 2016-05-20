@@ -37,6 +37,16 @@ input::-webkit-inner-spin-button{
 input[type="number"]{
     -moz-appearance:textfield;
 }
+input:focus,textarea:focus{
+    box-shadow: 0px 0px 2px #f7982a;
+    -webkit-box-shadow: 0px 0px 2px #f7982a;
+   /* box-shadow:0 0 3px rgba(111,1,32,3); 
+    -webkit-box-shadow:0 0 3px rgba(111,1,32,3); */
+}
+input[type="radio"]:focus,input[type="checkbox"]:focus{
+    box-shadow: 0 0 0;
+    -webkit-box-shadow: 0 0 0;
+}
 
 /*清除浏览器自带清楚叉叉*/
 ::-ms-clear, ::-ms-reveal{
@@ -190,6 +200,7 @@ input[type="number"]{
     height: auto;
     overflow: hidden;
     border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
 }
 .portrait{
     /*width: 200px;*/
@@ -239,11 +250,11 @@ input[type="number"]{
     width: 95px;
     display: inline-block;
     margin-right: 25px;
-    font-size: 15px;
+    font-size: 14px;
 }
 .infor-menu {
     height: 270px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .infor-menu li{
     height: 36px;
@@ -508,7 +519,10 @@ input[type="number"]{
     margin-bottom: 70px;
 }
 .htleft-menu li:first-child{
-    margin-bottom: 45px;
+    /*margin-bottom: 45px;*/
+    margin-bottom: 36px;
+    position: relative;
+    width: 470px;
 }
 .htmid-menu li{
     height: 36px;
@@ -587,6 +601,19 @@ input[type="number"]{
 }
 .choose-result{
     padding-left: 2px;
+    position: absolute;
+    background: #fff;
+    /*display: none;*/
+    height: 32px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.choose-result:hover{
+    height: auto;
+    border:1px solid #f7982a;
+    box-shadow: 0px 0px 2px #f7982a;
+    -webkit-box-shadow: 0px 0px 2px #f7982a;
+    cursor: pointer;
 }
 .hunttop ul select{
     height: 32px;
@@ -628,7 +655,7 @@ input[type="number"]{
 .htmid-menu li p,.htleft-menu li p{
     margin-right: 20px;
     display: inline-block;
-    font-size: 15px;
+    font-size: 14px;
 }
 .htmid-menu input[type="radio"],.htmid-menu input[type="checkbox"],.htleft-menu p input[type="radio"]{
     vertical-align: -2px;
@@ -649,6 +676,7 @@ input[type="number"]{
 .hunttop .btnp button{
     width: 140px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 
@@ -690,6 +718,19 @@ input[type="number"]{
     height: 28px;
     line-height: 28px;
 }
+.single-menu .location_li label{
+    float: left;
+}
+.single-menu .location_li>span{
+    display: table-cell;
+    width: 120px;
+    height: 28px;
+    line-height: 12px;
+    /*float: left;*/
+    vertical-align: middle;
+    overflow: hidden;
+    word-break: break-all;
+}
 
 .single-menu .btnp{
     width: 94px;
@@ -721,8 +762,13 @@ input[type="number"]{
 }
 .timeli  .agep{
     display: block;
-    padding-left: 75px;
+    padding-left: 71px;
 }
+/*@-moz-document url-prefix() { 
+    .timeli  .agep{
+    padding-left: 71px;
+}
+}*/
 .timeli .agep input[type="text"]{
     height: 22px;
     line-height: 22px;
@@ -833,6 +879,7 @@ input[type="number"]{
     height: 24px;
     border-radius: 10px;
     border:none;
+    cursor: pointer;
 }
 .accountview-top{
     border-bottom: 1px solid #eee;
@@ -1150,6 +1197,7 @@ input[type="number"]{
 /*详情页*/
 #layerbox{
     background: #fff;
+    /*box-shadow: -0px -0px 5px #000;*/
 }
 .box-container{
     /*width: 1000px;*/
@@ -1218,7 +1266,7 @@ input[type="number"]{
 /*视频区域样式*/
 .video-show{
     /*height: 140px;*/
-    width: 360px;
+    /*width: 360px;*/
     position: relative;
 }
 .vedio-container{

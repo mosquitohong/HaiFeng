@@ -1,736 +1,466 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <title>海蜂后台-人才管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit">
 
     <link rel="stylesheet" href="../style/normalize.css">
     <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../plugin/Pagination/pagination.css">
     <script src="../js/jquery.min.js"></script>
     <script src="../js/common.js"></script>
     <script src="../plugin/lhgdialog/lhgdialog.min.js"></script>
+
+    <script type="text/javascript" src="../plugin/Pagination/jquery.pagination.js"></script>
+    <link href="../plugin/DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="content-panel">
-        <div class="panel-top">
-            <h3>人才管理</h3>
-        </div>
-        <div class="hunttop clearfix">
-            <div class="huntleft fl">
-                <ul class="htleft-menu">
-                    <li>
-                        <label class="default-label fl">岗位范围</label>
-                        <div class="hiretype-container fl">
-                            <span class="icon icon-arrow" id="chooseSpan">选择</span>
-                            <div class="hiretype-content">
-                                <p class="hiretype-infor lf">
-                                    请选择要招聘的岗位
+<div class="content-panel">
+    <div class="panel-top">
+        <h3>人才管理</h3>
+    </div>
+    <div class="hunttop clearfix">
+        <div class="huntleft fl">
+            <ul class="htleft-menu">
+                <li>
+                    <label class="default-label fl">岗位范围</label>
+
+                    <div class="hiretype-container fl">
+                        <span class="icon icon-arrow" id="chooseSpan">选择</span>
+
+                        <div class="hiretype-content">
+                            <p class="hiretype-infor lf">
+                                请选择要招聘的岗位
                                     <span class="fr">
                                         当前行业：
-                                        <small>餐饮</small>
+                                        <small id="myindustry">零售</small>
                                     </span>
-                                </p>
-                                <a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
-
-                                <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
-                                <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
-                                <p class="lf">
-                                    <button class="confirm-type fr">确定</button>
-                                </p>
+                            </p>
+                            <div id="apositions">
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="1"
+                                   onclick="addMark($(this))">店长</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="2"
+                                   onclick="addMark($(this))">督导</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="3"
+                                   onclick="addMark($(this))">主管</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="4"
+                                   onclick="addMark($(this))">营业员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="5"
+                                   onclick="addMark($(this))">导购员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="6"
+                                   onclick="addMark($(this))">收银员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="7"
+                                   onclick="addMark($(this))">理货员</a>
+                                <a href="javascript:void(0);" class="hiretype choosemark" data-index="8"
+                                   onclick="addMark($(this))">店员</a>
                             </div>
+                            <p class="lf">
+                                <button class="confirm-type fr">确定</button>
+                            </p>
                         </div>
-                        <div class="choose-result fl" id="chooseResult"></div>
-                    </li>
-                    <li class="timeli">
-                        <label class="default-label fl">选择时间</label>
-                        <p>
-                            <input type="radio" name="time" checked>全部(默认)</p>
-                        <p>
-                            <input type="radio" name="time">三天</p>
-                        <p>
-                            <input type="radio" name="time">一周内</p>
-                        <p class="agep">
-                        <input type="radio" name="time">自定义
-                            <input type="text" id="startDate">
-                            <span>至</span>
-                            <input type="text" id="endDate"></p>
-                    </li>
-                </ul>
-            </div>
-            <div class="huntmid fl">
-                <ul class="htmid-menu">
-                    <li>
-                        <label class="default-label">简历</label>
-                        <p>
-                            <input type="checkbox" name="resume">有照片</p>
-                        <p>
-                            <input type="checkbox" name="resume">有视频</p>
-                    </li>
-                    <li>
-                        <label class="default-label">性别</label>
-                        <p>
-                            <input type="radio" name="gender" checked>不限</p>
-                        <p>
-                            <input type="radio" name="gender">男</p>
-                        <p>
-                            <input type="radio" name="gender">女</p>
-                    </li>
-                    <li>
-                        <label class="default-label">年龄</label>
-                        <p>
-                            <input type="radio" name="age" checked>不限</p>
-                        <p class="agep">
-                        <input type="radio" name="age">自定义
-                            <input type="number">
-                            <span>至</span>
-                            <input type="number"></p>
-                    </li>
-                    <li>
-                        <label class="default-label">工作</label>
-                        <p>
-                            <input type="radio" name="jobtype" checked>全职</p>
-                        <p>
-                            <input type="radio" name="jobtype">兼职</p>
-                    </li>
-                </ul>
-            </div>
-            <p class="btnp fl">
-                <button type="button">搜索</button>
-            </p>
-        </div>
-        <div class="manage-status">
-            <p class="choosebtn">
-                <button type="button" class="color0">已浏览</button>
-                <button type="button">已录用</button>
-                <button type="button">已暂存</button>
-                <button type="button">已解聘</button>
-            </p>
-        </div>
-        <div class="hunt-pepole clearfix">
-            <div class="sigle-content clearfix">
-                <div class="single clearfix fl">
-                    <div class="single-penal clearfix">
-                        <div class="single-image fl">
-                            <img src="../images/male.png">
-                            <a href="">
-                                <span class="icon icon-picture"></span>
-                            </a>
-                            <a href="">
-                                <span class="icon icon-video"></span>
-                            </a>
-                        </div>
-                        <ul class="single-menu fl">
-                            <li>
-                                <label>姓名：</label>
-                                <span>高司令</span>
-                                <a href="" class="fr">
-                                    <span class="icon icon-man"></span>
-                                    18岁
-                                </a>
-                            </li>
-                            <li>
-                                <label>岗位：</label>
-                                <span>服务员</span>
-                            </li>
-                            <li>
-                                <label>距离：</label>
-                                <span>2kg以内</span>
-                            </li>
-                            <li>
-                                <label>位置：</label>
-                                <span>西溪花园水岸花苑</span>
-                            </li>
-                            <li>
-                                <p class="opration-p">
-                                    <button type="button" onclick="dialogModality('pages/details.html','详情',['1000px','564px'],['关闭','下一个']);">查看</button>
-                                </p>
-                                <div class="opration">
-                                    <span class="icon icon-arrow">操作</span>
-                                    <ul class="opration-menu">
-                                        <li>
-                                            <a href="javascript:void(0);" onclick="dialogModality('pages/tipsbox.html?tip=确定录用吗？&img=inforicon','提示',['344px','124px'],['确定','取消']);">录用</a>
-                                        </li>
-                                        <li>
-                                            <a href="">暂存</a>
-                                        </li>
-                                        <li>
-                                            <a href="">删除</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
-                    <p class="viewtime lf">
-                        浏览时间：
-                        <span>2016.04.29</span>
-                    </p>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-penal clearfix">
-                        <div class="single-image fl">
-                            <img src="../images/male.png">
-                            <a href="">
-                                <span class="icon icon-picture"></span>
-                            </a>
-                            <a href="">
-                                <span class="icon icon-video"></span>
-                            </a>
-                        </div>
-                        <ul class="single-menu fl">
-                            <li>
-                                <label>姓名：</label>
-                                <span>高司令</span>
-                                <a href="" class="fr">
-                                    <span class="icon icon-man"></span>
-                                    18岁
-                                </a>
-                            </li>
-                            <li>
-                                <label>岗位：</label>
-                                <span>服务员</span>
-                            </li>
-                            <li>
-                                <label>距离：</label>
-                                <span>2kg以内</span>
-                            </li>
-                            <li>
-                                <label>位置：</label>
-                                <span>西溪花园水岸花苑</span>
-                            </li>
-                            <li>
-                                <p class="opration-p">
-                                    <button type="button" onclick="dialogModality('pages/details.html','详情',['1000px','564px'],['关闭','下一个']);">查看</button>
-                                </p>
-                                <div class="opration">
-                                    <span class="icon icon-arrow">操作</span>
-                                    <ul class="opration-menu">
-                                        <li>
-                                            <a href="javascript:void(0);" onclick="dialogModality('pages/tipsbox.html?tip=确定录用吗？&img=inforicon','提示',['344px','124px'],['确定','取消']);">录用</a>
-                                        </li>
-                                        <li>
-                                            <a href="">暂存</a>
-                                        </li>
-                                        <li>
-                                            <a href="">删除</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="choose-result fl" id="chooseResult">
+                        <a href="javascript:void(0);" data-rtindex="1" onclick="delResult($(this))">
+                            店长
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="2" onclick="delResult($(this))">
+                            督导
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="3" onclick="delResult($(this))">
+                            主管
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="4" onclick="delResult($(this))">
+                            营业员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="5" onclick="delResult($(this))">
+                            导购员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="6" onclick="delResult($(this))">
+                            收银员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="7" onclick="delResult($(this))">
+                            理货员
+                            <span>×</span>
+                        </a>
+                        <a href="javascript:void(0);" data-rtindex="8" onclick="delResult($(this))">
+                            店员
+                            <span>×</span>
+                        </a>
                     </div>
-                    <p class="viewtime lf">
-                        浏览时间：
-                        <span>2016.04.29</span>
-                    </p>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-penal clearfix">
-                        <div class="single-image fl">
-                            <img src="../images/female.png">
-                            <a href="">
-                                <span class="icon icon-picture"></span>
-                            </a>
-                            <a href="">
-                                <span class="icon icon-video"></span>
-                            </a>
-                        </div>
-                        <ul class="single-menu fl">
-                            <li>
-                                <label>姓名：</label>
-                                <span>高司令</span>
-                                <a href="" class="fr">
-                                    <span class="icon icon-women"></span>
-                                    18岁
-                                </a>
-                            </li>
-                            <li>
-                                <label>岗位：</label>
-                                <span>服务员</span>
-                            </li>
-                            <li>
-                                <label>距离：</label>
-                                <span>2kg以内</span>
-                            </li>
-                            <li>
-                                <label>位置：</label>
-                                <span>西溪花园水岸花苑</span>
-                            </li>
-                            <li>
-                                <p class="opration-p">
-                                    <button type="button" onclick="dialogModality('pages/details.html','详情',['1000px','564px'],['关闭','下一个']);">查看</button>
-                                </p>
-                                <div class="opration">
-                                    <span class="icon icon-arrow">操作</span>
-                                    <ul class="opration-menu">
-                                        <li>
-                                            <a href="javascript:void(0);" onclick="dialogModality('pages/tipsbox.html?tip=确定录用吗？&img=inforicon','提示',['344px','124px'],['确定','取消']);">录用</a>
-                                        </li>
-                                        <li>
-                                            <a href="">暂存</a>
-                                        </li>
-                                        <li>
-                                            <a href="">删除</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="viewtime lf">
-                        浏览时间：
-                        <span>2016.04.29</span>
-                    </p>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-penal clearfix">
-                        <div class="single-image fl">
-                            <img src="../images/male.png">
-                            <a href="">
-                                <span class="icon icon-picture"></span>
-                            </a>
-                            <a href="">
-                                <span class="icon icon-video"></span>
-                            </a>
-                        </div>
-                        <ul class="single-menu fl">
-                            <li>
-                                <label>姓名：</label>
-                                <span>高司令</span>
-                                <a href="" class="fr">
-                                    <span class="icon icon-man"></span>
-                                    18岁
-                                </a>
-                            </li>
-                            <li>
-                                <label>岗位：</label>
-                                <span>服务员</span>
-                            </li>
-                            <li>
-                                <label>距离：</label>
-                                <span>2kg以内</span>
-                            </li>
-                            <li>
-                                <label>位置：</label>
-                                <span>西溪花园水岸花苑</span>
-                            </li>
-                            <li>
-                                <p class="opration-p">
-                                    <button type="button" onclick="dialogModality('pages/details.html','详情',['1000px','564px'],['关闭','下一个']);">查看</button>
-                                </p>
-                                <div class="opration">
-                                    <span class="icon icon-arrow">操作</span>
-                                    <ul class="opration-menu">
-                                        <li>
-                                            <a href="javascript:void(0);" onclick="dialogModality('pages/tipsbox.html?tip=确定录用吗？&img=inforicon','提示',['344px','124px'],['确定','取消']);">录用</a>
-                                        </li>
-                                        <li>
-                                            <a href="">暂存</a>
-                                        </li>
-                                        <li>
-                                            <a href="">删除</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="viewtime lf">
-                        浏览时间：
-                        <span>2016.04.29</span>
-                    </p>
-                </div>
-                <div class="single clearfix fl">
-                    <div class="single-penal clearfix">
-                        <div class="single-image fl">
-                            <img src="../images/female.png">
-                            <a href="">
-                                <span class="icon icon-picture"></span>
-                            </a>
-                            <a href="">
-                                <span class="icon icon-video"></span>
-                            </a>
-                        </div>
-                        <ul class="single-menu fl">
-                            <li>
-                                <label>姓名：</label>
-                                <span>高司令</span>
-                                <a href="" class="fr">
-                                    <span class="icon icon-women"></span>
-                                    18岁
-                                </a>
-                            </li>
-                            <li>
-                                <label>岗位：</label>
-                                <span>服务员</span>
-                            </li>
-                            <li>
-                                <label>距离：</label>
-                                <span>2kg以内</span>
-                            </li>
-                            <li>
-                                <label>位置：</label>
-                                <span>西溪花园水岸花苑</span>
-                            </li>
-                            <li>
-                                <p class="opration-p">
-                                    <button type="button" onclick="dialogModality('pages/details.html','详情',['1000px','564px'],['关闭','下一个']);">查看</button>
-                                </p>
-                                <div class="opration">
-                                    <span class="icon icon-arrow">操作</span>
-                                    <ul class="opration-menu">
-                                        <li>
-                                            <a href="javascript:void(0);" onclick="dialogModality('pages/tipsbox.html?tip=确定录用吗？&img=inforicon','提示',['344px','124px'],['确定','取消']);">录用</a>
-                                        </li>
-                                        <li>
-                                            <a href="">暂存</a>
-                                        </li>
-                                        <li>
-                                            <a href="">删除</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="viewtime lf">
-                        浏览时间：
-                        <span>2016.04.29</span>
-                    </p>
-                </div>
+                </li>
+                <li class="timeli">
+                    <label class="default-label fl">选择时间</label>
 
-            </div>
-            <!-- 分页开始 -->
-            <div class="pages">
-                <ul>
-                    <li class="pagesli1">
-                        <a href="javascript:void(0);"></a>
-                    </li>
-                    <li class="pagesli2">
-                        <a href="javascript:void(0);"></a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">1</a>
-                    </li>
-                    <li class="pagesli3 pageactive">
-                        <a href="javascript:void(0);">2</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">3</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">4</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">5</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">6</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">7</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">...</a>
-                    </li>
-                    <li class="pagesli3">
-                        <a href="javascript:void(0);">21</a>
-                    </li>
-                    <li class="pagesli4">
-                        <a href="javascript:void(0);"></a>
-                    </li>
-                    <li class="pagesli5">
-                        <a href="javascript:void(0);"></a>
-                    </li>
-                    <li class="pagesli6">
-                        <input type="number">
-                        <button></button>
-                    </li>
-                </ul>
-            </div>
-            <!-- 分页结束 -->
-            <div class="sigle-content-none">
-                <img src="../images/talentsnone.png">
-                <p>
-                    没有匹配数据，
-                    <a href="hunt.html">马上找人！</a>
-                </p>
+                    <p>
+                        <input type="radio" value="1" name="time" checked="">全部(默认)</p>
+
+                    <p>
+                        <input type="radio" value="2" name="time">三天</p>
+
+                    <p>
+                        <input type="radio" value="3" name="time">一周内</p>
+
+                    <p class="agep">
+                        <input type="radio" value="4" name="time">
+                        自定义
+                        <input type="text" id="startDate">
+                        <span>至</span>
+                        <input type="text" id="endDate"></p>
+                </li>
+            </ul>
+        </div>
+        <div class="huntmid fl">
+            <ul class="htmid-menu">
+                <li>
+                    <label class="default-label">简历</label>
+
+                    <p>
+                        <input type="checkbox" name="resume" id="pic">有照片</p>
+
+                    <p>
+                        <input type="checkbox" name="resume" id="video">有视频</p>
+                </li>
+                <li>
+                    <label class="default-label">性别</label>
+
+                    <p>
+                        <input type="radio" name="gender" value="-1" checked="">不限</p>
+
+                    <p>
+                        <input type="radio" name="gender" value="1">男</p>
+
+                    <p>
+                        <input type="radio" name="gender" value="2">女</p>
+                </li>
+                <li>
+                    <label class="default-label">年龄</label>
+
+                    <p>
+                        <input type="radio" name="age" value="0" checked="">不限</p>
+
+                    <p class="agep">
+                        <input type="radio" name="age" value="1">
+                        自定义
+                        <input type="number" id="sage">
+                        <span>至</span>
+                        <input type="number" id="eage"></p>
+                </li>
+                <li>
+                    <label class="default-label">工作</label>
+
+                    <p>
+                        <input type="radio" name="jobtype" value="1" checked="">全职</p>
+
+                    <p>
+                        <input type="radio" name="jobtype" value="2">兼职</p>
+                </li>
+            </ul>
+        </div>
+        <p class="btnp fl">
+            <button type="button" id="btnSearch">搜索</button>
+        </p>
+    </div>
+    <div class="manage-status">
+        <p class="choosebtn">
+            <button type="button" data-id="1" class="color0">已浏览</button>
+            <button type="button" data-id="4">已录用</button>
+            <button type="button" data-id="2">已暂存</button>
+            <button type="button" data-id="5">已解聘</button>
+        </p>
+    </div>
+    <div class="hunt-pepole clearfix" id="divcontent" style="display: none;">
+        <div class="sigle-content clearfix" id="resumelist"></div>
+        <!-- 分页开始 -->
+        <div class="pages">
+            <div id="Pagination"></div>
+            <div class="searchPage" id="searchPage" style="display: none;">
+                    <span class="page-sum">
+                        共 <strong class="allPage">1</strong>
+                        页
+                    </span>
+                    <span class="page-go">
+                        跳转
+                        <input type="text">页</span>
+                <a href="javascript:;" class="page-btn">GO</a>
             </div>
         </div>
-    </div>
-    <script src="../plugin/DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript">
-        $(function () {
+        <!-- 分页结束 --> </div>
+    <div class="sigle-content-none" id="divnolist">
+        <img src="../images/talentsnone.png">
+
+        <p>
+            没有匹配数据，
+            <a href="hunt.html">马上找人！</a>
+        </p>
+        <input type="hidden" id="hidLng" value="120.004198">
+        <input type="hidden" id="hidLat" value="30.292129"></div>
+</div>
+<script src="../plugin/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+    var iDataCount = 9;
+    var pagesize = 9;
+    var pageindex = 1;
+    var cardid = 1;
+    var allresume = null;
+    function getpositiondata() {
+        var html = "";
+
+        $.each(window.parent.oIndustryAndPosition.Industrys, function (n, value) {
+            if (value.Id === window.parent.oUserInfo.Industry) {
+                $("#myindustry").html(value.IndustryName);
+            }
+        });
+        $.each(window.parent.oIndustryAndPosition.Positions, function (n, value) {
+            if (value.IndustryId === window.parent.oUserInfo.Industry) {
+                if (window.parent.oUserInfo.Position.indexOf(value.Id) !== -1) {
+                    html += '<a href="javascript:void(0);" class="hiretype choosemark" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                    $("#chooseResult").append('<a href=\"javascript:void(0);\" data-rtIndex=' + value.Id + ' onclick=\"delResult($(this))\">' + value.PositionName + '<span>×</span> </a>');
+                } else {
+                    html += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                }
+
+            }
+        });
+        $("#apositions").html(html);
+    }
+    function getpositionname(positionid) {
+        var v = "";
+        var s = positionid.split(',');
+        for (var i = 0; i < s.length; i++) {
+            for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
+                if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
+                    if (v == "")
+                        v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                    else
+                        v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
+                }
+            }
+        }
+        return v;
+    }
+
+    $(document).ready(function () {
+        var oUserInfo = window.parent.oUserInfo;
+        if (oUserInfo !== null) {
+            getpositiondata();
+            //fSearchviewedresume(0, null);
             // $(".hiretype").click(function(){
             //     $(this).toggleClass("choosemark");
             // });
+            $("#divcontent").hide();
+            $("#divnolist").show();
 
+            $("#hidLng").val(oUserInfo.Longitude);
+            $("#hidLat").val(oUserInfo.Latitude);
 
             // 筛选按钮样式
             $(".choosebtn button").click(function () {
                 var curColor = "color" + $(this).index();
-                $(this).addClass(curColor).siblings("button").removeClass()
-            })
-        })
+                $(this).addClass(curColor).siblings("button").removeClass();
+                cardid = $(this).attr("data-id");
+                if (allresume)
+                    shwodata(allresume, cardid);
+                else
+                    fSearchviewedresume(0, null);
+            });
 
-    </script>
-    <script type="text/javascript">
-        var iDataCount = 9;
-        var pagesize = 9;
-        var pageindex = 1;
-        var cardid = 1;
-        var allresume = null;
-        function getpositiondata() {
-            var html = "";
+            var mydate = new Date();
+            var stryear = mydate.getFullYear();
+            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+            mydate.setDate(mydate.getDate() - 30);
+            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
 
-            $.each(window.parent.oIndustryAndPosition.Industrys, function (n, value) {
-                if (value.Id === window.parent.oUserInfo.Industry) {
-                    $("#myindustry").html(value.IndustryName);
+            $("#startDate,#endDate").focus(function () {
+                $("input[name='time']").eq(3).attr("checked", "checked");
+            });
+            $("input[name=time]").click(function () {
+                switch ($('input[name="time"]:checked').val()) {
+                    case "1":
+                        mydate = new Date();
+                        $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                        mydate.setDate(mydate.getDate() - 30);
+                        $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                        break;
+                    case "2":
+                        mydate = new Date();
+                        $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                        mydate.setDate(mydate.getDate() - 3);
+                        $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                        break;
+                    case "3":
+                        mydate = new Date();
+                        $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                        mydate.setDate(mydate.getDate() - 7);
+                        $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
+                        break;
+                    case "4":
+                        $('#startDate').focus();
+                        break;
+                    default:
+                        break;
                 }
             });
-            $.each(window.parent.oIndustryAndPosition.Positions, function (n, value) {
-                if (value.IndustryId === window.parent.oUserInfo.Industry) {
-                    if (window.parent.oUserInfo.Position.indexOf(value.Id) !== -1) {
-                        html += '<a href="javascript:void(0);" class="hiretype choosemark" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
-                        $("#chooseResult").append('<a href=\"javascript:void(0);\" data-rtIndex=' + value.Id + ' onclick=\"delResult($(this))\">' + value.PositionName + '<span>×</span> </a>');
-                    } else {
-                        html += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
-                    }
-
-                }
+        }
+        else {
+            alert('登录失效');
+            window.location.href = 'index.html';
+        }
+    });
+    function fSearchviewedresume(page_index, jq) {
+        var accountid = window.parent.oUserInfo.Id;
+        var sage = 0;
+        var eage = 0;
+        var sdate = "";
+        var edate = "";
+        var position = "";
+        var choosePositions = $("#chooseResult a");
+        if (choosePositions != undefined && choosePositions != null) {
+            $.each(choosePositions, function (n, value) {
+                position += $(value).attr("data-rtindex") + ",";
             });
-            $("#apositions").html(html);
         }
-        function getpositionname(positionid) {
-            var v = "";
-            var s = positionid.split(',');
-            for (var i = 0; i < s.length; i++) {
-                for (var j = 0; j < window.parent.oIndustryAndPosition.Positions.length; j++) {
-                    if (s[i] == window.parent.oIndustryAndPosition.Positions[j].Id) {
-                        if (v == "")
-                            v = window.parent.oIndustryAndPosition.Positions[j].PositionName;
-                        else
-                            v += "," + window.parent.oIndustryAndPosition.Positions[j].PositionName;
-                    }
-                }
-            }
-            return v;
+        if (position !== "") {
+            position = position.substr(0, position.length - 1);
+        } else {
+            alert("请选择岗位");
+            return;
         }
-
-        $(document).ready(function () {
-            var oUserInfo = window.parent.oUserInfo;
-            if (oUserInfo !== null) {
-                getpositiondata();
-                //fSearchviewedresume(0, null);
-                // $(".hiretype").click(function(){
-                //     $(this).toggleClass("choosemark");
-                // });
-                $("#divcontent").hide();
-                $("#divnolist").show();
-                // 筛选按钮样式
-                $(".choosebtn button").click(function () {
-                    var curColor = "color" + $(this).index();
-                    $(this).addClass(curColor).siblings("button").removeClass();
-                    cardid = $(this).attr("data-id");
-                    if (allresume)
-                        shwodata(allresume, cardid);
-                    else
-                        fSearchviewedresume(0, null);
-                });
-
-                var mydate = new Date();
-                var stryear = mydate.getFullYear();
-                $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                mydate.setDate(mydate.getDate() - 30);
-                $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-
-                $("#startDate,#endDate").focus(function () {
-                    $("input[name='time']").eq(3).attr("checked", "checked");
-                });
-                $("input[name=time]").click(function () {
-                    switch ($('input[name="time"]:checked').val()) {
-                        case "1":
-                            mydate = new Date();
-                            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                            mydate.setDate(mydate.getDate() - 30);
-                            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                            break;
-                        case "2":
-                            mydate = new Date();
-                            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                            mydate.setDate(mydate.getDate() - 3);
-                            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                            break;
-                        case "3":
-                            mydate = new Date();
-                            $('#endDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                            mydate.setDate(mydate.getDate() - 7);
-                            $('#startDate').val(stryear + "-" + (mydate.getMonth() + 1) + "-" + mydate.getDate());
-                            break;
-                        case "4":
-                            $('#startDate').focus();
-                            break;
-                        default:
-                            break;
-                    }
-                });
-            }
-            else {
-                alert('登录失效');
-                window.location.href = 'index.html';
-            }
-        });
-        function fSearchviewedresume(page_index, jq) {
-            var accountid = window.parent.oUserInfo.Id;
-            var sage = 0;
-            var eage = 0;
-            var sdate = "";
-            var edate = "";
-            var position = "";
-            var choosePositions = $("#chooseResult a");
-            if (choosePositions != undefined && choosePositions != null) {
-                $.each(choosePositions, function (n, value) {
-                    position += $(value).attr("data-rtindex") + ",";
-                });
-            }
-            if (position !== "") {
-                position = position.substr(0, position.length - 1);
-            } else {
-                alert("请选择岗位");
+        var longitude;
+        var latitude;
+        var haspic = $("#pic").prop("checked");
+        var hasvideo = $("#video").prop("checked");
+        var sex = $('input[name="gender"]:checked').val();
+        var age = $('input[name="age"]:checked').val();
+        var time = $('input[name="time"]:checked').val();
+        if (time == -1) {
+            if ($("#startDate").val() == "") {
+                alert("请填写起始时间");
+                $("#startDate").focus();
                 return;
             }
-            var longitude;
-            var latitude;
-            var haspic = $("#pic").prop("checked");
-            var hasvideo = $("#video").prop("checked");
-            var sex = $('input[name="gender"]:checked').val();
-            var age = $('input[name="age"]:checked').val();
-            var time = $('input[name="time"]:checked').val();
-            if (time == -1) {
-                if ($("#startDate").val() == "") {
-                    alert("请填写起始时间");
-                    $("#startDate").focus();
-                    return;
-                }
-                if ($("#endDate").val() == "") {
-                    alert("请填写结束时间");
-                    $("#endDate").focus();
-                    return;
-                }
+            if ($("#endDate").val() == "") {
+                alert("请填写结束时间");
+                $("#endDate").focus();
+                return;
+            }
 
-            }
-            sdate = $("#startDate").val();
-            edate = $("#endDate").val();
-            //else if (time == 3) {
-            //    var curdate = new Date();
-            //    var newdate = new Date(curdate.getFullYear(), curdate.getMonth(), curdate.getDate() - 3);
-            //    sdate = newdate.getFullYear() + "-" + (newdate.getMonth() + 1) + "-" + newdate.getDate() + " 00:00:00";
-            //    edate = curdate.getFullYear() + "-" + (curdate.getMonth() + 1) + "-" + curdate.getDate() + " 23:59:59";
-            //} else if (time == 7) {
-            //    var curdate = new Date();
-            //    var newdate = new Date(curdate.getFullYear(), curdate.getMonth(), curdate.getDate() - 7);
-            //    sdate = newdate.getFullYear() + "-" + (newdate.getMonth() + 1) + "-" + newdate.getDate() + " 00:00:00";
-            //    edate = curdate.getFullYear() + "-" + (curdate.getMonth() + 1) + "-" + curdate.getDate() + " 23:59:59";
-            //}
-            if (age == 1) {
-                if ($("#sage").val() == "") {
-                    alert("请填写年纪");
-                    $("#sage").focus();
-                    return;
-                }
-                if ($("#eage").val() == "") {
-                    alert("请填写年纪");
-                    $("#eage").focus();
-                    return;
-                }
-                sage = $("#sage").val();
-                eage = $("#eage").val();
-            }
-            page_index = page_index + 1;
-            var jobnature = $('input[name="jobtype"]:checked').val();
-            $.post('/Ajax/MerchantCenter/FindTalents.ashx', { action: 'SearchViewedResumes', data: "{\"pagesize\":\"" + pagesize + "\",\"pageindex\":\"" + page_index + "\",\"sex\":\"" + sex + "\",\"position\":\"" + position + "\",\"haspic\":\"" + haspic + "\",\"hasvideo\":\"" + hasvideo + "\",\"startage\":\"" + sage + "\",\"endage\":\"" + eage + "\",\"longitude\":\"" + longitude + "\",\"latitude\":\"" + latitude + "\",\"jobnature\":\"" + jobnature + "\",\"accountid\":\"" + accountid + "\",\"sdate\":\"" + sdate + "\",\"edate\":\"" + edate + "\"}" }, function (resp) {
-                if (resp.code === "1000") {
-                    shwodata(resp.data, cardid);
-                }
-                else {
-                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
-                }
-            });
-            return true;
+        }
+        sdate = $("#startDate").val();
+        edate = $("#endDate").val();
+
+        var longitude = $("#hidLng").val();
+        var latitude = $("#hidLat").val();
+        if (longitude === '' || latitude === '') {
+            alert("登录地址获取失败");
+            return;
         }
 
-        function shwodata(allresumelist) {
-            if (allresumelist.Total > 0) {
-                allresume = allresumelist;
-                var temp = '<div class="single clearfix fl"><div class="single-image fl"><img src="{$logo}"><a href="javascript:void(0)" class="{$pic}"><span class="icon icon-picture"></span>' +
+        if (age == 1) {
+            if ($("#sage").val() == "") {
+                alert("请填写年纪");
+                $("#sage").focus();
+                return;
+            }
+            if ($("#eage").val() == "") {
+                alert("请填写年纪");
+                $("#eage").focus();
+                return;
+            }
+            sage = $("#sage").val();
+            eage = $("#eage").val();
+        }
+        page_index = page_index + 1;
+        var jobnature = $('input[name="jobtype"]:checked').val();
+        $.post('/Ajax/MerchantCenter/FindTalents.ashx', {
+            action: 'SearchViewedResumes',
+            data: "{\"pagesize\":\"" + pagesize + "\",\"pageindex\":\"" + page_index + "\",\"sex\":\"" + sex + "\",\"position\":\"" + position + "\",\"haspic\":\"" + haspic + "\",\"hasvideo\":\"" + hasvideo + "\",\"startage\":\"" + sage + "\",\"endage\":\"" + eage + "\",\"longitude\":\"" + longitude + "\",\"latitude\":\"" + latitude + "\",\"jobnature\":\"" + jobnature + "\",\"accountid\":\"" + accountid + "\",\"sdate\":\"" + sdate + "\",\"edate\":\"" + edate + "\"}"
+        }, function (resp) {
+            if (resp.code === "1000") {
+                shwodata(resp.data, cardid);
+            }
+            else {
+                alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+            }
+        });
+        return true;
+    }
+
+    function shwodata(allresumelist) {
+        if (allresumelist.Total > 0) {
+            allresume = allresumelist;
+            var temp = '<div class="single clearfix fl"><div class="single-image fl"><img src="{$logo}"><a href="javascript:void(0)" class="{$pic}"><span class="icon icon-picture"></span>' +
                     '</a><a href="javascript:void(0)" class="{$video}"><span class="icon icon-video"></span></a></div><ul class="single-menu fl"><li><label>姓名：</label><span>{$name}</span>' +
-                    '<a href="" class="fr"><span class="{$sex}"></span>{$age}岁</a></li><li><label>岗位：</label><span>{$position}</span>' +
-                    '</li><li><label>距离：</label><span>{$distance}以内</span></li><li><label>位置：</label><span>{$location}</span></li><li><p class="btnp">' +
+                    '<a href="" class="fr"><span class="{$sex}"></span>{$age}岁</a></li><li class="location_li"><label>岗位：</label><span>{$position}</span>' +
+                    '</li><li><label>距离：</label><span>{$distance}km以内</span></li><li class="location_li"><label>位置：</label><span>{$location}</span></li><li><p class="btnp">' +
                     '<button type="button" class=" icon-lock" onclick=dialogModality("/pages/details.html?id={$id}&accid={$accid}","简历详情",["1000px","564px"],["继续看"]);>我要看</button></p></li></ul></div>';
-                var html = "";
-                $("#resumelist").html(html);
-                for (var i = 0; i < allresume.Total; i++) {
-                    if (cardid == allresume.ViewResumeList[i].ViewedStatus) {
-                        var logo = '../images/male.png';
-                        if (allresume.ViewResumeList[i].Portrait !== "")
-                            logo = allresume.ViewResumeList[i].Portrait;
-                        else
-                            logo = allresume.ViewResumeList[i].Sex == 1 ? "../images/male.png" : "../images/female.png";
-                        var name = allresume.ViewResumeList[i].Name;
-                        var age = allresume.ViewResumeList[i].Age;
-                        var position = getpositionname(allresume.ViewResumeList[i].Position);
-                        var distance = 1;
-                        var location = allresume.ViewResumeList[i].Location;
-                        var sex = allresume.ViewResumeList[i].Sex == 1 ? "icon icon-man" : "icon icon-women";
-                        var id = allresume.ViewResumeList[i].Id;
-                        var accid = window.parent.oUserInfo.Id;
-                        var pic = allresume.ViewResumeList[i].HasPicture == true ? "withdetail" : "";
-                        var video = allresume.ViewResumeList[i].HasVideo == true ? "withdetail" : "";
-                        html += temp.replace("{$logo}", logo).replace("{$name}", name).replace("{$age}", age).replace("{$position}", position).replace("{$distance}", distance).replace("{$location}", location).replace("{$sex}", sex).replace("{$id}", id).replace("{$accid}", accid).replace("{$pic}", pic).replace("{$video}", video);
-                    }
-                }
-                if (html != "") {
-                    $("#divcontent").show();
-                    $("#divnolist").hide();
-                    $("#resumelist").html(html);
-
-                    iDataCount = allresume.Total;
-
-                    var optInit = {
-                        callback: fSearchviewedresume,
-                        items_per_page: pagesize,
-                        num_display_entries: 5,
-                        prev_text: "Prev",
-                        next_text: "Next"
-                    };
-                    $("#Pagination").pagination(iDataCount, optInit);
-                    if (iDataCount > pagesize)
-                        $("#searchPage").show();
+            var html = "";
+            $("#resumelist").html(html);
+            for (var i = 0; i < allresume.ViewResumeList.length; i++) {
+                if (cardid == allresume.ViewResumeList[i].ViewedStatus) {
+                    var logo = '../images/male.png';
+                    if (allresume.ViewResumeList[i].Portrait !== "")
+                        logo = allresume.ViewResumeList[i].Portrait;
                     else
-                        $("#searchPage").hide();
-
-                } else {
-                    $("#divcontent").hide();
-                    $("#divnolist").show();
+                        logo = allresume.ViewResumeList[i].Sex == 1 ? "../images/male.png" : "../images/female.png";
+                    var name = allresume.ViewResumeList[i].Name;
+                    var age = allresume.ViewResumeList[i].Age;
+                    var position = getpositionname(allresume.ViewResumeList[i].Position);
+                    var distance = parseFloat(allresume.ViewResumeList[i].Distance).toFixed(2);
+                    ;
+                    var location = allresume.ViewResumeList[i].Location;
+                    var sex = allresume.ViewResumeList[i].Sex == 1 ? "icon icon-man" : "icon icon-women";
+                    var id = allresume.ViewResumeList[i].Id;
+                    var accid = window.parent.oUserInfo.Id;
+                    var pic = allresume.ViewResumeList[i].HasPicture == true ? "withdetail" : "";
+                    var video = allresume.ViewResumeList[i].HasVideo == true ? "withdetail" : "";
+                    html += temp.replace("{$logo}", logo).replace("{$name}", name).replace("{$age}", age).replace("{$position}", position).replace("{$distance}", distance).replace("{$location}", location).replace("{$sex}", sex).replace("{$id}", id).replace("{$accid}", accid).replace("{$pic}", pic).replace("{$video}", video);
                 }
+            }
+            if (html != "") {
+                $("#divcontent").show();
+                $("#divnolist").hide();
+                $("#resumelist").html(html);
+
+                iDataCount = allresume.Total;
+
+                var optInit = {
+                    callback: fSearchviewedresume,
+                    items_per_page: pagesize,
+                    num_display_entries: 5,
+                    prev_text: "Prev",
+                    next_text: "Next"
+                };
+                $("#Pagination").pagination(iDataCount, optInit);
+                if (iDataCount > pagesize)
+                    $("#searchPage").show();
+                else
+                    $("#searchPage").hide();
+
             } else {
                 $("#divcontent").hide();
                 $("#divnolist").show();
             }
+        } else {
+            $("#divcontent").hide();
+            $("#divnolist").show();
         }
-        $("#sage,#eage").focus(function () {
-            $("input[name='age']").eq(1).attr("checked", "checked");
-        });
-        $("#btnSearch").click(function () {
-            fSearchviewedresume(0, null);
-        });
-    </script>
+    }
+    $("#sage,#eage").focus(function () {
+        $("input[name='age']").eq(1).attr("checked", "checked");
+    });
+    $("#btnSearch").click(function () {
+        fSearchviewedresume(0, null);
+    });
+</script>
+
 </body>
 </html>

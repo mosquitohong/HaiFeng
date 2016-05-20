@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>录入简历——选择岗位</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/style.css">
+
+    <link rel="stylesheet" href="../../plugin/swiper/css/swiper.min.css">
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/loginRegister.js"></script>
+    <script src="../../plugin/swiper/swiper.min.js"></script>
+</head>
+<body>
+<div class="wrapper jobpost" id="jobPost">
+    <div class="content_wrap">
+        <p class="top_p txtlt">
+            <span onclick="javascript:history.back()">取消</span>
+            <span class="done_span fr" onclick="javascript:history.back()">完成</span>
+        </p>
+
+        <div class="jobchoosed">
+            <p class="txtlt">已选岗位(最多五个)</p>
+
+            <div class="jobchoosed_con" id="chooseResult"></div>
+        </div>
+        <div class="choose_area clearfix">
+            <div class="choose_area_left fl">
+                <ul class="choose_menu">
+                    <li class="active">
+                        <span class="icon icon-ls"></span>
+                        零售
+                    </li>
+                    <li>
+                        <span class="icon icon-cy"></span>
+                        餐饮
+                    </li>
+                    <li>
+                        <span class="icon icon-jd"></span>
+                        酒店
+                    </li>
+                    <li>
+                        <span class="icon icon-jz"></span>
+                        家政
+                    </li>
+                    <li>
+                        <span class="icon icon-yd"></span>
+                        运动
+                    </li>
+                    <li>
+                        <span class="icon icon-yl"></span>
+                        休闲娱乐
+                    </li>
+                    <li>
+                        <span class="icon icon-lr"></span>
+                        美容美发美甲
+                    </li>
+                    <li>
+                        <span class="icon icon-others"></span>
+                        其他热门
+                    </li>
+                </ul>
+            </div>
+            <div class="choose_area_right fr">
+                <div class="hire_cont">
+                    <a href="javascript:void(0);" class="hiretype" data-index="0" onclick="addMark($(this))">迎宾1</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">迎宾2</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">迎宾3</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">迎宾4</a>
+
+                    <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">迎宾5</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">迎宾6</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".choose_menu li").click(function () {
+            $(this).addClass("active").siblings("li").removeClass("active")
+        });
+    });
+    // 岗位选择
+    function addMark(obj) {
+        // alert(obj.is(".hiretype"));
+        obj.toggleClass("choosemark");
+        if (obj.is(".hiretype") !== true) {
+            // alert(12);
+            obj.siblings("a").removeClass("choosemark");
+        } else {
+            var txt = obj.text();
+            var curIn = obj.attr("data-index");
+            var html = "";
+            if (obj.is(".choosemark") == true) {
+                // alert(1);
+                html = '<a href=\"javascript:void(0);\" data-rtIndex=' + curIn + ' onclick=\"delResult($(this))\">' + txt + '<span>×</span> </a>';
+                $("#chooseResult").append(html);
+            } else {
+                // alert(2);
+                $("[data-rtIndex=" + curIn + "]").remove();
+            }
+        }
+    }
+
+    // 清除岗位选中项
+    function delResult(a) {
+        var curRtIndex = a.attr("data-rtIndex");
+        a.remove();
+        $("[data-index=" + curRtIndex + "]").removeClass("choosemark");
+    }
+</script>
+</body>
+</html>

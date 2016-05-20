@@ -1,0 +1,1029 @@
+﻿<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="http://webapi.amap.com/theme/v1.3/style1.3.15.3.css">
+    <meta charset="UTF-8">
+    <title>录入简历</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/style.css">
+
+    <link rel="stylesheet" href="../../plugin/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="../../plugin/iosselect/iosSelect.css">
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/loginRegister.js"></script>
+    <script src="../../plugin/swiper/swiper.min.js"></script>
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&amp;key=ac3c45852cfdc6b80b64068e03dbf36b&amp;plugin=AMap.Autocomplete"></script>
+    <style type="text/css">.amap-container {
+        cursor: url(http://webapi.amap.com/theme/v1.3/openhand.cur), default;
+    }
+
+    .amap-drag {
+        cursor: url(http://webapi.amap.com/theme/v1.3/closedhand.cur), default;
+    }</style>
+    <style type="text/css">
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+
+        .swiper-container, .swiper-slide {
+            height: 100%;
+            width: 100%;
+        }
+
+        .wrapper, .content_wrap {
+            height: 100%;
+        }
+
+        .swiper-container {
+            margin-top: 20px;
+        }
+
+        .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+            position: absolute;
+            z-index: 999999;
+        }
+
+        .my-pagination .swiper-pagination-bullet {
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #fff;
+            background: #eee;
+            height: 25px;
+            text-align: center;
+            border-radius: 100%;
+            opacity: .5;
+        }
+
+        .my-pagination .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #f7982a;
+            color: #fff;
+        }
+
+        #upLoad {
+            position: absolute;
+            display: table-cell;
+            text-align: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+
+        #upLoad img {
+            width: 24px;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -12px 0 0 -12px;
+        }
+
+        #upLoad p {
+            margin: 16px 0 0;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            font-size: 1.4rem;
+        }
+
+    </style>
+    <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+</head>
+<body>
+<div class="confirm_box">
+    <div class="layer_content card_edit">
+        <ul class="resume_menu">
+            <li>
+                <label>手机号</label>
+                <input type="text" placeholder="请输入新手机号" class="border_none fl txtlt"></li>
+            <li class="li_dif code_li">
+                <label>验证码</label>
+                <input type="text" placeholder="请输入验证码" class="border_none fl txtlt">
+                <button type="button" class="send_code">发送验证码</button>
+            </li>
+        </ul>
+        <p>提示：更换后，登录验证将变为新号码。</p>
+
+        <p class="layer_btn_p txtlt">
+            <button type="button">关闭</button>
+            <button type="button" class="fr">取消</button>
+        </p>
+    </div>
+</div>
+<div class="wrapper resume" id="resume">
+    <div class="content_wrap">
+        <div class="swiper-container swiper-container-horizontal">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-no-swiping swiper-slide-active" style="width: 830px;">
+                    <!-- <div class="swiper-slide">
+                    -->
+                    <header class="logo_black header">
+                        <a href="javascript:void(0);">
+                            <img src="../../images/male.png">
+                            <img src="../../images/edit.png" class="edit_img" id="editImg"></a>
+                    </header>
+                    <ul class="resume_menu">
+                        <li>
+                            <label>
+                                <span class="icon icon-name"></span>
+                                姓名
+                            </label>
+                            <input type="text" placeholder="请填写" class="border_none txtrt fr" id="nameIn"></li>
+                        <li>
+                            <label>
+                                <span class="icon icon-gender"></span>
+                                性别
+                            </label>
+                            <select class="border_none txtrt fr" id="userSex">
+                                <option option="option1" value="">请选择</option>
+                                <option option="option2" value="1">男</option>
+                                <option option="option3" value="2">女</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>
+                                <span class="icon icon-phone"></span>
+                                手机号
+                            </label>
+                            <input type="text" placeholder="手机号" class="border_none txtrt fr" id="userPhone"
+                                   oninput="checkTextLength(this,11)" onblur="checkTextValue($(this))"></li>
+                        <li class="date_li">
+                            <label>
+                                <span class="icon icon-age"></span>
+                                年龄
+                            </label>
+                            <a href="javascript:void(0)" class="date_choose">请选择</a>
+                            <input class="date_input fr txtrt" type="date" id="dateId"></li>
+                    </ul>
+                </div>
+                <!-- <div class="swiper-slide swiper-no-swiping">
+                -->
+                <div class="swiper-slide swiper-slide-next" style="width: 830px;">
+                    <div class="media_area">
+                        <h2 class="media_title">
+                            <span class="icon icon-piture"></span>
+                            职业照(最多三张)
+                        </h2>
+
+                        <div class="media_block_swiper swiper-container-horizontal">
+                            <div class="swiper-wrapper">
+                                <div class="media_block picture_show swiper-slide swiper-slide-active"
+                                     style="width: 243.333px; margin-right: 30px;">
+                                    <div class="media_show">
+                                        <img src="../../images/male.png" id="imgfpic1">
+                                        <input type="file" name="file" accept=".jpg,.jpeg" id="fpic1">
+                                        <span>+</span>
+                                    </div>
+                                    <p class="txtlt">
+                                        <button type="button">更换</button>
+                                        <button class="fr" type="button">删除</button>
+                                    </p>
+                                </div>
+                                <div class="media_block picture_show swiper-slide swiper-slide-next"
+                                     style="width: 243.333px; margin-right: 30px;">
+                                    <div class="media_show">
+                                        <img src="../../images/male.png" id="imgfpic2">
+                                        <input type="file" name="file" accept=".jpg,.jpeg" id="fpic2">
+                                        <span>+</span>
+                                    </div>
+                                    <p class="txtlt">
+                                        <button type="button">更换</button>
+                                        <button class="fr" type="button">删除</button>
+                                    </p>
+                                </div>
+                                <div class="media_block picture_show swiper-slide"
+                                     style="width: 243.333px; margin-right: 30px;">
+                                    <div class="media_show">
+                                        <img src="../../images/male.png" id="imgfpic3">
+                                        <input type="file" name="file" accept=".jpg,.jpeg" id="fpic3">
+                                        <span>+</span>
+                                    </div>
+                                    <p class="txtlt">
+                                        <button type="button">更换</button>
+                                        <button class="fr" type="button">删除</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media_area">
+                        <h2 class="media_title">
+                            <span class="icon icon-video"></span>
+                            微视频
+                        </h2>
+
+                        <div class="media_block ">
+                            <div class="media_show video_show">
+                                <video id="videoView"></video>
+                                <input type="file" name="file" accept=".mov,.mp4,.avi,.3gp" id="videoFile">
+                                <span>+</span>
+                            </div>
+                            <p class="video_p txtlt">
+                                <button type="button">更换</button>
+                                <button class="fr" type="button">删除</button>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="upload_infor">
+                        <p class="p1">
+                            <span class="icon icon-qus"></span>
+                            视频说什么呢？
+                        </p>
+
+                        <p class="p2">
+                            <span class="icon icon-anw"></span>
+                            可以说说您的经验、专长、要求等等，记得 最好用手机水平拍摄哦，浏览效果更好。
+                        </p>
+
+                        <p class="p1">
+                            <span class="icon icon-qus"></span>
+                            视频会给谁看？
+                        </p>
+
+                        <p class="p2">
+                            <span class="icon icon-anw"></span>
+                            我们只匹配适合你岗位要求的认证商家查看， 不会提供给其他人使用和下载哦。
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide " style="width: 830px;">
+                    <h2 class="job_expecting">
+                        <q>您期望的工作</q>
+                    </h2>
+                    <ul class="resume_menu">
+                        <li class="resume_li">
+                            <label>
+                                <span class="icon icon-job"></span>
+                                职位类型
+                            </label>
+                            <a class="edit_a txtrt fr" href="javascript:void(0)" id="editJobType">请选择</a>
+                            <select class="border_none fl" id="jobTypeSet" style="display: none;">
+                                <option option="option2" value="1">全职</option>
+                                <option option="option3" value="2">兼职</option>
+                            </select>
+                        </li>
+                        <li class="resume_li">
+                            <label>
+                                <span class="icon icon-post"></span>
+                                期望岗位
+                            </label>
+                            <!-- <a href="jobpost.html" class="edit_a txtrt fr" id="editJobPost">请选择</a>
+                        -->
+                            <a href="javascript:void(0)" class="edit_a txtrt fr" id="editJobPost">请选择</a>
+
+                            <div class="jot_post_cont txtlt fl" id="jopPostCont" style="display: none;"></div>
+                        </li>
+                        <li class="resume_li">
+                            <label>
+                                <span class="icon icon-location"></span>
+                                工作地点
+                            </label>
+                            <!-- <a href="jobaddress.html" class="edit_a txtrt fr" id="editAddress">请选择</a>
+                        -->
+                            <a href="javascript:void(0)" class="edit_a txtrt fr" id="editAddress">请选择</a>
+
+                            <p class="fl txtlt" id="addressCont" style="display: none;">
+                                <span id="citySpan">杭州</span>
+                                <span id="addressSpan">银泰城</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <input type="hidden" id="hidLng">
+                    <input type="hidden" id="hidLat"></div>
+            </div>
+            <div class="my-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active">1</span>
+                <span class="swiper-pagination-bullet">2</span>
+                <span class="swiper-pagination-bullet">3</span>
+            </div>
+            <a href="javascript:void(0);" id="nextStep" class="next_step">下一步</a>
+        </div>
+        <!-- 录入成功 -->
+        <div class="success_infor" style="display: none;">
+            <img src="../../images/light.png">
+
+            <p>您已完成海蜂人才登记</p>
+
+            <p>接下来我们将您推荐给匹配商家</p>
+
+            <p>请您准备好接听电话</p>
+
+            <p>期待您能找到满意的工作</p>
+        </div>
+    </div>
+</div>
+<!-- 地点选择开始 -->
+<div id="addressPage" style="display: none;">
+    <div class="wrapper jobaddress">
+        <div class="content_wrap">
+            <p class="top_p txtlt">
+                <span class="back_btn">取消</span>
+                <span class="done_span adress_done_span fr">完成</span>
+            </p>
+
+            <div class="jobchoosed">
+                <p class="txtlt fl">当前城市：</p>
+
+                <div class="pc_box fl" id="selectContact">
+                    <input type="hidden" name="contact_province_code" data-id="0001" id="contact_province_code" value=""
+                           data-province-name="">
+                    <input type="hidden" name="contact_city_code" id="contact_city_code" value="" data-city-name="">
+                    <span data-city-code="510100" data-province-code="510000" data-district-code="510105"
+                          id="show_contact">杭州</span>
+                    <a href="javascript:void(0)" id="editAddress">修改</a>
+                </div>
+
+                <p class="txtlt" style="width: 100%;">定位您的居住地址，寻找附近的工作</p>
+
+                <p class="search_con">
+                    <span class="icon icon-search"></span>
+                    <!-- <input type="text" placeholder="请输入名字或电话">
+                    -->
+                    <input id="cityid" name="cityid" type="hidden" value="{$cityid}">
+                    <input type="text" placeholder="请输入小区名称或附近标志性建筑" id="txtLocation">
+                    <!--<button type="button" id="searchBtn">查找</button>
+                -->
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 地点选择结束 -->
+<!-- 岗位选择结束 -->
+<div class="wrapper jobpost" id="jobPost" style="display: none;">
+    <div class="content_wrap">
+        <p class="top_p txtlt">
+            <span class="back_btn">取消</span>
+            <span class="done_span post_done fr">完成</span>
+        </p>
+
+        <div class="jobchoosed">
+            <p class="txtlt">已选岗位(最多五个)</p>
+
+            <div class="jobchoosed_con" id="chooseResult"></div>
+        </div>
+        <div class="choose_area clearfix">
+            <div class="choose_area_left fl">
+                <ul class="choose_menu" id="ulIndustrys">
+                    <li class="active" data-id="1">
+                        <span class="icon icon-ls"></span>
+                        零售
+                    </li>
+                    <li data-id="2">
+                        <span class="icon icon-cy"></span>
+                        餐饮
+                    </li>
+                    <li data-id="3">
+                        <span class="icon icon-yl"></span>
+                        休闲娱乐
+                    </li>
+                    <li data-id="4">
+                        <span class="icon icon-jd"></span>
+                        酒店
+                    </li>
+                    <li data-id="5">
+                        <span class="icon icon-lr"></span>
+                        美容美发美甲
+                    </li>
+                    <li data-id="6">
+                        <span class="icon icon-jz"></span>
+                        家政
+                    </li>
+                    <li data-id="7">
+                        <span class="icon icon-yd"></span>
+                        运动
+                    </li>
+                    <li data-id="8">
+                        <span class="icon icon-others"></span>
+                        其他热门
+                    </li>
+                </ul>
+            </div>
+            <div class="choose_area_right fr">
+                <div class="hire_cont" id="divPositions">
+                    <a href="javascript:void(0);" class="hiretype" data-index="1" onclick="addMark($(this))">店长</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="2" onclick="addMark($(this))">督导</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="3" onclick="addMark($(this))">主管</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="4" onclick="addMark($(this))">营业员</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="5" onclick="addMark($(this))">导购员</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="6" onclick="addMark($(this))">收银员</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="7" onclick="addMark($(this))">理货员</a>
+                    <a href="javascript:void(0);" class="hiretype" data-index="8" onclick="addMark($(this))">店员</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="upLoad">
+    <img src="../../images/load.gif">
+
+    <p>上传中</p>
+</div>
+<!-- 岗位选择结束 -->
+<script src="../../plugin/iosselect/zepto.js"></script>
+<script src="../../plugin/iosselect/iscroll.js"></script>
+<script src="../../plugin/iosselect/areaData_v2.js"></script>
+<script src="../../plugin/iosselect/iosSelect.js"></script>
+<script src="../../js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container', {
+        pagination: '.my-pagination',
+        //paginationClickable: true,
+        // noSwiping : true,
+        // noSwipingClass : 'stop-swiping',
+        paginationBulletRender: function (index, className) {
+            switch (index) {
+                case 0:
+                    name = '1';
+                    break;
+                case 1:
+                    name = '2';
+                    break;
+                case 2:
+                    name = '3';
+                    break;
+                default:
+                    name = '';
+            }
+            return '<span class="' + className + '">' + name + '</span>';
+        }
+    });
+    var swiper2 = new Swiper('.media_block_swiper', {
+        // pagination: '.swiper-pagination',
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30
+    });
+    var uName = 1,
+            uPhone = 1,
+            uSex = 1,
+            uDate = 1;
+    var jType = 1,
+            jPost = 1,
+            jAddress = 1;
+
+    var stepOne = 1,
+            stepTwo = 2,
+            stepThree = 1;
+
+    var oIndustryAndPosition = null;
+    var oUserInfo = null;
+    var pic1 = "";
+    var pic2 = "";
+    var pic3 = "";
+    var video = "";
+
+
+    // 验证手机号
+    function checkTextLength(obj, length) {
+        if (obj.value.length > length) {
+            obj.value = obj.value.substr(0, length);
+        }
+    }
+
+    function checkTextValue(obj) {
+        // var reg= /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
+        var reg = /^1[0-9]{10}$/;
+        if (obj.val() === "") {
+            alert("手机号不能为空！");
+            // obj.nextSiblings.innerText()
+            //obj.focus().siblings("p").show().text("手机号不能为空！");
+            //obj.siblings(".clearvalue").show();
+            uPhone = 1;
+        } else if (!reg.test(obj.val())) {
+            uPhone = 1;
+            alert("手机格式错误！");
+            //obj.focus().siblings("p").show().text("手机格式错误！");
+            //obj.siblings(".clearvalue").show();
+            // return
+        } else {
+            obj.siblings("p").hide();
+            // alert("手机号正确");
+            uPhone = 2;
+            //obj.siblings(".clearvalue").hide();
+        }
+        checkInforOne();
+    }
+
+    function checkUserName(obj) {
+        if (obj.val() == "") {
+            alert("用户名不能为空！");
+            $(this).focus();
+            uName = 1;
+        } else {
+            uName = 2;
+        }
+        checkInforOne();
+    }
+
+    function checkUserSex(obj) {
+        if (obj.val() == "请选择") {
+            alert("请选择性别");
+            uSex = 1;
+        } else {
+            uSex = 2;
+        }
+        checkInforOne();
+    }
+
+    function checkUserBirthday(obj) {
+        if (obj.val() == "") {
+            // alert(1);
+            $(".date_choose").show();
+            alert("请选择日期！");
+            uDate = 1;
+        } else {
+            uDate = 2;
+        }
+        checkInforOne();
+    }
+
+    function checkInforOne() {
+        goPageIndex = 2;
+        if (uName == 2 && uPhone == 2 && uSex == 2 && uDate == 2) {
+            $(".swiper-no-swiping").removeClass("swiper-no-swiping");
+
+            stepOne = 2;
+        } else {
+            $(".swiper-slide-active").addClass("swiper-no-swiping");
+            stepOne = 1;
+        }
+    }
+
+    function checkInforThree() {
+        if (jType == 2 && jPost == 2 && jAddress == 2) {
+            stepThree = 2;
+        } else {
+            stepThree = 1;
+        }
+    }
+    function fGetPositions(iIndustryId) {
+        var oCurPositions = $.grep(oIndustryAndPosition.Positions, function (item) {
+            return item.IndustryId === parseInt(iIndustryId);
+        });
+        if (oCurPositions !== null) {
+            var oPositions = $("#chooseResult a");
+
+            var sPositionHtml = '';
+
+            $.each(oCurPositions, function (n, value) {
+                if (oPositions.length > 0) {
+                    var bIsSelectedItem = false;
+                    $.each(oPositions, function (n, value1) {
+                        if (parseInt($(value1).attr('data-rtIndex')) === value.Id)
+                            bIsSelectedItem = true;
+                    });
+                    if (bIsSelectedItem)
+                        sPositionHtml += '<a href="javascript:void(0);" class="hiretype choosemark" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                    else
+                        sPositionHtml += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+                } else
+                    sPositionHtml += '<a href="javascript:void(0);" class="hiretype" data-index="' + value.Id + '" onclick="addMark($(this))">' + value.PositionName + '</a>';
+            });
+            $("#divPositions").html(sPositionHtml);
+        }
+    }
+    // 岗位选择函数
+    function addMark(obj) {
+        // alert(obj.is(".hiretype"));
+        var choosePositions = $("#chooseResult a");
+
+        //if (obj.is(".hiretype") !== true) {
+        //    // alert(12);
+        //    obj.siblings("a").removeClass("choosemark");
+        //} else {
+
+        var curIn = obj.attr("data-index");
+
+        if (obj.is(".choosemark") !== true) {
+            // alert(1);
+
+            if (choosePositions.length > 4) {
+                alert("最多可以选择五个岗位，请适当删减后再行添加");
+
+            } else {
+                obj.toggleClass("choosemark");
+                $("#chooseResult").append('<a href=\"javascript:void(0);\" data-rtIndex=' + curIn + ' onclick=\"delResult($(this))\">' + obj.text() + '<span>×</span> </a>');
+            }
+        } else {
+            obj.toggleClass("choosemark");
+            // alert(2);
+            $("[data-rtIndex=" + curIn + "]").remove();
+        }
+        //}
+
+    }
+
+    // 清除岗位选中项
+    function delResult(a) {
+        var curRtIndex = a.attr("data-rtIndex");
+        a.remove();
+        $("[data-index=" + curRtIndex + "]").removeClass("choosemark");
+    }
+
+    $(function () {
+        $.post('/Ajax/BasePage/UserBase.ashx', {action: 'GetLoginInfo'}, function (resp) {
+            if (resp.code === "1000") {
+                oUserInfo = resp.data;
+                $.post('../../../Ajax/Common/Common.ashx', {action: 'GetIndustryPositions'}, function (resp) {
+                    if (resp.code === "1000") {
+                        //绑定行业岗位信息
+                        oIndustryAndPosition = resp.data;
+                        if (oIndustryAndPosition.Industrys !== null && oIndustryAndPosition.Industrys !== "") {
+                            $.each(oIndustryAndPosition.Industrys, function (n, value) {
+                                switch (value.IndustryName) {
+                                    case "零售":
+                                        $("#ulIndustrys").append("<li class=\"active\" data-id=\"" + value.Id + "\"><span class=\"icon icon-ls\"></span>零售</li>");
+                                        fGetPositions(value.Id);
+                                        break;
+                                    case "餐饮":
+                                        $("#ulIndustrys").append("<li  data-id=\"" + value.Id + "\"><span class=\"icon icon-cy\"></span>餐饮</li>");
+                                        break;
+                                    case "酒店":
+                                        $("#ulIndustrys").append("<li data-id=\"" + value.Id + "\"><span class=\"icon icon-jd\"></span>酒店</li>");
+                                        break;
+                                    case "家政":
+                                        $("#ulIndustrys").append("<li data-id=\"" + value.Id + "\"><span class=\"icon icon-jz\"></span>家政</li>");
+                                        break;
+                                    case "运动":
+                                        $("#ulIndustrys").append("<li data-id=\"" + value.Id + "\"><span class=\"icon icon-yd\"></span>运动</li>");
+                                        break;
+                                    case "休闲娱乐":
+                                        $("#ulIndustrys").append("<li data-id=\"" + value.Id + "\"><span class=\"icon icon-yl\"></span>休闲娱乐</li>");
+                                        break;
+                                    case "美容美发美甲":
+                                        $("#ulIndustrys").append("<li data-id=\"" + value.Id + "\"><span class=\"icon icon-lr\"></span>美容美发美甲</li>");
+                                        break;
+                                    case "其他热门":
+                                        $("#ulIndustrys").append("<li data-id=\"" + value.Id + "\"><span class=\"icon icon-others\"></span>其他热门</li>");
+                                        break;
+
+                                }
+                                $(".choose_menu li").click(function () {
+                                    fGetPositions($(this).attr("data-id"));
+                                    $(this).addClass("active").siblings("li").removeClass("active");
+
+                                });
+                            });
+                        }
+                    } else {
+                        alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                    }
+                });
+
+                //step1
+                $("#nameIn").blur(function () {
+                    checkUserName($(this));
+                });
+                $("#userSex").change(function () {
+                    checkUserSex($(this));
+
+                });
+                $(".date_choose").click(function () {
+                    $("#dateId").focus();
+                });
+                $("#dateId").focus(function () {
+                    $(".date_choose").hide();
+                });
+                $("#dateId").blur(function () {
+                    checkUserBirthday($(this));
+                });
+
+                //step2
+                $("#editImg").click(function () {
+                    $(".confirm_box").show().addClass("active");
+                });
+                $(".layer_btn_p button").click(function () {
+                    $(".confirm_box").hide();
+                });
+                $(".send_code").click(function () {
+                    $(this).attr("disabled", "disabled").css("background-color", "#ccc");
+                    alert(1);
+                });
+                //step3
+                $("#editJobType").click(function () {
+                    $("#jobTypeSet").show().focus();
+                    jType = 2;
+                    checkInforThree();
+                });
+                $("#editJobPost").click(function () {
+                    $("#jopPostCont").show();
+                    jPost = 2;
+                    checkInforThree();
+                });
+                $("#editAddress").click(function () {
+                    $("#jobaddress").show();
+                    jAddress = 2;
+                    checkInforThree();
+                });
+
+                // 岗位类型选择
+                $("#editJobType").click(function () {
+                    $("#jobTypeSet").show().focus();
+                    jType = 2;
+                    checkInforThree();
+                });
+                // 取消按钮
+                $(".back_btn").click(function () {
+                    $("#resume").show();
+                    $(this).closest(".wrapper").hide();
+                });
+
+                //上传照片
+                $("#fpic1,#fpic2,#fpic3").change(function () {
+                    var filepath = $(this).val();
+                    if (filepath.split('.')[1].toLocaleLowerCase() !== "jpg" && filepath.split('.')[1].toLocaleLowerCase() !== "jpeg") {
+                        alert("选择文件类型不合法");
+                        return false;
+                    }
+                    $("#upLoad").show();
+                    var sId = $(this).attr("id");
+                    $.ajaxFileUpload({
+                        url: '../../../Ajax/Common/Common.ashx', //用于文件上传的服务器端请求地址
+                        data: {
+                            action: 'PictureUpload'
+                        },
+                        secureuri: false, //一般设置为false
+                        fileElementId: sId, //文件上传空间的id属性  <input type="file" id="file" name="file" />
+                        dataType: 'json', //返回值类型 一般设置为json
+                        success: function (resp, status) //服务器成功响应处理函数
+                        {
+                            if (resp.code === '1000') {
+                                var imgpath = "../../../" + resp.imgurl;
+                                $("#img" + sId).attr("src", imgpath);
+                                if (sId === "fpic1")
+                                    pic1 = resp.imgurl;
+                                else if (sId === "fpic2")
+                                    pic2 = resp.imgurl;
+                                else
+                                    pic3 = resp.imgurl;
+
+                            } else {
+                                alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                            }
+                        },
+                        complete: function (xmlHttpRequest) {
+                            $("#upLoad").hide();
+                        },
+                        error: function (data, status, e) //服务器响应失败处理函数
+                        {
+                            layer.msg(e);
+                        }
+                    });
+                });
+
+                //上传视频
+                $("#videoFile").change(function () {
+                    var filepath = $(this).val();
+                    if (filepath.split('.')[1].toLocaleLowerCase() !== "mov" && filepath.split('.')[1].toLocaleLowerCase() !== "mp4" && filepath.split('.')[1].toLocaleLowerCase() !== "avi" && filepath.split('.')[1].toLocaleLowerCase() !== "3gp") {
+                        alert("选择文件类型不合法");
+                        return false;
+                    }
+                    $("#upLoad").show();
+                    var sId = $(this).attr("id");
+                    $.ajaxFileUpload({
+                        url: '../../../Ajax/Common/Common.ashx', //用于文件上传的服务器端请求地址
+                        data: {
+                            action: 'VideoUpload'
+                        },
+                        secureuri: false, //一般设置为false
+                        fileElementId: sId, //文件上传空间的id属性  <input type="file" id="file" name="file" />
+                        dataType: 'json', //返回值类型 一般设置为json
+                        success: function (resp, status) //服务器成功响应处理函数
+                        {
+                            if (resp.code === '1000') {
+                                var videopath = "../../../" + resp.videourl;
+                                $("#videoView").attr("src", videopath);
+                                video = resp.videourl;
+                            } else {
+                                alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                            }
+                        },
+                        complete: function (xmlHttpRequest) {
+                            $("#upLoad").hide();
+                        },
+                        error: function (data, status, e) //服务器响应失败处理函数
+                        {
+                        }
+                    });
+                });
+
+                // 左侧栏目
+                $(".choose_menu li").click(function () {
+                    $(this).addClass("active").siblings("li").removeClass("active");
+                });
+
+                $("#editJobPost").click(function () {
+                    $("#resume").hide();
+                    $("#jobPost").show();
+                    // jPost = 2;
+                    // checkInforThree();
+                });
+                $(".post_done").click(function () {
+                    $("#resume").show();
+                    $("#jobPost").hide();
+                    $("#jopPostCont").show().empty().append($("#chooseResult").html());
+                    $("#editJobPost").text("修改");
+                });
+
+
+                // 地点选择
+                $("#editAddress").click(function () {
+                    $("#resume").hide();
+                    $("#addressPage").show();
+                    // jAddress = 2;
+                    // checkInforThree();
+                });
+                $(".adress_done_span").click(function () {
+                    $("#resume").show();
+                    $("#addressCont").show();
+                    $("#citySpan").text($("#show_contact").text());
+                    $("#addressSpan").text($("#txtLocation").val());
+                    $("#addressPage").hide();
+                    $("#editAddress").text("修改");
+                });
+                var curI = 0;
+                $(".my-pagination span").click(function () {
+                    if (stepOne == 2) {
+                        // alert("123");
+                        mySwiper.slideTo($(this).index(), 1000, false);
+                    } else {
+                        return
+                    }
+                });
+
+                // 录入简历下一步
+                $("#nextStep").click(function () {
+
+                    var curI = $(".swiper-slide-active").index();
+                    // alert(curI);
+
+
+                    // if (stepOne==2 && stepTwo==2 && stepThree==2) {
+                    if (curI === 0) {
+                        if (stepOne == 2) { //&& stepThree == 2) {
+                            //$(".my-pagination span").eq(curI + 1).click();
+                            mySwiper.slideTo(curI + 1, 1000, false);
+                        } else {
+                            alert("信息填写有误！");
+                        }
+                    } else if (curI === 1) {
+                        if (stepTwo === 2) { //&& stepThree == 2) {
+                            //$(".my-pagination span").eq(curI + 1).click();
+                            mySwiper.slideTo(curI + 1, 1000, false);
+                        } else {
+                            alert("信息填写有误！");
+                        }
+                    } else {
+                        if (stepThree === 2) { //&& stepThree == 2) {
+                            //提交后台
+                            var username = $("#nameIn").val();
+                            var usersex = $("#userSex").val();
+                            var usermobile = $("#userPhone").val();
+                            var userbirthday = $("#dateId").val();
+                            var portrait = "";
+                            var userjobtype = $("#jobTypeSet").val();
+                            var oPositions = $("#jopPostCont a");
+                            var txtpositions = "";
+                            $.each(oPositions, function (n, value) {
+                                txtpositions += ($(value).attr('data-rtIndex')) + ",";
+                            });
+                            if (txtpositions === "") {
+                                alert("请选择岗位");
+                                return false;
+                            }
+                            txtpositions = txtpositions.substr(0, txtpositions.length - 1);
+
+                            var txtLong = $("#hidLng").val();
+                            var txtLat = $("#hidLat").val();
+                            var location = $("#addressSpan").html();
+                            if (location === "" || txtLong === "" || txtLat === "") {
+                                alert("输入地址有误，请填写地址后在下拉框中选中一个精确地点");
+                                return false;
+                            }
+                            $.post('../../../Ajax/MobileH5/JobHunter.ashx', {
+                                action: 'FillInResume',
+                                data: "{\"accountid\":\"" + oUserInfo.Id + "\",\"name\":\"" + username + "\",\"sex\":\"" + usersex + "\",\"description\":\"" + username + "的简历\",\"mobile\":\"" + usermobile + "\"" +
+                                ",\"position\":\"" + txtpositions + "\",\"birthday\":\"" + userbirthday + "\",\"jobnature\":\"" + userjobtype + "\",\"location\":\"" + location + "\"" + ",\"longitude\":\"" + txtLong + "\"" +
+                                ",\"latitude\":\"" + txtLat + "\",\"portrait\":\"" + portrait + "\",\"pic1\":\"" + pic1 + "\",\"pic2\":\"" + pic2 + "\",\"pic3\":\"" + pic3 + "\",\"video\":\"" + video + "\"" +
+                                "}"
+                            }, function (resp) {
+                                if (resp.code === "1000") {
+                                    //提交成功
+                                    $(".swiper-container").hide();
+                                    $(".success_infor").show();
+                                    $(".resume .content_wrap").css("padding-top", "60px");
+                                } else {
+                                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                                }
+                            });
+
+                        } else {
+                            alert("信息填写有误！");
+                        }
+                    }
+
+
+                });
+                $("#homecity_name").val(window.parent.sCity);
+                //初始化地图
+                var map = new AMap.Map("container", {
+                    resizeEnable: true
+                });
+                //为地图注册click事件获取鼠标点击出的经纬度坐标
+                //var clickEventListener = map.on('click', function (e) {
+                //    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+                //});
+                var auto = new AMap.Autocomplete({
+                    input: "txtLocation"
+                });
+                AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+                function select(e) {
+                    if (e.poi && e.poi.location) {
+                        //map.setZoom(15);
+                        //map.setCenter(e.poi.location);
+                    }
+                    //经纬度获取
+                    $("#txtLocation").val(e.poi.name);
+                    $("#hidLng").val(e.poi.location.lng);
+                    $("#hidLat").val(e.poi.location.lat);
+                }
+
+                $("#txtLocation").focus(function () {
+                    $(this).val('');
+                    $("#hidLng").val('');
+                    $("#hidLat").val('');
+                });
+            } else {
+                alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                window.location.href = '../../login.html';
+            }
+
+        });
+    });
+</script>
+<script type="text/javascript">
+    var selectContactDom = $('#selectContact');
+    var showContactDom = $('#show_contact');
+    var contactProvinceCodeDom = $('#contact_province_code');
+    var contactCityCodeDom = $('#contact_city_code');
+    selectContactDom.bind('click', function () {
+        var sccode = showContactDom.attr('data-city-code');
+        var scname = showContactDom.attr('data-city-name');
+
+        var oneLevelId = showContactDom.attr('data-province-code');
+        var twoLevelId = showContactDom.attr('data-city-code');
+        // var threeLevelId = showContactDom.attr('data-district-code');
+        var iosSelect = new IosSelect(2,
+                [iosProvinces, iosCitys],
+                {
+                    title: '地址选择',
+                    itemHeight: 35,
+                    oneTwoRelation: 1,
+                    twoThreeRelation: 1,
+                    oneLevelId: oneLevelId,
+                    twoLevelId: twoLevelId,
+                    // threeLevelId: threeLevelId,
+                    callback: function (selectOneObj, selectTwoObj) {
+                        contactProvinceCodeDom.val(selectOneObj.id);
+                        contactProvinceCodeDom.attr('data-province-name', selectOneObj.value);
+                        contactCityCodeDom.val(selectTwoObj.id);
+                        contactCityCodeDom.attr('data-city-name', selectTwoObj.value);
+
+                        showContactDom.attr('data-province-code', selectOneObj.id);
+                        showContactDom.attr('data-city-code', selectTwoObj.id);
+                        // showContactDom.attr('data-district-code', selectThreeObj.id);
+                        showContactDom.html(selectOneObj.value + ' ' + selectTwoObj.value + ' ');
+                    }
+                });
+    });
+</script>
+
+<div class="amap-sug-result"></div>
+</body>
+</html>

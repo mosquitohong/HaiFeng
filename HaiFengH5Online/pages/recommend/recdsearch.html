@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>海蜂——推荐管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="http://webapi.amap.com/maps?v=1.3&amp;key=ac3c45852cfdc6b80b64068e03dbf36b&amp;plugin=AMap.Autocomplete"></script>
+</head>
+<body>
+<div class="confirm_box">
+    <div class="layer_content">
+        <h2>温馨提示</h2>
+
+        <p class="txtlt">如果您删除已推荐人的信息，将不可恢复， 平台将停止推荐。</p>
+
+        <p class="layer_btn_p txtct">
+            <button type="button">我知道了</button>
+        </p>
+    </div>
+</div>
+<div class="wrapper recdsearch">
+    <div class="content_wrap">
+        <div class="rec_search">
+            <h3>查找你推荐的人</h3>
+
+            <p class="search_con">
+                <span class="icon icon-search"></span>
+                <input id="cityid" name="cityid" type="hidden" value="{$cityid}">
+                <input type="text" placeholder="请输入名字或电话" id="txtLocation">
+                <!-- <button type="button" id="searchBtn">查找</button> -->
+            </p>
+
+            <div class="single clearfix fl">
+                <div class="single_image fl">
+                    <img src="../../images/male.png">
+
+                    <p>
+                        <a href="javascript:void(0);">
+                            <span class="icon icon-picture"></span>
+                        </a>
+                        <a href="javascript:void(0);" class="withdetail">
+                            <span class="icon icon-video"></span>
+                        </a>
+                    </p>
+                </div>
+                <ul class="single_menu fl">
+                    <li>
+                        <a href="javascript:void(0)" class="fr">
+                            <span class="icon icon-man"></span>
+                            18岁
+                        </a>
+
+                    </li>
+                    <li>
+                        <label>姓名：</label>
+                        <span>高司令</span>
+                    </li>
+                    <li>
+                        <label>岗位：</label>
+                        <span>服务员</span>
+                    </li>
+                    <li>
+                        <label>位置：</label>
+                        <span>西溪花园水岸花苑</span>
+                    </li>
+                </ul>
+            </div>
+            <p class="btn_group">
+                <a href="">修改名片</a>
+                <a href="">修改视频</a>
+                <a href="recdswitch.html">修改意愿</a>
+                <a href="javascript:void(0);" class="delete_btn fr" id="deleteBtn">删除</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#deleteBtn").click(function () {
+            $(".confirm_box").show().addClass("active");
+        });
+        $(".layer_btn_p button").click(function () {
+            $(".confirm_box").hide();
+        });
+
+
+        $("#homecity_name").val(window.parent.sCity);
+        //初始化地图
+        var map = new AMap.Map("container", {
+            resizeEnable: true
+        });
+        //为地图注册click事件获取鼠标点击出的经纬度坐标
+        //var clickEventListener = map.on('click', function (e) {
+        //    document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat();
+        //});
+        var auto = new AMap.Autocomplete({
+            input: "txtLocation"
+        });
+        AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+        function select(e) {
+            if (e.poi && e.poi.location) {
+                //map.setZoom(15);
+                //map.setCenter(e.poi.location);
+            }
+            //经纬度获取
+            $("#txtLocation").val(e.poi.name);
+            $("#hidLng").val(e.poi.location.lng);
+            $("#hidLat").val(e.poi.location.lat);
+        }
+
+        $("#txtLocation").focus(function () {
+            $(this).val('');
+            $("#hidLng").val('');
+            $("#hidLat").val('');
+        });
+
+    });
+
+</script>
+</body>
+</html>

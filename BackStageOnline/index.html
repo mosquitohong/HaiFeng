@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="renderer" content="webkit" />
+    <meta name="renderer" content="webkit"/>
 
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
@@ -25,7 +24,7 @@
             var map = new AMap.Map("container", {
                 resizeEnable: true
             });
-           
+
             //获取用户所在城市信息
             function showCityInfo() {
                 //实例化城市查询类
@@ -38,15 +37,16 @@
                             var cityinfo = result.city;
                             var citybounds = result.bounds;
                             console.log(cityinfo + citybounds);
-                            sCity = cityinfo.replace('市','');
+                            sCity = cityinfo.replace('市', '');
                         }
                     } else {
                         document.getElementById('tip').innerHTML = result.info;
                     }
                 });
             }
+
             showCityInfo();
-            $.post('/Ajax/BasePage/UserBase.ashx', { action: 'GetLoginInfo' }, function (resp) {
+            $.post('/Ajax/BasePage/UserBase.ashx', {action: 'GetLoginInfo'}, function (resp) {
                 if (resp.code === "1000") {
                     //alert(resp.data);
                     //var oPermission = resp.data.UserPermissions;
@@ -57,18 +57,18 @@
                             if (value.ParentId === 0) {
                                 var sMenuClass = '';
                                 switch (value.Action) {
-                                case 'MerchantCenter':
-                                    sMenuClass = 'merchant';
-                                    break;
-                                case 'MyAccount':
-                                    sMenuClass = 'account';
-                                    break;
-                                case 'MerchantSetting':
-                                    sMenuClass = 'setting';
-                                    break;
-                                default:
-                                    sMenuClass = 'merchant';
-                                    break;
+                                    case 'MerchantCenter':
+                                        sMenuClass = 'merchant';
+                                        break;
+                                    case 'MyAccount':
+                                        sMenuClass = 'account';
+                                        break;
+                                    case 'MerchantSetting':
+                                        sMenuClass = 'setting';
+                                        break;
+                                    default:
+                                        sMenuClass = 'merchant';
+                                        break;
                                 }
                                 oMenu += '<li><h3><span class="icon icon-' + sMenuClass + '"></span>' + value.PermissionName + '</h3>';
                                 var oChildMenu = $.grep(oUserInfo.UserPermissions, function (item) {
@@ -86,7 +86,7 @@
                                 }
                             }
                         });
-                        
+
                         oMenu += '</li> ';
                     }
 
@@ -94,6 +94,7 @@
 
                     $('#merchantname').html((oUserInfo.AccountName === '' || oUserInfo.AccountName === null) ? oUserInfo.Mobile : oUserInfo.AccountName);
                     $('#location').html(sCity + ' ' + ((oUserInfo.Location === '' || oUserInfo.AccountName === null) ? '暂无地址，点击修改去补充' : oUserInfo.Location));
+
 
                     // 侧边栏
                     $(".sidebar-menu li a").click(function () {
@@ -104,7 +105,7 @@
                     });
 
                     $("#logout").click(function () {
-                        $.post('/Ajax/BasePage/UserBaseNotLogin.ashx', { action: 'UserLogout' }, function (resp) {
+                        $.post('/Ajax/BasePage/UserBaseNotLogin.ashx', {action: 'UserLogout'}, function (resp) {
                             if (resp.code === "1000") {
                                 window.location.href = 'index.html';
                             }
@@ -114,11 +115,15 @@
                         });
                     });
                     //获取行业数据
-                    $.post('/Ajax/Common/Common.ashx', { action: 'GetIndustryPositions' }, function (resp) {
+                    $.post('/Ajax/Common/Common.ashx', {action: 'GetIndustryPositions'}, function (resp) {
                         if (resp.code === "1000") {
                             //绑定行业岗位信息
                             oIndustryAndPosition = resp.data;
-                            $("#iframe").attr("src", "pages/record.html");
+                            if (oUserInfo.AccountName === '')
+                                $("#iframe").attr("src", "pages/record.html");
+                            else {
+                                $("#iframe").attr("src", "pages/hunt.html");
+                            }
                         } else {
                             alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
                         }
@@ -130,15 +135,15 @@
                     window.location.href = 'index.html';
                 }
 
-                
+
             });
 
-           
+
         });
 
         //验证权限并跳转页面
-        function fDoAction(sAction,sLink) {
-            $.post('/Ajax/BasePage/UserBase.ashx', { action: 'GetReady' }, function (resp) {
+        function fDoAction(sAction, sLink) {
+            $.post('/Ajax/BasePage/UserBase.ashx', {action: 'GetReady'}, function (resp) {
                 if (resp.code === "1000") {
                     $("#iframe").attr("src", sLink);
                 } else {
@@ -149,124 +154,129 @@
     </script>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header">
-            <header>
-                <div class="head">
-                    <div class="logo">
-                        <img src="images/logo01.png">
-                    </div>
-                    <ul class="topmenu fr">
-                        <li>
-                            <a href="javascript:void(0);" id="logout">
-                                <span class="icon icon-quit"></span>
-                                退出
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="icon icon-publish"></span>
-                                公众号
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html">
-                                <span class="icon icon-index"></span>
-                                首页
-                            </a>
-                        </li>
-                    </ul>
+<div class="wrapper">
+    <div class="header">
+        <header>
+            <div class="head">
+                <div class="logo">
+                    <img src="images/logo01.png">
                 </div>
-            </header>
-        </div>
-        <div class="topinfor clearfix">
-            <p class="location fl">
-                当前招聘地点：
-                <span id="location">loading...</span>
-                <a href="">修改</a>
-            </p>
-            <p class="merchant-name fr" id="merchantname">loading...</p>
-        </div>
-        <div class="content clearfix">
-             <ul class="sidebar-menu fl" id="sideBar">
-                <!--<li>
-                    <h3>
-                        <span class="icon icon-merchant"></span>
-                        商家中心
-                    </h3>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:void(0);" data-href="hunt.html">马上找人</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" data-href="talentsmanage.html">人才管理</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>
-                        <span class="icon icon-account"></span>
-                        我的账户
-                    </h3>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:void(0);" data-href="accountview.html">账户概览</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" data-href="recharge.html">看点充值</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>
-                        <span class="icon icon-setting"></span>
-                        商家设置
-                    </h3>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:void(0);" data-href="record.html" class="active">档案管理</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" data-href="security.html">安全设置</a>
-                        </li>
-                    </ul>
-                </li>-->
-            </ul>
-            <div class="maincontent" >
-                <iframe id="iframe" src="" frameborder="0" width=100% height="925" scrolling="no"  onLoad="iFrameHeight()"></iframe>
+                <ul class="topmenu fr">
+                    <li>
+                        <a href="javascript:void(0);" id="logout">
+                            <span class="icon icon-quit"></span>
+                            退出
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon icon-publish"></span>
+                            公众号
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <span class="icon icon-index"></span>
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">你好，<span id="merchantname">loading...</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="bt-cont clearfix">
-                    <div class="bt-logo">
-                        <img src="images/logo01.png">
-                    </div>
-                    <div class="bt-menu clearfix">
-                        <ul class="clearfix">
-                            <li class="focusus">
-                                <span>关注我们：</span>
-                                <a href="" class="joinway">
-                                    <img src="images/footjoin.png">
-                                </a>
-                            </li>
-                            <li>杭州骏霖信息科技有限公司</li>
-                            <li>
-                                <span>意见反馈：</span>
-                                feedback@haifeng.com
-                            </li>
-                            <li>杭州市余杭区未来科技城</li>
-                            <li>
-                                <span>商务合作：</span>
-                                BD@ihaifeng.com
-                            </li>
-                            <li>梦想小镇3栋3F</li>
-                        </ul>
-                    </div>
-                </div>
-                <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
-            </div>
-        </footer>
+        </header>
     </div>
+    <div class="topinfor clearfix">
+        <p class="location fl">
+            当前招聘地点：
+            <span id="location">loading...</span>
+            <a href="">修改</a>
+        </p>
+        <!--<p class="merchant-name fr" id="merchantname">loading...</p>-->
+    </div>
+    <div class="content clearfix">
+        <ul class="sidebar-menu fl" id="sideBar">
+            <!--<li>
+                <h3>
+                    <span class="icon icon-merchant"></span>
+                    商家中心
+                </h3>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="javascript:void(0);" data-href="hunt.html">马上找人</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" data-href="talentsmanage.html">人才管理</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h3>
+                    <span class="icon icon-account"></span>
+                    我的账户
+                </h3>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="javascript:void(0);" data-href="accountview.html">账户概览</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" data-href="recharge.html">看点充值</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h3>
+                    <span class="icon icon-setting"></span>
+                    商家设置
+                </h3>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="javascript:void(0);" data-href="record.html" class="active">档案管理</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" data-href="security.html">安全设置</a>
+                    </li>
+                </ul>
+            </li>-->
+        </ul>
+        <div class="maincontent">
+            <iframe id="iframe" allowfullscreen="" src="" frameborder="0" width=100% height="925" scrolling="no"
+                    onload="iFrameHeight()"></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="bt-cont clearfix">
+                <div class="bt-logo">
+                    <img src="images/logo01.png">
+                </div>
+                <div class="bt-menu clearfix">
+                    <ul class="clearfix">
+                        <li class="focusus">
+                            <span>关注我们：</span>
+                            <a href="" class="joinway">
+                                <img src="images/footjoin.png">
+                            </a>
+                        </li>
+                        <li>杭州骏霖信息科技有限公司</li>
+                        <li>
+                            <span>意见反馈：</span>
+                            feedback@haifeng.com
+                        </li>
+                        <li>杭州市余杭区未来科技城</li>
+                        <li>
+                            <span>商务合作：</span>
+                            BD@ihaifeng.com
+                        </li>
+                        <li>梦想小镇3栋3F</li>
+                    </ul>
+                </div>
+            </div>
+            <p>海蜂招聘(ihaifeng.com)&copy;2016 版权所有 浙ICP备11088888</p>
+        </div>
+    </footer>
+</div>
 </body>
 </html>

@@ -1,0 +1,164 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>海蜂——推荐管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../plugin/swiper/css/swiper.min.css">
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../plugin/swiper/swiper.min.js"></script>
+    <style type="text/css">
+        .wrapper, .swiper-container, .rec_list, .table_cont {
+            width: 100%;
+            height: 100%;
+        }
+
+        tr th, tr td {
+            width: 25%;
+        }
+    </style>
+    <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content_wrap rec_management">
+        <div class="rec_top clearfix">
+            <div class="top_item top_left">
+                <p class="number_p" id="pResumeCount">1</p>
+
+                <p>
+                    已推荐人数
+                    <a href="recdsearch.html" id="recManage">管理</a>
+                </p>
+            </div>
+            <div class="top_item top_right">
+                <p class="number_p" id="pViewedCount">0</p>
+
+                <p>被浏览次数</p>
+            </div>
+        </div>
+        <div class="rec_list">
+            <div class="table_cont">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>全部</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="swiper-container swiper-container-vertical swiper-container-free-mode">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide swiper-slide-active">
+                            <table class="table">
+                                <tbody class="tbody" id="tbRecdResume">
+
+                                <tr>
+                                    <td>2016/5/19 18:36:44</td>
+                                    <td>郜石岭23</td>
+                                    <td>男</td>
+                                    <td>已浏览</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-scrollbar" style="display: none; opacity: 0;">
+        <div class="swiper-scrollbar-drag" style="height: 0px;"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var oUserInfo = null;
+    var pageSize = 5, pageIndex = 1;
+    var sStartDate = "", sEndDate = "";
+    var bIsFirstLoad = true;
+    var swiper = null;
+    $(function () {
+        $.post('../../../Ajax/BasePage/UserBase.ashx', {action: 'GetLoginInfo'}, function (resp) {
+            if (resp.code === "1000") {
+                oUserInfo = resp.data;
+                fGetBalanceList(1);
+                swiper = new Swiper('.swiper-container', {
+                    scrollbar: '.swiper-scrollbar',
+                    direction: 'vertical',
+                    slidesPerView: 'auto',
+                    mousewheelControl: true,
+                    freeMode: true,
+                    onTouchEnd: function (swiper) {
+                        //if (swiper.translate > 60) { //判断下拉刷新
+                        //    // $('.tbody').addClass('visible');//下拉刷新的div显示
+                        //    loadNewData();//加载更多数据
+                        //} else 
+                        if (swiper.translate < -40) { //判断上拉加载新数据
+                            if (swiper.isEnd) {
+                                //mySwiper.isEnd这个函数用来判断时候滑动到底部，但是不能单独的用这个来写，还需要在外层写一个swiper.translate<-40，是为了需要先判断是手势是上拉还是下拉，否则可能造成了点击页面，还没设计到上下拉就执行里面的函数了，这里的40也不                  是固定的，只是为了先判断手势方向，再判断是否到底
+                                pageIndex += 1;
+                                fGetBalanceList(pageIndex);
+                            }
+                        }
+                    }
+                });
+
+
+            } else {
+                alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                window.location.href = '../../login.html';
+            }
+
+        });
+    });
+
+    function fGetBalanceList(pageIndex) {
+        if (oUserInfo != null) {
+            sStartDate = "", sEndDate = "";
+            $.post('../../../Ajax/MobileH5/Referee.ashx', {
+                action: 'GetRecResumeList',
+                data: "{\"accountid\":\"" + oUserInfo.Id + "\",\"pagesize\":\"" + pageSize + "\",\"pageindex\":\"" + pageIndex + "\",\"startdate\":\"" + sStartDate + "\",\"enddate\":\"" + sEndDate + "\"}"
+            }, function (resp) {
+                if (resp.code === "1000") {
+                    if (bIsFirstLoad) {
+                        $("#pResumeCount").html(resp.data.Total);
+                        $("#pViewedCount").html(resp.data.ViewedTotal);
+                        bIsFirstLoad = false;
+                    }
+                    if (resp.data.RecResumeLists.length > 0) {
+                        var sHtml = "";
+                        $.each(resp.data.RecResumeLists, function (n, value) {
+                            sHtml += "<tr><td>" + value.CreateTime + "</td><td>" + value.Name + "</td><td>" + value.Sex + "</td><td>" + value.Status + "</td></tr>";
+                        });
+                        $("#tbRecdResume").append(sHtml);
+                    }
+
+                } else {
+                    alert('错误代码：' + resp.code + '；错误信息：' + resp.msg);
+                }
+            });
+        } else {
+            alert('获取登录信息失败，请重新登录');
+        }
+    }
+</script>
+</body>
+</html>
